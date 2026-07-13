@@ -14,6 +14,7 @@ import {
   recordMockExamAttempt,
   recordSessionAnswer,
   summarizeMockExam,
+  summarizeWeakTopics,
   toggleBookmark
 } from "../src/domain/practice-engine";
 import type { ExamCatalog, LearningSupport, SourceQuestion } from "../src/domain/types";
@@ -267,6 +268,44 @@ describe("practice engine", () => {
         passScore: 1,
         passed: true,
         wrongQuestionIds: ["berlin-1"]
+      }
+    ]);
+  });
+
+  it("summarizes weak topics from saved mock attempts", () => {
+    const attempts = [
+      {
+        id: "mock-1",
+        completedAt: "2026-07-14T10:30:00.000Z",
+        region: "berlin",
+        totalQuestions: 2,
+        correct: 0,
+        passScore: 1,
+        passed: false,
+        wrongQuestionIds: ["general-1", "berlin-1"]
+      },
+      {
+        id: "mock-2",
+        completedAt: "2026-07-14T11:30:00.000Z",
+        region: "bavaria",
+        totalQuestions: 2,
+        correct: 0,
+        passScore: 1,
+        passed: false,
+        wrongQuestionIds: ["general-1", "bavaria-1"]
+      }
+    ];
+
+    expect(summarizeWeakTopics(catalog, attempts)).toEqual([
+      {
+        topic: "democracy",
+        wrongCount: 2,
+        questionIds: ["general-1"]
+      },
+      {
+        topic: "regional",
+        wrongCount: 2,
+        questionIds: ["berlin-1", "bavaria-1"]
       }
     ]);
   });

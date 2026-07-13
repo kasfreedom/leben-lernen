@@ -15,6 +15,7 @@ import {
   recordMockExamAttempt,
   recordSessionAnswer,
   summarizeMockExam,
+  summarizeWeakTopics,
   toggleBookmark
 } from "./domain/practice-engine";
 import type { PracticeEngine } from "./domain/practice-engine";
@@ -31,7 +32,8 @@ import type {
   PracticeSession,
   ProgressSnapshot,
   QuestionId,
-  SourceQuestion
+  SourceQuestion,
+  WeakTopicSummary
 } from "./domain/types";
 
 const PROGRESS_STORAGE_KEY = "leben-lernen-progress-v1";
@@ -248,7 +250,7 @@ function renderMockResult(): void {
       </div>
       <div class="actions"><button class="secondary" id="restart-mock">Restart mock</button><button class="primary" id="review-wrong" ${result.wrongQuestionIds.length === 0 ? "disabled" : ""}>Review wrong answers</button></div>
     </section>
-    <aside class="support"><section><h2>Exam rules</h2><p>This mock uses ${catalog.mockExam.generalQuestionCount} general questions and ${catalog.mockExam.regionalQuestionCount} regional questions for ${escapeHtml(currentRegionLabel())}.</p></section><section><h2>Progress separation</h2><p>Mock exam answers are saved only to mock history. They do not change your normal practice score.</p></section>${renderMockHistorySection()}</aside>
+    <aside class="support"><section><h2>Exam rules</h2><p>This mock uses ${catalog.mockExam.generalQuestionCount} general questions and ${catalog.mockExam.regionalQuestionCount} regional questions for ${escapeHtml(currentRegionLabel())}.</p></section><section><h2>Progress separation</h2><p>Mock exam answers are saved only to mock history. They do not change your normal practice score.</p></section>${renderWeakAreasSection()}${renderMockHistorySection()}</aside>
   `);
 
   bindShell();
@@ -401,8 +403,28 @@ function renderMockPanel(session: PracticeSession): string {
       <section><h2>Exam mode</h2><p>No translation, explanation, or answer feedback is shown until the final result.</p></section>
       <section><h2>Question mix</h2><p>${catalog.mockExam.generalQuestionCount} general questions + ${catalog.mockExam.regionalQuestionCount} ${escapeHtml(currentRegionLabel())} questions.</p></section>
       <section><h2>Progress</h2><p>${session.summary.answered} of ${session.summary.totalQuestions} answered.</p></section>
+      ${renderWeakAreasSection()}
       ${renderMockHistorySection()}
     </aside>`;
+}
+
+function renderWeakAreasSection(): string {
+  const weakTopics = currentWeakTopics().slice(0, 3);
+  return `
+    <section>
+      <h2>Weak areas</h2>
+      ${weakTopics.length > 0 ? `<ol class="weak-topic-list">${weakTopics.map(renderWeakTopic).join("")}</ol><button class="secondary compact-button full-width" id="practice-weakest-topic">Practice weakest topic</button>` : "<p>Complete a mock exam to see weak topics here.</p>"}
+    </section>
+  `;
+}
+
+function renderWeakTopic(topic: WeakTopicSummary): string {
+  return `
+    <li>
+      <strong>${escapeHtml(topicLabel(topic.topic))}</strong>
+      <span>${topic.wrongCount} missed answer${topic.wrongCount === 1 ? "" : "s"} · ${topic.questionIds.length} question${topic.questionIds.length === 1 ? "" : "s"}</span>
+    </li>
+  `;
 }
 
 function renderMockHistorySection(): string {
@@ -483,6 +505,11 @@ function bindShell(): void {
     checked = false;
     usedSupportForQuestion = showSupport;
     render();
+  });
+  app.querySelector<HTMLButtonElement>("#practice-weakest-topic")?.addEventListener("click", () => {
+    const weakestTopic = currentWeakTopics()[0];
+    if (!weakestTopic) return;
+    startCustomPractice(`${topicLabel(weakestTopic.topic)} weak area`, weakestTopic.questionIds);
   });
 }
 
@@ -623,6 +650,18 @@ function currentPracticeQuestionIds(): readonly QuestionId[] {
     practiceSet: selectedPracticeSet,
     progress
   });
+}
+
+function currentWeakTopics(): readonly WeakTopicSummary[] {
+  return summarizeWeakTopics(catalog, progress.mockExamAttempts);
+}
+
+function topicLabel(topic: string): string {
+  return topic
+    .split(/[-_\s]+/u)
+    .filter(Boolean)
+    .map((part) => `${part.charAt(0).toUpperCase()}${part.slice(1)}`)
+    .join(" ");
 }
 
 function resetPracticeSession(): void {

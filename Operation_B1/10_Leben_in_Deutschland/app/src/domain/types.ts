@@ -139,6 +139,12 @@ export interface MockExamAttempt {
   readonly wrongQuestionIds: readonly QuestionId[];
 }
 
+export interface WeakTopicSummary {
+  readonly topic: Topic;
+  readonly wrongCount: number;
+  readonly questionIds: readonly QuestionId[];
+}
+
 export interface ProgressSnapshot {
   readonly version: 1;
   readonly updatedAt: string;

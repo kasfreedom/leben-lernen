@@ -14,7 +14,8 @@ import type {
   SessionAnswer,
   SessionSummary,
   SourceQuestion,
-  SupportLocale
+  SupportLocale,
+  WeakTopicSummary
 } from "./types";
 
 const PERFECT_SCORE = 100;
@@ -288,6 +289,37 @@ export function recordMockExamAttempt(
       ...progress.mockExamAttempts.filter((existing) => existing.id !== attempt.id)
     ].slice(0, maxAttempts)
   };
+}
+
+export function summarizeWeakTopics(
+  catalog: ExamCatalog,
+  attempts: readonly MockExamAttempt[]
+): readonly WeakTopicSummary[] {
+  const questionsById = new Map(catalog.questions.map((question) => [question.id, question]));
+  const topicCounts = new Map<string, { topic: string; questionIds: Set<QuestionId>; wrongCount: number }>();
+
+  for (const attempt of attempts) {
+    for (const questionId of attempt.wrongQuestionIds) {
+      const question = questionsById.get(questionId);
+      if (!question) continue;
+      const current = topicCounts.get(question.topic) ?? {
+        topic: question.topic,
+        questionIds: new Set<QuestionId>(),
+        wrongCount: 0
+      };
+      current.wrongCount += 1;
+      current.questionIds.add(questionId);
+      topicCounts.set(question.topic, current);
+    }
+  }
+
+  return [...topicCounts.values()]
+    .map((item) => ({
+      topic: item.topic,
+      wrongCount: item.wrongCount,
+      questionIds: [...item.questionIds]
+    }))
+    .sort((left, right) => right.wrongCount - left.wrongCount || left.topic.localeCompare(right.topic));
 }
 
 function buildSession(

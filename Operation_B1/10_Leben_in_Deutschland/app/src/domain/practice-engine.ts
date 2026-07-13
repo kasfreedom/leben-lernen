@@ -4,6 +4,7 @@ import type {
   ExamCatalog,
   LanguageExercise,
   LearningSupport,
+  MockExamAttempt,
   MockExamResult,
   MockExamRules,
   PracticeSet,
@@ -21,6 +22,7 @@ const NO_SCORE = 0;
 const FIRST_INDEX = 0;
 const SESSION_VERSION = 1;
 const GENERAL_REGION = "general";
+const DEFAULT_MAX_MOCK_ATTEMPTS = 20;
 
 export interface PracticeEngine {
   getLearningItem(
@@ -148,6 +150,7 @@ export function createEmptyProgressSnapshot(updatedAt: string) {
     updatedAt,
     answers: [],
     bookmarkedQuestionIds: [],
+    mockExamAttempts: [],
     vocabularyMastery: {}
   } as const;
 }
@@ -268,6 +271,22 @@ export function summarizeMockExam(
     passed: session.summary.correct >= rules.passScore,
     wrongQuestionIds,
     wrongAnswers
+  };
+}
+
+export function recordMockExamAttempt(
+  progress: ProgressSnapshot,
+  attempt: MockExamAttempt,
+  options: { readonly maxAttempts?: number } = {}
+): ProgressSnapshot {
+  const maxAttempts = options.maxAttempts ?? DEFAULT_MAX_MOCK_ATTEMPTS;
+  return {
+    ...progress,
+    updatedAt: attempt.completedAt,
+    mockExamAttempts: [
+      attempt,
+      ...progress.mockExamAttempts.filter((existing) => existing.id !== attempt.id)
+    ].slice(0, maxAttempts)
   };
 }
 

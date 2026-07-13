@@ -128,11 +128,23 @@ export interface MockExamWrongAnswer {
   readonly correctChoiceId?: ChoiceId;
 }
 
+export interface MockExamAttempt {
+  readonly id: string;
+  readonly completedAt: string;
+  readonly region: Region;
+  readonly totalQuestions: number;
+  readonly correct: number;
+  readonly passScore: number;
+  readonly passed: boolean;
+  readonly wrongQuestionIds: readonly QuestionId[];
+}
+
 export interface ProgressSnapshot {
   readonly version: 1;
   readonly updatedAt: string;
   readonly answers: readonly SessionAnswer[];
   readonly bookmarkedQuestionIds: readonly QuestionId[];
+  readonly mockExamAttempts: readonly MockExamAttempt[];
   readonly vocabularyMastery: Readonly<Record<string, number>>;
 }
 

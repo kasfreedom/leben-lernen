@@ -11,6 +11,7 @@ import {
   getRegionalQuestions,
   hydratePracticeSession,
   moveToNextQuestion,
+  recordMockExamAttempt,
   recordSessionAnswer,
   summarizeMockExam,
   toggleBookmark
@@ -227,6 +228,47 @@ describe("practice engine", () => {
         }
       ]
     });
+  });
+
+  it("stores mock exam attempts separately from practice answers", () => {
+    const progress = {
+      ...createEmptyProgressSnapshot("2026-07-14T10:00:00.000Z"),
+      answers: [
+        {
+          questionId: "general-1",
+          selectedChoiceId: "a",
+          correctChoiceId: "d",
+          isCorrect: false,
+          usedSupport: false,
+          answeredAt: "2026-07-14T10:00:00.000Z"
+        }
+      ]
+    };
+
+    const nextProgress = recordMockExamAttempt(progress, {
+      id: "mock-1",
+      completedAt: "2026-07-14T10:30:00.000Z",
+      region: "berlin",
+      totalQuestions: 2,
+      correct: 1,
+      passScore: 1,
+      passed: true,
+      wrongQuestionIds: ["berlin-1"]
+    });
+
+    expect(nextProgress.answers).toEqual(progress.answers);
+    expect(nextProgress.mockExamAttempts).toEqual([
+      {
+        id: "mock-1",
+        completedAt: "2026-07-14T10:30:00.000Z",
+        region: "berlin",
+        totalQuestions: 2,
+        correct: 1,
+        passScore: 1,
+        passed: true,
+        wrongQuestionIds: ["berlin-1"]
+      }
+    ]);
   });
 
   it("filters practice sets by unseen, wrong, bookmarked, and selected region", () => {

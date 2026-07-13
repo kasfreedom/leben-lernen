@@ -12,6 +12,7 @@ import {
   getPracticeSetQuestionIds,
   hydratePracticeSession,
   moveToNextQuestion,
+  recordMockExamAttempt,
   recordSessionAnswer,
   summarizeMockExam,
   toggleBookmark
@@ -22,6 +23,8 @@ import type {
   ExamCatalog,
   LanguageExercise,
   LearningSupport,
+  MockExamAttempt,
+  MockExamResult,
   MockExamWrongAnswer,
   PracticeMode,
   PracticeSet,
@@ -56,6 +59,8 @@ let practiceSession: PracticeSession;
 let mockSession: PracticeSession | undefined;
 let mockDeadlineAt = 0;
 let mockTimerId: number | undefined;
+let mockStartedAt = "";
+let mockAttemptSaved = false;
 let customPracticeLabel: string | undefined;
 let selected: ChoiceId | undefined;
 let checked = false;
@@ -222,6 +227,7 @@ function renderCompletion(): void {
 function renderMockResult(): void {
   const session = activeSession();
   const result = summarizeMockExam(session, catalog.mockExam);
+  saveMockAttemptOnce(result);
   const wrongItems = result.wrongAnswers.map((answer) => renderMockWrongAnswer(answer)).join("");
   clearMockTimer();
 
@@ -242,7 +248,7 @@ function renderMockResult(): void {
       </div>
       <div class="actions"><button class="secondary" id="restart-mock">Restart mock</button><button class="primary" id="review-wrong" ${result.wrongQuestionIds.length === 0 ? "disabled" : ""}>Review wrong answers</button></div>
     </section>
-    <aside class="support"><section><h2>Exam rules</h2><p>This mock uses ${catalog.mockExam.generalQuestionCount} general questions and ${catalog.mockExam.regionalQuestionCount} regional questions for ${escapeHtml(currentRegionLabel())}.</p></section><section><h2>Progress separation</h2><p>Mock exam answers are not saved into your normal practice score.</p></section></aside>
+    <aside class="support"><section><h2>Exam rules</h2><p>This mock uses ${catalog.mockExam.generalQuestionCount} general questions and ${catalog.mockExam.regionalQuestionCount} regional questions for ${escapeHtml(currentRegionLabel())}.</p></section><section><h2>Progress separation</h2><p>Mock exam answers are saved only to mock history. They do not change your normal practice score.</p></section>${renderMockHistorySection()}</aside>
   `);
 
   bindShell();
@@ -395,7 +401,28 @@ function renderMockPanel(session: PracticeSession): string {
       <section><h2>Exam mode</h2><p>No translation, explanation, or answer feedback is shown until the final result.</p></section>
       <section><h2>Question mix</h2><p>${catalog.mockExam.generalQuestionCount} general questions + ${catalog.mockExam.regionalQuestionCount} ${escapeHtml(currentRegionLabel())} questions.</p></section>
       <section><h2>Progress</h2><p>${session.summary.answered} of ${session.summary.totalQuestions} answered.</p></section>
+      ${renderMockHistorySection()}
     </aside>`;
+}
+
+function renderMockHistorySection(): string {
+  const attempts = progress.mockExamAttempts.slice(0, 5);
+  return `
+    <section>
+      <h2>Mock history</h2>
+      ${attempts.length > 0 ? `<ol class="mock-history">${attempts.map(renderMockAttempt).join("")}</ol>` : "<p>No saved mock attempts yet.</p>"}
+    </section>
+  `;
+}
+
+function renderMockAttempt(attempt: MockExamAttempt): string {
+  return `
+    <li>
+      <strong>${attempt.correct}/${attempt.totalQuestions}</strong>
+      <span>${attempt.passed ? "Passed" : "Not passed"} · ${escapeHtml(regionLabel(attempt.region))}</span>
+      <small>${escapeHtml(formatDateTime(attempt.completedAt))}</small>
+    </li>
+  `;
 }
 
 function practiceSetOption(value: PracticeSet, label: string): string {
@@ -578,6 +605,10 @@ function currentRegionLabel(): string {
   return catalog.regions.find((region) => region.id === selectedRegion)?.label ?? selectedRegion;
 }
 
+function regionLabel(regionId: string): string {
+  return catalog.regions.find((region) => region.id === regionId)?.label ?? regionId;
+}
+
 function currentSupportLocaleLabel(): string {
   return catalog.supportLocales.find((locale) => locale.id === selectedSupportLocale)?.label ?? selectedSupportLocale;
 }
@@ -609,6 +640,8 @@ function startCustomPractice(label: string, questionIds: readonly QuestionId[]):
 }
 
 function createMockSession(): PracticeSession {
+  mockStartedAt = new Date().toISOString();
+  mockAttemptSaved = false;
   const session = createPracticeSession(createMockExamQuestionIds(catalog, {
     region: selectedRegion,
     seed: Date.now()
@@ -625,6 +658,23 @@ function startMockExam(): void {
   checked = false;
   usedSupportForQuestion = false;
   render();
+}
+
+function saveMockAttemptOnce(result: MockExamResult): void {
+  if (mockAttemptSaved) return;
+  const completedAt = new Date().toISOString();
+  progress = recordMockExamAttempt(progress, {
+    id: `${mockStartedAt}:${selectedRegion}`,
+    completedAt,
+    region: selectedRegion,
+    totalQuestions: result.totalQuestions,
+    correct: result.correct,
+    passScore: result.passScore,
+    passed: result.passed,
+    wrongQuestionIds: result.wrongQuestionIds
+  });
+  saveProgress(progress);
+  mockAttemptSaved = true;
 }
 
 function ensureMockTimer(): void {
@@ -678,6 +728,7 @@ function loadProgress(): ProgressSnapshot {
     updatedAt: new Date().toISOString(),
     answers: [],
     bookmarkedQuestionIds: [],
+    mockExamAttempts: [],
     vocabularyMastery: {}
   };
   const raw = window.localStorage.getItem(PROGRESS_STORAGE_KEY);
@@ -687,7 +738,8 @@ function loadProgress(): ProgressSnapshot {
     return parsed.version === 1 ? {
       ...fallback,
       ...parsed,
-      bookmarkedQuestionIds: parsed.bookmarkedQuestionIds ?? []
+      bookmarkedQuestionIds: parsed.bookmarkedQuestionIds ?? [],
+      mockExamAttempts: parsed.mockExamAttempts ?? []
     } : fallback;
   } catch {
     return fallback;
@@ -704,8 +756,16 @@ function createProgressSnapshot(): ProgressSnapshot {
     updatedAt: new Date().toISOString(),
     answers: [],
     bookmarkedQuestionIds: [],
+    mockExamAttempts: [],
     vocabularyMastery: {}
   };
+}
+
+function formatDateTime(value: string): string {
+  return new Intl.DateTimeFormat(undefined, {
+    dateStyle: "medium",
+    timeStyle: "short"
+  }).format(new Date(value));
 }
 
 function escapeHtml(value: string): string {

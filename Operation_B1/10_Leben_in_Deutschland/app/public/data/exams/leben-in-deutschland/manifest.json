@@ -1,0 +1,27 @@
+{
+  "id": "leben-in-deutschland",
+  "title": "Leben in Deutschland",
+  "sourceLocale": "de",
+  "defaultRegion": "bavaria",
+  "generalQuestionsPath": "questions.de.json",
+  "mockExam": {
+    "generalQuestionCount": 30,
+    "regionalQuestionCount": 3,
+    "passScore": 17,
+    "durationMinutes": 60
+  },
+  "regions": [
+    {
+      "id": "bavaria",
+      "label": "Bavaria",
+      "questionsPath": "regions/bavaria.de.json"
+    }
+  ],
+  "supportLocales": [
+    {
+      "id": "en",
+      "label": "English",
+      "supportPath": "support/en.json"
+    }
+  ]
+}

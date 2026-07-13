@@ -1,0 +1,264 @@
+[
+  {
+    "id": "bavaria-1",
+    "sourceLocale": "de",
+    "region": "bavaria",
+    "topic": "bavaria",
+    "prompt": "Welches Wappen gehört zum Freistaat Bayern?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Bild 1"
+      },
+      {
+        "id": "b",
+        "text": "Bild 2"
+      },
+      {
+        "id": "c",
+        "text": "Bild 3"
+      },
+      {
+        "id": "d",
+        "text": "Bild 4"
+      }
+    ],
+    "correctChoiceId": "b",
+    "image": "catalog-page-question-301"
+  },
+  {
+    "id": "bavaria-2",
+    "sourceLocale": "de",
+    "region": "bavaria",
+    "topic": "bavaria",
+    "prompt": "Welches ist ein Landkreis in Bayern?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Prignitz"
+      },
+      {
+        "id": "b",
+        "text": "Rhein-Sieg-Kreis"
+      },
+      {
+        "id": "c",
+        "text": "Nordfriesland"
+      },
+      {
+        "id": "d",
+        "text": "Altötting"
+      }
+    ],
+    "correctChoiceId": "d"
+  },
+  {
+    "id": "bavaria-3",
+    "sourceLocale": "de",
+    "region": "bavaria",
+    "topic": "bavaria",
+    "prompt": "Für wie viele Jahre wird der Landtag in Bayern gewählt?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "3"
+      },
+      {
+        "id": "b",
+        "text": "4"
+      },
+      {
+        "id": "c",
+        "text": "5"
+      },
+      {
+        "id": "d",
+        "text": "6"
+      }
+    ],
+    "correctChoiceId": "c"
+  },
+  {
+    "id": "bavaria-4",
+    "sourceLocale": "de",
+    "region": "bavaria",
+    "topic": "bavaria",
+    "prompt": "Ab welchem Alter darf man in Bayern bei Kommunalwahlen wählen?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "14"
+      },
+      {
+        "id": "b",
+        "text": "16"
+      },
+      {
+        "id": "c",
+        "text": "18"
+      },
+      {
+        "id": "d",
+        "text": "20"
+      }
+    ],
+    "correctChoiceId": "c"
+  },
+  {
+    "id": "bavaria-5",
+    "sourceLocale": "de",
+    "region": "bavaria",
+    "topic": "bavaria",
+    "prompt": "Welche Farben hat die Landesflagge von Bayern?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "blau-weiß-rot"
+      },
+      {
+        "id": "b",
+        "text": "weiß-blau"
+      },
+      {
+        "id": "c",
+        "text": "grün-weiß-rot"
+      },
+      {
+        "id": "d",
+        "text": "schwarz-gelb"
+      }
+    ],
+    "correctChoiceId": "b"
+  },
+  {
+    "id": "bavaria-6",
+    "sourceLocale": "de",
+    "region": "bavaria",
+    "topic": "bavaria",
+    "prompt": "Wo können Sie sich in Bayern über politische Themen informieren?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "beim Ordnungsamt der Gemeinde"
+      },
+      {
+        "id": "b",
+        "text": "bei der Landeszentrale für politische Bildung"
+      },
+      {
+        "id": "c",
+        "text": "bei der Verbraucherzentrale"
+      },
+      {
+        "id": "d",
+        "text": "bei den Kirchen"
+      }
+    ],
+    "correctChoiceId": "b"
+  },
+  {
+    "id": "bavaria-7",
+    "sourceLocale": "de",
+    "region": "bavaria",
+    "topic": "bavaria",
+    "prompt": "Die Landeshauptstadt von Bayern heißt …",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Ingolstadt."
+      },
+      {
+        "id": "b",
+        "text": "Regensburg."
+      },
+      {
+        "id": "c",
+        "text": "Nürnberg."
+      },
+      {
+        "id": "d",
+        "text": "München."
+      }
+    ],
+    "correctChoiceId": "d"
+  },
+  {
+    "id": "bavaria-8",
+    "sourceLocale": "de",
+    "region": "bavaria",
+    "topic": "bavaria",
+    "prompt": "Welches Bundesland ist Bayern?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "1"
+      },
+      {
+        "id": "b",
+        "text": "2"
+      },
+      {
+        "id": "c",
+        "text": "3"
+      },
+      {
+        "id": "d",
+        "text": "4"
+      }
+    ],
+    "correctChoiceId": "d",
+    "image": "catalog-page-question-308"
+  },
+  {
+    "id": "bavaria-9",
+    "sourceLocale": "de",
+    "region": "bavaria",
+    "topic": "bavaria",
+    "prompt": "Wie nennt man die Regierungschefin/den Regierungschef in Bayern?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Erste Ministerin/Erster Minister"
+      },
+      {
+        "id": "b",
+        "text": "Premierministerin/Premierminister"
+      },
+      {
+        "id": "c",
+        "text": "Bürgermeisterin/Bürgermeister"
+      },
+      {
+        "id": "d",
+        "text": "Ministerpräsidentin/Ministerpräsident"
+      }
+    ],
+    "correctChoiceId": "d"
+  },
+  {
+    "id": "bavaria-10",
+    "sourceLocale": "de",
+    "region": "bavaria",
+    "topic": "bavaria",
+    "prompt": "Welche Ministerin/welchen Minister hat Bayern nicht?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Justizministerin/Justizminister"
+      },
+      {
+        "id": "b",
+        "text": "Außenministerin/Außenminister"
+      },
+      {
+        "id": "c",
+        "text": "Finanzministerin/Finanzminister"
+      },
+      {
+        "id": "d",
+        "text": "Innenministerin/Innenminister"
+      }
+    ],
+    "correctChoiceId": "b"
+  }
+]

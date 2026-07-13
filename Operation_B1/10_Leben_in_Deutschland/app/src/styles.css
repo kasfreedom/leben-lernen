@@ -144,12 +144,22 @@ fieldset { border: 0; padding: 0; margin: 28px 0 22px; display: grid; gap: 12px;
 .review-list.exam-review ul { display: grid; gap: 10px; }
 .review-list.exam-review li {
   display: grid;
-  gap: 4px;
+  gap: 12px;
   border-radius: 9px;
   color: var(--ink);
   line-height: 1.4;
 }
 .review-list.exam-review li span { color: var(--muted); }
+.exam-review-card h3 { margin: 0; font: 650 22px/1.3 Georgia, "Times New Roman", serif; }
+.exam-review-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.review-translation, .review-explanation { margin: 0; color: var(--muted); }
+.answer-comparison { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.answer-comparison div { border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: #fbfcfe; }
+.answer-comparison span, .answer-comparison small, .review-vocabulary > span { display: block; color: var(--muted); font-size: 12px; }
+.answer-comparison strong { display: block; margin-top: 5px; font-size: 16px; }
+.answer-comparison small { margin-top: 5px; }
+.review-vocabulary ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
+.review-vocabulary li { gap: 2px !important; padding: 8px 10px; }
 .language-card { min-height: 154px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 8px; background: #fbfcfe; padding: 24px; margin: 26px 0; text-align: center; }
 .language-card span { font: 600 28px/1.25 Georgia, "Times New Roman", serif; }
 .language-card.revealed { background: #fff8e8; border-color: #efcc7b; }
@@ -212,6 +222,7 @@ fieldset { border: 0; padding: 0; margin: 28px 0 22px; display: grid; gap: 12px;
   .support { border: 0; border-top: 1px solid var(--line); padding: 30px 20px; }
   .actions { grid-template-columns: 90px 1fr; }
   .actions.language-actions { grid-template-columns: 1fr; }
+  .answer-comparison, .review-vocabulary ul { grid-template-columns: 1fr; }
   .progress-note { align-items: flex-start; flex-direction: column; }
   .progress-note .progress-track { width: 100%; }
 }

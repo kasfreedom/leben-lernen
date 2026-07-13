@@ -215,7 +215,17 @@ describe("practice engine", () => {
       unanswered: 1,
       passScore: 1,
       passed: false,
-      wrongQuestionIds: ["general-1", "berlin-1"]
+      wrongQuestionIds: ["general-1", "berlin-1"],
+      wrongAnswers: [
+        {
+          questionId: "general-1",
+          selectedChoiceId: "a",
+          correctChoiceId: "d"
+        },
+        {
+          questionId: "berlin-1"
+        }
+      ]
     });
   });
 

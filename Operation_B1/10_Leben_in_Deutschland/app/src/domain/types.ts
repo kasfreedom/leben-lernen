@@ -119,6 +119,13 @@ export interface MockExamResult {
   readonly passScore: number;
   readonly passed: boolean;
   readonly wrongQuestionIds: readonly QuestionId[];
+  readonly wrongAnswers: readonly MockExamWrongAnswer[];
+}
+
+export interface MockExamWrongAnswer {
+  readonly questionId: QuestionId;
+  readonly selectedChoiceId?: ChoiceId;
+  readonly correctChoiceId?: ChoiceId;
 }
 
 export interface ProgressSnapshot {

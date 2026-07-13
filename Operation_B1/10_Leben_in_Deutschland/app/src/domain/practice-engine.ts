@@ -244,10 +244,19 @@ export function summarizeMockExam(
   rules: MockExamRules
 ): MockExamResult {
   const answeredIds = new Set(session.answers.map((answer) => answer.questionId));
-  const wrongQuestionIds = [
-    ...session.answers.filter((answer) => !answer.isCorrect).map((answer) => answer.questionId),
-    ...session.questionIds.filter((id) => !answeredIds.has(id))
+  const wrongAnswers = [
+    ...session.answers
+      .filter((answer) => !answer.isCorrect)
+      .map((answer) => ({
+        questionId: answer.questionId,
+        selectedChoiceId: answer.selectedChoiceId,
+        correctChoiceId: answer.correctChoiceId
+      })),
+    ...session.questionIds
+      .filter((id) => !answeredIds.has(id))
+      .map((questionId) => ({ questionId }))
   ];
+  const wrongQuestionIds = wrongAnswers.map((answer) => answer.questionId);
 
   return {
     totalQuestions: session.summary.totalQuestions,
@@ -257,7 +266,8 @@ export function summarizeMockExam(
     unanswered: session.summary.totalQuestions - session.summary.answered,
     passScore: rules.passScore,
     passed: session.summary.correct >= rules.passScore,
-    wrongQuestionIds
+    wrongQuestionIds,
+    wrongAnswers
   };
 }
 

@@ -22,6 +22,7 @@ import type {
   ExamCatalog,
   LanguageExercise,
   LearningSupport,
+  MockExamWrongAnswer,
   PracticeMode,
   PracticeSet,
   PracticeSession,
@@ -221,7 +222,7 @@ function renderCompletion(): void {
 function renderMockResult(): void {
   const session = activeSession();
   const result = summarizeMockExam(session, catalog.mockExam);
-  const wrongItems = result.wrongQuestionIds.map((id) => `<li><strong>${escapeHtml(id)}</strong><span>${escapeHtml(getPrompt(id))}</span></li>`).join("");
+  const wrongItems = result.wrongAnswers.map((answer) => renderMockWrongAnswer(answer)).join("");
   clearMockTimer();
 
   app.innerHTML = layout(`
@@ -237,7 +238,7 @@ function renderMockResult(): void {
       </div>
       <div class="review-list exam-review">
         <h2>Wrong answers</h2>
-        ${result.wrongQuestionIds.length > 0 ? `<ul>${wrongItems}</ul>` : "<p>No wrong answers in this mock exam.</p>"}
+        ${result.wrongAnswers.length > 0 ? `<ul>${wrongItems}</ul>` : "<p>No wrong answers in this mock exam.</p>"}
       </div>
       <div class="actions"><button class="secondary" id="restart-mock">Restart mock</button><button class="primary" id="review-wrong" ${result.wrongQuestionIds.length === 0 ? "disabled" : ""}>Review wrong answers</button></div>
     </section>
@@ -251,6 +252,34 @@ function renderMockResult(): void {
   app.querySelector<HTMLButtonElement>("#review-wrong")?.addEventListener("click", () => {
     startCustomPractice("Mock wrong answers", result.wrongQuestionIds);
   });
+}
+
+function renderMockWrongAnswer(answer: MockExamWrongAnswer): string {
+  const { question, support } = engine.getLearningItem(answer.questionId, selectedSupportLocale);
+  const selectedChoiceText = answer.selectedChoiceId
+    ? getChoiceText(question, answer.selectedChoiceId)
+    : "No answer selected";
+  const correctChoiceText = getChoiceText(question, answer.correctChoiceId ?? question.correctChoiceId);
+  const vocabulary = support?.vocabulary.slice(0, 4).map((item) => `
+    <li><strong lang="de">${escapeHtml(item.source)}</strong><span>${escapeHtml(item.translation)}</span></li>
+  `).join("");
+
+  return `
+    <li class="exam-review-card">
+      <div class="exam-review-heading">
+        <strong>${escapeHtml(question.id)}</strong>
+        <span>${escapeHtml(question.topic)}</span>
+      </div>
+      <h3 lang="de">${escapeHtml(question.prompt)}</h3>
+      ${support ? `<p class="review-translation">${escapeHtml(support.translation)}</p>` : ""}
+      <div class="answer-comparison">
+        <div><span>Your answer</span><strong lang="de">${escapeHtml(selectedChoiceText)}</strong></div>
+        <div><span>Correct answer</span><strong lang="de">${escapeHtml(correctChoiceText)}</strong>${support ? `<small>${escapeHtml(support.correctAnswerTranslation)}</small>` : ""}</div>
+      </div>
+      <p class="review-explanation">${escapeHtml(support?.simpleExplanation ?? "Review the correct answer and key words for this question.")}</p>
+      ${vocabulary ? `<div class="review-vocabulary"><span>Key words</span><ul>${vocabulary}</ul></div>` : ""}
+    </li>
+  `;
 }
 
 function renderLanguagePractice(): void {
@@ -539,6 +568,10 @@ function metric(label: string, value: string): string {
 
 function getPrompt(questionId: QuestionId): string {
   return engine.getLearningItem(questionId, selectedSupportLocale).question.prompt;
+}
+
+function getChoiceText(question: SourceQuestion, choiceId: ChoiceId): string {
+  return question.choices.find((choice) => choice.id === choiceId)?.text ?? choiceId;
 }
 
 function currentRegionLabel(): string {

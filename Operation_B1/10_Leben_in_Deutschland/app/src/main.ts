@@ -13,6 +13,7 @@ import {
   hydratePracticeSession,
   moveToNextQuestion,
   recordSessionAnswer,
+  summarizeMockExam,
   toggleBookmark
 } from "./domain/practice-engine";
 import type { PracticeEngine } from "./domain/practice-engine";
@@ -34,6 +35,8 @@ const VOCABULARY_STEP = 25;
 const MAX_MASTERY = 100;
 const MIN_MASTERY = 0;
 const PUBLIC_BASE_URL = import.meta.env.BASE_URL;
+const MILLISECONDS_PER_MINUTE = 60_000;
+const MILLISECONDS_PER_SECOND = 1_000;
 
 const root = document.querySelector<HTMLDivElement>("#app");
 if (!root) throw new Error("App root is missing");
@@ -50,6 +53,9 @@ let selectedSupportLocale = "";
 let selectedPracticeSet: PracticeSet = "all";
 let practiceSession: PracticeSession;
 let mockSession: PracticeSession | undefined;
+let mockDeadlineAt = 0;
+let mockTimerId: number | undefined;
+let customPracticeLabel: string | undefined;
 let selected: ChoiceId | undefined;
 let checked = false;
 let showSupport = true;
@@ -66,10 +72,7 @@ function currentQuestion(): SourceQuestion {
 
 function activeSession(): PracticeSession {
   if (mode !== "mock") return practiceSession;
-  mockSession ??= createPracticeSession(createMockExamQuestionIds(catalog, {
-    region: selectedRegion,
-    seed: Date.now()
-  }));
+  mockSession ??= createMockSession();
   return mockSession;
 }
 
@@ -82,6 +85,8 @@ function setActiveSession(nextSession: PracticeSession): void {
 }
 
 function render(): void {
+  updateMockTimer();
+
   if (mode === "language") {
     renderLanguagePractice();
     return;
@@ -89,6 +94,11 @@ function render(): void {
 
   if (mode === "practice" && activeSession().questionIds.length === 0) {
     renderEmptyPracticeSet();
+    return;
+  }
+
+  if (mode === "mock" && (activeSession().summary.isComplete || isMockExpired())) {
+    renderMockResult();
     return;
   }
 
@@ -104,23 +114,28 @@ function renderQuestion(): void {
   const question = currentQuestion();
   const session = activeSession();
   const { support } = engine.getLearningItem(question.id, selectedSupportLocale);
-  const result = selected && checked
+  const isMockExam = mode === "mock";
+  const result = !isMockExam && selected && checked
     ? engine.checkAnswer(question.id, selected, { usedSupport: usedSupportForQuestion })
     : undefined;
   const progressPercent = Math.round((session.summary.answered / session.summary.totalQuestions) * MAX_MASTERY);
+  const primaryLabel = isMockExam
+    ? session.currentIndex === session.questionIds.length - 1 ? "Finish exam" : "Save and next"
+    : checked ? session.summary.isComplete ? "See results" : "Next question" : "Check answer";
 
   app.innerHTML = layout(`
     <section class="question-area">
       ${mode === "practice" ? renderPracticeToolbar(session) : ""}
+      ${isMockExam ? renderMockHeader(session) : ""}
       <div class="score-strip" aria-label="Session score">
         ${metric("Score", `${session.summary.percentCorrect}%`)}
         ${metric("Correct", `${session.summary.correct}/${session.summary.answered}`)}
         ${metric("German only", `${session.summary.germanOnlyCorrect}`)}
         ${metric("Assisted", `${session.summary.assisted}`)}
       </div>
-      <div class="question-meta"><span>Question ${session.currentIndex + 1}</span><div class="question-tools"><button class="bookmark-button ${isCurrentQuestionBookmarked() ? "active" : ""}" id="bookmark" aria-pressed="${isCurrentQuestionBookmarked()}">${isCurrentQuestionBookmarked() ? "★ Bookmarked" : "☆ Bookmark"}</button><label class="toggle"><span>Show translation</span><input type="checkbox" ${showSupport ? "checked" : ""}><i></i></label></div></div>
+      <div class="question-meta"><span>Question ${session.currentIndex + 1}</span>${isMockExam ? `<span>No hints or answer feedback during mock exam</span>` : `<div class="question-tools"><button class="bookmark-button ${isCurrentQuestionBookmarked() ? "active" : ""}" id="bookmark" aria-pressed="${isCurrentQuestionBookmarked()}">${isCurrentQuestionBookmarked() ? "★ Bookmarked" : "☆ Bookmark"}</button><label class="toggle"><span>Show translation</span><input type="checkbox" ${showSupport ? "checked" : ""}><i></i></label></div>`}</div>
       <h1 lang="de">${escapeHtml(question.prompt)}</h1>
-      ${showSupport && support ? `<p class="inline-translation">${escapeHtml(support.translation)}</p>` : ""}
+      ${!isMockExam && showSupport && support ? `<p class="inline-translation">${escapeHtml(support.translation)}</p>` : ""}
       ${question.image ? `<figure class="catalog-figure"><img src="${escapeHtml(publicAssetPath(`catalog-pages/${question.image}.png`))}" alt="Official BAMF catalog visual for ${escapeHtml(question.id)}"></figure>` : ""}
       <fieldset><legend class="sr-only">Choose one answer</legend>${question.choices.map((choice) => {
         const isSelected = selected === choice.id;
@@ -128,10 +143,10 @@ function renderQuestion(): void {
         return `<label class="answer${isSelected ? " selected" : ""}${state}"><input type="radio" name="answer" value="${choice.id}" ${isSelected ? "checked" : ""}><span class="radio"></span><span lang="de">${escapeHtml(choice.text)}</span></label>`;
       }).join("")}</fieldset>
       ${result ? `<div class="feedback ${result.isCorrect ? "success" : "error"}" role="status"><strong>${result.isCorrect ? "Correct" : "Not quite"}</strong>${support ? `<span>${escapeHtml(currentSupportLocaleLabel())} answer: ${escapeHtml(support.correctAnswerTranslation)}</span>` : ""}<span>${escapeHtml(support?.simpleExplanation ?? "Review the correct answer.")}</span></div>` : ""}
-      <div class="actions"><button class="secondary" id="previous" ${session.currentIndex === 0 ? "disabled" : ""}>Previous</button><button class="primary" id="check" ${selected ? "" : "disabled"}>${checked ? session.summary.isComplete ? "See results" : "Next question" : "Check answer"}</button></div>
+      <div class="actions"><button class="secondary" id="previous" ${session.currentIndex === 0 ? "disabled" : ""}>Previous</button><button class="primary" id="check" ${selected ? "" : "disabled"}>${primaryLabel}</button></div>
       <div class="progress-note"><span class="progress-track"><i style="width:${progressPercent}%"></i></span><span>${session.summary.answered} answered in this set</span></div>
     </section>
-    ${renderSupportPanel(question.id)}
+    ${isMockExam ? renderMockPanel(session) : renderSupportPanel(question.id)}
   `);
 
   bindShell();
@@ -200,6 +215,41 @@ function renderCompletion(): void {
     checked = false;
     usedSupportForQuestion = showSupport;
     render();
+  });
+}
+
+function renderMockResult(): void {
+  const session = activeSession();
+  const result = summarizeMockExam(session, catalog.mockExam);
+  const wrongItems = result.wrongQuestionIds.map((id) => `<li><strong>${escapeHtml(id)}</strong><span>${escapeHtml(getPrompt(id))}</span></li>`).join("");
+  clearMockTimer();
+
+  app.innerHTML = layout(`
+    <section class="question-area completion">
+      <p class="completion-label">Mock exam result</p>
+      <h1>${result.passed ? "Passed" : "Not passed yet"}</h1>
+      <p class="inline-translation">You scored ${result.correct} of ${result.totalQuestions}. Passing score is ${result.passScore} of ${result.totalQuestions}. ${result.unanswered > 0 ? `${result.unanswered} questions were unanswered when time ended.` : ""}</p>
+      <div class="score-strip large">
+        ${metric("Correct", String(result.correct))}
+        ${metric("Wrong or blank", String(result.incorrect))}
+        ${metric("Pass mark", String(result.passScore))}
+        ${metric("Answered", `${result.answered}/${result.totalQuestions}`)}
+      </div>
+      <div class="review-list exam-review">
+        <h2>Wrong answers</h2>
+        ${result.wrongQuestionIds.length > 0 ? `<ul>${wrongItems}</ul>` : "<p>No wrong answers in this mock exam.</p>"}
+      </div>
+      <div class="actions"><button class="secondary" id="restart-mock">Restart mock</button><button class="primary" id="review-wrong" ${result.wrongQuestionIds.length === 0 ? "disabled" : ""}>Review wrong answers</button></div>
+    </section>
+    <aside class="support"><section><h2>Exam rules</h2><p>This mock uses ${catalog.mockExam.generalQuestionCount} general questions and ${catalog.mockExam.regionalQuestionCount} regional questions for ${escapeHtml(currentRegionLabel())}.</p></section><section><h2>Progress separation</h2><p>Mock exam answers are not saved into your normal practice score.</p></section></aside>
+  `);
+
+  bindShell();
+  app.querySelector<HTMLButtonElement>("#restart-mock")?.addEventListener("click", () => {
+    startMockExam();
+  });
+  app.querySelector<HTMLButtonElement>("#review-wrong")?.addEventListener("click", () => {
+    startCustomPractice("Mock wrong answers", result.wrongQuestionIds);
   });
 }
 
@@ -275,6 +325,15 @@ function layout(content: string): string {
 }
 
 function renderPracticeToolbar(session: PracticeSession): string {
+  if (customPracticeLabel) {
+    return `
+      <div class="practice-toolbar">
+        <span><strong>${escapeHtml(customPracticeLabel)}</strong></span>
+        <button class="secondary compact-button" id="clear-custom-practice">Back to practice sets</button>
+      </div>
+    `;
+  }
+
   return `
     <div class="practice-toolbar">
       <label><span>Practice set</span><select aria-label="Practice set">
@@ -287,6 +346,27 @@ function renderPracticeToolbar(session: PracticeSession): string {
       <span>${session.summary.totalQuestions} questions</span>
     </div>
   `;
+}
+
+function renderMockHeader(session: PracticeSession): string {
+  return `
+    <div class="mock-header">
+      <span>Mock exam</span>
+      <strong>${formatRemainingTime()}</strong>
+      <span>${session.summary.answered}/${session.summary.totalQuestions} answered</span>
+    </div>
+  `;
+}
+
+function renderMockPanel(session: PracticeSession): string {
+  return `
+    <aside class="support">
+      <section><h2>Timer</h2><p class="answer-translation">${formatRemainingTime()}</p></section>
+      <section><h2>Passing score</h2><p>${catalog.mockExam.passScore} correct answers are needed to pass.</p></section>
+      <section><h2>Exam mode</h2><p>No translation, explanation, or answer feedback is shown until the final result.</p></section>
+      <section><h2>Question mix</h2><p>${catalog.mockExam.generalQuestionCount} general questions + ${catalog.mockExam.regionalQuestionCount} ${escapeHtml(currentRegionLabel())} questions.</p></section>
+      <section><h2>Progress</h2><p>${session.summary.answered} of ${session.summary.totalQuestions} answered.</p></section>
+    </aside>`;
 }
 
 function practiceSetOption(value: PracticeSet, label: string): string {
@@ -307,18 +387,18 @@ function renderSupportPanel(questionId: QuestionId): string {
 function bindShell(): void {
   app.querySelectorAll<HTMLButtonElement>("[data-mode]").forEach((button) => button.addEventListener("click", () => {
     mode = button.dataset.mode as PracticeMode;
-    if (mode === "mock") mockSession ??= createPracticeSession(createMockExamQuestionIds(catalog, {
-      region: selectedRegion,
-      seed: Date.now()
-    }));
+    if (mode === "mock") mockSession ??= createMockSession();
+    if (mode !== "practice") customPracticeLabel = undefined;
     selected = undefined;
     checked = false;
     render();
   }));
   app.querySelector<HTMLSelectElement>('select[aria-label="Region"]')?.addEventListener("change", (event) => {
     selectedRegion = (event.currentTarget as HTMLSelectElement).value;
+    customPracticeLabel = undefined;
     resetPracticeSession();
     mockSession = undefined;
+    mockDeadlineAt = 0;
     selected = undefined;
     checked = false;
     usedSupportForQuestion = showSupport;
@@ -333,6 +413,15 @@ function bindShell(): void {
   });
   app.querySelector<HTMLSelectElement>('select[aria-label="Practice set"]')?.addEventListener("change", (event) => {
     selectedPracticeSet = (event.currentTarget as HTMLSelectElement).value as PracticeSet;
+    customPracticeLabel = undefined;
+    resetPracticeSession();
+    selected = undefined;
+    checked = false;
+    usedSupportForQuestion = showSupport;
+    render();
+  });
+  app.querySelector<HTMLButtonElement>("#clear-custom-practice")?.addEventListener("click", () => {
+    customPracticeLabel = undefined;
     resetPracticeSession();
     selected = undefined;
     checked = false;
@@ -368,6 +457,10 @@ function bindQuestion(): void {
   });
   app.querySelector<HTMLButtonElement>("#check")?.addEventListener("click", () => {
     if (!selected) return;
+    if (mode === "mock") {
+      answerMockQuestion(selected);
+      return;
+    }
     if (!checked) {
       checked = true;
       const question = currentQuestion();
@@ -378,14 +471,12 @@ function bindQuestion(): void {
         answeredAt: new Date().toISOString()
       });
       setActiveSession(nextSession);
-      if (mode !== "mock") {
-        progress = {
-          ...progress,
-          updatedAt: new Date().toISOString(),
-          answers: nextSession.answers
-        };
-        saveProgress(progress);
-      }
+      progress = {
+        ...progress,
+        updatedAt: new Date().toISOString(),
+        answers: nextSession.answers
+      };
+      saveProgress(progress);
     } else {
       setActiveSession(moveToNextQuestion(activeSession()));
       selected = undefined;
@@ -394,6 +485,22 @@ function bindQuestion(): void {
     }
     render();
   });
+}
+
+function answerMockQuestion(selectedChoiceId: ChoiceId): void {
+  const question = currentQuestion();
+  const answeredSession = recordSessionAnswer(activeSession(), {
+    question,
+    selectedChoiceId,
+    usedSupport: false,
+    answeredAt: new Date().toISOString()
+  });
+  const isLastQuestion = answeredSession.currentIndex >= answeredSession.questionIds.length - 1;
+  setActiveSession(isLastQuestion ? answeredSession : moveToNextQuestion(answeredSession));
+  selected = undefined;
+  checked = false;
+  usedSupportForQuestion = false;
+  render();
 }
 
 function bindLanguage(exercise: LanguageExercise): void {
@@ -456,6 +563,72 @@ function currentPracticeQuestionIds(): readonly QuestionId[] {
 
 function resetPracticeSession(): void {
   practiceSession = hydratePracticeSession(currentPracticeQuestionIds(), progress.answers);
+}
+
+function startCustomPractice(label: string, questionIds: readonly QuestionId[]): void {
+  mode = "practice";
+  customPracticeLabel = label;
+  practiceSession = createPracticeSession(questionIds);
+  selected = undefined;
+  checked = false;
+  usedSupportForQuestion = showSupport;
+  render();
+}
+
+function createMockSession(): PracticeSession {
+  const session = createPracticeSession(createMockExamQuestionIds(catalog, {
+    region: selectedRegion,
+    seed: Date.now()
+  }));
+  mockDeadlineAt = Date.now() + catalog.mockExam.durationMinutes * MILLISECONDS_PER_MINUTE;
+  ensureMockTimer();
+  return session;
+}
+
+function startMockExam(): void {
+  mode = "mock";
+  mockSession = createMockSession();
+  selected = undefined;
+  checked = false;
+  usedSupportForQuestion = false;
+  render();
+}
+
+function ensureMockTimer(): void {
+  if (mockTimerId !== undefined) return;
+  mockTimerId = window.setInterval(() => {
+    if (mode !== "mock" || !mockSession || mockSession.summary.isComplete) {
+      clearMockTimer();
+      return;
+    }
+    render();
+  }, MILLISECONDS_PER_SECOND);
+}
+
+function clearMockTimer(): void {
+  if (mockTimerId === undefined) return;
+  window.clearInterval(mockTimerId);
+  mockTimerId = undefined;
+}
+
+function updateMockTimer(): void {
+  if (mode === "mock" && mockSession && !mockSession.summary.isComplete && !isMockExpired()) {
+    ensureMockTimer();
+    return;
+  }
+  if (mode !== "mock" || isMockExpired() || mockSession?.summary.isComplete) clearMockTimer();
+}
+
+function isMockExpired(): boolean {
+  return mode === "mock" && mockDeadlineAt > 0 && Date.now() >= mockDeadlineAt;
+}
+
+function formatRemainingTime(): string {
+  const remainingMs = Math.max(mockDeadlineAt - Date.now(), 0);
+  const totalSeconds = Math.ceil(remainingMs / MILLISECONDS_PER_SECOND);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
 function isCurrentQuestionBookmarked(): boolean {

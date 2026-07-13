@@ -110,6 +110,17 @@ export interface PracticeSession {
   readonly summary: SessionSummary;
 }
 
+export interface MockExamResult {
+  readonly totalQuestions: number;
+  readonly answered: number;
+  readonly correct: number;
+  readonly incorrect: number;
+  readonly unanswered: number;
+  readonly passScore: number;
+  readonly passed: boolean;
+  readonly wrongQuestionIds: readonly QuestionId[];
+}
+
 export interface ProgressSnapshot {
   readonly version: 1;
   readonly updatedAt: string;

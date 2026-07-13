@@ -4,6 +4,8 @@ import type {
   ExamCatalog,
   LanguageExercise,
   LearningSupport,
+  MockExamResult,
+  MockExamRules,
   PracticeSet,
   PracticeSession,
   ProgressSnapshot,
@@ -235,6 +237,28 @@ export function createMockExamQuestionIds(
     ...takeShuffled(general, generalQuestionCount, options.seed),
     ...takeShuffled(regional, regionalQuestionCount, options.seed + 1)
   ].map((question) => question.id);
+}
+
+export function summarizeMockExam(
+  session: PracticeSession,
+  rules: MockExamRules
+): MockExamResult {
+  const answeredIds = new Set(session.answers.map((answer) => answer.questionId));
+  const wrongQuestionIds = [
+    ...session.answers.filter((answer) => !answer.isCorrect).map((answer) => answer.questionId),
+    ...session.questionIds.filter((id) => !answeredIds.has(id))
+  ];
+
+  return {
+    totalQuestions: session.summary.totalQuestions,
+    answered: session.summary.answered,
+    correct: session.summary.correct,
+    incorrect: wrongQuestionIds.length,
+    unanswered: session.summary.totalQuestions - session.summary.answered,
+    passScore: rules.passScore,
+    passed: session.summary.correct >= rules.passScore,
+    wrongQuestionIds
+  };
 }
 
 function buildSession(

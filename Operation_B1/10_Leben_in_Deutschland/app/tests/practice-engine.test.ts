@@ -12,6 +12,7 @@ import {
   hydratePracticeSession,
   moveToNextQuestion,
   recordSessionAnswer,
+  summarizeMockExam,
   toggleBookmark
 } from "../src/domain/practice-engine";
 import type { ExamCatalog, LearningSupport, SourceQuestion } from "../src/domain/types";
@@ -195,6 +196,27 @@ describe("practice engine", () => {
     expect(mockIds).toHaveLength(2);
     expect(mockIds).toContain("general-1");
     expect(mockIds).toContain("berlin-1");
+  });
+
+  it("summarizes mock exam pass status and wrong answers", () => {
+    const session = createPracticeSession(["general-1", "berlin-1"]);
+    const answered = recordSessionAnswer(session, {
+      question,
+      selectedChoiceId: "a",
+      usedSupport: false,
+      answeredAt: "2026-07-13T10:00:00.000Z"
+    });
+
+    expect(summarizeMockExam(answered, { ...catalog.mockExam, passScore: 1 })).toEqual({
+      totalQuestions: 2,
+      answered: 1,
+      correct: 0,
+      incorrect: 2,
+      unanswered: 1,
+      passScore: 1,
+      passed: false,
+      wrongQuestionIds: ["general-1", "berlin-1"]
+    });
   });
 
   it("filters practice sets by unseen, wrong, bookmarked, and selected region", () => {

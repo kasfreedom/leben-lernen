@@ -2,14 +2,17 @@ import { describe, expect, it } from "vitest";
 import {
   createLanguageExercises,
   createMockExamQuestionIds,
+  createEmptyProgressSnapshot,
   createPracticeEngine,
   createPracticeSession,
   getAvailableSupportLocales,
   getCatalogQuestionIds,
+  getPracticeSetQuestionIds,
   getRegionalQuestions,
   hydratePracticeSession,
   moveToNextQuestion,
-  recordSessionAnswer
+  recordSessionAnswer,
+  toggleBookmark
 } from "../src/domain/practice-engine";
 import type { ExamCatalog, LearningSupport, SourceQuestion } from "../src/domain/types";
 
@@ -32,6 +35,7 @@ const support: LearningSupport = {
   questionId: "general-1",
   locale: "en",
   translation: "What is the German constitution called?",
+  correctAnswerTranslation: "Basic Law",
   simpleExplanation: "Germany's constitution is called the Basic Law.",
   vocabulary: [{ source: "die Verfassung", translation: "the constitution" }]
 };
@@ -191,5 +195,48 @@ describe("practice engine", () => {
     expect(mockIds).toHaveLength(2);
     expect(mockIds).toContain("general-1");
     expect(mockIds).toContain("berlin-1");
+  });
+
+  it("filters practice sets by unseen, wrong, bookmarked, and selected region", () => {
+    const progress = {
+      ...createEmptyProgressSnapshot("2026-07-13T10:00:00.000Z"),
+      answers: [
+        {
+          questionId: "general-1",
+          selectedChoiceId: "a",
+          correctChoiceId: "d",
+          isCorrect: false,
+          usedSupport: false,
+          answeredAt: "2026-07-13T10:00:00.000Z"
+        }
+      ],
+      bookmarkedQuestionIds: ["berlin-1"]
+    };
+
+    expect(getPracticeSetQuestionIds(catalog, { region: "berlin", practiceSet: "all", progress })).toEqual([
+      "general-1",
+      "berlin-1"
+    ]);
+    expect(getPracticeSetQuestionIds(catalog, { region: "berlin", practiceSet: "unseen", progress })).toEqual([
+      "berlin-1"
+    ]);
+    expect(getPracticeSetQuestionIds(catalog, { region: "berlin", practiceSet: "wrong", progress })).toEqual([
+      "general-1"
+    ]);
+    expect(getPracticeSetQuestionIds(catalog, { region: "berlin", practiceSet: "bookmarked", progress })).toEqual([
+      "berlin-1"
+    ]);
+    expect(getPracticeSetQuestionIds(catalog, { region: "berlin", practiceSet: "region", progress })).toEqual([
+      "berlin-1"
+    ]);
+  });
+
+  it("toggles bookmarks in progress", () => {
+    const progress = createEmptyProgressSnapshot("2026-07-13T10:00:00.000Z");
+    const bookmarked = toggleBookmark(progress, "general-1", "2026-07-13T10:01:00.000Z");
+    const unbookmarked = toggleBookmark(bookmarked, "general-1", "2026-07-13T10:02:00.000Z");
+
+    expect(bookmarked.bookmarkedQuestionIds).toEqual(["general-1"]);
+    expect(unbookmarked.bookmarkedQuestionIds).toEqual([]);
   });
 });

@@ -3,6 +3,7 @@ export type ChoiceId = "a" | "b" | "c" | "d";
 export type Region = string;
 export type SupportLocale = string;
 export type PracticeMode = "learn" | "practice" | "language" | "mock";
+export type PracticeSet = "all" | "unseen" | "wrong" | "bookmarked" | "region";
 export type LanguageExerciseType = "vocabulary" | "pattern";
 export type SourceLocale = "de";
 export type Topic = "democracy" | "history" | "society" | "regional" | string;
@@ -113,6 +114,7 @@ export interface ProgressSnapshot {
   readonly version: 1;
   readonly updatedAt: string;
   readonly answers: readonly SessionAnswer[];
+  readonly bookmarkedQuestionIds: readonly QuestionId[];
   readonly vocabularyMastery: Readonly<Record<string, number>>;
 }
 

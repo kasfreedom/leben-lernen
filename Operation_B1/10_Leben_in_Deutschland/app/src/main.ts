@@ -9,10 +9,11 @@ import {
   createMockExamQuestionIds,
   createPracticeEngine,
   createPracticeSession,
-  getCatalogQuestionIds,
+  getPracticeSetQuestionIds,
   hydratePracticeSession,
   moveToNextQuestion,
-  recordSessionAnswer
+  recordSessionAnswer,
+  toggleBookmark
 } from "./domain/practice-engine";
 import type { PracticeEngine } from "./domain/practice-engine";
 import type {
@@ -21,6 +22,7 @@ import type {
   LanguageExercise,
   LearningSupport,
   PracticeMode,
+  PracticeSet,
   PracticeSession,
   ProgressSnapshot,
   QuestionId,
@@ -45,6 +47,7 @@ let progress: ProgressSnapshot;
 let mode: PracticeMode = "practice";
 let selectedRegion = "";
 let selectedSupportLocale = "";
+let selectedPracticeSet: PracticeSet = "all";
 let practiceSession: PracticeSession;
 let mockSession: PracticeSession | undefined;
 let selected: ChoiceId | undefined;
@@ -84,6 +87,11 @@ function render(): void {
     return;
   }
 
+  if (mode === "practice" && activeSession().questionIds.length === 0) {
+    renderEmptyPracticeSet();
+    return;
+  }
+
   if (activeSession().summary.isComplete) {
     renderCompletion();
     return;
@@ -103,13 +111,14 @@ function renderQuestion(): void {
 
   app.innerHTML = layout(`
     <section class="question-area">
+      ${mode === "practice" ? renderPracticeToolbar(session) : ""}
       <div class="score-strip" aria-label="Session score">
         ${metric("Score", `${session.summary.percentCorrect}%`)}
         ${metric("Correct", `${session.summary.correct}/${session.summary.answered}`)}
         ${metric("German only", `${session.summary.germanOnlyCorrect}`)}
         ${metric("Assisted", `${session.summary.assisted}`)}
       </div>
-      <div class="question-meta"><span>Question ${session.currentIndex + 1}</span><label class="toggle"><span>Show ${escapeHtml(currentSupportLocaleLabel())}</span><input type="checkbox" ${showSupport ? "checked" : ""}><i></i></label></div>
+      <div class="question-meta"><span>Question ${session.currentIndex + 1}</span><div class="question-tools"><button class="bookmark-button ${isCurrentQuestionBookmarked() ? "active" : ""}" id="bookmark" aria-pressed="${isCurrentQuestionBookmarked()}">${isCurrentQuestionBookmarked() ? "★ Bookmarked" : "☆ Bookmark"}</button><label class="toggle"><span>Show translation</span><input type="checkbox" ${showSupport ? "checked" : ""}><i></i></label></div></div>
       <h1 lang="de">${escapeHtml(question.prompt)}</h1>
       ${showSupport && support ? `<p class="inline-translation">${escapeHtml(support.translation)}</p>` : ""}
       ${question.image ? `<figure class="catalog-figure"><img src="${escapeHtml(publicAssetPath(`catalog-pages/${question.image}.png`))}" alt="Official BAMF catalog visual for ${escapeHtml(question.id)}"></figure>` : ""}
@@ -127,6 +136,20 @@ function renderQuestion(): void {
 
   bindShell();
   bindQuestion();
+}
+
+function renderEmptyPracticeSet(): void {
+  app.innerHTML = layout(`
+    <section class="question-area completion">
+      ${renderPracticeToolbar(activeSession())}
+      <p class="completion-label">No questions in this set</p>
+      <h1>Nothing to review yet</h1>
+      <p class="inline-translation">Try All questions, answer a few questions, or bookmark questions first.</p>
+    </section>
+    <aside class="support"><section><h2>Practice sets</h2><p>Review sets are built from your saved progress in this browser.</p></section></aside>
+  `);
+
+  bindShell();
 }
 
 function renderCompletion(): void {
@@ -162,7 +185,7 @@ function renderCompletion(): void {
           seed: Date.now()
         }));
       } else {
-        practiceSession = createPracticeSession(getCatalogQuestionIds(catalog, { region: selectedRegion }));
+        resetPracticeSession();
       }
     selected = undefined;
     checked = false;
@@ -172,7 +195,7 @@ function renderCompletion(): void {
   app.querySelector<HTMLButtonElement>("#reset-progress")?.addEventListener("click", () => {
     progress = createProgressSnapshot();
     saveProgress(progress);
-    practiceSession = createPracticeSession(getCatalogQuestionIds(catalog, { region: selectedRegion }));
+    resetPracticeSession();
     selected = undefined;
     checked = false;
     usedSupportForQuestion = showSupport;
@@ -233,8 +256,8 @@ function layout(content: string): string {
       </nav>
       <div class="header-tools">
         <label class="region"><span>Region</span><select aria-label="Region">${catalog.regions.map((region) => `<option value="${escapeHtml(region.id)}" ${region.id === selectedRegion ? "selected" : ""}>${escapeHtml(region.label)}</option>`).join("")}</select></label>
-        <label class="language"><span>Support</span><select aria-label="Support language">${catalog.supportLocales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedSupportLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
-        <div class="progress-label"><strong>${session.summary.answered}</strong> of ${getCatalogQuestionIds(catalog, { region: selectedRegion }).length}</div>
+        <label class="language"><span>Translation</span><select aria-label="Translation language">${catalog.supportLocales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedSupportLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
+        <div class="progress-label"><strong>${session.summary.answered}</strong> of ${session.summary.totalQuestions}</div>
       </div>
     </header>
     <main class="shell">
@@ -249,6 +272,25 @@ function layout(content: string): string {
       </aside>
       ${content}
     </main>`;
+}
+
+function renderPracticeToolbar(session: PracticeSession): string {
+  return `
+    <div class="practice-toolbar">
+      <label><span>Practice set</span><select aria-label="Practice set">
+        ${practiceSetOption("all", "All questions")}
+        ${practiceSetOption("unseen", "Unseen")}
+        ${practiceSetOption("wrong", "Wrong answers")}
+        ${practiceSetOption("bookmarked", "Bookmarked")}
+        ${practiceSetOption("region", `${currentRegionLabel()} only`)}
+      </select></label>
+      <span>${session.summary.totalQuestions} questions</span>
+    </div>
+  `;
+}
+
+function practiceSetOption(value: PracticeSet, label: string): string {
+  return `<option value="${value}" ${selectedPracticeSet === value ? "selected" : ""}>${escapeHtml(label)}</option>`;
 }
 
 function renderSupportPanel(questionId: QuestionId): string {
@@ -275,18 +317,26 @@ function bindShell(): void {
   }));
   app.querySelector<HTMLSelectElement>('select[aria-label="Region"]')?.addEventListener("change", (event) => {
     selectedRegion = (event.currentTarget as HTMLSelectElement).value;
-    practiceSession = hydratePracticeSession(getCatalogQuestionIds(catalog, { region: selectedRegion }), progress.answers);
+    resetPracticeSession();
     mockSession = undefined;
     selected = undefined;
     checked = false;
     usedSupportForQuestion = showSupport;
     render();
   });
-  app.querySelector<HTMLSelectElement>('select[aria-label="Support language"]')?.addEventListener("change", (event) => {
+  app.querySelector<HTMLSelectElement>('select[aria-label="Translation language"]')?.addEventListener("change", (event) => {
     selectedSupportLocale = (event.currentTarget as HTMLSelectElement).value;
     languageIndex = Math.min(languageIndex, Math.max(currentLanguageExercises().length - 1, 0));
     languageRevealed = false;
     usedSupportForQuestion = usedSupportForQuestion || showSupport;
+    render();
+  });
+  app.querySelector<HTMLSelectElement>('select[aria-label="Practice set"]')?.addEventListener("change", (event) => {
+    selectedPracticeSet = (event.currentTarget as HTMLSelectElement).value as PracticeSet;
+    resetPracticeSession();
+    selected = undefined;
+    checked = false;
+    usedSupportForQuestion = showSupport;
     render();
   });
 }
@@ -300,6 +350,11 @@ function bindQuestion(): void {
   app.querySelector<HTMLInputElement>(".toggle input")?.addEventListener("change", (event) => {
     showSupport = (event.currentTarget as HTMLInputElement).checked;
     usedSupportForQuestion = usedSupportForQuestion || showSupport;
+    render();
+  });
+  app.querySelector<HTMLButtonElement>("#bookmark")?.addEventListener("click", () => {
+    progress = toggleBookmark(progress, currentQuestion().id, new Date().toISOString());
+    saveProgress(progress);
     render();
   });
   app.querySelector<HTMLButtonElement>("#previous")?.addEventListener("click", () => {
@@ -391,6 +446,22 @@ function currentLanguageExercises(): readonly LanguageExercise[] {
   return createLanguageExercises(getSupportPack(supportPacks, selectedSupportLocale));
 }
 
+function currentPracticeQuestionIds(): readonly QuestionId[] {
+  return getPracticeSetQuestionIds(catalog, {
+    region: selectedRegion,
+    practiceSet: selectedPracticeSet,
+    progress
+  });
+}
+
+function resetPracticeSession(): void {
+  practiceSession = hydratePracticeSession(currentPracticeQuestionIds(), progress.answers);
+}
+
+function isCurrentQuestionBookmarked(): boolean {
+  return progress.bookmarkedQuestionIds.includes(currentQuestion().id);
+}
+
 function publicAssetPath(path: string): string {
   return `${PUBLIC_BASE_URL}${path.replace(/^\/+/u, "")}`;
 }
@@ -400,13 +471,18 @@ function loadProgress(): ProgressSnapshot {
     version: 1,
     updatedAt: new Date().toISOString(),
     answers: [],
+    bookmarkedQuestionIds: [],
     vocabularyMastery: {}
   };
   const raw = window.localStorage.getItem(PROGRESS_STORAGE_KEY);
   if (!raw) return fallback;
   try {
     const parsed = JSON.parse(raw) as ProgressSnapshot;
-    return parsed.version === 1 ? parsed : fallback;
+    return parsed.version === 1 ? {
+      ...fallback,
+      ...parsed,
+      bookmarkedQuestionIds: parsed.bookmarkedQuestionIds ?? []
+    } : fallback;
   } catch {
     return fallback;
   }
@@ -421,6 +497,7 @@ function createProgressSnapshot(): ProgressSnapshot {
     version: 1,
     updatedAt: new Date().toISOString(),
     answers: [],
+    bookmarkedQuestionIds: [],
     vocabularyMastery: {}
   };
 }
@@ -442,7 +519,7 @@ async function start(): Promise<void> {
   progress = loadProgress();
   selectedRegion = catalog.defaultRegion;
   selectedSupportLocale = catalog.supportLocales[0]?.id ?? "";
-  practiceSession = hydratePracticeSession(getCatalogQuestionIds(catalog, { region: selectedRegion }), progress.answers);
+  resetPracticeSession();
   render();
 }
 

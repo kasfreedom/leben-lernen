@@ -4,7 +4,9 @@ import type {
   ExamCatalog,
   LanguageExercise,
   LearningSupport,
+  PracticeSet,
   PracticeSession,
+  ProgressSnapshot,
   QuestionId,
   SessionAnswer,
   SessionSummary,
@@ -143,6 +145,7 @@ export function createEmptyProgressSnapshot(updatedAt: string) {
     version: SESSION_VERSION,
     updatedAt,
     answers: [],
+    bookmarkedQuestionIds: [],
     vocabularyMastery: {}
   } as const;
 }
@@ -162,6 +165,59 @@ export function getCatalogQuestionIds(
   return catalog.questions
     .filter((question) => question.region === GENERAL_REGION || question.region === options.region)
     .map((question) => question.id);
+}
+
+export function getPracticeSetQuestionIds(
+  catalog: ExamCatalog,
+  options: {
+    readonly region: string;
+    readonly practiceSet: PracticeSet;
+    readonly progress: ProgressSnapshot;
+  }
+): readonly QuestionId[] {
+  const regionalCatalogIds = getCatalogQuestionIds(catalog, { region: options.region });
+  const regionalCatalogIdSet = new Set(regionalCatalogIds);
+  const answeredIds = new Set(options.progress.answers.map((answer) => answer.questionId));
+  const wrongIds = new Set(
+    options.progress.answers
+      .filter((answer) => !answer.isCorrect)
+      .map((answer) => answer.questionId)
+  );
+  const bookmarkedIds = new Set(options.progress.bookmarkedQuestionIds);
+
+  switch (options.practiceSet) {
+    case "all":
+      return regionalCatalogIds;
+    case "unseen":
+      return regionalCatalogIds.filter((id) => !answeredIds.has(id));
+    case "wrong":
+      return regionalCatalogIds.filter((id) => wrongIds.has(id));
+    case "bookmarked":
+      return regionalCatalogIds.filter((id) => bookmarkedIds.has(id));
+    case "region":
+      return getRegionalQuestions(catalog, options.region).map((question) => question.id);
+    default:
+      return [...regionalCatalogIdSet];
+  }
+}
+
+export function toggleBookmark(
+  progress: ProgressSnapshot,
+  questionId: QuestionId,
+  updatedAt: string
+): ProgressSnapshot {
+  const existingIds = new Set(progress.bookmarkedQuestionIds);
+  if (existingIds.has(questionId)) {
+    existingIds.delete(questionId);
+  } else {
+    existingIds.add(questionId);
+  }
+
+  return {
+    ...progress,
+    updatedAt,
+    bookmarkedQuestionIds: [...existingIds]
+  };
 }
 
 export function createMockExamQuestionIds(

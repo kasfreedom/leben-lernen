@@ -67,7 +67,25 @@ nav { display: flex; align-self: stretch; gap: 8px; }
 .metric { min-height: 74px; border: 1px solid var(--line); border-radius: 8px; padding: 13px 15px; background: white; display: grid; align-content: center; gap: 4px; }
 .metric strong { font-size: 24px; line-height: 1; }
 .metric span { color: var(--muted); font-size: 12px; line-height: 1.25; }
-.question-meta { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: 14px; }
+.practice-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 0 0 22px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fbfcfe;
+  color: var(--muted);
+  font-size: 13px;
+}
+.practice-toolbar label { display: flex; align-items: center; gap: 10px; }
+.practice-toolbar select { border: 1px solid var(--line); border-radius: 8px; background: white; padding: 8px 28px 8px 10px; }
+.question-meta { display: flex; align-items: center; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 14px; }
+.question-tools { display: flex; align-items: center; gap: 14px; }
+.bookmark-button { border: 1px solid var(--line); border-radius: 999px; background: white; padding: 7px 12px; color: var(--muted); font-weight: 650; }
+.bookmark-button.active { border-color: #efcc7b; background: #fff8e8; color: var(--accent-dark); }
 .toggle { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; }
 .toggle input { position: absolute; opacity: 0; pointer-events: none; }
 .toggle i { width: 42px; height: 24px; border-radius: 20px; background: #cbd4df; position: relative; transition: background .2s; }
@@ -153,6 +171,10 @@ fieldset { border: 0; padding: 0; margin: 28px 0 22px; display: grid; gap: 12px;
   .shell { display: block; }
   .question-area { padding: 29px 20px 36px; }
   .score-strip { grid-template-columns: repeat(2, 1fr); }
+  .practice-toolbar, .question-meta, .question-tools { align-items: stretch; flex-direction: column; }
+  .practice-toolbar label { align-items: stretch; flex-direction: column; }
+  .question-tools { gap: 10px; }
+  .bookmark-button { align-self: flex-start; }
   h1 { font-size: 30px; }
   .answer { min-height: 64px; padding: 12px 14px; grid-template-columns: 24px 1fr; gap: 12px; }
   .catalog-figure { max-height: 320px; }

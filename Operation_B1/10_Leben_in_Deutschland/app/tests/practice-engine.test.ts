@@ -7,6 +7,7 @@ import {
   createPracticeSession,
   getAvailableSupportLocales,
   getCatalogQuestionIds,
+  getMockQuestionStatuses,
   getPracticeSetQuestionIds,
   getRegionalQuestions,
   hydratePracticeSession,
@@ -231,6 +232,21 @@ describe("practice engine", () => {
         }
       ]
     });
+  });
+
+  it("describes current, answered, and unanswered mock questions", () => {
+    const session = createPracticeSession(["general-1", "berlin-1"]);
+    const answered = recordSessionAnswer(session, {
+      question,
+      selectedChoiceId: "d",
+      usedSupport: false,
+      answeredAt: "2026-07-14T10:00:00.000Z"
+    });
+
+    expect(getMockQuestionStatuses({ ...answered, currentIndex: 1 })).toEqual([
+      { index: 0, questionId: "general-1", isAnswered: true, isCurrent: false },
+      { index: 1, questionId: "berlin-1", isAnswered: false, isCurrent: true }
+    ]);
   });
 
   it("stores mock exam attempts separately from practice answers", () => {

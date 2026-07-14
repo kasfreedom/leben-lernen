@@ -7,6 +7,7 @@ import type {
   MockExamAttempt,
   MockExamResult,
   MockExamRules,
+  MockQuestionStatus,
   PracticeSet,
   PracticeSession,
   ProgressSummary,
@@ -331,6 +332,16 @@ export function summarizeMockExam(
     wrongQuestionIds,
     wrongAnswers
   };
+}
+
+export function getMockQuestionStatuses(session: PracticeSession): readonly MockQuestionStatus[] {
+  const answeredQuestionIds = new Set(session.answers.map((answer) => answer.questionId));
+  return session.questionIds.map((questionId, index) => ({
+    index,
+    questionId,
+    isAnswered: answeredQuestionIds.has(questionId),
+    isCurrent: index === session.currentIndex
+  }));
 }
 
 export function recordMockExamAttempt(

@@ -129,6 +129,13 @@ export interface MockExamWrongAnswer {
   readonly correctChoiceId?: ChoiceId;
 }
 
+export interface MockQuestionStatus {
+  readonly index: number;
+  readonly questionId: QuestionId;
+  readonly isAnswered: boolean;
+  readonly isCurrent: boolean;
+}
+
 export interface MockExamAttempt {
   readonly id: string;
   readonly completedAt: string;

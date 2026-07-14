@@ -10,6 +10,7 @@ import {
   createPracticeEngine,
   createPracticeSession,
   getPracticeSetQuestionIds,
+  getMockQuestionStatuses,
   hydratePracticeSession,
   moveToNextQuestion,
   recordMockExamAttempt,
@@ -20,6 +21,7 @@ import {
   toggleBookmark,
   updateVocabularyMastery
 } from "./domain/practice-engine";
+import { hashForMode, modeFromHash } from "./domain/navigation";
 import type { PracticeEngine } from "./domain/practice-engine";
 import type {
   ChoiceId,
@@ -56,7 +58,7 @@ let catalog: ExamCatalog;
 let engine: PracticeEngine;
 let supportPacks: Readonly<Record<string, readonly LearningSupport[]>>;
 let progress: ProgressSnapshot;
-let mode: PracticeMode = "practice";
+let mode: PracticeMode = modeFromHash(window.location.hash);
 let selectedRegion = "";
 let selectedSupportLocale = "";
 let selectedPracticeSet: PracticeSet = "all";
@@ -66,6 +68,8 @@ let mockDeadlineAt = 0;
 let mockTimerId: number | undefined;
 let mockStartedAt = "";
 let mockAttemptSaved = false;
+let mockReviewing = false;
+let mockSubmitted = false;
 let customPracticeLabel: string | undefined;
 let selected: ChoiceId | undefined;
 let checked = false;
@@ -106,8 +110,10 @@ function render(options: { readonly resetView?: boolean } = {}): void {
     renderMockStart();
   } else if (mode === "practice" && activeSession().questionIds.length === 0) {
     renderEmptyPracticeSet();
-  } else if (mode === "mock" && (activeSession().summary.isComplete || isMockExpired())) {
+  } else if (mode === "mock" && (mockSubmitted || activeSession().summary.isComplete || isMockExpired())) {
     renderMockResult();
+  } else if (mode === "mock" && mockReviewing) {
+    renderMockReview();
   } else if (activeSession().summary.isComplete) {
     renderCompletion();
   } else {
@@ -134,6 +140,7 @@ function renderQuestion(): void {
     <section class="question-area">
       ${mode === "practice" ? renderPracticeToolbar(session) : ""}
       ${isMockExam ? renderMockHeader(session) : ""}
+      ${isMockExam ? renderMockQuestionNavigator(session) : ""}
       <div class="score-strip session-score" aria-label="Session score">
         ${metric("Score", `${session.summary.percentCorrect}%`)}
         ${metric("Correct", `${session.summary.correct}/${session.summary.answered}`)}
@@ -258,6 +265,39 @@ function renderMockStart(): void {
   app.querySelector<HTMLButtonElement>("#start-mock")?.addEventListener("click", startMockExam);
 }
 
+function renderMockReview(): void {
+  const session = activeSession();
+  const unanswered = session.summary.totalQuestions - session.summary.answered;
+  app.innerHTML = layout(`
+    <section class="question-area mock-review">
+      ${renderMockHeader(session)}
+      <p class="completion-label">Review exam</p>
+      <h1 data-screen-heading tabindex="-1">Check before submitting</h1>
+      <p class="lead-copy">${session.summary.answered} answered and ${unanswered} unanswered. You can return to any question before submitting.</p>
+      ${renderMockQuestionNavigator(session, { open: true, showReviewAction: false })}
+      <div class="submit-warning ${unanswered > 0 ? "has-unanswered" : ""}">
+        <strong>${unanswered > 0 ? `${unanswered} unanswered question${unanswered === 1 ? "" : "s"}` : "All questions answered"}</strong>
+        <span>${unanswered > 0 ? "Unanswered questions count as wrong answers." : "Your exam is ready to submit."}</span>
+      </div>
+      <div class="actions"><button class="secondary" id="continue-mock">Continue exam</button><button class="primary" id="submit-mock">Submit exam</button></div>
+    </section>
+    ${renderMockPanel(session)}
+  `);
+
+  bindShell();
+  bindMockNavigator();
+  app.querySelector<HTMLButtonElement>("#continue-mock")?.addEventListener("click", () => {
+    const nextUnansweredIndex = getMockQuestionStatuses(session).find((status) => !status.isAnswered)?.index;
+    mockReviewing = false;
+    if (nextUnansweredIndex !== undefined) selectMockQuestion(nextUnansweredIndex);
+    else render({ resetView: true });
+  });
+  app.querySelector<HTMLButtonElement>("#submit-mock")?.addEventListener("click", () => {
+    mockSubmitted = true;
+    render({ resetView: true });
+  });
+}
+
 function renderProgress(): void {
   const languageExercises = currentLanguageExercises();
   const summary = summarizeProgress(progress, { languageExerciseCount: languageExercises.length });
@@ -311,7 +351,7 @@ function renderMockResult(): void {
     <section class="question-area completion">
       <p class="completion-label">Mock exam result</p>
       <h1 data-screen-heading tabindex="-1">${result.passed ? "Passed" : "Not passed yet"}</h1>
-      <p class="inline-translation">You scored ${result.correct} of ${result.totalQuestions}. Passing score is ${result.passScore} of ${result.totalQuestions}. ${result.unanswered > 0 ? `${result.unanswered} questions were unanswered when time ended.` : ""}</p>
+      <p class="inline-translation">You scored ${result.correct} of ${result.totalQuestions}. Passing score is ${result.passScore} of ${result.totalQuestions}. ${result.unanswered > 0 ? `${result.unanswered} questions were unanswered ${isMockExpired() ? "when time ended" : "when you submitted"}.` : ""}</p>
       <div class="score-strip large">
         ${metric("Correct", String(result.correct))}
         ${metric("Wrong or blank", String(result.incorrect))}
@@ -407,10 +447,10 @@ function renderLanguagePractice(): void {
 
 function layout(content: string): string {
   const session = mode === "mock" ? mockSession ?? practiceSession : practiceSession;
-  const mockIsActive = mode === "mock" && mockSession !== undefined && !mockSession.summary.isComplete;
+  const mockIsActive = mode === "mock" && mockSession !== undefined && !mockSubmitted && !mockSession.summary.isComplete;
   return `
     <header class="topbar ${mockIsActive ? "mock-active" : ""}">
-      <a class="brand" href="#">Leben lernen</a>
+      <a class="brand" href="${hashForMode("practice")}">Leben lernen</a>
       <nav aria-label="Main navigation">
         ${navButton("practice", "Practice")}
         ${navButton("language", "Language")}
@@ -469,6 +509,26 @@ function renderMockHeader(session: PracticeSession): string {
       <span>${session.summary.answered}/${session.summary.totalQuestions} answered</span>
       <button class="secondary compact-button" id="exit-mock">Exit exam</button>
     </div>
+  `;
+}
+
+function renderMockQuestionNavigator(
+  session: PracticeSession,
+  options: { readonly open?: boolean; readonly showReviewAction?: boolean } = {}
+): string {
+  const statuses = getMockQuestionStatuses(session);
+  const showReviewAction = options.showReviewAction ?? true;
+  return `
+    <details class="mock-question-nav" ${options.open ? "open" : ""}>
+      <summary><span>Questions</span><strong>${session.summary.answered}/${session.summary.totalQuestions}</strong></summary>
+      <div class="mock-question-grid">${statuses.map((status) => {
+        const state = status.isAnswered ? " answered" : "";
+        const current = status.isCurrent ? " current" : "";
+        const label = `Question ${status.index + 1}, ${status.isAnswered ? "answered" : "unanswered"}${status.isCurrent ? ", current" : ""}`;
+        return `<button class="mock-question-button${state}${current}" data-mock-index="${status.index}" aria-label="${label}" ${status.isCurrent ? 'aria-current="step"' : ""}>${status.index + 1}</button>`;
+      }).join("")}</div>
+      ${showReviewAction ? '<button class="secondary compact-button full-width" id="review-mock">Review and finish</button>' : ""}
+    </details>
   `;
 }
 
@@ -544,11 +604,7 @@ function renderSupportPanel(questionId: QuestionId): string {
 
 function bindShell(): void {
   app.querySelectorAll<HTMLButtonElement>("[data-mode]").forEach((button) => button.addEventListener("click", () => {
-    mode = button.dataset.mode as PracticeMode;
-    if (mode !== "practice") customPracticeLabel = undefined;
-    selected = undefined;
-    checked = false;
-    render({ resetView: true });
+    navigateToMode(button.dataset.mode as PracticeMode);
   }));
   app.querySelector<HTMLSelectElement>('select[aria-label="Region"]')?.addEventListener("change", (event) => {
     selectedRegion = (event.currentTarget as HTMLSelectElement).value;
@@ -556,6 +612,8 @@ function bindShell(): void {
     resetPracticeSession();
     mockSession = undefined;
     mockDeadlineAt = 0;
+    mockReviewing = false;
+    mockSubmitted = false;
     selected = undefined;
     checked = false;
     usedSupportForQuestion = showSupport;
@@ -594,10 +652,11 @@ function bindShell(): void {
     clearMockTimer();
     mockSession = undefined;
     mockDeadlineAt = 0;
-    mode = "practice";
+    mockReviewing = false;
+    mockSubmitted = false;
     selected = undefined;
     checked = false;
-    render({ resetView: true });
+    navigateToMode("practice");
   });
 }
 
@@ -620,6 +679,11 @@ function bindQuestion(): void {
   app.querySelector<HTMLButtonElement>("#previous")?.addEventListener("click", () => {
     const session = activeSession();
     if (session.currentIndex === 0) return;
+    if (mode === "mock") {
+      saveCurrentMockSelection();
+      selectMockQuestion(session.currentIndex - 1);
+      return;
+    }
     setActiveSession({ ...session, currentIndex: session.currentIndex - 1 });
     selected = undefined;
     checked = false;
@@ -657,6 +721,44 @@ function bindQuestion(): void {
     }
     render({ resetView: movesToNextQuestion });
   });
+  if (mode === "mock") bindMockNavigator();
+}
+
+function bindMockNavigator(): void {
+  app.querySelectorAll<HTMLButtonElement>("[data-mock-index]").forEach((button) => button.addEventListener("click", () => {
+    const index = Number(button.dataset.mockIndex);
+    if (!Number.isInteger(index)) return;
+    saveCurrentMockSelection();
+    mockReviewing = false;
+    selectMockQuestion(index);
+  }));
+  app.querySelector<HTMLButtonElement>("#review-mock")?.addEventListener("click", () => {
+    saveCurrentMockSelection();
+    mockReviewing = true;
+    render({ resetView: true });
+  });
+}
+
+function saveCurrentMockSelection(): void {
+  if (!selected || mode !== "mock" || !mockSession) return;
+  const question = currentQuestion();
+  setActiveSession(recordSessionAnswer(activeSession(), {
+    question,
+    selectedChoiceId: selected,
+    usedSupport: false,
+    answeredAt: new Date().toISOString()
+  }));
+}
+
+function selectMockQuestion(index: number): void {
+  const session = activeSession();
+  if (index < 0 || index >= session.questionIds.length) return;
+  const questionId = session.questionIds[index];
+  const savedAnswer = session.answers.find((answer) => answer.questionId === questionId);
+  setActiveSession({ ...session, currentIndex: index });
+  selected = savedAnswer?.selectedChoiceId;
+  checked = false;
+  render({ resetView: true });
 }
 
 function answerMockQuestion(selectedChoiceId: ChoiceId): void {
@@ -669,6 +771,7 @@ function answerMockQuestion(selectedChoiceId: ChoiceId): void {
   });
   const isLastQuestion = answeredSession.currentIndex >= answeredSession.questionIds.length - 1;
   setActiveSession(isLastQuestion ? answeredSession : moveToNextQuestion(answeredSession));
+  mockReviewing = isLastQuestion;
   selected = undefined;
   checked = false;
   usedSupportForQuestion = false;
@@ -703,7 +806,7 @@ function rateLanguageExercise(exercise: LanguageExercise, rating: "again" | "got
 
 function navButton(value: PracticeMode, label: string): string {
   const isActive = mode === value;
-  const mockIsActive = mode === "mock" && mockSession !== undefined && !mockSession.summary.isComplete;
+  const mockIsActive = mode === "mock" && mockSession !== undefined && !mockSubmitted && !mockSession.summary.isComplete;
   const isDisabled = mockIsActive && value !== "mock";
   return `<button class="nav-item ${isActive ? "active" : ""}" data-mode="${value}" ${isActive ? 'aria-current="page"' : ""} ${isDisabled ? "disabled" : ""}>${label}</button>`;
 }
@@ -769,18 +872,19 @@ function resetPracticeSession(): void {
 }
 
 function startCustomPractice(label: string, questionIds: readonly QuestionId[]): void {
-  mode = "practice";
   customPracticeLabel = label;
   practiceSession = createPracticeSession(questionIds);
   selected = undefined;
   checked = false;
   usedSupportForQuestion = showSupport;
-  render({ resetView: true });
+  navigateToMode("practice");
 }
 
 function createMockSession(): PracticeSession {
   mockStartedAt = new Date().toISOString();
   mockAttemptSaved = false;
+  mockReviewing = false;
+  mockSubmitted = false;
   const session = createPracticeSession(createMockExamQuestionIds(catalog, {
     region: selectedRegion,
     seed: Date.now()
@@ -797,6 +901,32 @@ function startMockExam(): void {
   checked = false;
   usedSupportForQuestion = false;
   render({ resetView: true });
+}
+
+function navigateToMode(nextMode: PracticeMode): void {
+  const nextHash = hashForMode(nextMode);
+  if (window.location.hash === nextHash) {
+    activateMode(nextMode);
+    return;
+  }
+  window.location.hash = nextHash;
+}
+
+function activateMode(nextMode: PracticeMode): void {
+  const mockIsActive = mode === "mock" && mockSession !== undefined && !mockSubmitted && !mockSession.summary.isComplete;
+  if (mockIsActive && nextMode !== "mock") {
+    window.history.replaceState(null, "", hashForMode("mock"));
+    return;
+  }
+  mode = nextMode;
+  if (mode !== "practice") customPracticeLabel = undefined;
+  selected = undefined;
+  checked = false;
+  render({ resetView: true });
+}
+
+function handleHashChange(): void {
+  activateMode(modeFromHash(window.location.hash));
 }
 
 function resetScreenPosition(): void {
@@ -941,6 +1071,9 @@ async function start(): Promise<void> {
   selectedRegion = catalog.defaultRegion;
   selectedSupportLocale = catalog.supportLocales[0]?.id ?? "";
   resetPracticeSession();
+  const initialHash = hashForMode(mode);
+  if (window.location.hash !== initialHash) window.history.replaceState(null, "", initialHash);
+  window.addEventListener("hashchange", handleHashChange);
   render();
 }
 

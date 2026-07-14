@@ -43,6 +43,7 @@ const MIN_MASTERY = 0;
 const PUBLIC_BASE_URL = import.meta.env.BASE_URL;
 const MILLISECONDS_PER_MINUTE = 60_000;
 const MILLISECONDS_PER_SECOND = 1_000;
+const RTL_SUPPORT_LOCALES = new Set(["ar"]);
 
 const root = document.querySelector<HTMLDivElement>("#app");
 if (!root) throw new Error("App root is missing");
@@ -143,14 +144,14 @@ function renderQuestion(): void {
       </div>
       <div class="question-meta"><span>Question ${session.currentIndex + 1}</span>${isMockExam ? `<span>No hints or answer feedback during mock exam</span>` : `<div class="question-tools"><button class="bookmark-button ${isCurrentQuestionBookmarked() ? "active" : ""}" id="bookmark" aria-pressed="${isCurrentQuestionBookmarked()}">${isCurrentQuestionBookmarked() ? "★ Bookmarked" : "☆ Bookmark"}</button><label class="toggle"><span>Show translation</span><input type="checkbox" ${showSupport ? "checked" : ""}><i></i></label></div>`}</div>
       <h1 lang="de">${escapeHtml(question.prompt)}</h1>
-      ${!isMockExam && showSupport && support ? `<p class="inline-translation">${escapeHtml(support.translation)}</p>` : ""}
+      ${!isMockExam && showSupport && support ? `<p class="inline-translation" ${supportTextAttributes()}>${escapeHtml(support.translation)}</p>` : ""}
       ${question.image ? `<figure class="catalog-figure"><img src="${escapeHtml(publicAssetPath(`catalog-pages/${question.image}.png`))}" alt="Official BAMF catalog visual for ${escapeHtml(question.id)}"></figure>` : ""}
       <fieldset><legend class="sr-only">Choose one answer</legend>${question.choices.map((choice) => {
         const isSelected = selected === choice.id;
         const state = checked ? choice.id === question.correctChoiceId ? " correct" : isSelected ? " wrong" : "" : "";
         return `<label class="answer${isSelected ? " selected" : ""}${state}"><input type="radio" name="answer" value="${choice.id}" ${isSelected ? "checked" : ""}><span class="radio"></span><span lang="de">${escapeHtml(choice.text)}</span></label>`;
       }).join("")}</fieldset>
-      ${result ? `<div class="feedback ${result.isCorrect ? "success" : "error"}" role="status"><strong>${result.isCorrect ? "Correct" : "Not quite"}</strong>${support ? `<span>${escapeHtml(currentSupportLocaleLabel())} answer: ${escapeHtml(support.correctAnswerTranslation)}</span>` : ""}<span>${escapeHtml(support?.simpleExplanation ?? "Review the correct answer.")}</span></div>` : ""}
+      ${result ? `<div class="feedback ${result.isCorrect ? "success" : "error"}" role="status"><strong>${result.isCorrect ? "Correct" : "Not quite"}</strong>${support ? `<span ${supportTextAttributes()}>Translated answer: ${escapeHtml(support.correctAnswerTranslation)}</span>` : ""}<span ${supportTextAttributes()}>${escapeHtml(support?.simpleExplanation ?? "Review the correct answer.")}</span></div>` : ""}
       <div class="actions"><button class="secondary" id="previous" ${session.currentIndex === 0 ? "disabled" : ""}>Previous</button><button class="primary" id="check" ${selected ? "" : "disabled"}>${primaryLabel}</button></div>
       <div class="progress-note"><span class="progress-track"><i style="width:${progressPercent}%"></i></span><span>${session.summary.answered} answered in this set</span></div>
     </section>
@@ -279,12 +280,12 @@ function renderMockWrongAnswer(answer: MockExamWrongAnswer): string {
         <span>${escapeHtml(question.topic)}</span>
       </div>
       <h3 lang="de">${escapeHtml(question.prompt)}</h3>
-      ${support ? `<p class="review-translation">${escapeHtml(support.translation)}</p>` : ""}
+      ${support ? `<p class="review-translation" ${supportTextAttributes()}>${escapeHtml(support.translation)}</p>` : ""}
       <div class="answer-comparison">
         <div><span>Your answer</span><strong lang="de">${escapeHtml(selectedChoiceText)}</strong></div>
-        <div><span>Correct answer</span><strong lang="de">${escapeHtml(correctChoiceText)}</strong>${support ? `<small>${escapeHtml(support.correctAnswerTranslation)}</small>` : ""}</div>
+        <div><span>Correct answer</span><strong lang="de">${escapeHtml(correctChoiceText)}</strong>${support ? `<small ${supportTextAttributes()}>${escapeHtml(support.correctAnswerTranslation)}</small>` : ""}</div>
       </div>
-      <p class="review-explanation">${escapeHtml(support?.simpleExplanation ?? "Review the correct answer and key words for this question.")}</p>
+      <p class="review-explanation" ${supportTextAttributes()}>${escapeHtml(support?.simpleExplanation ?? "Review the correct answer and key words for this question.")}</p>
       ${vocabulary ? `<div class="review-vocabulary"><span>Key words</span><ul>${vocabulary}</ul></div>` : ""}
     </li>
   `;
@@ -313,7 +314,7 @@ function renderLanguagePractice(): void {
       <h1 lang="de">${escapeHtml(exercise.prompt)}</h1>
       <p class="inline-translation">${escapeHtml(exercise.hint ?? "Work out the meaning before revealing the answer.")}</p>
       <div class="language-card ${languageRevealed ? "revealed" : ""}">
-        <span>${languageRevealed ? escapeHtml(exercise.answer) : "Think first, then reveal."}</span>
+        <span ${languageRevealed ? supportTextAttributes() : ""}>${languageRevealed ? escapeHtml(exercise.answer) : "Think first, then reveal."}</span>
       </div>
       <div class="actions language-actions">
         <button class="secondary" id="language-previous" ${languageIndex === 0 ? "disabled" : ""}>Previous</button>
@@ -454,11 +455,16 @@ function practiceSetOption(value: PracticeSet, label: string): string {
 function renderSupportPanel(questionId: QuestionId): string {
   const { support } = engine.getLearningItem(questionId, selectedSupportLocale);
   return `
-    <aside class="support ${showSupport ? "" : "hidden"}">
-      <section><h2>${escapeHtml(currentSupportLocaleLabel())} answer first</h2><p class="answer-translation">${escapeHtml(support?.correctAnswerTranslation ?? "Answer support is not available yet.")}</p></section>
-      <section><h2>Simple explanation</h2><p>${escapeHtml(support?.simpleExplanation ?? "Support is not available yet.")}</p></section>
-      <section><h2>Key words</h2><dl>${support?.vocabulary.map((item) => `<div><dt lang="de">${escapeHtml(item.source)}</dt><dd>${escapeHtml(item.translation)}</dd></div>`).join("") ?? ""}</dl></section>
-      ${support?.germanPattern ? `<section><h2>German pattern</h2><p><strong lang="de">${escapeHtml(support.germanPattern.pattern)}</strong><br><span>${escapeHtml(support.germanPattern.meaning)}</span></p></section>` : ""}
+    <aside class="support support-panel ${showSupport ? "" : "hidden"}">
+      <details class="support-disclosure" open>
+        <summary>Study support</summary>
+        <div class="support-content">
+          <section><h2>Translated answer</h2><p class="answer-translation" ${supportTextAttributes()}>${escapeHtml(support?.correctAnswerTranslation ?? "Answer support is not available yet.")}</p></section>
+          <section><h2>Explanation</h2><p ${supportTextAttributes()}>${escapeHtml(support?.simpleExplanation ?? "Support is not available yet.")}</p></section>
+          <section><h2>Key words</h2><dl>${support?.vocabulary.map((item) => `<div><dt lang="de" dir="ltr">${escapeHtml(item.source)}</dt><dd ${supportTextAttributes()}>${escapeHtml(item.translation)}</dd></div>`).join("") ?? ""}</dl></section>
+          ${support?.germanPattern ? `<section><h2>German pattern</h2><p><strong lang="de" dir="ltr">${escapeHtml(support.germanPattern.pattern)}</strong><br><span ${supportTextAttributes()}>${escapeHtml(support.germanPattern.meaning)}</span></p></section>` : ""}
+        </div>
+      </details>
     </aside>`;
 }
 
@@ -638,6 +644,14 @@ function regionLabel(regionId: string): string {
 
 function currentSupportLocaleLabel(): string {
   return catalog.supportLocales.find((locale) => locale.id === selectedSupportLocale)?.label ?? selectedSupportLocale;
+}
+
+function supportTextAttributes(): string {
+  return `lang="${escapeHtml(selectedSupportLocale)}" dir="${supportTextDirection()}"`;
+}
+
+function supportTextDirection(): "ltr" | "rtl" {
+  return RTL_SUPPORT_LOCALES.has(selectedSupportLocale) ? "rtl" : "ltr";
 }
 
 function currentLanguageExercises(): readonly LanguageExercise[] {

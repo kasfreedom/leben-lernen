@@ -62,6 +62,7 @@
   "practice.answeredInSet": "تمت الإجابة عن {{count}} في هذه المجموعة",
   "practice.notQuite": "ليست صحيحة",
   "practice.translatedAnswer": "ترجمة الإجابة: {{answer}}",
+  "practice.translationPending": "لا تزال ترجمة السؤال الكاملة قيد المراجعة. استخدم الكلمات المهمة أدناه حالياً.",
   "practice.reviewCorrect": "راجع الإجابة الصحيحة.",
   "practice.studyQuestion": "ادرس هذا السؤال",
   "practice.keyWords": "الكلمات المهمة",

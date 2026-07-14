@@ -23,6 +23,7 @@ import {
   toggleBookmark,
   updateVocabularyMastery
 } from "./domain/practice-engine";
+import { hasPromptTranslation } from "./domain/support-quality";
 import { hashForMode, modeFromHash } from "./domain/navigation";
 import type { PracticeEngine } from "./domain/practice-engine";
 import type { UiManifest, UiMessages, UiTranslate } from "./i18n/types";
@@ -158,7 +159,7 @@ function renderQuestion(): void {
       <div class="mobile-session-summary" aria-label="${escapeHtml(t("mock.progress"))}"><strong>${session.summary.percentCorrect}%</strong><span>${session.summary.correct}/${session.summary.answered} ${escapeHtml(t("common.correct").toLocaleLowerCase(selectedUiLocale))}</span><span>${session.summary.answered}/${session.summary.totalQuestions} ${escapeHtml(t("score.answered").toLocaleLowerCase(selectedUiLocale))}</span></div>
       <div class="question-meta"><span>${escapeHtml(t("practice.question", { current: session.currentIndex + 1 }))}</span>${isMockExam ? `<span>${escapeHtml(t("practice.noHints"))}</span>` : `<div class="question-tools"><button class="bookmark-button ${isCurrentQuestionBookmarked() ? "active" : ""}" id="bookmark" aria-pressed="${isCurrentQuestionBookmarked()}">${isCurrentQuestionBookmarked() ? `★ ${escapeHtml(t("practice.bookmarked"))}` : `☆ ${escapeHtml(t("practice.bookmark"))}`}</button><label class="toggle"><span>${escapeHtml(t("practice.showTranslation"))}</span><input type="checkbox" ${showSupport ? "checked" : ""}><i></i></label></div>`}</div>
       <h1 lang="de" dir="ltr" data-screen-heading tabindex="-1">${escapeHtml(question.prompt)}</h1>
-      ${!isMockExam && showSupport && support ? `<p class="inline-translation" ${supportTextAttributes()}>${escapeHtml(support.translation)}</p>` : ""}
+      ${!isMockExam && showSupport ? renderPromptTranslation(support) : ""}
       ${question.image ? `<figure class="catalog-figure"><img src="${escapeHtml(publicAssetPath(`catalog-pages/${question.image}.png`))}" alt="Official BAMF catalog visual for ${escapeHtml(question.id)}"></figure>` : ""}
       <fieldset><legend class="sr-only">${escapeHtml(t("practice.chooseAnswer"))}</legend>${question.choices.map((choice) => {
         const isSelected = selected === choice.id;
@@ -401,7 +402,7 @@ function renderMockWrongAnswer(answer: MockExamWrongAnswer): string {
         <span>${escapeHtml(question.topic)}</span>
       </div>
       <h3 lang="de" dir="ltr">${escapeHtml(question.prompt)}</h3>
-      ${support ? `<p class="review-translation" ${supportTextAttributes()}>${escapeHtml(support.translation)}</p>` : ""}
+      ${renderPromptTranslation(support, "review-translation")}
       <div class="answer-comparison">
         <div><span>${escapeHtml(t("mock.yourAnswer"))}</span><strong lang="de" dir="ltr">${escapeHtml(selectedChoiceText)}</strong></div>
         <div><span>${escapeHtml(t("mock.correctAnswer"))}</span><strong lang="de" dir="ltr">${escapeHtml(correctChoiceText)}</strong>${support ? `<small ${supportTextAttributes()}>${escapeHtml(support.correctAnswerTranslation)}</small>` : ""}</div>
@@ -621,6 +622,16 @@ function renderSupportPanel(questionId: QuestionId): string {
         </div>
       </details>
     </aside>`;
+}
+
+function renderPromptTranslation(
+  support: LearningSupport | undefined,
+  className = "inline-translation"
+): string {
+  if (hasPromptTranslation(support)) {
+    return `<p class="${className}" ${supportTextAttributes()}>${escapeHtml(support.translation)}</p>`;
+  }
+  return `<p class="${className} translation-pending">${escapeHtml(t("practice.translationPending"))}</p>`;
 }
 
 function bindShell(): void {

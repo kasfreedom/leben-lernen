@@ -62,6 +62,7 @@
   "practice.answeredInSet": "{{count}} answered in this set",
   "practice.notQuite": "Not quite",
   "practice.translatedAnswer": "Translated answer: {{answer}}",
+  "practice.translationPending": "Full question translation is still being reviewed. Use the key words below for now.",
   "practice.reviewCorrect": "Review the correct answer.",
   "practice.studyQuestion": "Study this question",
   "practice.keyWords": "Key words",

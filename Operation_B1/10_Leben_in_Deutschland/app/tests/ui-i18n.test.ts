@@ -58,6 +58,14 @@ describe("UI localization", () => {
     expect(Object.keys(english).length).toBeGreaterThan(80);
     expect(Object.values(arabic).every((value) => value.trim().length > 0)).toBe(true);
   });
+
+  it("keeps both language choices explicit for learners", () => {
+    const english = readJson<UiMessages>(path.join(uiRoot, "en.json"));
+
+    expect(english["settings.interfaceLanguage"]).toBe("App language");
+    expect(english["settings.supportLanguage"]).toBe("Question translation");
+    expect(english["settings.title"]).toBe("More settings");
+  });
 });
 
 function readJson<T>(filePath: string): T {

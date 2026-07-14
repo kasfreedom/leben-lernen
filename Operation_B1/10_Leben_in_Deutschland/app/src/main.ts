@@ -465,12 +465,16 @@ function layout(content: string): string {
         ${navButton("mock", t("nav.mock"))}
         ${navButton("progress", t("nav.progress"))}
       </nav>
+      <div class="mobile-language-controls" aria-label="${escapeHtml(t("settings.languages"))}">
+        <label class="language"><span>${escapeHtml(t("settings.interfaceLanguage"))}</span><select data-setting="interface-language" aria-label="${escapeHtml(t("settings.interfaceLanguage"))}">${uiManifest.locales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedUiLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
+        <label class="language"><span>${escapeHtml(t("settings.supportLanguage"))}</span><select data-setting="support-language" aria-label="${escapeHtml(t("settings.supportLanguage"))}">${catalog.supportLocales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedSupportLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
+      </div>
       <details class="header-settings">
-        <summary><span>${escapeHtml(t("settings.title"))}</span><strong>${escapeHtml(currentRegionLabel())} · ${escapeHtml(currentSupportLocaleLabel())}</strong></summary>
+        <summary><span>${escapeHtml(t("settings.title"))}</span><strong>${escapeHtml(currentRegionLabel())}</strong></summary>
         <div class="header-tools">
           <label class="region"><span>${escapeHtml(t("settings.region"))}</span><select data-setting="region" aria-label="${escapeHtml(t("settings.region"))}">${catalog.regions.map((region) => `<option value="${escapeHtml(region.id)}" ${region.id === selectedRegion ? "selected" : ""}>${escapeHtml(region.label)}</option>`).join("")}</select></label>
-          <label class="language"><span>${escapeHtml(t("settings.supportLanguage"))}</span><select data-setting="support-language" aria-label="${escapeHtml(t("settings.supportLanguage"))}">${catalog.supportLocales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedSupportLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
-          <label class="language"><span>${escapeHtml(t("settings.interfaceLanguage"))}</span><select data-setting="interface-language" aria-label="${escapeHtml(t("settings.interfaceLanguage"))}">${uiManifest.locales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedUiLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
+          <label class="language desktop-language-control"><span>${escapeHtml(t("settings.supportLanguage"))}</span><select data-setting="support-language" aria-label="${escapeHtml(t("settings.supportLanguage"))}">${catalog.supportLocales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedSupportLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
+          <label class="language desktop-language-control"><span>${escapeHtml(t("settings.interfaceLanguage"))}</span><select data-setting="interface-language" aria-label="${escapeHtml(t("settings.interfaceLanguage"))}">${uiManifest.locales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedUiLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
           <div class="progress-label"><strong>${session.summary.answered}</strong> ${escapeHtml(t("common.of"))} ${session.summary.totalQuestions}</div>
         </div>
       </details>
@@ -632,20 +636,20 @@ function bindShell(): void {
     usedSupportForQuestion = showSupport;
     render();
   });
-  app.querySelector<HTMLSelectElement>('select[data-setting="support-language"]')?.addEventListener("change", (event) => {
+  app.querySelectorAll<HTMLSelectElement>('select[data-setting="support-language"]').forEach((select) => select.addEventListener("change", (event) => {
     selectedSupportLocale = (event.currentTarget as HTMLSelectElement).value;
     languageIndex = Math.min(languageIndex, Math.max(currentLanguageExercises().length - 1, 0));
     languageRevealed = false;
     usedSupportForQuestion = usedSupportForQuestion || showSupport;
     render();
-  });
-  app.querySelector<HTMLSelectElement>('select[data-setting="interface-language"]')?.addEventListener("change", (event) => {
+  }));
+  app.querySelectorAll<HTMLSelectElement>('select[data-setting="interface-language"]').forEach((select) => select.addEventListener("change", (event) => {
     selectedUiLocale = (event.currentTarget as HTMLSelectElement).value;
     window.localStorage.setItem(UI_LOCALE_STORAGE_KEY, selectedUiLocale);
     updateUiTranslator();
     applyDocumentLocale();
     render();
-  });
+  }));
   app.querySelector<HTMLSelectElement>(".practice-toolbar select")?.addEventListener("change", (event) => {
     selectedPracticeSet = (event.currentTarget as HTMLSelectElement).value as PracticeSet;
     customPracticeLabel = undefined;

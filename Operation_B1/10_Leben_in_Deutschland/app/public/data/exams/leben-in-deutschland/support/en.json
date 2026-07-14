@@ -438,9 +438,9 @@
   {
     "questionId": "general-21",
     "locale": "en",
-    "translation": "English study guide: Bundesrepublik Deutschland = Federal Republic of Germany; Wappen = coat of arms.",
+    "translation": "Which is the coat of arms of the Federal Republic of Germany?",
     "correctAnswerTranslation": "Image 1",
-    "simpleExplanation": "Correct answer: Bild 1. Use the key words to understand why this option fits the German question.",
+    "simpleExplanation": "Image 1 shows the federal eagle used as the coat of arms of the Federal Republic of Germany.",
     "vocabulary": [
       {
         "source": "Bundesrepublik Deutschland",
@@ -459,9 +459,9 @@
   {
     "questionId": "general-22",
     "locale": "en",
-    "translation": "English study guide: Deutschland = Germany; Republik = republic; Staat = state.",
+    "translation": "What kind of state form does Germany have?",
     "correctAnswerTranslation": "republic",
-    "simpleExplanation": "Correct answer: Republik. Use the key words to understand why this option fits the German question.",
+    "simpleExplanation": "Germany is a republic, not a monarchy or dictatorship.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -480,9 +480,9 @@
   {
     "questionId": "general-23",
     "locale": "en",
-    "translation": "English study guide: Erwerbstätigen = employed people; Deutschland = Germany; Behörde = authority / government office.",
-    "correctAnswerTranslation": "bei einer Firma oder authority / government office beschäftigt",
-    "simpleExplanation": "Correct answer: bei einer Firma oder Behörde beschäftigt. Use the key words to understand why this option fits the German question.",
+    "translation": "In Germany, most employed people are ...",
+    "correctAnswerTranslation": "employed by a company or public authority",
+    "simpleExplanation": "Most employed people in Germany work for a company or a public authority.",
     "vocabulary": [
       {
         "source": "Erwerbstätigen",
@@ -501,9 +501,9 @@
   {
     "questionId": "general-24",
     "locale": "en",
-    "translation": "English study guide: Bundesrepublik Deutschland = Federal Republic of Germany; Bundesländer = federal states.",
-    "correctAnswerTranslation": "English guide: 16",
-    "simpleExplanation": "Correct answer: 16. Use the key words to understand why this option fits the German question.",
+    "translation": "How many federal states does the Federal Republic of Germany have?",
+    "correctAnswerTranslation": "16",
+    "simpleExplanation": "Germany is made up of 16 federal states.",
     "vocabulary": [
       {
         "source": "Bundesrepublik Deutschland",
@@ -518,9 +518,9 @@
   {
     "questionId": "general-25",
     "locale": "en",
-    "translation": "English study guide: Bundesrepublik Deutschland = Federal Republic of Germany; Bundesland = federal state.",
-    "correctAnswerTranslation": "English guide: Elsass-Lothringen",
-    "simpleExplanation": "Correct answer: Elsass-Lothringen. Use the key words to understand why this option fits the German question.",
+    "translation": "What is not a federal state of the Federal Republic of Germany?",
+    "correctAnswerTranslation": "Alsace-Lorraine",
+    "simpleExplanation": "Alsace-Lorraine is a historical region, not a German federal state.",
     "vocabulary": [
       {
         "source": "Bundesrepublik Deutschland",
@@ -539,9 +539,9 @@
   {
     "questionId": "general-26",
     "locale": "en",
-    "translation": "English study guide: Deutschland = Germany; Staat = state.",
-    "correctAnswerTranslation": "ein demokratischer und sozialer Bundesstate",
-    "simpleExplanation": "Correct answer: ein demokratischer und sozialer Bundesstaat. Use the key words to understand why this option fits the German question.",
+    "translation": "Germany is ...",
+    "correctAnswerTranslation": "a democratic and social federal state",
+    "simpleExplanation": "Germany is organized as a democratic and social federal state.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -556,9 +556,9 @@
   {
     "questionId": "general-27",
     "locale": "en",
-    "translation": "English study guide: Deutschland = Germany; Staat = state.",
-    "correctAnswerTranslation": "ein Bundesstate",
-    "simpleExplanation": "Correct answer: ein Bundesstaat. Use the key words to understand why this option fits the German question.",
+    "translation": "Germany is ...",
+    "correctAnswerTranslation": "a federal state",
+    "simpleExplanation": "Germany is a federal state made up of several federal states.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -573,9 +573,9 @@
   {
     "questionId": "general-28",
     "locale": "en",
-    "translation": "English study guide: Abgeordnete = members of parliament / representatives; Deutschland = Germany; Bundestag = German federal parliament; Volk = people / nation; Wahl = election.",
-    "correctAnswerTranslation": "das electionberechtigte people / nation",
-    "simpleExplanation": "Correct answer: das wahlberechtigte Volk. Use the key words to understand why this option fits the German question.",
+    "translation": "Who elects the members of the Bundestag in Germany?",
+    "correctAnswerTranslation": "the people entitled to vote",
+    "simpleExplanation": "Eligible voters elect the members of the German Bundestag.",
     "vocabulary": [
       {
         "source": "Abgeordnete",
@@ -602,9 +602,9 @@
   {
     "questionId": "general-29",
     "locale": "en",
-    "translation": "English study guide: Bundesrepublik Deutschland = Federal Republic of Germany; Wappen = coat of arms.",
-    "correctAnswerTranslation": "English guide: Adler",
-    "simpleExplanation": "Correct answer: Adler. Use the key words to understand why this option fits the German question.",
+    "translation": "Which animal is the heraldic animal of the Federal Republic of Germany?",
+    "correctAnswerTranslation": "eagle",
+    "simpleExplanation": "The eagle is the heraldic animal shown in Germany's federal coat of arms.",
     "vocabulary": [
       {
         "source": "Bundesrepublik Deutschland",
@@ -623,9 +623,9 @@
   {
     "questionId": "general-30",
     "locale": "en",
-    "translation": "English study guide: Demokratie = democracy.",
-    "correctAnswerTranslation": "English guide: Pressezensur",
-    "simpleExplanation": "Correct answer: Pressezensur. Use the key words to understand why this option fits the German question.",
+    "translation": "What is not a feature of our democracy?",
+    "correctAnswerTranslation": "press censorship",
+    "simpleExplanation": "Press censorship is not a feature of democracy; freedom of the press is protected.",
     "vocabulary": [
       {
         "source": "Demokratie",
@@ -640,9 +640,9 @@
   {
     "questionId": "general-31",
     "locale": "en",
-    "translation": "English study guide: Deutschland = Germany; Regierung = government; Arbeit = work; Partei = political party.",
-    "correctAnswerTranslation": "English guide: Koalition",
-    "simpleExplanation": "Correct answer: Koalition. Use the key words to understand why this option fits the German question.",
+    "translation": "The cooperation of parties to form a government is called ... in Germany.",
+    "correctAnswerTranslation": "coalition",
+    "simpleExplanation": "A coalition is when parties work together to form a government.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -665,9 +665,9 @@
   {
     "questionId": "general-32",
     "locale": "en",
-    "translation": "English study guide: Deutschland = Germany; Staat = state.",
-    "correctAnswerTranslation": "English guide: Presse",
-    "simpleExplanation": "Correct answer: Presse. Use the key words to understand why this option fits the German question.",
+    "translation": "What is not a branch of state power in Germany?",
+    "correctAnswerTranslation": "the press",
+    "simpleExplanation": "The press is independent; it is not one of the branches of state power.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -686,9 +686,9 @@
   {
     "questionId": "general-33",
     "locale": "en",
-    "translation": "English study guide: Deutschland = Germany; Staat = state.",
-    "correctAnswerTranslation": "sind state und Religionsgemeinschaften voneinander getrennt",
-    "simpleExplanation": "Correct answer: sind Staat und Religionsgemeinschaften voneinander getrennt. Use the key words to understand why this option fits the German question.",
+    "translation": "Which statement is correct? In Germany ...",
+    "correctAnswerTranslation": "the state and religious communities are separate from each other",
+    "simpleExplanation": "In Germany, the state and religious communities are institutionally separate.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -707,9 +707,9 @@
   {
     "questionId": "general-34",
     "locale": "en",
-    "translation": "English study guide: Deutschland = Germany.",
-    "correctAnswerTranslation": "English guide: eine Monarchie",
-    "simpleExplanation": "Correct answer: eine Monarchie. Use the key words to understand why this option fits the German question.",
+    "translation": "What is Germany not?",
+    "correctAnswerTranslation": "a monarchy",
+    "simpleExplanation": "Germany is a republic, not a monarchy.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -724,9 +724,9 @@
   {
     "questionId": "general-35",
     "locale": "en",
-    "translation": "English study guide: Sozialversicherung = social insurance; Staat = state.",
-    "correctAnswerTranslation": "English guide: Sozialabgaben",
-    "simpleExplanation": "Correct answer: Sozialabgaben. Use the key words to understand why this option fits the German question.",
+    "translation": "How does the German state finance social insurance?",
+    "correctAnswerTranslation": "social security contributions",
+    "simpleExplanation": "Social insurance is financed through social security contributions.",
     "vocabulary": [
       {
         "source": "Sozialversicherung",
@@ -741,9 +741,9 @@
   {
     "questionId": "general-36",
     "locale": "en",
-    "translation": "English study guide: Krankenversicherung = health insurance; Deutschland = Germany.",
-    "correctAnswerTranslation": "die health insurance",
-    "simpleExplanation": "Correct answer: die Krankenversicherung. Use the key words to understand why this option fits the German question.",
+    "translation": "Which measure creates social security in Germany?",
+    "correctAnswerTranslation": "health insurance",
+    "simpleExplanation": "Health insurance is one part of Germany's social security system.",
     "vocabulary": [
       {
         "source": "Krankenversicherung",
@@ -762,9 +762,9 @@
   {
     "questionId": "general-37",
     "locale": "en",
-    "translation": "English study guide: Ministerpräsidentin/Ministerpräsident = state premier / minister-president; Bundesländer = federal states; Deutschland = Germany; Regierung = government.",
+    "translation": "What are the heads of government of most federal states in Germany called?",
     "correctAnswerTranslation": "state premier / minister-president",
-    "simpleExplanation": "Correct answer: Ministerpräsidentin/Ministerpräsident. Use the key words to understand why this option fits the German question.",
+    "simpleExplanation": "Most German federal states call their head of government Ministerpräsidentin or Ministerpräsident.",
     "vocabulary": [
       {
         "source": "Ministerpräsidentin/Ministerpräsident",
@@ -787,9 +787,9 @@
   {
     "questionId": "general-38",
     "locale": "en",
-    "translation": "English study guide: Bundesrepublik Deutschland = Federal Republic of Germany; Staat = state.",
-    "correctAnswerTranslation": "Bundesstate",
-    "simpleExplanation": "Correct answer: Bundesstaat. Use the key words to understand why this option fits the German question.",
+    "translation": "The Federal Republic of Germany is a democratic and social ...",
+    "correctAnswerTranslation": "federal state",
+    "simpleExplanation": "The Basic Law describes Germany as a democratic and social federal state.",
     "vocabulary": [
       {
         "source": "Bundesrepublik Deutschland",
@@ -804,9 +804,9 @@
   {
     "questionId": "general-39",
     "locale": "en",
-    "translation": "English study guide: Bundesland = federal state; Regierung = government.",
-    "correctAnswerTranslation": "eine eigene government",
-    "simpleExplanation": "Correct answer: eine eigene Regierung. Use the key words to understand why this option fits the German question.",
+    "translation": "What does every German federal state have?",
+    "correctAnswerTranslation": "its own government",
+    "simpleExplanation": "Each German federal state has its own state government.",
     "vocabulary": [
       {
         "source": "Bundesland",
@@ -821,9 +821,9 @@
   {
     "questionId": "general-40",
     "locale": "en",
-    "translation": "English study guide: Freiheit = freedom.",
-    "correctAnswerTranslation": "Einigkeit und Recht und freedom …",
-    "simpleExplanation": "Correct answer: Einigkeit und Recht und Freiheit …. Use the key words to understand why this option fits the German question.",
+    "translation": "With which words does the German national anthem begin?",
+    "correctAnswerTranslation": "Unity and justice and freedom ...",
+    "simpleExplanation": "The German national anthem begins with the words \"Einigkeit und Recht und Freiheit\".",
     "vocabulary": [
       {
         "source": "Freiheit",

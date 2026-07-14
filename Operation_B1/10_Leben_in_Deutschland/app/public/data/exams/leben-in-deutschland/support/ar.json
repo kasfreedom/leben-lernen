@@ -438,9 +438,9 @@
   {
     "questionId": "general-21",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Bundesrepublik Deutschland = جمهورية ألمانيا الاتحادية؛ وابن = شعار النبالة.",
+    "translation": "أي شعار هو شعار جمهورية ألمانيا الاتحادية؟",
     "correctAnswerTranslation": "الصورة 1",
-    "simpleExplanation": "الإجابة الصحيحة: Bild 1. استخدم الكلمات الأساسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "simpleExplanation": "الصورة 1 تظهر النسر الاتحادي المستخدم كشعار لجمهورية ألمانيا الاتحادية.",
     "vocabulary": [
       {
         "source": "Bundesrepublik Deutschland",
@@ -459,9 +459,9 @@
   {
     "questionId": "general-22",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Deutschland = ألمانيا؛ ريبوبليك = الجمهورية؛ ستات = الحالة.",
+    "translation": "ما شكل الدولة في ألمانيا؟",
     "correctAnswerTranslation": "جمهورية",
-    "simpleExplanation": "الإجابة الصحيحة: الجمهورية. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "simpleExplanation": "ألمانيا جمهورية، وليست ملكية أو دكتاتورية.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -480,9 +480,9 @@
   {
     "questionId": "general-23",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Erwerbstätigen = الأشخاص العاملين؛ دويتشلاند = ألمانيا؛ Behörde = السلطة / المكتب الحكومي.",
-    "correctAnswerTranslation": "bei einer Firma oder Authority / مكتب حكومي beschäftigt",
-    "simpleExplanation": "الإجابة الصحيحة: bei einer Firma oder Behörde beschäftigt. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "في ألمانيا، معظم العاملين هم ...",
+    "correctAnswerTranslation": "موظفون لدى شركة أو جهة حكومية",
+    "simpleExplanation": "معظم العاملين في ألمانيا يعملون لدى شركة أو جهة حكومية.",
     "vocabulary": [
       {
         "source": "Erwerbstätigen",
@@ -501,9 +501,9 @@
   {
     "questionId": "general-24",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Bundesrepublik Deutschland = جمهورية ألمانيا الاتحادية؛ Bundesländer = الولايات الفيدرالية.",
-    "correctAnswerTranslation": "دليل اللغة الإنجليزية: 16",
-    "simpleExplanation": "الإجابة الصحيحة: 16. استخدم الكلمات الرئيسية لتفهم لماذا يتناسب هذا الخيار مع السؤال الألماني.",
+    "translation": "كم ولاية اتحادية لدى جمهورية ألمانيا الاتحادية؟",
+    "correctAnswerTranslation": "16",
+    "simpleExplanation": "تتكون ألمانيا من 16 ولاية اتحادية.",
     "vocabulary": [
       {
         "source": "Bundesrepublik Deutschland",
@@ -518,9 +518,9 @@
   {
     "questionId": "general-25",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Bundesrepublik Deutschland = جمهورية ألمانيا الاتحادية؛ Bundesland = دولة فيدرالية",
-    "correctAnswerTranslation": "دليل اللغة الإنجليزية: Elsass-Lothringen",
-    "simpleExplanation": "الإجابة الصحيحة: إلساس لوثرينغن. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "ما الذي ليس ولاية اتحادية في جمهورية ألمانيا الاتحادية؟",
+    "correctAnswerTranslation": "الألزاس واللورين",
+    "simpleExplanation": "الألزاس واللورين منطقة تاريخية، وليست ولاية اتحادية ألمانية.",
     "vocabulary": [
       {
         "source": "Bundesrepublik Deutschland",
@@ -539,9 +539,9 @@
   {
     "questionId": "general-26",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Deutschland = ألمانيا؛ ستات = الحالة.",
-    "correctAnswerTranslation": "ein Demokratischer und sozialer Bundesstate",
-    "simpleExplanation": "الإجابة الصحيحة: ein Demokratischer und sozialer Bundesstaat. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "ألمانيا هي ...",
+    "correctAnswerTranslation": "دولة اتحادية ديمقراطية واجتماعية",
+    "simpleExplanation": "ألمانيا منظمة كدولة اتحادية ديمقراطية واجتماعية.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -556,9 +556,9 @@
   {
     "questionId": "general-27",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Deutschland = ألمانيا؛ ستات = الحالة.",
-    "correctAnswerTranslation": "عين بوندستات",
-    "simpleExplanation": "الإجابة الصحيحة: عين Bundesstaat. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "ألمانيا هي ...",
+    "correctAnswerTranslation": "دولة اتحادية",
+    "simpleExplanation": "ألمانيا دولة اتحادية تتكون من عدة ولايات اتحادية.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -573,9 +573,9 @@
   {
     "questionId": "general-28",
     "locale": "ar",
-    "translation": "دليل الدراسة باللغة الإنجليزية: Abgeordnete = أعضاء البرلمان / النواب؛ دويتشلاند = ألمانيا؛ البوندستاغ = البرلمان الاتحادي الألماني. فولك = شعب / أمة؛ وال = الانتخابات.",
-    "correctAnswerTranslation": "das انتخاب Berechtigte الناس / الأمة",
-    "simpleExplanation": "الإجابة الصحيحة: das wahlberechtigte Volk. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "من ينتخب في ألمانيا نواب البوندستاغ؟",
+    "correctAnswerTranslation": "الشعب الذي يحق له التصويت",
+    "simpleExplanation": "الناخبون المؤهلون هم الذين ينتخبون نواب البوندستاغ الألماني.",
     "vocabulary": [
       {
         "source": "Abgeordnete",
@@ -602,9 +602,9 @@
   {
     "questionId": "general-29",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Bundesrepublik Deutschland = جمهورية ألمانيا الاتحادية؛ وابن = شعار النبالة.",
-    "correctAnswerTranslation": "دليل اللغة الإنجليزية: أدلر",
-    "simpleExplanation": "الإجابة الصحيحة: أدلر. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "أي حيوان هو الحيوان الموجود في شعار جمهورية ألمانيا الاتحادية؟",
+    "correctAnswerTranslation": "النسر",
+    "simpleExplanation": "النسر هو الحيوان الموجود في الشعار الاتحادي الألماني.",
     "vocabulary": [
       {
         "source": "Bundesrepublik Deutschland",
@@ -623,9 +623,9 @@
   {
     "questionId": "general-30",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Demokratie = الديمقراطية.",
-    "correctAnswerTranslation": "دليل اللغة الإنجليزية: Pressezensur",
-    "simpleExplanation": "الإجابة الصحيحة: Pressezensur. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "ما الذي ليس من سمات ديمقراطيتنا؟",
+    "correctAnswerTranslation": "الرقابة على الصحافة",
+    "simpleExplanation": "الرقابة على الصحافة ليست من سمات الديمقراطية؛ فحرية الصحافة محمية.",
     "vocabulary": [
       {
         "source": "Demokratie",
@@ -640,9 +640,9 @@
   {
     "questionId": "general-31",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Deutschland = ألمانيا؛ Regierung = الحكومة؛ أربيت = العمل؛ Partei = حزب سياسي",
-    "correctAnswerTranslation": "دليل اللغة الإنجليزية: كواليتيون",
-    "simpleExplanation": "الإجابة الصحيحة: الائتلاف. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "يسمى تعاون الأحزاب لتشكيل حكومة في ألمانيا ...",
+    "correctAnswerTranslation": "ائتلاف",
+    "simpleExplanation": "الائتلاف هو تعاون عدة أحزاب من أجل تشكيل حكومة.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -665,9 +665,9 @@
   {
     "questionId": "general-32",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Deutschland = ألمانيا؛ ستات = الحالة.",
-    "correctAnswerTranslation": "دليل اللغة الإنجليزية: اضغط",
-    "simpleExplanation": "الإجابة الصحيحة: اضغط. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "ما الذي لا يعد سلطة من سلطات الدولة في ألمانيا؟",
+    "correctAnswerTranslation": "الصحافة",
+    "simpleExplanation": "الصحافة مستقلة وليست واحدة من سلطات الدولة.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -686,9 +686,9 @@
   {
     "questionId": "general-33",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Deutschland = ألمانيا؛ ستات = الحالة.",
-    "correctAnswerTranslation": "الدولة Sind و Religionsgemeinschaften voneinander getrennt",
-    "simpleExplanation": "الإجابة الصحيحة: sind Staat und Religionsgemeinschaften voneinander getrennt. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "أي عبارة صحيحة؟ في ألمانيا ...",
+    "correctAnswerTranslation": "الدولة والجماعات الدينية منفصلتان عن بعضهما",
+    "simpleExplanation": "في ألمانيا توجد علاقة فصل مؤسسي بين الدولة والجماعات الدينية.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -707,9 +707,9 @@
   {
     "questionId": "general-34",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: دويتشلاند = ألمانيا.",
-    "correctAnswerTranslation": "دليل اللغة الإنجليزية: eine Monarchie",
-    "simpleExplanation": "الإجابة الصحيحة: eine Monarchie. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "ما الذي ليست عليه ألمانيا؟",
+    "correctAnswerTranslation": "ملكية",
+    "simpleExplanation": "ألمانيا جمهورية وليست ملكية.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -724,9 +724,9 @@
   {
     "questionId": "general-35",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Sozialversicherung = التأمين الاجتماعي؛ ستات = الحالة.",
-    "correctAnswerTranslation": "دليل اللغة الإنجليزية: Sozialabgaben",
-    "simpleExplanation": "الإجابة الصحيحة: سوزيالابابن. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "بماذا تمول الدولة الألمانية التأمين الاجتماعي؟",
+    "correctAnswerTranslation": "اشتراكات التأمين الاجتماعي",
+    "simpleExplanation": "يمول التأمين الاجتماعي عن طريق اشتراكات التأمين الاجتماعي.",
     "vocabulary": [
       {
         "source": "Sozialversicherung",
@@ -741,9 +741,9 @@
   {
     "questionId": "general-36",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Krankenversicherung = التأمين الصحي؛ دويتشلاند = ألمانيا.",
-    "correctAnswerTranslation": "يموت التأمين الصحي",
-    "simpleExplanation": "الإجابة الصحيحة: يموت Krankenversicherung. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "أي إجراء يحقق الأمان الاجتماعي في ألمانيا؟",
+    "correctAnswerTranslation": "التأمين الصحي",
+    "simpleExplanation": "التأمين الصحي جزء من نظام الأمان الاجتماعي في ألمانيا.",
     "vocabulary": [
       {
         "source": "Krankenversicherung",
@@ -762,9 +762,9 @@
   {
     "questionId": "general-37",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Ministerpräsidentin/Ministerpräsident = رئيس وزراء الدولة / الوزير-الرئيس؛ Bundesländer = الولايات الفيدرالية؛ دويتشلاند = ألمانيا؛ Regierung = الحكومة.",
+    "translation": "ماذا يسمى رؤساء حكومات معظم الولايات الاتحادية في ألمانيا؟",
     "correctAnswerTranslation": "رئيس وزراء الدولة / رئيس الوزراء",
-    "simpleExplanation": "الإجابة الصحيحة: Ministerpräsidentin/Ministerpräsident. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "simpleExplanation": "تسمى رئاسة حكومة معظم الولايات الألمانية Ministerpräsidentin أو Ministerpräsident.",
     "vocabulary": [
       {
         "source": "Ministerpräsidentin/Ministerpräsident",
@@ -787,9 +787,9 @@
   {
     "questionId": "general-38",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Bundesrepublik Deutschland = جمهورية ألمانيا الاتحادية؛ ستات = الحالة.",
-    "correctAnswerTranslation": "البوندستات",
-    "simpleExplanation": "الإجابة الصحيحة: البوندستات. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "جمهورية ألمانيا الاتحادية هي دولة ديمقراطية واجتماعية ...",
+    "correctAnswerTranslation": "اتحادية",
+    "simpleExplanation": "يصف القانون الأساسي ألمانيا بأنها دولة اتحادية ديمقراطية واجتماعية.",
     "vocabulary": [
       {
         "source": "Bundesrepublik Deutschland",
@@ -804,9 +804,9 @@
   {
     "questionId": "general-39",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Bundesland = دولة فيدرالية؛ Regierung = الحكومة.",
-    "correctAnswerTranslation": "حكومة واحدة",
-    "simpleExplanation": "الإجابة الصحيحة: eine eigene Regierung. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "ماذا تملك كل ولاية اتحادية ألمانية؟",
+    "correctAnswerTranslation": "حكومة خاصة بها",
+    "simpleExplanation": "لكل ولاية اتحادية ألمانية حكومتها الخاصة.",
     "vocabulary": [
       {
         "source": "Bundesland",
@@ -821,9 +821,9 @@
   {
     "questionId": "general-40",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Freiheit = الحرية.",
-    "correctAnswerTranslation": "Einigkeit und Recht والحرية …",
-    "simpleExplanation": "الإجابة الصحيحة: Einigkeit und Recht und Freiheit .... استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "بأي كلمات يبدأ النشيد الوطني الألماني؟",
+    "correctAnswerTranslation": "الوحدة والحق والحرية ...",
+    "simpleExplanation": "يبدأ النشيد الوطني الألماني بالكلمات: \"Einigkeit und Recht und Freiheit\".",
     "vocabulary": [
       {
         "source": "Freiheit",

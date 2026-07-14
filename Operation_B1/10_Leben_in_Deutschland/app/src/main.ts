@@ -4,6 +4,8 @@ import {
   getAllSupportPacks,
   getSupportPack
 } from "./data/catalog-loader";
+import { createFetchUiLoader } from "./data/ui-loader";
+import { createUiTranslator } from "./i18n/translator";
 import {
   createLanguageExercises,
   createMockExamQuestionIds,
@@ -23,6 +25,7 @@ import {
 } from "./domain/practice-engine";
 import { hashForMode, modeFromHash } from "./domain/navigation";
 import type { PracticeEngine } from "./domain/practice-engine";
+import type { UiManifest, UiMessages, UiTranslate } from "./i18n/types";
 import type {
   ChoiceId,
   ExamCatalog,
@@ -41,6 +44,7 @@ import type {
 } from "./domain/types";
 
 const PROGRESS_STORAGE_KEY = "leben-lernen-progress-v1";
+const UI_LOCALE_STORAGE_KEY = "leben-lernen-ui-locale-v1";
 const MAX_MASTERY = 100;
 const MIN_MASTERY = 0;
 const PUBLIC_BASE_URL = import.meta.env.BASE_URL;
@@ -57,6 +61,10 @@ app.innerHTML = `<main class="loading-state"><p>Loading practice data…</p></ma
 let catalog: ExamCatalog;
 let engine: PracticeEngine;
 let supportPacks: Readonly<Record<string, readonly LearningSupport[]>>;
+let uiManifest: UiManifest;
+let uiMessages: Readonly<Record<string, UiMessages>>;
+let selectedUiLocale = "en";
+let t: UiTranslate = (key) => key;
 let progress: ProgressSnapshot;
 let mode: PracticeMode = modeFromHash(window.location.hash);
 let selectedRegion = "";
@@ -133,33 +141,33 @@ function renderQuestion(): void {
     : undefined;
   const progressPercent = Math.round((session.summary.answered / session.summary.totalQuestions) * MAX_MASTERY);
   const primaryLabel = isMockExam
-    ? session.currentIndex === session.questionIds.length - 1 ? "Finish exam" : "Save and next"
-    : checked ? session.summary.isComplete ? "See results" : "Next question" : "Check answer";
+    ? session.currentIndex === session.questionIds.length - 1 ? t("mock.reviewFinish") : t("practice.nextQuestion")
+    : checked ? session.summary.isComplete ? t("practice.seeResults") : t("practice.nextQuestion") : t("practice.checkAnswer");
 
   app.innerHTML = layout(`
     <section class="question-area">
       ${mode === "practice" ? renderPracticeToolbar(session) : ""}
       ${isMockExam ? renderMockHeader(session) : ""}
       ${isMockExam ? renderMockQuestionNavigator(session) : ""}
-      <div class="score-strip session-score" aria-label="Session score">
-        ${metric("Score", `${session.summary.percentCorrect}%`)}
-        ${metric("Correct", `${session.summary.correct}/${session.summary.answered}`)}
-        ${metric("German only", `${session.summary.germanOnlyCorrect}`)}
-        ${metric("Assisted", `${session.summary.assisted}`)}
+      <div class="score-strip session-score" aria-label="${escapeHtml(t("score.score"))}">
+        ${metric(t("score.score"), `${session.summary.percentCorrect}%`)}
+        ${metric(t("score.correct"), `${session.summary.correct}/${session.summary.answered}`)}
+        ${metric(t("score.germanOnly"), `${session.summary.germanOnlyCorrect}`)}
+        ${metric(t("score.assisted"), `${session.summary.assisted}`)}
       </div>
-      <div class="mobile-session-summary" aria-label="Session progress"><strong>${session.summary.percentCorrect}%</strong><span>${session.summary.correct}/${session.summary.answered} correct</span><span>${session.summary.answered}/${session.summary.totalQuestions} answered</span></div>
-      <div class="question-meta"><span>Question ${session.currentIndex + 1}</span>${isMockExam ? `<span>No hints or answer feedback during mock exam</span>` : `<div class="question-tools"><button class="bookmark-button ${isCurrentQuestionBookmarked() ? "active" : ""}" id="bookmark" aria-pressed="${isCurrentQuestionBookmarked()}">${isCurrentQuestionBookmarked() ? "★ Bookmarked" : "☆ Bookmark"}</button><label class="toggle"><span>Show translation</span><input type="checkbox" ${showSupport ? "checked" : ""}><i></i></label></div>`}</div>
-      <h1 lang="de" data-screen-heading tabindex="-1">${escapeHtml(question.prompt)}</h1>
+      <div class="mobile-session-summary" aria-label="${escapeHtml(t("mock.progress"))}"><strong>${session.summary.percentCorrect}%</strong><span>${session.summary.correct}/${session.summary.answered} ${escapeHtml(t("common.correct").toLocaleLowerCase(selectedUiLocale))}</span><span>${session.summary.answered}/${session.summary.totalQuestions} ${escapeHtml(t("score.answered").toLocaleLowerCase(selectedUiLocale))}</span></div>
+      <div class="question-meta"><span>${escapeHtml(t("practice.question", { current: session.currentIndex + 1 }))}</span>${isMockExam ? `<span>${escapeHtml(t("practice.noHints"))}</span>` : `<div class="question-tools"><button class="bookmark-button ${isCurrentQuestionBookmarked() ? "active" : ""}" id="bookmark" aria-pressed="${isCurrentQuestionBookmarked()}">${isCurrentQuestionBookmarked() ? `★ ${escapeHtml(t("practice.bookmarked"))}` : `☆ ${escapeHtml(t("practice.bookmark"))}`}</button><label class="toggle"><span>${escapeHtml(t("practice.showTranslation"))}</span><input type="checkbox" ${showSupport ? "checked" : ""}><i></i></label></div>`}</div>
+      <h1 lang="de" dir="ltr" data-screen-heading tabindex="-1">${escapeHtml(question.prompt)}</h1>
       ${!isMockExam && showSupport && support ? `<p class="inline-translation" ${supportTextAttributes()}>${escapeHtml(support.translation)}</p>` : ""}
       ${question.image ? `<figure class="catalog-figure"><img src="${escapeHtml(publicAssetPath(`catalog-pages/${question.image}.png`))}" alt="Official BAMF catalog visual for ${escapeHtml(question.id)}"></figure>` : ""}
-      <fieldset><legend class="sr-only">Choose one answer</legend>${question.choices.map((choice) => {
+      <fieldset><legend class="sr-only">${escapeHtml(t("practice.chooseAnswer"))}</legend>${question.choices.map((choice) => {
         const isSelected = selected === choice.id;
         const state = checked ? choice.id === question.correctChoiceId ? " correct" : isSelected ? " wrong" : "" : "";
-        return `<label class="answer${isSelected ? " selected" : ""}${state}"><input type="radio" name="answer" value="${choice.id}" ${isSelected ? "checked" : ""}><span class="radio"></span><span lang="de">${escapeHtml(choice.text)}</span></label>`;
+        return `<label class="answer${isSelected ? " selected" : ""}${state}"><input type="radio" name="answer" value="${choice.id}" ${isSelected ? "checked" : ""}><span class="radio"></span><span lang="de" dir="ltr">${escapeHtml(choice.text)}</span></label>`;
       }).join("")}</fieldset>
-      ${result ? `<div class="feedback ${result.isCorrect ? "success" : "error"}" role="status"><strong>${result.isCorrect ? "Correct" : "Not quite"}</strong>${support ? `<span ${supportTextAttributes()}>Translated answer: ${escapeHtml(support.correctAnswerTranslation)}</span>` : ""}<span ${supportTextAttributes()}>${escapeHtml(support?.simpleExplanation ?? "Review the correct answer.")}</span></div>` : ""}
-      <div class="actions"><button class="secondary" id="previous" ${session.currentIndex === 0 ? "disabled" : ""}>Previous</button><button class="primary" id="check" ${selected ? "" : "disabled"}>${primaryLabel}</button></div>
-      <div class="progress-note"><span class="progress-track"><i style="width:${progressPercent}%"></i></span><span>${session.summary.answered} answered in this set</span></div>
+      ${result ? `<div class="feedback ${result.isCorrect ? "success" : "error"}" role="status"><strong>${escapeHtml(result.isCorrect ? t("common.correct") : t("practice.notQuite"))}</strong>${support ? `<span ${supportTextAttributes()}>${escapeHtml(t("practice.translatedAnswer", { answer: support.correctAnswerTranslation }))}</span>` : ""}<span ${supportTextAttributes()}>${escapeHtml(support?.simpleExplanation ?? t("practice.reviewCorrect"))}</span></div>` : ""}
+      <div class="actions"><button class="secondary" id="previous" ${session.currentIndex === 0 ? "disabled" : ""}>${escapeHtml(t("common.previous"))}</button><button class="primary" id="check" ${selected ? "" : "disabled"}>${escapeHtml(primaryLabel)}</button></div>
+      <div class="progress-note"><span class="progress-track"><i style="width:${progressPercent}%"></i></span><span>${escapeHtml(t("practice.answeredInSet", { count: session.summary.answered }))}</span></div>
     </section>
     ${isMockExam ? renderMockPanel(session) : renderSupportPanel(question.id)}
   `);
@@ -172,11 +180,11 @@ function renderEmptyPracticeSet(): void {
   app.innerHTML = layout(`
     <section class="question-area completion">
       ${renderPracticeToolbar(activeSession())}
-      <p class="completion-label">No questions in this set</p>
-      <h1 data-screen-heading tabindex="-1">Nothing to review yet</h1>
-      <p class="inline-translation">Try All questions, answer a few questions, or bookmark questions first.</p>
+      <p class="completion-label">${escapeHtml(t("empty.noQuestions"))}</p>
+      <h1 data-screen-heading tabindex="-1">${escapeHtml(t("empty.nothingReview"))}</h1>
+      <p class="inline-translation">${escapeHtml(t("empty.help"))}</p>
     </section>
-    <aside class="support"><section><h2>Practice sets</h2><p>Review sets are built from your saved progress in this browser.</p></section></aside>
+    <aside class="support"><section><h2>${escapeHtml(t("empty.practiceSets"))}</h2><p>${escapeHtml(t("empty.savedProgress"))}</p></section></aside>
   `);
 
   bindShell();
@@ -184,27 +192,27 @@ function renderEmptyPracticeSet(): void {
 
 function renderCompletion(): void {
   const session = activeSession();
-  const completionLabel = mode === "mock" ? "Mock exam complete" : "Practice complete";
+  const completionLabel = mode === "mock" ? t("mock.result") : t("completion.practice");
   app.innerHTML = layout(`
     <section class="question-area completion">
       <p class="completion-label">${completionLabel}</p>
-      <h1 data-screen-heading tabindex="-1">${session.summary.percentCorrect}% score</h1>
-      <p class="inline-translation">You answered ${session.summary.correct} of ${session.summary.totalQuestions} available questions correctly. ${session.summary.assisted} answers used support.</p>
+      <h1 data-screen-heading tabindex="-1">${escapeHtml(t("completion.score", { score: session.summary.percentCorrect }))}</h1>
+      <p class="inline-translation">${escapeHtml(t("completion.summary", { correct: session.summary.correct, total: session.summary.totalQuestions, assisted: session.summary.assisted }))}</p>
       <div class="score-strip large">
-        ${metric("Correct", String(session.summary.correct))}
-        ${metric("German-only correct", String(session.summary.germanOnlyCorrect))}
-        ${metric("Needs review", String(session.summary.difficultQuestionIds.length))}
-        ${metric("Streak", String(session.summary.currentStreak))}
+        ${metric(t("score.correct"), String(session.summary.correct))}
+        ${metric(t("score.germanOnly"), String(session.summary.germanOnlyCorrect))}
+        ${metric(t("score.needsReview"), String(session.summary.difficultQuestionIds.length))}
+        ${metric(t("score.streak"), String(session.summary.currentStreak))}
       </div>
       <div class="review-list">
-        <h2>Review next</h2>
+        <h2>${escapeHtml(t("completion.reviewNext"))}</h2>
         ${session.summary.difficultQuestionIds.length > 0
           ? `<ul>${session.summary.difficultQuestionIds.map((id) => `<li>${escapeHtml(id)}</li>`).join("")}</ul>`
-          : "<p>No difficult questions in this run.</p>"}
+          : `<p>${escapeHtml(t("completion.noDifficult"))}</p>`}
       </div>
-      <div class="actions"><button class="secondary" id="reset-progress">Reset progress</button><button class="primary" id="restart">Start again</button></div>
+      <div class="actions"><button class="secondary" id="reset-progress">${escapeHtml(t("completion.reset"))}</button><button class="primary" id="restart">${escapeHtml(t("completion.startAgain"))}</button></div>
     </section>
-    <aside class="support"><section><h2>Next focus</h2><p>Switch to Language to drill the German words and sentence patterns from these questions.</p></section></aside>
+    <aside class="support"><section><h2>${escapeHtml(t("completion.nextFocus"))}</h2><p>${escapeHtml(t("completion.languageHint"))}</p></section></aside>
   `);
 
   bindShell();
@@ -237,26 +245,26 @@ function renderMockStart(): void {
   const totalQuestions = catalog.mockExam.generalQuestionCount + catalog.mockExam.regionalQuestionCount;
   app.innerHTML = layout(`
     <section class="question-area mock-start">
-      <p class="completion-label">Mock exam</p>
-      <h1 data-screen-heading tabindex="-1">Ready for a full practice exam?</h1>
-      <p class="lead-copy">The timer starts only when you press Start exam. Translation and answer feedback stay hidden until the result.</p>
-      <div class="exam-facts" aria-label="Mock exam details">
-        ${metric("Questions", String(totalQuestions))}
-        ${metric("Time", `${catalog.mockExam.durationMinutes} min`)}
-        ${metric("Pass mark", `${catalog.mockExam.passScore}/${totalQuestions}`)}
+      <p class="completion-label">${escapeHtml(t("mock.title"))}</p>
+      <h1 data-screen-heading tabindex="-1">${escapeHtml(t("mock.readyTitle"))}</h1>
+      <p class="lead-copy">${escapeHtml(t("mock.readyCopy"))}</p>
+      <div class="exam-facts" aria-label="${escapeHtml(t("mock.title"))}">
+        ${metric(t("score.questions"), String(totalQuestions))}
+        ${metric(t("score.time"), `${catalog.mockExam.durationMinutes} min`)}
+        ${metric(t("score.passMark"), `${catalog.mockExam.passScore}/${totalQuestions}`)}
       </div>
       <div class="exam-checklist">
-        <h2>Before you start</h2>
+        <h2>${escapeHtml(t("mock.beforeStart"))}</h2>
         <ul>
-          <li>Choose one German answer for every question.</li>
-          <li>You can leave questions unanswered and review them before finishing.</li>
-          <li>Your normal practice score will not change.</li>
+          <li>${escapeHtml(t("mock.instruction1"))}</li>
+          <li>${escapeHtml(t("mock.instruction2"))}</li>
+          <li>${escapeHtml(t("mock.instruction3"))}</li>
         </ul>
       </div>
-      <div class="actions single"><button class="primary" id="start-mock">Start exam</button></div>
+      <div class="actions single"><button class="primary" id="start-mock">${escapeHtml(t("mock.start"))}</button></div>
     </section>
     <aside class="support">
-      <section><h2>${escapeHtml(currentRegionLabel())} question mix</h2><p>${catalog.mockExam.generalQuestionCount} general questions and ${catalog.mockExam.regionalQuestionCount} regional questions.</p></section>
+      <section><h2>${escapeHtml(t("mock.regionMix", { region: currentRegionLabel() }))}</h2><p>${escapeHtml(t("mock.mixCopy", { general: catalog.mockExam.generalQuestionCount, regional: catalog.mockExam.regionalQuestionCount }))}</p></section>
       ${renderMockHistorySection()}
     </aside>
   `);
@@ -271,15 +279,15 @@ function renderMockReview(): void {
   app.innerHTML = layout(`
     <section class="question-area mock-review">
       ${renderMockHeader(session)}
-      <p class="completion-label">Review exam</p>
-      <h1 data-screen-heading tabindex="-1">Check before submitting</h1>
-      <p class="lead-copy">${session.summary.answered} answered and ${unanswered} unanswered. You can return to any question before submitting.</p>
+      <p class="completion-label">${escapeHtml(t("mock.reviewLabel"))}</p>
+      <h1 data-screen-heading tabindex="-1">${escapeHtml(t("mock.reviewTitle"))}</h1>
+      <p class="lead-copy">${escapeHtml(t("mock.reviewCopy", { answered: session.summary.answered, unanswered }))}</p>
       ${renderMockQuestionNavigator(session, { open: true, showReviewAction: false })}
       <div class="submit-warning ${unanswered > 0 ? "has-unanswered" : ""}">
-        <strong>${unanswered > 0 ? `${unanswered} unanswered question${unanswered === 1 ? "" : "s"}` : "All questions answered"}</strong>
-        <span>${unanswered > 0 ? "Unanswered questions count as wrong answers." : "Your exam is ready to submit."}</span>
+        <strong>${escapeHtml(unanswered > 0 ? t(unanswered === 1 ? "mock.oneUnanswered" : "mock.unansweredCount", { count: unanswered }) : t("mock.allAnswered"))}</strong>
+        <span>${escapeHtml(unanswered > 0 ? t("mock.unansweredHelp") : t("mock.readySubmit"))}</span>
       </div>
-      <div class="actions"><button class="secondary" id="continue-mock">Continue exam</button><button class="primary" id="submit-mock">Submit exam</button></div>
+      <div class="actions"><button class="secondary" id="continue-mock">${escapeHtml(t("mock.continueExam"))}</button><button class="primary" id="submit-mock">${escapeHtml(t("mock.submit"))}</button></div>
     </section>
     ${renderMockPanel(session)}
   `);
@@ -306,26 +314,26 @@ function renderProgress(): void {
   app.innerHTML = layout(`
     <section class="question-area progress-screen">
       <div class="progress-heading">
-        <div><p class="completion-label">Your learning</p><h1 data-screen-heading tabindex="-1">Progress</h1></div>
-        <button class="secondary compact-button" data-mode="practice">Continue practice</button>
+        <div><p class="completion-label">${escapeHtml(t("progress.yourLearning"))}</p><h1 data-screen-heading tabindex="-1">${escapeHtml(t("progress.title"))}</h1></div>
+        <button class="secondary compact-button" data-mode="practice">${escapeHtml(t("progress.continuePractice"))}</button>
       </div>
       <div class="progress-overview">
-        ${metric("Practice accuracy", `${summary.accuracyPercent}%`)}
-        ${metric("German-only correct", String(summary.germanOnlyCorrect))}
-        ${metric("Language mastered", `${summary.masteredLanguageItems}/${summary.languageExerciseCount}`)}
-        ${metric("Mock attempts", String(summary.mockAttempts))}
+        ${metric(t("score.practiceAccuracy"), `${summary.accuracyPercent}%`)}
+        ${metric(t("score.germanOnly"), String(summary.germanOnlyCorrect))}
+        ${metric(t("score.languageMastered"), `${summary.masteredLanguageItems}/${summary.languageExerciseCount}`)}
+        ${metric(t("score.mockAttempts"), String(summary.mockAttempts))}
       </div>
       <section class="progress-section">
-        <div class="section-heading"><div><h2>Next actions</h2><p>Use your saved activity to choose a focused practice session.</p></div></div>
+        <div class="section-heading"><div><h2>${escapeHtml(t("progress.nextActions"))}</h2><p>${escapeHtml(t("progress.nextActionsCopy"))}</p></div></div>
         <div class="action-list">
-          <button class="progress-action" id="practice-bookmarks" ${summary.bookmarkedQuestions === 0 ? "disabled" : ""}><span><strong>Bookmarked questions</strong><small>${summary.bookmarkedQuestions} saved</small></span><b aria-hidden="true">›</b></button>
-          <button class="progress-action" data-mode="language"><span><strong>Language review</strong><small>${summary.masteredLanguageItems} mastered of ${summary.languageExerciseCount}</small></span><b aria-hidden="true">›</b></button>
-          <button class="progress-action" data-mode="mock"><span><strong>Mock exam</strong><small>${latestMock ? `${latestMock.correct}/${latestMock.totalQuestions} latest score` : "No attempts yet"}</small></span><b aria-hidden="true">›</b></button>
+          <button class="progress-action" id="practice-bookmarks" ${summary.bookmarkedQuestions === 0 ? "disabled" : ""}><span><strong>${escapeHtml(t("progress.bookmarkedQuestions"))}</strong><small>${escapeHtml(t("progress.saved", { count: summary.bookmarkedQuestions }))}</small></span><b aria-hidden="true">›</b></button>
+          <button class="progress-action" data-mode="language"><span><strong>${escapeHtml(t("progress.languageReview"))}</strong><small>${escapeHtml(t("progress.masteredOf", { mastered: summary.masteredLanguageItems, total: summary.languageExerciseCount }))}</small></span><b aria-hidden="true">›</b></button>
+          <button class="progress-action" data-mode="mock"><span><strong>${escapeHtml(t("nav.mock"))}</strong><small>${escapeHtml(latestMock ? t("progress.latestScore", { correct: latestMock.correct, total: latestMock.totalQuestions }) : t("common.noAttempts"))}</small></span><b aria-hidden="true">›</b></button>
         </div>
       </section>
       <section class="progress-section">
-        <h2>Practice summary</h2>
-        <p>${summary.practicedQuestions} questions practised · ${summary.correctAnswers} correct · ${summary.bookmarkedQuestions} bookmarked</p>
+        <h2>${escapeHtml(t("progress.practiceSummary"))}</h2>
+        <p>${escapeHtml(t("progress.practiceSummaryCopy", { practiced: summary.practicedQuestions, correct: summary.correctAnswers, bookmarked: summary.bookmarkedQuestions }))}</p>
       </section>
     </section>
     <aside class="support progress-support">
@@ -336,7 +344,7 @@ function renderProgress(): void {
 
   bindShell();
   app.querySelector<HTMLButtonElement>("#practice-bookmarks")?.addEventListener("click", () => {
-    startCustomPractice("Bookmarked questions", progress.bookmarkedQuestionIds);
+    startCustomPractice(t("progress.bookmarkedQuestions"), progress.bookmarkedQuestionIds);
   });
 }
 
@@ -349,22 +357,22 @@ function renderMockResult(): void {
 
   app.innerHTML = layout(`
     <section class="question-area completion">
-      <p class="completion-label">Mock exam result</p>
-      <h1 data-screen-heading tabindex="-1">${result.passed ? "Passed" : "Not passed yet"}</h1>
-      <p class="inline-translation">You scored ${result.correct} of ${result.totalQuestions}. Passing score is ${result.passScore} of ${result.totalQuestions}. ${result.unanswered > 0 ? `${result.unanswered} questions were unanswered ${isMockExpired() ? "when time ended" : "when you submitted"}.` : ""}</p>
+      <p class="completion-label">${escapeHtml(t("mock.result"))}</p>
+      <h1 data-screen-heading tabindex="-1">${escapeHtml(result.passed ? t("mock.passed") : t("mock.notPassed"))}</h1>
+      <p class="inline-translation">${escapeHtml(t("mock.resultSummary", { correct: result.correct, total: result.totalQuestions, pass: result.passScore }))} ${result.unanswered > 0 ? escapeHtml(t(isMockExpired() ? "mock.unansweredExpired" : "mock.unansweredSubmitted", { count: result.unanswered })) : ""}</p>
       <div class="score-strip large">
-        ${metric("Correct", String(result.correct))}
-        ${metric("Wrong or blank", String(result.incorrect))}
-        ${metric("Pass mark", String(result.passScore))}
-        ${metric("Answered", `${result.answered}/${result.totalQuestions}`)}
+        ${metric(t("score.correct"), String(result.correct))}
+        ${metric(t("score.wrongBlank"), String(result.incorrect))}
+        ${metric(t("score.passMark"), String(result.passScore))}
+        ${metric(t("score.answered"), `${result.answered}/${result.totalQuestions}`)}
       </div>
       <div class="review-list exam-review">
-        <h2>Wrong answers</h2>
-        ${result.wrongAnswers.length > 0 ? `<ul>${wrongItems}</ul>` : "<p>No wrong answers in this mock exam.</p>"}
+        <h2>${escapeHtml(t("mock.wrongAnswers"))}</h2>
+        ${result.wrongAnswers.length > 0 ? `<ul>${wrongItems}</ul>` : `<p>${escapeHtml(t("mock.noWrong"))}</p>`}
       </div>
-      <div class="actions"><button class="secondary" id="restart-mock">Restart mock</button><button class="primary" id="review-wrong" ${result.wrongQuestionIds.length === 0 ? "disabled" : ""}>Review wrong answers</button></div>
+      <div class="actions"><button class="secondary" id="restart-mock">${escapeHtml(t("mock.restart"))}</button><button class="primary" id="review-wrong" ${result.wrongQuestionIds.length === 0 ? "disabled" : ""}>${escapeHtml(t("mock.reviewWrong"))}</button></div>
     </section>
-    <aside class="support"><section><h2>Exam rules</h2><p>This mock uses ${catalog.mockExam.generalQuestionCount} general questions and ${catalog.mockExam.regionalQuestionCount} regional questions for ${escapeHtml(currentRegionLabel())}.</p></section><section><h2>Progress separation</h2><p>Mock exam answers are saved only to mock history. They do not change your normal practice score.</p></section>${renderWeakAreasSection()}${renderMockHistorySection()}</aside>
+    <aside class="support"><section><h2>${escapeHtml(t("mock.examRules"))}</h2><p>${escapeHtml(t("mock.mixCopy", { general: catalog.mockExam.generalQuestionCount, regional: catalog.mockExam.regionalQuestionCount }))}</p></section><section><h2>${escapeHtml(t("mock.progressSeparation"))}</h2><p>${escapeHtml(t("mock.progressSeparationCopy"))}</p></section>${renderWeakAreasSection()}${renderMockHistorySection()}</aside>
   `);
 
   bindShell();
@@ -372,7 +380,7 @@ function renderMockResult(): void {
     startMockExam();
   });
   app.querySelector<HTMLButtonElement>("#review-wrong")?.addEventListener("click", () => {
-    startCustomPractice("Mock wrong answers", result.wrongQuestionIds);
+    startCustomPractice(t("mock.wrongAnswers"), result.wrongQuestionIds);
   });
 }
 
@@ -380,7 +388,7 @@ function renderMockWrongAnswer(answer: MockExamWrongAnswer): string {
   const { question, support } = engine.getLearningItem(answer.questionId, selectedSupportLocale);
   const selectedChoiceText = answer.selectedChoiceId
     ? getChoiceText(question, answer.selectedChoiceId)
-    : "No answer selected";
+    : t("mock.noAnswer");
   const correctChoiceText = getChoiceText(question, answer.correctChoiceId ?? question.correctChoiceId);
   const vocabulary = support?.vocabulary.slice(0, 4).map((item) => `
     <li><strong lang="de">${escapeHtml(item.source)}</strong><span>${escapeHtml(item.translation)}</span></li>
@@ -392,14 +400,14 @@ function renderMockWrongAnswer(answer: MockExamWrongAnswer): string {
         <strong>${escapeHtml(question.id)}</strong>
         <span>${escapeHtml(question.topic)}</span>
       </div>
-      <h3 lang="de">${escapeHtml(question.prompt)}</h3>
+      <h3 lang="de" dir="ltr">${escapeHtml(question.prompt)}</h3>
       ${support ? `<p class="review-translation" ${supportTextAttributes()}>${escapeHtml(support.translation)}</p>` : ""}
       <div class="answer-comparison">
-        <div><span>Your answer</span><strong lang="de">${escapeHtml(selectedChoiceText)}</strong></div>
-        <div><span>Correct answer</span><strong lang="de">${escapeHtml(correctChoiceText)}</strong>${support ? `<small ${supportTextAttributes()}>${escapeHtml(support.correctAnswerTranslation)}</small>` : ""}</div>
+        <div><span>${escapeHtml(t("mock.yourAnswer"))}</span><strong lang="de" dir="ltr">${escapeHtml(selectedChoiceText)}</strong></div>
+        <div><span>${escapeHtml(t("mock.correctAnswer"))}</span><strong lang="de" dir="ltr">${escapeHtml(correctChoiceText)}</strong>${support ? `<small ${supportTextAttributes()}>${escapeHtml(support.correctAnswerTranslation)}</small>` : ""}</div>
       </div>
-      <p class="review-explanation" ${supportTextAttributes()}>${escapeHtml(support?.simpleExplanation ?? "Review the correct answer and key words for this question.")}</p>
-      ${vocabulary ? `<div class="review-vocabulary"><span>Key words</span><ul>${vocabulary}</ul></div>` : ""}
+      <p class="review-explanation" ${supportTextAttributes()}>${escapeHtml(support?.simpleExplanation ?? t("practice.reviewCorrect"))}</p>
+      ${vocabulary ? `<div class="review-vocabulary"><span>${escapeHtml(t("practice.keyWords"))}</span><ul>${vocabulary}</ul></div>` : ""}
     </li>
   `;
 }
@@ -410,9 +418,9 @@ function renderLanguagePractice(): void {
   if (!exercise) {
     app.innerHTML = layout(`
       <section class="question-area completion">
-        <p class="completion-label">Language practice</p>
-        <h1>No exercises yet</h1>
-        <p class="inline-translation">Language exercises appear when the selected support pack has vocabulary or grammar patterns.</p>
+        <p class="completion-label">${escapeHtml(t("sidebar.languagePractice"))}</p>
+        <h1>${escapeHtml(t("language.noExercises"))}</h1>
+        <p class="inline-translation">${escapeHtml(t("language.noExercisesCopy"))}</p>
       </section>
       <aside class="support hidden"></aside>
     `);
@@ -423,21 +431,21 @@ function renderLanguagePractice(): void {
   const mastery = progress.vocabularyMastery[exercise.id] ?? MIN_MASTERY;
   app.innerHTML = layout(`
     <section class="question-area language-practice">
-      <div class="question-meta"><span>${exercise.type === "vocabulary" ? "Vocabulary" : "German pattern"} ${languageIndex + 1} of ${languageExercises.length}</span><span>${mastery}% mastered</span></div>
-      <h1 lang="de" data-screen-heading tabindex="-1">${escapeHtml(exercise.prompt)}</h1>
+      <div class="question-meta"><span>${escapeHtml(exercise.type === "vocabulary" ? t("language.vocabulary") : t("language.pattern"))} ${languageIndex + 1} ${escapeHtml(t("common.of"))} ${languageExercises.length}</span><span>${escapeHtml(t("language.mastered", { count: mastery }))}</span></div>
+      <h1 lang="de" dir="ltr" data-screen-heading tabindex="-1">${escapeHtml(exercise.prompt)}</h1>
       <p class="inline-translation">${escapeHtml(exercise.hint ?? "Work out the meaning before revealing the answer.")}</p>
       <div class="language-card ${languageRevealed ? "revealed" : ""}">
-        <span ${languageRevealed ? supportTextAttributes() : ""}>${languageRevealed ? escapeHtml(exercise.answer) : "Think first, then reveal."}</span>
+        <span ${languageRevealed ? supportTextAttributes() : ""}>${languageRevealed ? escapeHtml(exercise.answer) : escapeHtml(t("language.think"))}</span>
       </div>
       <div class="actions language-actions ${languageRevealed ? "revealed" : ""}">
-        <button class="secondary" id="language-previous" ${languageIndex === 0 ? "disabled" : ""}>Previous</button>
-        <button class="secondary" id="reveal">${languageRevealed ? "Hide" : "Reveal"}</button>
-        ${languageRevealed ? `<button class="secondary" id="again">Again</button><button class="primary" id="known">Got it</button>` : ""}
+        <button class="secondary" id="language-previous" ${languageIndex === 0 ? "disabled" : ""}>${escapeHtml(t("common.previous"))}</button>
+        <button class="secondary" id="reveal">${escapeHtml(languageRevealed ? t("language.hide") : t("language.reveal"))}</button>
+        ${languageRevealed ? `<button class="secondary" id="again">${escapeHtml(t("language.again"))}</button><button class="primary" id="known">${escapeHtml(t("language.gotIt"))}</button>` : ""}
       </div>
     </section>
     <aside class="support">
-      <section><h2>Linked question</h2><p>${escapeHtml(getPrompt(exercise.questionId))}</p></section>
-      <section><h2>Why this helps</h2><p>These drills are separate from exam score. They train the words and structures needed to understand the German question without leaning on support.</p></section>
+      <section><h2>${escapeHtml(t("language.linkedQuestion"))}</h2><p lang="de" dir="ltr">${escapeHtml(getPrompt(exercise.questionId))}</p></section>
+      <section><h2>${escapeHtml(t("language.why"))}</h2><p>${escapeHtml(t("language.whyCopy"))}</p></section>
     </aside>
   `);
 
@@ -451,28 +459,32 @@ function layout(content: string): string {
   return `
     <header class="topbar ${mockIsActive ? "mock-active" : ""}">
       <a class="brand" href="${hashForMode("practice")}">Leben lernen</a>
-      <nav aria-label="Main navigation">
-        ${navButton("practice", "Practice")}
-        ${navButton("language", "Language")}
-        ${navButton("mock", "Mock exam")}
-        ${navButton("progress", "Progress")}
+      <nav aria-label="${escapeHtml(t("nav.main"))}">
+        ${navButton("practice", t("nav.practice"))}
+        ${navButton("language", t("nav.language"))}
+        ${navButton("mock", t("nav.mock"))}
+        ${navButton("progress", t("nav.progress"))}
       </nav>
-      <div class="header-tools">
-        <label class="region"><span>Region</span><select aria-label="Region">${catalog.regions.map((region) => `<option value="${escapeHtml(region.id)}" ${region.id === selectedRegion ? "selected" : ""}>${escapeHtml(region.label)}</option>`).join("")}</select></label>
-        <label class="language"><span>Translation</span><select aria-label="Translation language">${catalog.supportLocales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedSupportLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
-        <div class="progress-label"><strong>${session.summary.answered}</strong> of ${session.summary.totalQuestions}</div>
-      </div>
+      <details class="header-settings">
+        <summary><span>${escapeHtml(t("settings.title"))}</span><strong>${escapeHtml(currentRegionLabel())} · ${escapeHtml(currentSupportLocaleLabel())}</strong></summary>
+        <div class="header-tools">
+          <label class="region"><span>${escapeHtml(t("settings.region"))}</span><select data-setting="region" aria-label="${escapeHtml(t("settings.region"))}">${catalog.regions.map((region) => `<option value="${escapeHtml(region.id)}" ${region.id === selectedRegion ? "selected" : ""}>${escapeHtml(region.label)}</option>`).join("")}</select></label>
+          <label class="language"><span>${escapeHtml(t("settings.supportLanguage"))}</span><select data-setting="support-language" aria-label="${escapeHtml(t("settings.supportLanguage"))}">${catalog.supportLocales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedSupportLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
+          <label class="language"><span>${escapeHtml(t("settings.interfaceLanguage"))}</span><select data-setting="interface-language" aria-label="${escapeHtml(t("settings.interfaceLanguage"))}">${uiManifest.locales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedUiLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
+          <div class="progress-label"><strong>${session.summary.answered}</strong> ${escapeHtml(t("common.of"))} ${session.summary.totalQuestions}</div>
+        </div>
+      </details>
     </header>
     <main class="shell">
       <aside class="sidebar">
-        <section><h2>Learning overview</h2><ol class="topic-list">
-          <li class="current"><span>1</span><div><strong>Exam knowledge</strong><small>${session.summary.percentCorrect}% current score</small></div></li>
-          <li><span>2</span><div><strong>German-only</strong><small>${session.summary.germanOnlyCorrect} correct without support</small></div></li>
-          <li><span>3</span><div><strong>Words and patterns</strong><small>${currentLanguageExercises().length} drills</small></div></li>
+        <section><h2>${escapeHtml(t("sidebar.learningOverview"))}</h2><ol class="topic-list">
+          <li class="current"><span>1</span><div><strong>${escapeHtml(t("sidebar.examKnowledge"))}</strong><small>${escapeHtml(t("sidebar.currentScore", { score: session.summary.percentCorrect }))}</small></div></li>
+          <li><span>2</span><div><strong>${escapeHtml(t("sidebar.germanOnly"))}</strong><small>${escapeHtml(t("sidebar.correctWithoutSupport", { count: session.summary.germanOnlyCorrect }))}</small></div></li>
+          <li><span>3</span><div><strong>${escapeHtml(t("sidebar.wordsPatterns"))}</strong><small>${escapeHtml(t("sidebar.drills", { count: currentLanguageExercises().length }))}</small></div></li>
         </ol></section>
-        <button class="side-link" data-mode="progress"><span><strong>Progress</strong><small>Scores and next actions</small></span><b aria-hidden="true">&rsaquo;</b></button>
-        <button class="side-link" data-mode="language"><span><strong>Language practice</strong><small>Vocabulary and structure</small></span><b>&rsaquo;</b></button>
-        <button class="side-link" data-mode="mock"><span><strong>${escapeHtml(currentRegionLabel())} mock</strong><small>${catalog.mockExam.generalQuestionCount + catalog.mockExam.regionalQuestionCount} exam questions</small></span><b>&rsaquo;</b></button>
+        <button class="side-link" data-mode="progress"><span><strong>${escapeHtml(t("nav.progress"))}</strong><small>${escapeHtml(t("sidebar.progressSubtitle"))}</small></span><b aria-hidden="true">&rsaquo;</b></button>
+        <button class="side-link" data-mode="language"><span><strong>${escapeHtml(t("sidebar.languagePractice"))}</strong><small>${escapeHtml(t("sidebar.vocabularyStructure"))}</small></span><b>&rsaquo;</b></button>
+        <button class="side-link" data-mode="mock"><span><strong>${escapeHtml(t("sidebar.regionMock", { region: currentRegionLabel() }))}</strong><small>${escapeHtml(t("sidebar.examQuestions", { count: catalog.mockExam.generalQuestionCount + catalog.mockExam.regionalQuestionCount }))}</small></span><b>&rsaquo;</b></button>
       </aside>
       ${content}
     </main>`;
@@ -483,21 +495,21 @@ function renderPracticeToolbar(session: PracticeSession): string {
     return `
       <div class="practice-toolbar">
         <span><strong>${escapeHtml(customPracticeLabel)}</strong></span>
-        <button class="secondary compact-button" id="clear-custom-practice">Back to practice sets</button>
+        <button class="secondary compact-button" id="clear-custom-practice">${escapeHtml(t("practice.backSets"))}</button>
       </div>
     `;
   }
 
   return `
     <div class="practice-toolbar">
-      <label><span>Practice set</span><select aria-label="Practice set">
-        ${practiceSetOption("all", "All questions")}
-        ${practiceSetOption("unseen", "Unseen")}
-        ${practiceSetOption("wrong", "Wrong answers")}
-        ${practiceSetOption("bookmarked", "Bookmarked")}
-        ${practiceSetOption("region", `${currentRegionLabel()} only`)}
+      <label><span>${escapeHtml(t("practice.set"))}</span><select aria-label="${escapeHtml(t("practice.set"))}">
+        ${practiceSetOption("all", t("practice.all"))}
+        ${practiceSetOption("unseen", t("practice.unseen"))}
+        ${practiceSetOption("wrong", t("practice.wrong"))}
+        ${practiceSetOption("bookmarked", t("practice.bookmarkedSet"))}
+        ${practiceSetOption("region", t("practice.regionOnly", { region: currentRegionLabel() }))}
       </select></label>
-      <span>${session.summary.totalQuestions} questions</span>
+      <span>${session.summary.totalQuestions} ${escapeHtml(t("common.questions"))}</span>
     </div>
   `;
 }
@@ -505,9 +517,9 @@ function renderPracticeToolbar(session: PracticeSession): string {
 function renderMockHeader(session: PracticeSession): string {
   return `
     <div class="mock-header">
-      <span><strong data-mock-timer>${formatRemainingTime()}</strong><small> remaining</small></span>
-      <span>${session.summary.answered}/${session.summary.totalQuestions} answered</span>
-      <button class="secondary compact-button" id="exit-mock">Exit exam</button>
+      <span><strong data-mock-timer>${formatRemainingTime()}</strong><small> ${escapeHtml(t("mock.remaining"))}</small></span>
+      <span>${session.summary.answered}/${session.summary.totalQuestions} ${escapeHtml(t("score.answered"))}</span>
+      <button class="secondary compact-button" id="exit-mock">${escapeHtml(t("mock.exit"))}</button>
     </div>
   `;
 }
@@ -520,14 +532,15 @@ function renderMockQuestionNavigator(
   const showReviewAction = options.showReviewAction ?? true;
   return `
     <details class="mock-question-nav" ${options.open ? "open" : ""}>
-      <summary><span>Questions</span><strong>${session.summary.answered}/${session.summary.totalQuestions}</strong></summary>
+      <summary><span>${escapeHtml(t("mock.questionNav"))}</span><strong>${session.summary.answered}/${session.summary.totalQuestions}</strong></summary>
       <div class="mock-question-grid">${statuses.map((status) => {
         const state = status.isAnswered ? " answered" : "";
         const current = status.isCurrent ? " current" : "";
-        const label = `Question ${status.index + 1}, ${status.isAnswered ? "answered" : "unanswered"}${status.isCurrent ? ", current" : ""}`;
+        const stateLabel = `${t(status.isAnswered ? "mock.answeredStatus" : "mock.unansweredStatus")}${status.isCurrent ? `, ${t("mock.currentStatus")}` : ""}`;
+        const label = t("mock.questionStatus", { number: status.index + 1, status: stateLabel });
         return `<button class="mock-question-button${state}${current}" data-mock-index="${status.index}" aria-label="${label}" ${status.isCurrent ? 'aria-current="step"' : ""}>${status.index + 1}</button>`;
       }).join("")}</div>
-      ${showReviewAction ? '<button class="secondary compact-button full-width" id="review-mock">Review and finish</button>' : ""}
+      ${showReviewAction ? `<button class="secondary compact-button full-width" id="review-mock">${escapeHtml(t("mock.reviewFinish"))}</button>` : ""}
     </details>
   `;
 }
@@ -535,11 +548,11 @@ function renderMockQuestionNavigator(
 function renderMockPanel(session: PracticeSession): string {
   return `
     <aside class="support">
-      <section><h2>Timer</h2><p class="answer-translation" data-mock-timer>${formatRemainingTime()}</p></section>
-      <section><h2>Passing score</h2><p>${catalog.mockExam.passScore} correct answers are needed to pass.</p></section>
-      <section><h2>Exam mode</h2><p>No translation, explanation, or answer feedback is shown until the final result.</p></section>
-      <section><h2>Question mix</h2><p>${catalog.mockExam.generalQuestionCount} general questions + ${catalog.mockExam.regionalQuestionCount} ${escapeHtml(currentRegionLabel())} questions.</p></section>
-      <section><h2>Progress</h2><p>${session.summary.answered} of ${session.summary.totalQuestions} answered.</p></section>
+      <section><h2>${escapeHtml(t("mock.timer"))}</h2><p class="answer-translation" data-mock-timer>${formatRemainingTime()}</p></section>
+      <section><h2>${escapeHtml(t("mock.passingScore"))}</h2><p>${escapeHtml(t("mock.passingCopy", { count: catalog.mockExam.passScore }))}</p></section>
+      <section><h2>${escapeHtml(t("mock.examMode"))}</h2><p>${escapeHtml(t("mock.examModeCopy"))}</p></section>
+      <section><h2>${escapeHtml(t("mock.questionMix"))}</h2><p>${escapeHtml(t("mock.mixCopy", { general: catalog.mockExam.generalQuestionCount, regional: catalog.mockExam.regionalQuestionCount }))}</p></section>
+      <section><h2>${escapeHtml(t("mock.progress"))}</h2><p>${escapeHtml(t("mock.progressCopy", { answered: session.summary.answered, total: session.summary.totalQuestions }))}</p></section>
       ${renderWeakAreasSection()}
       ${renderMockHistorySection()}
     </aside>`;
@@ -549,8 +562,8 @@ function renderWeakAreasSection(): string {
   const weakTopics = currentWeakTopics().slice(0, 3);
   return `
     <section>
-      <h2>Weak areas</h2>
-      ${weakTopics.length > 0 ? `<ol class="weak-topic-list">${weakTopics.map(renderWeakTopic).join("")}</ol><button class="secondary compact-button full-width" id="practice-weakest-topic">Practice weakest topic</button>` : "<p>Complete a mock exam to see weak topics here.</p>"}
+      <h2>${escapeHtml(t("mock.weakAreas"))}</h2>
+      ${weakTopics.length > 0 ? `<ol class="weak-topic-list">${weakTopics.map(renderWeakTopic).join("")}</ol><button class="secondary compact-button full-width" id="practice-weakest-topic">${escapeHtml(t("mock.practiceWeakest"))}</button>` : `<p>${escapeHtml(t("mock.weakEmpty"))}</p>`}
     </section>
   `;
 }
@@ -559,7 +572,7 @@ function renderWeakTopic(topic: WeakTopicSummary): string {
   return `
     <li>
       <strong>${escapeHtml(topicLabel(topic.topic))}</strong>
-      <span>${topic.wrongCount} missed answer${topic.wrongCount === 1 ? "" : "s"} · ${topic.questionIds.length} question${topic.questionIds.length === 1 ? "" : "s"}</span>
+      <span>${escapeHtml(t("mock.weakSummary", { wrong: topic.wrongCount, questions: topic.questionIds.length }))}</span>
     </li>
   `;
 }
@@ -568,8 +581,8 @@ function renderMockHistorySection(): string {
   const attempts = progress.mockExamAttempts.slice(0, 5);
   return `
     <section>
-      <h2>Mock history</h2>
-      ${attempts.length > 0 ? `<ol class="mock-history">${attempts.map(renderMockAttempt).join("")}</ol>` : "<p>No saved mock attempts yet.</p>"}
+      <h2>${escapeHtml(t("mock.history"))}</h2>
+      ${attempts.length > 0 ? `<ol class="mock-history">${attempts.map(renderMockAttempt).join("")}</ol>` : `<p>${escapeHtml(t("common.noAttempts"))}</p>`}
     </section>
   `;
 }
@@ -578,7 +591,7 @@ function renderMockAttempt(attempt: MockExamAttempt): string {
   return `
     <li>
       <strong>${attempt.correct}/${attempt.totalQuestions}</strong>
-      <span>${attempt.passed ? "Passed" : "Not passed"} · ${escapeHtml(regionLabel(attempt.region))}</span>
+      <span>${escapeHtml(attempt.passed ? t("mock.passed") : t("mock.notPassed"))} · ${escapeHtml(regionLabel(attempt.region))}</span>
       <small>${escapeHtml(formatDateTime(attempt.completedAt))}</small>
     </li>
   `;
@@ -593,10 +606,10 @@ function renderSupportPanel(questionId: QuestionId): string {
   return `
     <aside class="support support-panel ${showSupport ? "" : "hidden"}">
       <details class="support-disclosure" open>
-        <summary>Study this question</summary>
+        <summary>${escapeHtml(t("practice.studyQuestion"))}</summary>
         <div class="support-content">
-          <section><h2>Key words</h2><dl>${support?.vocabulary.map((item) => `<div><dt lang="de" dir="ltr">${escapeHtml(item.source)}</dt><dd ${supportTextAttributes()}>${escapeHtml(item.translation)}</dd></div>`).join("") ?? ""}</dl></section>
-          ${support?.germanPattern ? `<section><h2>German pattern</h2><p><strong lang="de" dir="ltr">${escapeHtml(support.germanPattern.pattern)}</strong><br><span ${supportTextAttributes()}>${escapeHtml(support.germanPattern.meaning)}</span></p></section>` : ""}
+          <section><h2>${escapeHtml(t("practice.keyWords"))}</h2><dl>${support?.vocabulary.map((item) => `<div><dt lang="de" dir="ltr">${escapeHtml(item.source)}</dt><dd ${supportTextAttributes()}>${escapeHtml(item.translation)}</dd></div>`).join("") ?? ""}</dl></section>
+          ${support?.germanPattern ? `<section><h2>${escapeHtml(t("practice.germanPattern"))}</h2><p><strong lang="de" dir="ltr">${escapeHtml(support.germanPattern.pattern)}</strong><br><span ${supportTextAttributes()}>${escapeHtml(support.germanPattern.meaning)}</span></p></section>` : ""}
         </div>
       </details>
     </aside>`;
@@ -606,7 +619,7 @@ function bindShell(): void {
   app.querySelectorAll<HTMLButtonElement>("[data-mode]").forEach((button) => button.addEventListener("click", () => {
     navigateToMode(button.dataset.mode as PracticeMode);
   }));
-  app.querySelector<HTMLSelectElement>('select[aria-label="Region"]')?.addEventListener("change", (event) => {
+  app.querySelector<HTMLSelectElement>('select[data-setting="region"]')?.addEventListener("change", (event) => {
     selectedRegion = (event.currentTarget as HTMLSelectElement).value;
     customPracticeLabel = undefined;
     resetPracticeSession();
@@ -619,14 +632,21 @@ function bindShell(): void {
     usedSupportForQuestion = showSupport;
     render();
   });
-  app.querySelector<HTMLSelectElement>('select[aria-label="Translation language"]')?.addEventListener("change", (event) => {
+  app.querySelector<HTMLSelectElement>('select[data-setting="support-language"]')?.addEventListener("change", (event) => {
     selectedSupportLocale = (event.currentTarget as HTMLSelectElement).value;
     languageIndex = Math.min(languageIndex, Math.max(currentLanguageExercises().length - 1, 0));
     languageRevealed = false;
     usedSupportForQuestion = usedSupportForQuestion || showSupport;
     render();
   });
-  app.querySelector<HTMLSelectElement>('select[aria-label="Practice set"]')?.addEventListener("change", (event) => {
+  app.querySelector<HTMLSelectElement>('select[data-setting="interface-language"]')?.addEventListener("change", (event) => {
+    selectedUiLocale = (event.currentTarget as HTMLSelectElement).value;
+    window.localStorage.setItem(UI_LOCALE_STORAGE_KEY, selectedUiLocale);
+    updateUiTranslator();
+    applyDocumentLocale();
+    render();
+  });
+  app.querySelector<HTMLSelectElement>(".practice-toolbar select")?.addEventListener("change", (event) => {
     selectedPracticeSet = (event.currentTarget as HTMLSelectElement).value as PracticeSet;
     customPracticeLabel = undefined;
     resetPracticeSession();
@@ -646,7 +666,7 @@ function bindShell(): void {
   app.querySelector<HTMLButtonElement>("#practice-weakest-topic")?.addEventListener("click", () => {
     const weakestTopic = currentWeakTopics()[0];
     if (!weakestTopic) return;
-    startCustomPractice(`${topicLabel(weakestTopic.topic)} weak area`, weakestTopic.questionIds);
+    startCustomPractice(t("mock.weakAreaLabel", { topic: topicLabel(weakestTopic.topic) }), weakestTopic.questionIds);
   });
   app.querySelector<HTMLButtonElement>("#exit-mock")?.addEventListener("click", () => {
     clearMockTimer();
@@ -860,6 +880,8 @@ function currentWeakTopics(): readonly WeakTopicSummary[] {
 }
 
 function topicLabel(topic: string): string {
+  const localized = t(`topic.${topic}`);
+  if (localized !== `topic.${topic}`) return localized;
   return topic
     .split(/[-_\s]+/u)
     .filter(Boolean)
@@ -1047,10 +1069,21 @@ function createProgressSnapshot(): ProgressSnapshot {
 }
 
 function formatDateTime(value: string): string {
-  return new Intl.DateTimeFormat(undefined, {
+  return new Intl.DateTimeFormat(selectedUiLocale, {
     dateStyle: "medium",
     timeStyle: "short"
   }).format(new Date(value));
+}
+
+function updateUiTranslator(): void {
+  const fallback = uiMessages[uiManifest.defaultLocale] ?? {};
+  t = createUiTranslator(uiMessages[selectedUiLocale] ?? fallback, fallback);
+}
+
+function applyDocumentLocale(): void {
+  const option = uiManifest.locales.find((locale) => locale.id === selectedUiLocale);
+  document.documentElement.lang = selectedUiLocale;
+  document.documentElement.dir = option?.direction ?? "ltr";
 }
 
 function escapeHtml(value: string): string {
@@ -1063,9 +1096,20 @@ function escapeHtml(value: string): string {
 }
 
 async function start(): Promise<void> {
-  const bundle = await createFetchCatalogLoader().loadBundle();
+  const [bundle, uiBundle] = await Promise.all([
+    createFetchCatalogLoader().loadBundle(),
+    createFetchUiLoader().loadBundle()
+  ]);
   catalog = bundle.catalog;
   supportPacks = bundle.supportPacks;
+  uiManifest = uiBundle.manifest;
+  uiMessages = uiBundle.messages;
+  const savedUiLocale = window.localStorage.getItem(UI_LOCALE_STORAGE_KEY);
+  selectedUiLocale = uiManifest.locales.some((locale) => locale.id === savedUiLocale)
+    ? savedUiLocale as string
+    : uiManifest.defaultLocale;
+  updateUiTranslator();
+  applyDocumentLocale();
   engine = createPracticeEngine(catalog.questions, getAllSupportPacks(supportPacks));
   progress = loadProgress();
   selectedRegion = catalog.defaultRegion;
@@ -1078,6 +1122,6 @@ async function start(): Promise<void> {
 }
 
 start().catch((error: unknown) => {
-  const message = error instanceof Error ? error.message : "Unknown startup error";
-  app.innerHTML = `<main class="loading-state error"><h1>Could not load practice data</h1><p>${escapeHtml(message)}</p></main>`;
+  const message = error instanceof Error ? error.message : t("app.unknownError");
+  app.innerHTML = `<main class="loading-state error"><h1>${escapeHtml(t("app.loadError"))}</h1><p>${escapeHtml(message)}</p></main>`;
 });

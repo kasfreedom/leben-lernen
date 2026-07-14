@@ -41,7 +41,9 @@ nav { display: flex; align-self: stretch; gap: 8px; }
 .nav-item.active { color: var(--ink); }
 .nav-item:disabled { cursor: not-allowed; opacity: .48; }
 .nav-item.active::after { content: ""; position: absolute; height: 3px; background: var(--accent); left: 12px; right: 12px; bottom: 0; }
-.header-tools, .progress-label { display: flex; align-items: center; gap: 22px; }
+.header-settings { display: contents; }
+.header-settings > summary { display: none; }
+.header-tools, .progress-label { display: flex; align-items: center; gap: 16px; }
 .language, .region { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; }
 .language select, .region select { border: 1px solid var(--line); border-radius: 8px; background: white; padding: 9px 30px 9px 10px; font-size: 14px; }
 .progress-label { gap: 9px; white-space: nowrap; font-size: 14px; }
@@ -300,12 +302,38 @@ fieldset { border: 0; padding: 0; margin: 28px 0 22px; display: grid; gap: 12px;
     color: var(--ink);
   }
   .nav-item.active::after { display: none; }
+  .header-settings {
+    display: block;
+    width: 100%;
+  }
+  .header-settings > summary {
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 13px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fbfcfe;
+    cursor: pointer;
+    list-style: none;
+  }
+  .header-settings > summary::-webkit-details-marker { display: none; }
+  .header-settings > summary span { font-weight: 750; }
+  .header-settings > summary strong { min-width: 0; overflow: hidden; color: var(--muted); font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+  .header-settings > summary::after { content: "⌄"; color: var(--muted); }
+  .header-settings[open] > summary::after { transform: rotate(180deg); }
   .header-tools {
     width: 100%;
-    justify-self: stretch;
+    margin-top: 8px;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: white;
   }
   .language, .region {
     min-width: 0;
@@ -324,6 +352,7 @@ fieldset { border: 0; padding: 0; margin: 28px 0 22px; display: grid; gap: 12px;
   }
   .progress-label {
     align-self: end;
+    justify-content: center;
     min-height: 42px;
     padding: 0 10px;
     border: 1px solid var(--line);

@@ -1,7 +1,9 @@
 {
-  "defaultLocale": "en",
+  "defaultLocale": "de",
   "locales": [
+    { "id": "de", "label": "Deutsch", "direction": "ltr", "messagesPath": "de.json" },
     { "id": "en", "label": "English", "direction": "ltr", "messagesPath": "en.json" },
+    { "id": "ru", "label": "Русский", "direction": "ltr", "messagesPath": "ru.json" },
     { "id": "ar", "label": "العربية", "direction": "rtl", "messagesPath": "ar.json" }
   ]
 }

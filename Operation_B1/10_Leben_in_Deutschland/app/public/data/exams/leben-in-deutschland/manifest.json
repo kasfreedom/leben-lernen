@@ -27,6 +27,11 @@
       "id": "ar",
       "label": "العربية",
       "supportPath": "support/ar.json"
+    },
+    {
+      "id": "ru",
+      "label": "Русский",
+      "supportPath": "support/ru.json"
     }
   ]
 }

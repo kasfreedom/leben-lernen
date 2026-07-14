@@ -1158,7 +1158,7 @@ function formatDateTime(value: string): string {
 }
 
 function updateUiTranslator(): void {
-  const fallback = uiMessages[uiManifest.defaultLocale] ?? {};
+  const fallback = uiMessages.en ?? uiMessages[uiManifest.defaultLocale] ?? {};
   t = createUiTranslator(uiMessages[selectedUiLocale] ?? fallback, fallback);
 }
 

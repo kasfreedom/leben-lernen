@@ -9,8 +9,12 @@ const manifest = readJson<Omit<ExamCatalog, "questions">>(path.join(dataRoot, "m
 const generalQuestions = readJson<readonly SourceQuestion[]>(path.join(dataRoot, "questions.de.json"));
 const bavariaQuestions = readJson<readonly SourceQuestion[]>(path.join(dataRoot, "regions", "bavaria.de.json"));
 const germanQuestions = [...generalQuestions, ...bavariaQuestions];
-const englishSupport = readJson<readonly LearningSupport[]>(path.join(dataRoot, "support", "en.json"));
-const arabicSupport = readJson<readonly LearningSupport[]>(path.join(dataRoot, "support", "ar.json"));
+const supportPacks = Object.fromEntries(manifest.supportLocales.map((locale) => [
+  locale.id,
+  readJson<readonly LearningSupport[]>(path.join(dataRoot, locale.supportPath ?? `support/${locale.id}.json`))
+]));
+const englishSupport = supportPacks.en;
+const arabicSupport = supportPacks.ar;
 const catalog: ExamCatalog = {
   ...manifest,
   questions: germanQuestions
@@ -24,7 +28,7 @@ describe("BAMF Bavaria catalog content", () => {
     expect(catalog.questions.filter((question) => question.region === "bavaria")).toHaveLength(10);
     expect(catalog.defaultRegion).toBe("bavaria");
     expect(catalog.regions.map((region) => region.id)).toEqual(["bavaria"]);
-    expect(catalog.supportLocales.map((locale) => locale.id)).toEqual(["en", "ar"]);
+    expect(catalog.supportLocales.map((locale) => locale.id)).toEqual(["en", "ar", "ru"]);
   });
 
   it("has stable ids, four answer choices, and one correct choice per question", () => {
@@ -55,12 +59,10 @@ describe("BAMF Bavaria catalog content", () => {
     expect(mockQuestions.filter((question) => question.region === "bavaria")).toHaveLength(3);
   });
 
-  it("has English study support JSON for every catalog question", () => {
-    expectFullSupportCoverage(englishSupport, "en");
-  });
-
-  it("has Arabic study support JSON for every catalog question", () => {
-    expectFullSupportCoverage(arabicSupport, "ar");
+  it("has study support JSON for every catalog question in every exposed support locale", () => {
+    for (const locale of manifest.supportLocales) {
+      expectFullSupportCoverage(supportPacks[locale.id], locale.id);
+    }
   });
 
   it("preserves the answer blank and participation meaning in general-2", () => {

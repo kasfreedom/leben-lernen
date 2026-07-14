@@ -1,0 +1,5912 @@
+[
+  {
+    "questionId": "general-1",
+    "locale": "ru",
+    "translation": "В Германии люди могут открыто высказываться против правительства, потому что …",
+    "correctAnswerTranslation": "здесь действует свобода слова.",
+    "simpleExplanation": "Свобода слова — это фундаментальное право в Германии, позволяющее людям свободно выражать свои мнения, в том числе критиковать правительство.",
+    "vocabulary": [
+      {
+        "source": "dürfen",
+        "translation": "мочь, иметь разрешение"
+      },
+      {
+        "source": "die Regierung",
+        "translation": "правительство"
+      },
+      {
+        "source": "Meinungsfreiheit",
+        "translation": "свобода слова"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "etwas gegen ... sagen",
+      "meaning": "высказываться против чего-либо"
+    }
+  },
+  {
+    "questionId": "general-2",
+    "locale": "ru",
+    "translation": "В Германии родители могут до 14-летия своего ребенка решать, будет ли он в школе посещать …",
+    "correctAnswerTranslation": "уроки религии.",
+    "simpleExplanation": "В Германии родители имеют право решать, будет ли их ребенок посещать уроки религии в школе до достижения им 14 лет.",
+    "vocabulary": [
+      {
+        "source": "entscheiden",
+        "translation": "решать"
+      },
+      {
+        "source": "teilnehmen",
+        "translation": "участвовать"
+      },
+      {
+        "source": "Religionsunterricht",
+        "translation": "уроки религии"
+      }
+    ]
+  },
+  {
+    "questionId": "general-3",
+    "locale": "ru",
+    "translation": "Германия — правовое государство. Что это значит?",
+    "correctAnswerTranslation": "Все жители и государство должны соблюдать законы.",
+    "simpleExplanation": "Правовое государство означает, что все, включая правительство, подчиняются законам.",
+    "vocabulary": [
+      {
+        "source": "der Rechtsstaat",
+        "translation": "правовое государство"
+      },
+      {
+        "source": "sich an Gesetze halten",
+        "translation": "соблюдать законы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-4",
+    "locale": "ru",
+    "translation": "Какое право относится к основным правам в Германии?",
+    "correctAnswerTranslation": "Свобода слова",
+    "simpleExplanation": "Свобода слова является одним из основных прав, закрепленных в Конституции Германии.",
+    "vocabulary": [
+      {
+        "source": "das Grundrecht",
+        "translation": "основное право"
+      },
+      {
+        "source": "gehört zu",
+        "translation": "относится к"
+      }
+    ]
+  },
+  {
+    "questionId": "general-5",
+    "locale": "ru",
+    "translation": "Выборы в Германии свободны. Что это значит?",
+    "correctAnswerTranslation": "Избиратель не должен подвергаться влиянию или принуждению к определенному голосованию и не должен иметь никаких недостатков из-за голосования.",
+    "simpleExplanation": "Свободные выборы означают, что каждый избиратель может голосовать по своему усмотрению, без давления или негативных последствий.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "frei",
+        "translation": "свободный"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-6",
+    "locale": "ru",
+    "translation": "Как называется немецкая конституция?",
+    "correctAnswerTranslation": "Основной закон",
+    "simpleExplanation": "Конституция Германии называется Основным законом (Grundgesetz).",
+    "vocabulary": [
+      {
+        "source": "die Verfassung",
+        "translation": "конституция"
+      },
+      {
+        "source": "heißen",
+        "translation": "называться"
+      },
+      {
+        "source": "das Grundgesetz",
+        "translation": "Основной закон"
+      }
+    ]
+  },
+  {
+    "questionId": "general-7",
+    "locale": "ru",
+    "translation": "Какое право относится к основным правам, гарантированным немецкой конституцией? Право на …",
+    "correctAnswerTranslation": "свободу вероисповедания и совести",
+    "simpleExplanation": "Свобода вероисповедания и совести является одним из основных прав, закрепленных в Конституции Германии.",
+    "vocabulary": [
+      {
+        "source": "Grundrecht",
+        "translation": "основное право"
+      },
+      {
+        "source": "Verfassung",
+        "translation": "конституция"
+      },
+      {
+        "source": "Freiheit",
+        "translation": "свобода"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какое ...?"
+    }
+  },
+  {
+    "questionId": "general-8",
+    "locale": "ru",
+    "translation": "Чего нет в Основном законе Германии?",
+    "correctAnswerTranslation": "Все должны иметь одинаковое количество денег.",
+    "simpleExplanation": "Основной закон Германии гарантирует равенство перед законом и достоинство человека, но не равенство в доходах.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Grundgesetz",
+        "translation": "Основной закон"
+      }
+    ]
+  },
+  {
+    "questionId": "general-9",
+    "locale": "ru",
+    "translation": "Какое основное право в Германии действует только для иностранцев? Основное право на …",
+    "correctAnswerTranslation": "убежище",
+    "simpleExplanation": "Право на убежище является основным правом, которое в Германии предоставляется только иностранцам.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Grundrecht",
+        "translation": "основное право"
+      },
+      {
+        "source": "Asyl",
+        "translation": "убежище"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какое ...?"
+    }
+  },
+  {
+    "questionId": "general-10",
+    "locale": "ru",
+    "translation": "Что соответствует Основному закону Германии?",
+    "correctAnswerTranslation": "денежный штраф",
+    "simpleExplanation": "Денежный штраф является законным наказанием в Германии, в отличие от телесных наказаний, пыток или смертной казни, которые запрещены Основным законом.",
+    "vocabulary": [
+      {
+        "source": "Grundgesetz",
+        "translation": "Основной закон"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-11",
+    "locale": "ru",
+    "translation": "Как называется конституция Федеративной Республики Германия?",
+    "correctAnswerTranslation": "Основной закон",
+    "simpleExplanation": "Конституция Германии называется Основным законом (Grundgesetz).",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Grundgesetz",
+        "translation": "Основной закон"
+      },
+      {
+        "source": "Verfassung",
+        "translation": "конституция"
+      }
+    ]
+  },
+  {
+    "questionId": "general-12",
+    "locale": "ru",
+    "translation": "Партия в Бундестаге хочет отменить свободу прессы. Возможно ли это?",
+    "correctAnswerTranslation": "Нет, потому что свобода прессы — это основное право. Её нельзя отменить.",
+    "simpleExplanation": "Свобода прессы является одним из основных прав и не может быть отменена.",
+    "vocabulary": [
+      {
+        "source": "Pressefreiheit",
+        "translation": "свобода прессы"
+      },
+      {
+        "source": "abschaffen",
+        "translation": "отменить"
+      },
+      {
+        "source": "Grundrecht",
+        "translation": "основное право"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-13",
+    "locale": "ru",
+    "translation": "В парламенте термин «оппозиция» означает …",
+    "correctAnswerTranslation": "всех депутатов, которые не принадлежат к правящей партии/правящим партиям.",
+    "simpleExplanation": "Оппозиция — это партии, которые не входят в правительство.",
+    "vocabulary": [
+      {
+        "source": "Abgeordnete",
+        "translation": "депутаты"
+      },
+      {
+        "source": "Opposition",
+        "translation": "оппозиция"
+      },
+      {
+        "source": "Parlament",
+        "translation": "парламент"
+      },
+      {
+        "source": "Regierung",
+        "translation": "правительство"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-14",
+    "locale": "ru",
+    "translation": "Свобода слова в Германии означает, что я …",
+    "correctAnswerTranslation": "могу выражать своё мнение в интернете.",
+    "simpleExplanation": "Свобода слова позволяет выражать своё мнение, например, в интернете.",
+    "vocabulary": [
+      {
+        "source": "Meinungsfreiheit",
+        "translation": "свобода слова"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "heißt",
+        "translation": "означает"
+      }
+    ]
+  },
+  {
+    "questionId": "general-15",
+    "locale": "ru",
+    "translation": "Что запрещает Основной закон Германии?",
+    "correctAnswerTranslation": "принудительный труд",
+    "simpleExplanation": "Основной закон Германии запрещает принудительный труд.",
+    "vocabulary": [
+      {
+        "source": "Grundgesetz",
+        "translation": "Основной закон"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "труд"
+      }
+    ]
+  },
+  {
+    "questionId": "general-16",
+    "locale": "ru",
+    "translation": "Когда свобода слова в Германии ограничена?",
+    "correctAnswerTranslation": "при публичном распространении ложных утверждений о конкретных лицах",
+    "simpleExplanation": "Свобода слова ограничена, если она нарушает права других, например, распространяя ложные сведения.",
+    "vocabulary": [
+      {
+        "source": "Meinungsfreiheit",
+        "translation": "свобода слова"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wann ...?",
+      "meaning": "Когда ...?"
+    }
+  },
+  {
+    "questionId": "general-17",
+    "locale": "ru",
+    "translation": "Немецкие законы запрещают …",
+    "correctAnswerTranslation": "неравное обращение с гражданами со стороны государства.",
+    "simpleExplanation": "Законы Германии запрещают дискриминацию и неравное обращение со стороны государства.",
+    "vocabulary": [
+      {
+        "source": "Gesetz",
+        "translation": "закон"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-18",
+    "locale": "ru",
+    "translation": "Какое основное право гарантировано в статье 1 Основного закона Федеративной Республики Германия?",
+    "correctAnswerTranslation": "неприкосновенность человеческого достоинства",
+    "simpleExplanation": "Статья 1 Основного закона гарантирует неприкосновенность человеческого достоинства.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Menschenwürde",
+        "translation": "человеческое достоинство"
+      },
+      {
+        "source": "Grundgesetz",
+        "translation": "Основной закон"
+      },
+      {
+        "source": "Grundrecht",
+        "translation": "основное право"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какое ...?"
+    }
+  },
+  {
+    "questionId": "general-19",
+    "locale": "ru",
+    "translation": "Что понимается под правом «свободы передвижения» в Германии?",
+    "correctAnswerTranslation": "Можно самому выбирать место жительства.",
+    "simpleExplanation": "Свобода передвижения означает право выбирать место жительства.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "frei",
+        "translation": "свободный"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was versteht man unter ...?",
+      "meaning": "Что понимается под ...?"
+    }
+  },
+  {
+    "questionId": "general-20",
+    "locale": "ru",
+    "translation": "Партия в Германии преследует цель установления диктатуры. Тогда она …",
+    "correctAnswerTranslation": "антиконституционна.",
+    "simpleExplanation": "Партия, стремящаяся к диктатуре, является антиконституционной.",
+    "vocabulary": [
+      {
+        "source": "verfassungswidrig",
+        "translation": "антиконституционный"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Diktatur",
+        "translation": "диктатура"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-21",
+    "locale": "ru",
+    "translation": "Какой герб у Федеративной Республики Германия?",
+    "correctAnswerTranslation": "Изображение 1",
+    "simpleExplanation": "Герб Германии — это чёрный орёл на золотом фоне, смотрящий влево, с красными лапами и клювом. Это один из старейших государственных символов Европы.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Wappen",
+        "translation": "герб"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какой ...?"
+    }
+  },
+  {
+    "questionId": "general-22",
+    "locale": "ru",
+    "translation": "Какая форма правления в Германии?",
+    "correctAnswerTranslation": "Республика",
+    "simpleExplanation": "Германия является парламентской республикой, где глава государства — президент, а глава правительства — канцлер.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Republik",
+        "translation": "республика"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-23",
+    "locale": "ru",
+    "translation": "В Германии большинство работающих людей …",
+    "correctAnswerTranslation": "работают в фирме или ведомстве.",
+    "simpleExplanation": "Большинство людей в Германии работают по найму в компаниях или государственных учреждениях, а не являются самозанятыми или работают в семейном бизнесе.",
+    "vocabulary": [
+      {
+        "source": "Erwerbstätigen",
+        "translation": "работающие люди"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Behörde",
+        "translation": "ведомство, орган власти"
+      }
+    ]
+  },
+  {
+    "questionId": "general-24",
+    "locale": "ru",
+    "translation": "Сколько федеральных земель в Федеративной Республике Германия?",
+    "correctAnswerTranslation": "16",
+    "simpleExplanation": "Германия состоит из 16 федеральных земель, каждая из которых имеет свою конституцию и правительство.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Bundesländer",
+        "translation": "федеральные земли"
+      }
+    ]
+  },
+  {
+    "questionId": "general-25",
+    "locale": "ru",
+    "translation": "Что не является федеральной землёй Федеративной Республики Германия?",
+    "correctAnswerTranslation": "Эльзас-Лотарингия",
+    "simpleExplanation": "Эльзас-Лотарингия — это историческая область, которая сейчас является частью Франции. Остальные варианты — федеральные земли Германии.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Bundesland",
+        "translation": "федеральная земля"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-26",
+    "locale": "ru",
+    "translation": "Германия — это …",
+    "correctAnswerTranslation": "демократическое и социальное федеративное государство.",
+    "simpleExplanation": "Германия — это демократическое государство, где власть принадлежит народу, и социальное государство, которое заботится о благосостоянии своих граждан. Это также федеративное государство, состоящее из земель.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-27",
+    "locale": "ru",
+    "translation": "Германия — это …",
+    "correctAnswerTranslation": "федеративное государство.",
+    "simpleExplanation": "Германия является федеративным государством, состоящим из 16 федеральных земель, каждая из которых имеет определённую автономию.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-28",
+    "locale": "ru",
+    "translation": "Кто в Германии выбирает депутатов Бундестага?",
+    "correctAnswerTranslation": "народ, имеющий право голоса",
+    "simpleExplanation": "Депутатов Бундестага (парламента Германии) выбирают граждане Германии, достигшие 18 лет и имеющие право голоса.",
+    "vocabulary": [
+      {
+        "source": "Abgeordnete",
+        "translation": "депутаты"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      },
+      {
+        "source": "Volk",
+        "translation": "народ"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-29",
+    "locale": "ru",
+    "translation": "Какое животное является гербовым животным Федеративной Республики Германия?",
+    "correctAnswerTranslation": "Орёл",
+    "simpleExplanation": "Орёл является символом Германии на протяжении многих веков и изображён на государственном гербе.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Wappen",
+        "translation": "герб"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какое ...?"
+    }
+  },
+  {
+    "questionId": "general-30",
+    "locale": "ru",
+    "translation": "Что не является признаком нашей демократии?",
+    "correctAnswerTranslation": "Цензура прессы",
+    "simpleExplanation": "Цензура прессы противоречит принципам демократии, которая гарантирует свободу слова и печати. Регулярные выборы, свобода мнений и многопартийность — это важные признаки демократии.",
+    "vocabulary": [
+      {
+        "source": "Demokratie",
+        "translation": "демократия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-31",
+    "locale": "ru",
+    "translation": "Сотрудничество партий для формирования правительства в Германии называется ...",
+    "correctAnswerTranslation": "Коалиция.",
+    "simpleExplanation": "Коалиция — это объединение нескольких партий для совместного управления страной.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Regierung",
+        "translation": "правительство"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-32",
+    "locale": "ru",
+    "translation": "Что не является государственной властью в Германии?",
+    "correctAnswerTranslation": "Пресса",
+    "simpleExplanation": "В Германии государственная власть разделена на законодательную, исполнительную и судебную. Пресса является независимой.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-33",
+    "locale": "ru",
+    "translation": "Какое утверждение верно? В Германии ...",
+    "correctAnswerTranslation": "государство и религиозные общины отделены друг от друга.",
+    "simpleExplanation": "В Германии действует принцип разделения государства и церкви, что означает их независимость друг от друга.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какое ...?"
+    }
+  },
+  {
+    "questionId": "general-34",
+    "locale": "ru",
+    "translation": "Чем не является Германия?",
+    "correctAnswerTranslation": "монархией",
+    "simpleExplanation": "Германия — это демократическая республика, а не монархия.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-35",
+    "locale": "ru",
+    "translation": "Чем немецкое государство финансирует социальное страхование?",
+    "correctAnswerTranslation": "Социальными отчислениями",
+    "simpleExplanation": "Социальное страхование финансируется за счет обязательных отчислений работников и работодателей.",
+    "vocabulary": [
+      {
+        "source": "Sozialversicherung",
+        "translation": "социальное страхование"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-36",
+    "locale": "ru",
+    "translation": "Какая мера обеспечивает социальную безопасность в Германии?",
+    "correctAnswerTranslation": "медицинское страхование",
+    "simpleExplanation": "Медицинское страхование является важной частью системы социальной безопасности в Германии, обеспечивая доступ к медицинским услугам.",
+    "vocabulary": [
+      {
+        "source": "Krankenversicherung",
+        "translation": "медицинское страхование"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какая ...?"
+    }
+  },
+  {
+    "questionId": "general-37",
+    "locale": "ru",
+    "translation": "Как называются главы правительств большинства федеральных земель Германии?",
+    "correctAnswerTranslation": "Премьер-министр / Премьер-министр",
+    "simpleExplanation": "В большинстве федеральных земель Германии главу правительства называют Ministerpräsident (премьер-министр).",
+    "vocabulary": [
+      {
+        "source": "Ministerpräsidentin/Ministerpräsident",
+        "translation": "премьер-министр"
+      },
+      {
+        "source": "Bundesländer",
+        "translation": "федеральные земли"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Regierung",
+        "translation": "правительство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-38",
+    "locale": "ru",
+    "translation": "Федеративная Республика Германия является демократическим и социальным ...",
+    "correctAnswerTranslation": "федеративным государством.",
+    "simpleExplanation": "Германия — это федеративное государство, состоящее из 16 федеральных земель, которые имеют свои правительства и парламенты.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-39",
+    "locale": "ru",
+    "translation": "Что есть у каждой немецкой федеральной земли?",
+    "correctAnswerTranslation": "собственное правительство",
+    "simpleExplanation": "Каждая федеральная земля в Германии имеет свое собственное правительство, которое управляет делами земли.",
+    "vocabulary": [
+      {
+        "source": "Bundesland",
+        "translation": "федеральная земля"
+      },
+      {
+        "source": "Regierung",
+        "translation": "правительство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-40",
+    "locale": "ru",
+    "translation": "Какими словами начинается немецкий национальный гимн?",
+    "correctAnswerTranslation": "Единство, право и свобода ...",
+    "simpleExplanation": "Немецкий национальный гимн начинается со слов «Einigkeit und Recht und Freiheit» (Единство, право и свобода).",
+    "vocabulary": [
+      {
+        "source": "Freiheit",
+        "translation": "свобода"
+      }
+    ]
+  },
+  {
+    "questionId": "general-41",
+    "locale": "ru",
+    "translation": "Почему в демократии существует более одной партии?",
+    "correctAnswerTranslation": "потому что это представляет различные мнения граждан",
+    "simpleExplanation": "Множество партий в демократии обеспечивает представление различных мнений граждан, что является основой плюрализма и свободы выбора.",
+    "vocabulary": [
+      {
+        "source": "Demokratie",
+        "translation": "демократия"
+      },
+      {
+        "source": "Meinung",
+        "translation": "мнение"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-42",
+    "locale": "ru",
+    "translation": "Кто принимает новый закон в Германии?",
+    "correctAnswerTranslation": "парламент",
+    "simpleExplanation": "В Германии законы принимаются парламентом (Бундестагом), который состоит из избранных представителей народа.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Parlament",
+        "translation": "парламент"
+      },
+      {
+        "source": "Gesetz",
+        "translation": "закон"
+      }
+    ]
+  },
+  {
+    "questionId": "general-43",
+    "locale": "ru",
+    "translation": "Когда партия может быть запрещена в Германии?",
+    "correctAnswerTranslation": "если она борется против конституции",
+    "simpleExplanation": "Партия может быть запрещена в Германии, если её деятельность направлена против основ конституционного строя.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Verfassung",
+        "translation": "конституция"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wann ...?",
+      "meaning": "Когда ...?"
+    }
+  },
+  {
+    "questionId": "general-44",
+    "locale": "ru",
+    "translation": "Кого гражданин/гражданка в Германии не может выбрать напрямую?",
+    "correctAnswerTranslation": "Федерального президента/Федеральную президентку",
+    "simpleExplanation": "Федеральный президент в Германии избирается не напрямую гражданами, а Федеральным собранием.",
+    "vocabulary": [
+      {
+        "source": "Bundespräsident",
+        "translation": "федеральный президент"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "wählen",
+        "translation": "выбирать"
+      }
+    ]
+  },
+  {
+    "questionId": "general-45",
+    "locale": "ru",
+    "translation": "К какому виду страхования относится страхование по уходу?",
+    "correctAnswerTranslation": "социальное страхование",
+    "simpleExplanation": "Страхование по уходу (Pflegeversicherung) является частью системы социального страхования в Германии, наряду с медицинским, пенсионным, страхованием от безработицы и от несчастных случаев.",
+    "vocabulary": [
+      {
+        "source": "Pflegeversicherung",
+        "translation": "страхование по уходу"
+      },
+      {
+        "source": "Sozialversicherung",
+        "translation": "социальное страхование"
+      }
+    ]
+  },
+  {
+    "questionId": "general-46",
+    "locale": "ru",
+    "translation": "У немецкого государства много задач. Какая задача относится к ним?",
+    "correctAnswerTranslation": "Оно строит дороги и школы.",
+    "simpleExplanation": "Государство в Германии отвечает за общественную инфраструктуру, такую как строительство дорог и школ.",
+    "vocabulary": [
+      {
+        "source": "Aufgabe",
+        "translation": "задача"
+      },
+      {
+        "source": "Schule",
+        "translation": "школа"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-47",
+    "locale": "ru",
+    "translation": "У немецкого государства много задач. Какая задача не относится к ним?",
+    "correctAnswerTranslation": "Оно оплачивает отпускные поездки для всех граждан.",
+    "simpleExplanation": "Государство не оплачивает отпускные поездки для всех граждан; это личная ответственность каждого.",
+    "vocabulary": [
+      {
+        "source": "Aufgabe",
+        "translation": "задача"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-48",
+    "locale": "ru",
+    "translation": "Какой орган не относится к конституционным органам Германии?",
+    "correctAnswerTranslation": "гражданское собрание",
+    "simpleExplanation": "Гражданское собрание не является конституционным органом Германии. Конституционные органы включают Бундесрат, Федерального президента и правительство.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Verfassung",
+        "translation": "конституция"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какое ...?"
+    }
+  },
+  {
+    "questionId": "general-49",
+    "locale": "ru",
+    "translation": "Кто определяет школьную политику в Германии?",
+    "correctAnswerTranslation": "федеральные земли",
+    "simpleExplanation": "В Германии школьная политика находится в компетенции отдельных федеральных земель, а не федерального правительства.",
+    "vocabulary": [
+      {
+        "source": "Bundesländer",
+        "translation": "федеральные земли"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-50",
+    "locale": "ru",
+    "translation": "Экономическая форма в Германии называется …",
+    "correctAnswerTranslation": "социальная рыночная экономика.",
+    "simpleExplanation": "Экономическая система Германии — это социальная рыночная экономика, которая сочетает свободный рынок с социальной ответственностью.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-51",
+    "locale": "ru",
+    "translation": "К демократическому правовому государству не относится то, что ...",
+    "correctAnswerTranslation": "люди арестовываются частной полицией без причины.",
+    "simpleExplanation": "В правовом государстве аресты могут производиться только государственными органами (полицией) и только при наличии законных оснований.",
+    "vocabulary": [
+      {
+        "source": "Rechtsstaat",
+        "translation": "правовое государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-52",
+    "locale": "ru",
+    "translation": "Что означает «народный суверенитет»? Вся государственная власть исходит от ...",
+    "correctAnswerTranslation": "народа.",
+    "simpleExplanation": "Народный суверенитет означает, что вся государственная власть исходит от народа, который осуществляет ее через выборы и голосования.",
+    "vocabulary": [
+      {
+        "source": "Staat",
+        "translation": "государство"
+      },
+      {
+        "source": "Volk",
+        "translation": "народ"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was bedeutet ...?",
+      "meaning": "Что означает ...?"
+    }
+  },
+  {
+    "questionId": "general-53",
+    "locale": "ru",
+    "translation": "Что означает «правовое государство» в Германии?",
+    "correctAnswerTranslation": "Государство должно соблюдать законы.",
+    "simpleExplanation": "Правовое государство означает, что государство само подчиняется законам и действует в соответствии с ними, защищая права граждан.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Rechtsstaat",
+        "translation": "правовое государство"
+      },
+      {
+        "source": "Gesetz",
+        "translation": "закон"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was bedeutet ...?",
+      "meaning": "Что означает ...?"
+    }
+  },
+  {
+    "questionId": "general-54",
+    "locale": "ru",
+    "translation": "Что не является государственной властью в Германии?",
+    "correctAnswerTranslation": "Директива",
+    "simpleExplanation": "В Германии государственная власть разделена на законодательную (Legislative), исполнительную (Exekutive) и судебную (Judikative). «Директива» не является одной из этих ветвей власти.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-55",
+    "locale": "ru",
+    "translation": "Что изображено на этой картинке? © Deutscher Bundestag/Achim Melde",
+    "correctAnswerTranslation": "местонахождение Бундестага в Берлине",
+    "simpleExplanation": "На изображении показано здание Рейхстага в Берлине, где заседает Бундестаг.",
+    "vocabulary": [
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-56",
+    "locale": "ru",
+    "translation": "Какое ведомство в Германии относится к муниципальной администрации?",
+    "correctAnswerTranslation": "Управление общественного порядка (Ordnungsamt)",
+    "simpleExplanation": "Ordnungsamt отвечает за поддержание общественного порядка и безопасности на местном уровне, что является частью муниципальной администрации.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Gemeinde",
+        "translation": "община, муниципалитет"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какое ...?"
+    }
+  },
+  {
+    "questionId": "general-57",
+    "locale": "ru",
+    "translation": "Кто чаще всего избирается председателем/председательницей Немецкого Бундестага?",
+    "correctAnswerTranslation": "депутат/депутатка от самой сильной фракции",
+    "simpleExplanation": "Председатель Бундестага обычно избирается из числа депутатов самой крупной парламентской фракции.",
+    "vocabulary": [
+      {
+        "source": "Abgeordnete",
+        "translation": "депутат"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-58",
+    "locale": "ru",
+    "translation": "Кто назначает министров федерального правительства в Германии?",
+    "correctAnswerTranslation": "федеральный президент/федеральная президентка",
+    "simpleExplanation": "Федеральный президент назначает министров по предложению федерального канцлера.",
+    "vocabulary": [
+      {
+        "source": "Bundespräsident",
+        "translation": "федеральный президент"
+      },
+      {
+        "source": "Bundesregierung",
+        "translation": "федеральное правительство"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-59",
+    "locale": "ru",
+    "translation": "Сколько лет назад впервые появилась еврейская община на территории современной Германии?",
+    "correctAnswerTranslation": "около 1700 лет назад",
+    "simpleExplanation": "Первые свидетельства о еврейских общинах на территории Германии относятся к IV веку нашей эры.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Gemeinde",
+        "translation": "община"
+      }
+    ]
+  },
+  {
+    "questionId": "general-60",
+    "locale": "ru",
+    "translation": "В Германии Бундестаг и Бундесрат относятся к ...",
+    "correctAnswerTranslation": "законодательной власти.",
+    "simpleExplanation": "Бундестаг и Бундесрат являются законодательными органами Германии, отвечающими за принятие законов.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Bundesrat",
+        "translation": "Бундесрат (Федеральный совет)"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-61",
+    "locale": "ru",
+    "translation": "Что означает «народный суверенитет»?",
+    "correctAnswerTranslation": "Государственная власть исходит от народа.",
+    "simpleExplanation": "Народный суверенитет означает, что вся государственная власть исходит от народа.",
+    "vocabulary": [
+      {
+        "source": "Staat",
+        "translation": "государство"
+      },
+      {
+        "source": "Volk",
+        "translation": "народ"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was bedeutet ...?",
+      "meaning": "Что означает ...?"
+    }
+  },
+  {
+    "questionId": "general-62",
+    "locale": "ru",
+    "translation": "Когда избирается парламент немецкой федеральной земли, это называется …",
+    "correctAnswerTranslation": "Выборы в ландтаг",
+    "simpleExplanation": "Выборы в парламент федеральной земли называются выборами в ландтаг.",
+    "vocabulary": [
+      {
+        "source": "Bundesland",
+        "translation": "федеральная земля"
+      },
+      {
+        "source": "Parlament",
+        "translation": "парламент"
+      },
+      {
+        "source": "Landtag",
+        "translation": "ландтаг (парламент федеральной земли)"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-63",
+    "locale": "ru",
+    "translation": "Что в Германии не относится к исполнительной власти?",
+    "correctAnswerTranslation": "суды",
+    "simpleExplanation": "Суды относятся к судебной власти, а не к исполнительной.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Gericht",
+        "translation": "суд"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was gehört ...?",
+      "meaning": "Что относится к ...?"
+    }
+  },
+  {
+    "questionId": "general-64",
+    "locale": "ru",
+    "translation": "Федеративная Республика Германия сегодня разделена на …",
+    "correctAnswerTranslation": "Федерацию, земли и общины.",
+    "simpleExplanation": "Германия имеет федеративное устройство, состоящее из федерального уровня, уровня земель и уровня общин.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-65",
+    "locale": "ru",
+    "translation": "К задачам Бундестага Германии не относится …",
+    "correctAnswerTranslation": "формирование федерального кабинета.",
+    "simpleExplanation": "Бундестаг не формирует федеральный кабинет; это делает канцлер.",
+    "vocabulary": [
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг"
+      },
+      {
+        "source": "Aufgabe",
+        "translation": "задача"
+      }
+    ]
+  },
+  {
+    "questionId": "general-66",
+    "locale": "ru",
+    "translation": "Какие города имеют самые большие еврейские общины в Германии?",
+    "correctAnswerTranslation": "Берлин и Мюнхен",
+    "simpleExplanation": "Берлин и Мюнхен являются городами с крупнейшими еврейскими общинами в Германии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Gemeinde",
+        "translation": "община"
+      },
+      {
+        "source": "München",
+        "translation": "Мюнхен"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какие ...?"
+    }
+  },
+  {
+    "questionId": "general-67",
+    "locale": "ru",
+    "translation": "Что в Германии является прежде всего задачей федеральных земель?",
+    "correctAnswerTranslation": "Школьная политика",
+    "simpleExplanation": "Школьная политика находится в компетенции федеральных земель.",
+    "vocabulary": [
+      {
+        "source": "Bundesländer",
+        "translation": "федеральные земли"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Aufgabe",
+        "translation": "задача"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что является ...?"
+    }
+  },
+  {
+    "questionId": "general-68",
+    "locale": "ru",
+    "translation": "Почему государство в Германии контролирует школьную систему?",
+    "correctAnswerTranslation": "потому что это его задача согласно Основному закону",
+    "simpleExplanation": "Контроль над школьной системой является задачей государства согласно Основному закону Германии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Grundgesetz",
+        "translation": "Основной закон"
+      },
+      {
+        "source": "Aufgabe",
+        "translation": "задача"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-69",
+    "locale": "ru",
+    "translation": "Федеративная Республика Германия имеет трехступенчатую административную структуру. Как называется самый низкий политический уровень?",
+    "correctAnswerTranslation": "Общины",
+    "simpleExplanation": "Самый низкий уровень административной структуры в Германии — это общины.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Gemeinde",
+        "translation": "община"
+      },
+      {
+        "source": "heißt",
+        "translation": "называется"
+      }
+    ]
+  },
+  {
+    "questionId": "general-70",
+    "locale": "ru",
+    "translation": "Президент Германии Густав Хайнеманн вручает Гельмуту Шмидту в 1974 году документ о назначении на пост канцлера Германии. Что входит в обязанности президента Германии? © Bundesregierung/Engelbert Reineke",
+    "correctAnswerTranslation": "Он/она предлагает кандидата на пост канцлера для избрания.",
+    "simpleExplanation": "Президент Германии предлагает кандидата на пост канцлера для избрания Бундестагом.",
+    "vocabulary": [
+      {
+        "source": "Bundespräsident",
+        "translation": "федеральный президент"
+      },
+      {
+        "source": "Bundesregierung",
+        "translation": "федеральное правительство"
+      },
+      {
+        "source": "Aufgabe",
+        "translation": "задача"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-71",
+    "locale": "ru",
+    "translation": "Где чаще всего находится канцлер Германии? Чаще всего она/он находится ...",
+    "correctAnswerTranslation": "в Берлине, потому что там находятся Ведомство федерального канцлера и Бундестаг.",
+    "simpleExplanation": "Канцлер Германии работает в Берлине, где расположены основные правительственные учреждения.",
+    "vocabulary": [
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wo ...?",
+      "meaning": "Где ...?"
+    }
+  },
+  {
+    "questionId": "general-72",
+    "locale": "ru",
+    "translation": "Как зовут нынешнего федерального канцлера Германии?",
+    "correctAnswerTranslation": "Фридрих Мерц",
+    "simpleExplanation": "На момент создания этого вопроса, Фридрих Мерц был указан как правильный ответ. Однако, канцлером Германии является Олаф Шольц.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "heißt",
+        "translation": "зовут"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wie heißt ...?",
+      "meaning": "Как зовут ...?"
+    }
+  },
+  {
+    "questionId": "general-73",
+    "locale": "ru",
+    "translation": "Две крупнейшие фракции в немецком Бундестаге в настоящее время называются ...",
+    "correctAnswerTranslation": "ХДС/ХСС и АдГ.",
+    "simpleExplanation": "ХДС/ХСС (Христианско-демократический союз/Христианско-социальный союз) и АдГ (Альтернатива для Германии) являются двумя крупнейшими фракциями в Бундестаге.",
+    "vocabulary": [
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-74",
+    "locale": "ru",
+    "translation": "Как называется парламент всей Германии?",
+    "correctAnswerTranslation": "Бундестаг",
+    "simpleExplanation": "Бундестаг — это парламент Германии, который представляет интересы всего народа.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      },
+      {
+        "source": "Parlament",
+        "translation": "парламент"
+      },
+      {
+        "source": "heißt",
+        "translation": "называется"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wie heißt ...?",
+      "meaning": "Как называется ...?"
+    }
+  },
+  {
+    "questionId": "general-75",
+    "locale": "ru",
+    "translation": "Как зовут нынешнего главу государства Германии?",
+    "correctAnswerTranslation": "Франк-Вальтер Штайнмайер",
+    "simpleExplanation": "Франк-Вальтер Штайнмайер является нынешним федеральным президентом Германии, который является главой государства.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Alter",
+        "translation": "возраст"
+      },
+      {
+        "source": "heißt",
+        "translation": "зовут"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wie heißt ...?",
+      "meaning": "Как зовут ...?"
+    }
+  },
+  {
+    "questionId": "general-76",
+    "locale": "ru",
+    "translation": "Что означает аббревиатура ХДС в Германии?",
+    "correctAnswerTranslation": "Христианско-демократический союз",
+    "simpleExplanation": "ХДС (CDU) — это одна из крупнейших политических партий в Германии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was bedeutet ...?",
+      "meaning": "Что означает ...?"
+    }
+  },
+  {
+    "questionId": "general-77",
+    "locale": "ru",
+    "translation": "Что такое Бундесвер?",
+    "correctAnswerTranslation": "немецкая армия",
+    "simpleExplanation": "Бундесвер — это вооруженные силы Федеративной Республики Германия.",
+    "vocabulary": [
+      {
+        "source": "Bundeswehr",
+        "translation": "Бундесвер (вооруженные силы Германии)"
+      },
+      {
+        "source": "deutsche",
+        "translation": "немецкий"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-78",
+    "locale": "ru",
+    "translation": "Что означает аббревиатура СДПГ?",
+    "correctAnswerTranslation": "Социал-демократическая партия Германии",
+    "simpleExplanation": "СДПГ (SPD) — это одна из старейших и крупнейших политических партий в Германии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was bedeutet ...?",
+      "meaning": "Что означает ...?"
+    }
+  },
+  {
+    "questionId": "general-79",
+    "locale": "ru",
+    "translation": "Что означает аббревиатура СвДП в Германии?",
+    "correctAnswerTranslation": "Свободная демократическая партия",
+    "simpleExplanation": "СвДП (FDP) — это либеральная политическая партия в Германии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      },
+      {
+        "source": "frei",
+        "translation": "свободный"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was bedeutet ...?",
+      "meaning": "Что означает ...?"
+    }
+  },
+  {
+    "questionId": "general-80",
+    "locale": "ru",
+    "translation": "Какой суд в Германии отвечает за толкование Основного закона?",
+    "correctAnswerTranslation": "Федеральный конституционный суд",
+    "simpleExplanation": "Федеральный конституционный суд является высшим судебным органом, который следит за соблюдением Основного закона (Конституции) Германии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Grundgesetz",
+        "translation": "Основной закон (Конституция)"
+      },
+      {
+        "source": "Verfassung",
+        "translation": "конституция"
+      },
+      {
+        "source": "Gericht",
+        "translation": "суд"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какой ...?"
+    }
+  },
+  {
+    "questionId": "general-81",
+    "locale": "ru",
+    "translation": "Кто избирает федерального канцлера/федеральную канцлершу в Германии?",
+    "correctAnswerTranslation": "Бундестаг",
+    "simpleExplanation": "Канцлера избирает Бундестаг, парламент Германии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-82",
+    "locale": "ru",
+    "translation": "Кто возглавляет немецкий федеральный кабинет?",
+    "correctAnswerTranslation": "федеральная канцлерша/федеральный канцлер",
+    "simpleExplanation": "Федеральный канцлер возглавляет федеральное правительство Германии.",
+    "vocabulary": [
+      {
+        "source": "deutsche",
+        "translation": "немецкий"
+      },
+      {
+        "source": "Bundeskabinett",
+        "translation": "федеральный кабинет"
+      },
+      {
+        "source": "Bundeskanzlerin/der",
+        "translation": "федеральная канцлерша/федеральный канцлер"
+      }
+    ]
+  },
+  {
+    "questionId": "general-83",
+    "locale": "ru",
+    "translation": "Кто избирает немецкого федерального канцлера/немецкую федеральную канцлершу?",
+    "correctAnswerTranslation": "Бундестаг",
+    "simpleExplanation": "Федерального канцлера избирают члены Бундестага.",
+    "vocabulary": [
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-84",
+    "locale": "ru",
+    "translation": "Какова основная задача немецкого федерального президента/немецкой федеральной президентши? Он/Она …",
+    "correctAnswerTranslation": "представляет страну.",
+    "simpleExplanation": "Федеральный президент в основном выполняет представительские функции.",
+    "vocabulary": [
+      {
+        "source": "Bundespräsident",
+        "translation": "федеральный президент"
+      },
+      {
+        "source": "Aufgabe",
+        "translation": "задача"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какая ...?"
+    }
+  },
+  {
+    "questionId": "general-85",
+    "locale": "ru",
+    "translation": "Кто формирует немецкий Бундесрат?",
+    "correctAnswerTranslation": "представители правительств федеральных земель",
+    "simpleExplanation": "Бундесрат состоит из представителей правительств федеральных земель.",
+    "vocabulary": [
+      {
+        "source": "Bundesländer",
+        "translation": "федеральные земли"
+      },
+      {
+        "source": "Bundesrat",
+        "translation": "Бундесрат (Федеральный совет)"
+      },
+      {
+        "source": "Regierung",
+        "translation": "правительство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-86",
+    "locale": "ru",
+    "translation": "Кто избирает федерального президента/федеральную президентшу в Германии?",
+    "correctAnswerTranslation": "Федеральное собрание",
+    "simpleExplanation": "Федерального президента избирает Федеральное собрание, состоящее из членов Бундестага и представителей земель.",
+    "vocabulary": [
+      {
+        "source": "Bundespräsident",
+        "translation": "федеральный президент"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-87",
+    "locale": "ru",
+    "translation": "Кто является главой государства Федеративной Республики Германия?",
+    "correctAnswerTranslation": "федеральная президентша/федеральный президент",
+    "simpleExplanation": "Главой государства в Германии является федеральный президент.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Bundespräsident",
+        "translation": "федеральный президент"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-88",
+    "locale": "ru",
+    "translation": "Парламентская оппозиция в немецком Бундестаге …",
+    "correctAnswerTranslation": "контролирует правительство.",
+    "simpleExplanation": "Оппозиция в парламенте следит за действиями правительства и критикует их.",
+    "vocabulary": [
+      {
+        "source": "Opposition",
+        "translation": "оппозиция"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      },
+      {
+        "source": "Parlament",
+        "translation": "парламент"
+      },
+      {
+        "source": "Regierung",
+        "translation": "правительство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-89",
+    "locale": "ru",
+    "translation": "Как в Германии называется объединение депутатов одной партии в парламенте?",
+    "correctAnswerTranslation": "Фракция",
+    "simpleExplanation": "Фракция — это группа депутатов одной партии в парламенте.",
+    "vocabulary": [
+      {
+        "source": "Abgeordnete",
+        "translation": "депутат"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Parlament",
+        "translation": "парламент"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wie nennt man ...?",
+      "meaning": "Как называется ...?"
+    }
+  },
+  {
+    "questionId": "general-90",
+    "locale": "ru",
+    "translation": "Немецкие федеральные земли участвуют в федеральном законодательстве через …",
+    "correctAnswerTranslation": "Бундесрат.",
+    "simpleExplanation": "Бундесрат представляет интересы федеральных земель в законодательном процессе.",
+    "vocabulary": [
+      {
+        "source": "Bundesländer",
+        "translation": "федеральные земли"
+      },
+      {
+        "source": "Bundesrat",
+        "translation": "Бундесрат (Федеральный совет)"
+      },
+      {
+        "source": "Gesetz",
+        "translation": "закон"
+      }
+    ]
+  },
+  {
+    "questionId": "general-91",
+    "locale": "ru",
+    "translation": "В Германии смена правительства в федеральной земле может повлиять на федеральную политику. Управление становится …",
+    "correctAnswerTranslation": "сложнее, если при этом меняется большинство в Бундесрате.",
+    "simpleExplanation": "Бундесрат представляет федеральные земли. Изменение большинства в Бундесрате может затруднить принятие законов на федеральном уровне.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Bundesland",
+        "translation": "федеральная земля"
+      },
+      {
+        "source": "Bundesrat",
+        "translation": "Бундесрат (Федеральный совет)"
+      },
+      {
+        "source": "Regierung",
+        "translation": "правительство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-92",
+    "locale": "ru",
+    "translation": "Что означает аббревиатура ХСС в Германии?",
+    "correctAnswerTranslation": "Христианско-социальный союз",
+    "simpleExplanation": "ХСС (CSU) — это политическая партия в Германии, действующая только в Баварии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was bedeutet ...?",
+      "meaning": "Что означает ...?"
+    }
+  },
+  {
+    "questionId": "general-93",
+    "locale": "ru",
+    "translation": "Чем больше «вторых голосов» получает партия на выборах в Бундестаг, тем …",
+    "correctAnswerTranslation": "больше мест получает партия в парламенте.",
+    "simpleExplanation": "Вторые голоса определяют пропорциональное представительство партий в Бундестаге.",
+    "vocabulary": [
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      },
+      {
+        "source": "Parlament",
+        "translation": "парламент"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-94",
+    "locale": "ru",
+    "translation": "С какого возраста можно участвовать в выборах в Немецкий Бундестаг в Германии?",
+    "correctAnswerTranslation": "18",
+    "simpleExplanation": "В Германии право голоса на федеральных выборах имеют граждане, достигшие 18 лет.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      },
+      {
+        "source": "Alter",
+        "translation": "возраст"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Ab welchem Alter ...?",
+      "meaning": "С какого возраста ...?"
+    }
+  },
+  {
+    "questionId": "general-95",
+    "locale": "ru",
+    "translation": "Что действует для большинства детей в Германии?",
+    "correctAnswerTranslation": "Обязательное школьное образование",
+    "simpleExplanation": "В Германии для всех детей действует обязательное школьное образование.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Kind",
+        "translation": "ребенок"
+      }
+    ]
+  },
+  {
+    "questionId": "general-96",
+    "locale": "ru",
+    "translation": "Как может быть наказан тот, кто отрицает Холокост?",
+    "correctAnswerTranslation": "лишением свободы на срок до пяти лет или денежным штрафом",
+    "simpleExplanation": "Отрицание Холокоста в Германии является уголовным преступлением.",
+    "vocabulary": [
+      {
+        "source": "Freiheit",
+        "translation": "свобода"
+      }
+    ]
+  },
+  {
+    "questionId": "general-97",
+    "locale": "ru",
+    "translation": "Что автоматически оплачивается в Германии, если вы официально трудоустроены?",
+    "correctAnswerTranslation": "Социальное страхование",
+    "simpleExplanation": "Социальное страхование включает медицинское, пенсионное, страхование по безработице и по уходу.",
+    "vocabulary": [
+      {
+        "source": "Sozialversicherung",
+        "translation": "социальное страхование"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-98",
+    "locale": "ru",
+    "translation": "Если депутаты Немецкого Бундестага меняют свою фракцию, …",
+    "correctAnswerTranslation": "правительство может потерять свое большинство.",
+    "simpleExplanation": "Смена фракции депутатами может изменить расстановку сил в парламенте и повлиять на большинство правительства.",
+    "vocabulary": [
+      {
+        "source": "Abgeordnete",
+        "translation": "депутаты"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      },
+      {
+        "source": "Regierung",
+        "translation": "правительство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-99",
+    "locale": "ru",
+    "translation": "Кто оплачивает социальное страхование в Германии?",
+    "correctAnswerTranslation": "Работодатели и работники",
+    "simpleExplanation": "Взносы в социальное страхование делятся между работодателями и работниками.",
+    "vocabulary": [
+      {
+        "source": "Sozialversicherung",
+        "translation": "социальное страхование"
+      },
+      {
+        "source": "Arbeitnehmer",
+        "translation": "работник"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-100",
+    "locale": "ru",
+    "translation": "Что не относится к обязательному социальному страхованию?",
+    "correctAnswerTranslation": "страхование жизни",
+    "simpleExplanation": "Страхование жизни является частным видом страхования, а не частью обязательного социального страхования.",
+    "vocabulary": [
+      {
+        "source": "Sozialversicherung",
+        "translation": "социальное страхование"
+      },
+      {
+        "source": "Gesetz",
+        "translation": "закон"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was gehört ...?",
+      "meaning": "Что относится ...?"
+    }
+  },
+  {
+    "questionId": "general-101",
+    "locale": "ru",
+    "translation": "Профсоюзы — это объединения по интересам …",
+    "correctAnswerTranslation": "работников.",
+    "simpleExplanation": "Профсоюзы представляют интересы работников.",
+    "vocabulary": [
+      {
+        "source": "Arbeitnehmer",
+        "translation": "работник"
+      }
+    ]
+  },
+  {
+    "questionId": "general-102",
+    "locale": "ru",
+    "translation": "Чем можно быть награжденным в Федеративной Республике Германия, если вы добились особых успехов в политической, экономической, культурной, интеллектуальной или социальной сфере? …",
+    "correctAnswerTranslation": "Федеральным крестом за заслуги",
+    "simpleExplanation": "Федеральный крест за заслуги — это высшая награда Германии за особые достижения.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-103",
+    "locale": "ru",
+    "translation": "Что в Германии называют «светофорной коалицией»? Сотрудничество …",
+    "correctAnswerTranslation": "СДПГ, СвДП и Союза 90/Зелёных в правительстве",
+    "simpleExplanation": "«Светофорная коалиция» названа так по цветам партий: красный (СДПГ), жёлтый (СвДП) и зелёный (Союз 90/Зелёные).",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Regierung",
+        "translation": "правительство"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      }
+    ]
+  },
+  {
+    "questionId": "general-104",
+    "locale": "ru",
+    "translation": "Женщина в Германии теряет работу. Что не может быть причиной этого увольнения?",
+    "correctAnswerTranslation": "Женщина ждет ребенка, и ее начальник знает об этом.",
+    "simpleExplanation": "Увольнение из-за беременности запрещено законом в Германии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      },
+      {
+        "source": "Kind",
+        "translation": "ребенок"
+      }
+    ]
+  },
+  {
+    "questionId": "general-105",
+    "locale": "ru",
+    "translation": "Какова одна из задач добровольных помощников на выборах в Германии?",
+    "correctAnswerTranslation": "Они подсчитывают голоса после окончания выборов.",
+    "simpleExplanation": "Добровольные помощники на выборах отвечают за организацию голосования и подсчет голосов.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Aufgabe",
+        "translation": "задача"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-106",
+    "locale": "ru",
+    "translation": "В Германии добровольные помощники на выборах помогают на выборах. Какова одна из задач помощников на выборах?",
+    "correctAnswerTranslation": "Они подсчитывают голоса после окончания выборов.",
+    "simpleExplanation": "Добровольные помощники на выборах отвечают за организацию голосования и подсчет голосов.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Aufgabe",
+        "translation": "задача"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-107",
+    "locale": "ru",
+    "translation": "На сколько лет избирается Бундестаг в Германии?",
+    "correctAnswerTranslation": "4 года",
+    "simpleExplanation": "Бундестаг избирается на четыре года.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Für wie viele Jahre ...?",
+      "meaning": "На сколько лет ...?"
+    }
+  },
+  {
+    "questionId": "general-108",
+    "locale": "ru",
+    "translation": "На выборах в Бундестаг в Германии может голосовать каждый, кто …",
+    "correctAnswerTranslation": "является гражданином Федеративной Республики Германия и достиг 18 лет.",
+    "simpleExplanation": "Право голоса имеют граждане Германии, достигшие 18 лет.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      },
+      {
+        "source": "wählen",
+        "translation": "голосовать, выбирать"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-109",
+    "locale": "ru",
+    "translation": "Как часто обычно проводятся выборы в Бундестаг в Германии?",
+    "correctAnswerTranslation": "каждые четыре года",
+    "simpleExplanation": "Выборы в Бундестаг проводятся каждые четыре года.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-110",
+    "locale": "ru",
+    "translation": "На сколько лет избирается Бундестаг в Германии?",
+    "correctAnswerTranslation": "4 года",
+    "simpleExplanation": "Бундестаг избирается на четыре года.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Für wie viele Jahre ...?",
+      "meaning": "На сколько лет ...?"
+    }
+  },
+  {
+    "questionId": "general-111",
+    "locale": "ru",
+    "translation": "Какие действия в отношении Государства Израиль запрещены в Германии?",
+    "correctAnswerTranslation": "публичный призыв к уничтожению Израиля",
+    "simpleExplanation": "В Германии запрещены публичные призывы к уничтожению Государства Израиль, так как это является разжиганием ненависти и нарушением мирного сосуществования.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какие ...?"
+    }
+  },
+  {
+    "questionId": "general-112",
+    "locale": "ru",
+    "translation": "Выборы в Германии являются …",
+    "correctAnswerTranslation": "тайными.",
+    "simpleExplanation": "Выборы в Германии являются тайными, что означает, что никто не может узнать, как проголосовал избиратель.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      },
+      {
+        "source": "Ehe",
+        "translation": "брак"
+      }
+    ]
+  },
+  {
+    "questionId": "general-113",
+    "locale": "ru",
+    "translation": "На выборах в Германии побеждает партия, которая …",
+    "correctAnswerTranslation": "получает большинство голосов.",
+    "simpleExplanation": "Партия, набравшая наибольшее количество голосов на выборах, формирует правительство или участвует в коалиции.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-114",
+    "locale": "ru",
+    "translation": "Участие в демократических выборах в Германии является …",
+    "correctAnswerTranslation": "правом.",
+    "simpleExplanation": "Участие в выборах — это право каждого гражданина, а не обязанность.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-115",
+    "locale": "ru",
+    "translation": "Что означает «активное избирательное право» в Германии?",
+    "correctAnswerTranslation": "Можно голосовать.",
+    "simpleExplanation": "Активное избирательное право означает право гражданина голосовать на выборах.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Wahlrecht",
+        "translation": "избирательное право"
+      },
+      {
+        "source": "wählen",
+        "translation": "голосовать, выбирать"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was bedeutet ...?",
+      "meaning": "Что означает ...?"
+    }
+  },
+  {
+    "questionId": "general-116",
+    "locale": "ru",
+    "translation": "Если вы имеете право голосовать на выборах в Бундестаг в Германии, это называется …",
+    "correctAnswerTranslation": "активным избирательным правом.",
+    "simpleExplanation": "Право голосовать на выборах называется активным избирательным правом.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг"
+      },
+      {
+        "source": "Wahlrecht",
+        "translation": "избирательное право"
+      },
+      {
+        "source": "dürfen",
+        "translation": "мочь, иметь право"
+      },
+      {
+        "source": "wählen",
+        "translation": "голосовать, выбирать"
+      },
+      {
+        "source": "heißt",
+        "translation": "называется"
+      }
+    ]
+  },
+  {
+    "questionId": "general-117",
+    "locale": "ru",
+    "translation": "Сколько процентов вторых голосов должны набрать партии как минимум, чтобы быть избранными в Немецкий Бундестаг?",
+    "correctAnswerTranslation": "5%",
+    "simpleExplanation": "Для прохождения в Бундестаг партии должны набрать не менее 5% голосов избирателей.",
+    "vocabulary": [
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-118",
+    "locale": "ru",
+    "translation": "Кто может стать членом примерно 40 еврейских спортивных клубов «Маккаби»?",
+    "correctAnswerTranslation": "все люди",
+    "simpleExplanation": "Спортивные клубы «Маккаби» открыты для всех, независимо от национальности или вероисповедания.",
+    "vocabulary": [
+      {
+        "source": "jüdischen",
+        "translation": "еврейский"
+      },
+      {
+        "source": "Makkabi-Sportvereinen",
+        "translation": "спортивные клубы «Маккаби»"
+      },
+      {
+        "source": "Mitglied",
+        "translation": "член"
+      }
+    ]
+  },
+  {
+    "questionId": "general-119",
+    "locale": "ru",
+    "translation": "Выборы в Германии свободны. Что это означает?",
+    "correctAnswerTranslation": "Каждый человек может без принуждения решить, хочет ли он голосовать и за кого он хочет голосовать.",
+    "simpleExplanation": "Свободные выборы означают, что каждый избиратель может самостоятельно и без давления решить, участвовать ли в выборах и за кого отдать свой голос.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "wählen",
+        "translation": "голосовать, выбирать"
+      },
+      {
+        "source": "frei",
+        "translation": "свободный"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-120",
+    "locale": "ru",
+    "translation": "Избирательная система в Германии — это …",
+    "correctAnswerTranslation": "мажоритарная и пропорциональная избирательная система.",
+    "simpleExplanation": "Избирательная система Германии сочетает элементы мажоритарной и пропорциональной систем, что позволяет учитывать как прямые голоса за кандидатов, так и общую долю голосов за партии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Wahlrecht",
+        "translation": "избирательное право"
+      }
+    ]
+  },
+  {
+    "questionId": "general-121",
+    "locale": "ru",
+    "translation": "Партия хочет попасть в Бундестаг Германии. Но она должна набрать минимальный процент голосов избирателей. Это называется …",
+    "correctAnswerTranslation": "5%-ный барьер.",
+    "simpleExplanation": "5%-ный барьер означает, что партия должна набрать не менее 5% голосов, чтобы попасть в Бундестаг.",
+    "vocabulary": [
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      },
+      {
+        "source": "heißt",
+        "translation": "называется"
+      }
+    ]
+  },
+  {
+    "questionId": "general-122",
+    "locale": "ru",
+    "translation": "Какому принципу подчиняются выборы в Германии? Выборы в Германии являются …",
+    "correctAnswerTranslation": "свободными, равными, тайными.",
+    "simpleExplanation": "Выборы в Германии должны быть свободными (без принуждения), равными (каждый голос имеет одинаковый вес) и тайными (никто не знает, за кого вы голосовали).",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "frei",
+        "translation": "свободный"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      },
+      {
+        "source": "Ehe",
+        "translation": "брак"
+      }
+    ]
+  },
+  {
+    "questionId": "general-123",
+    "locale": "ru",
+    "translation": "Что такое «5%-ный барьер» в Германии?",
+    "correctAnswerTranslation": "Минимальный процент голосов избирателей для прохождения в парламент",
+    "simpleExplanation": "5%-ный барьер — это правило, согласно которому партия должна набрать не менее 5% голосов, чтобы получить места в парламенте.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Parlament",
+        "translation": "парламент"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-124",
+    "locale": "ru",
+    "translation": "Выборы в Бундестаг в Германии — это выборы …",
+    "correctAnswerTranslation": "парламента Германии.",
+    "simpleExplanation": "На выборах в Бундестаг избираются члены парламента Германии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      },
+      {
+        "source": "Parlament",
+        "translation": "парламент"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-125",
+    "locale": "ru",
+    "translation": "В демократии одна из функций регулярных выборов — это …",
+    "correctAnswerTranslation": "позволить сменить правительство по воле большинства избирателей.",
+    "simpleExplanation": "Регулярные выборы позволяют гражданам выбирать, кто будет управлять страной, и менять правительство, если они недовольны.",
+    "vocabulary": [
+      {
+        "source": "Demokratie",
+        "translation": "демократия"
+      },
+      {
+        "source": "Regierung",
+        "translation": "правительство"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-126",
+    "locale": "ru",
+    "translation": "Что получают граждане Германии, имеющие право голоса, перед выборами?",
+    "correctAnswerTranslation": "уведомление о выборах от муниципалитета",
+    "simpleExplanation": "Перед выборами каждый избиратель получает официальное уведомление, где указано, когда и где голосовать.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Gemeinde",
+        "translation": "муниципалитет, община"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-127",
+    "locale": "ru",
+    "translation": "Почему в избирательном законодательстве Федеративной Республики Германия существует 5%-ный барьер? Он существует, потому что …",
+    "correctAnswerTranslation": "многие мелкие партии затрудняют формирование правительства.",
+    "simpleExplanation": "5%-ный барьер предотвращает попадание в парламент слишком большого количества мелких партий, что может сделать формирование стабильного правительства очень сложным.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Regierung",
+        "translation": "правительство"
+      },
+      {
+        "source": "Gesetz",
+        "translation": "закон"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-128",
+    "locale": "ru",
+    "translation": "Членов парламента, избираемых гражданами, называют …",
+    "correctAnswerTranslation": "депутатами.",
+    "simpleExplanation": "Депутаты — это представители народа в парламенте, избранные на выборах.",
+    "vocabulary": [
+      {
+        "source": "Abgeordnete",
+        "translation": "депутат"
+      },
+      {
+        "source": "Parlament",
+        "translation": "парламент"
+      }
+    ]
+  },
+  {
+    "questionId": "general-129",
+    "locale": "ru",
+    "translation": "Народом в Германии избирается …",
+    "correctAnswerTranslation": "Бундестаг.",
+    "simpleExplanation": "Бундестаг — это парламент Германии, который избирается непосредственно гражданами.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      },
+      {
+        "source": "Volk",
+        "translation": "народ"
+      }
+    ]
+  },
+  {
+    "questionId": "general-130",
+    "locale": "ru",
+    "translation": "Какой избирательный бюллетень был бы действителен на выборах в Бундестаг? На основе Федерального избирательного регламента (BWO), Приложение 26",
+    "correctAnswerTranslation": "1",
+    "simpleExplanation": "Действительный бюллетень должен быть заполнен правильно, без лишних отметок, которые могут сделать его недействительным.",
+    "vocabulary": [
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (парламент Германии)"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welcher ...?",
+      "meaning": "Какой ...?"
+    }
+  },
+  {
+    "questionId": "general-131",
+    "locale": "ru",
+    "translation": "В Германии мэр — это …",
+    "correctAnswerTranslation": "глава муниципалитета.",
+    "simpleExplanation": "Мэр является главой города или муниципалитета и отвечает за его управление.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Gemeinde",
+        "translation": "муниципалитет, община"
+      }
+    ]
+  },
+  {
+    "questionId": "general-132",
+    "locale": "ru",
+    "translation": "Многие люди в Германии работают в свободное время на добровольных началах. Что это значит?",
+    "correctAnswerTranslation": "Они работают добровольно и бесплатно в клубах и ассоциациях.",
+    "simpleExplanation": "Добровольная работа означает, что люди работают без оплаты, чтобы помочь обществу или определенной организации.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      },
+      {
+        "source": "frei",
+        "translation": "свободный"
+      }
+    ]
+  },
+  {
+    "questionId": "general-133",
+    "locale": "ru",
+    "translation": "Что разрешено на выборах в Бундестаг и ландтаги в Германии?",
+    "correctAnswerTranslation": "Можно проголосовать по почте.",
+    "simpleExplanation": "В Германии разрешено голосовать по почте, что позволяет людям участвовать в выборах, даже если они не могут прийти на избирательный участок.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг (федеральный парламент Германии)"
+      },
+      {
+        "source": "Landtag",
+        "translation": "ландтаг (парламент федеральной земли Германии)"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-134",
+    "locale": "ru",
+    "translation": "Вы хотите отменить автобусный маршрут, которым вы всегда пользуетесь, чтобы добраться до работы. Что вы можете сделать, чтобы сохранить автобусный маршрут?",
+    "correctAnswerTranslation": "Я участвую в гражданской инициативе по сохранению автобусного маршрута или сам создаю такую инициативу.",
+    "simpleExplanation": "Гражданские инициативы позволяют гражданам объединяться и влиять на решения, касающиеся их местного сообщества.",
+    "vocabulary": [
+      {
+        "source": "abschaffen",
+        "translation": "отменять, упразднять"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      }
+    ]
+  },
+  {
+    "questionId": "general-135",
+    "locale": "ru",
+    "translation": "Кого представляют профсоюзы в Германии?",
+    "correctAnswerTranslation": "работников и работниц",
+    "simpleExplanation": "Профсоюзы защищают права и интересы работников, ведут переговоры с работодателями о зарплате и условиях труда.",
+    "vocabulary": [
+      {
+        "source": "Arbeitnehmer",
+        "translation": "работник"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-136",
+    "locale": "ru",
+    "translation": "В Германии вы обращаетесь в суд по трудовым спорам в случае …",
+    "correctAnswerTranslation": "необоснованного увольнения вашим начальником/начальницей.",
+    "simpleExplanation": "Суд по трудовым спорам рассматривает дела, связанные с трудовыми отношениями, например, увольнения или споры о заработной плате.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Gericht",
+        "translation": "суд"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      },
+      {
+        "source": "Ehe",
+        "translation": "брак"
+      }
+    ]
+  },
+  {
+    "questionId": "general-137",
+    "locale": "ru",
+    "translation": "Какой суд в Германии отвечает за конфликты в сфере труда?",
+    "correctAnswerTranslation": "суд по трудовым спорам",
+    "simpleExplanation": "Суд по трудовым спорам (Arbeitsgericht) специализируется на разрешении конфликтов между работниками и работодателями.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Gericht",
+        "translation": "суд"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какой ...?"
+    }
+  },
+  {
+    "questionId": "general-138",
+    "locale": "ru",
+    "translation": "Что я могу сделать в Германии, если мой работодатель/работодательница несправедливо меня уволил/уволила?",
+    "correctAnswerTranslation": "подать иск о защите от увольнения",
+    "simpleExplanation": "Если вы считаете, что вас уволили несправедливо, вы можете подать иск в суд по трудовым спорам, чтобы оспорить увольнение.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      }
+    ]
+  },
+  {
+    "questionId": "general-139",
+    "locale": "ru",
+    "translation": "Когда в Германии дело доходит до судебного разбирательства? Если кто-то …",
+    "correctAnswerTranslation": "совершил преступление и ему предъявлено обвинение.",
+    "simpleExplanation": "Судебный процесс начинается, когда человека обвиняют в совершении преступления.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Gericht",
+        "translation": "суд"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wann ...?",
+      "meaning": "Когда ...?"
+    }
+  },
+  {
+    "questionId": "general-140",
+    "locale": "ru",
+    "translation": "Что делает присяжный заседатель/присяжная заседательница в Германии? Он/Она …",
+    "correctAnswerTranslation": "совместно с судьями принимает решение о виновности и наказании.",
+    "simpleExplanation": "Присяжные заседатели участвуют в судебных процессах и помогают судьям принимать решения по делам.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-141",
+    "locale": "ru",
+    "translation": "Кто консультирует людей по юридическим вопросам в Германии и представляет их в суде?",
+    "correctAnswerTranslation": "адвокат/юрист",
+    "simpleExplanation": "Адвокаты консультируют по юридическим вопросам и представляют интересы клиентов в суде.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Gericht",
+        "translation": "суд"
+      }
+    ]
+  },
+  {
+    "questionId": "general-142",
+    "locale": "ru",
+    "translation": "Какова основная задача судьи в Германии? Судья...",
+    "correctAnswerTranslation": "работает в суде и выносит приговоры.",
+    "simpleExplanation": "Судьи работают в судах и принимают решения по делам.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Aufgabe",
+        "translation": "задача"
+      },
+      {
+        "source": "Gericht",
+        "translation": "суд"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-143",
+    "locale": "ru",
+    "translation": "Судья в Германии относится к ...",
+    "correctAnswerTranslation": "судебной власти.",
+    "simpleExplanation": "Судебная власть (Judikative) — это ветвь власти, отвечающая за правосудие.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-144",
+    "locale": "ru",
+    "translation": "Судья в Германии относится к ...",
+    "correctAnswerTranslation": "судебной власти.",
+    "simpleExplanation": "Судебная власть (rechtsprechende Gewalt) — это ветвь власти, отвечающая за правосудие.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-145",
+    "locale": "ru",
+    "translation": "В Германии государственная власть разделена. Для какой ветви государственной власти работает судья? Для ...",
+    "correctAnswerTranslation": "судебной власти",
+    "simpleExplanation": "Судьи являются частью судебной власти, которая обеспечивает правосудие.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-146",
+    "locale": "ru",
+    "translation": "Как называется судебное разбирательство в Германии?",
+    "correctAnswerTranslation": "Процесс",
+    "simpleExplanation": "Судебное разбирательство в Германии называется «Prozess» (процесс).",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Gericht",
+        "translation": "суд"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wie nennt man ...?",
+      "meaning": "Как называется ...?"
+    }
+  },
+  {
+    "questionId": "general-147",
+    "locale": "ru",
+    "translation": "В чем заключается работа судьи в Германии?",
+    "correctAnswerTranslation": "Вершить правосудие",
+    "simpleExplanation": "Основная задача судьи — вершить правосудие, то есть принимать решения по правовым вопросам.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-148",
+    "locale": "ru",
+    "translation": "Какова одна из задач полиции в Германии?",
+    "correctAnswerTranslation": "контролировать соблюдение законов",
+    "simpleExplanation": "Полиция следит за тем, чтобы граждане соблюдали законы.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Aufgabe",
+        "translation": "задача"
+      },
+      {
+        "source": "Gesetz",
+        "translation": "закон"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-149",
+    "locale": "ru",
+    "translation": "Что является примером антисемитского поведения?",
+    "correctAnswerTranslation": "отрицание Холокоста",
+    "simpleExplanation": "Отрицание Холокоста — это форма антисемитизма, которая отрицает исторический факт геноцида евреев.",
+    "vocabulary": [
+      {
+        "source": "Beispiel",
+        "translation": "пример"
+      },
+      {
+        "source": "antisemitisches",
+        "translation": "антисемитское"
+      },
+      {
+        "source": "Verhalten",
+        "translation": "поведение"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-150",
+    "locale": "ru",
+    "translation": "Судебный заседатель в Германии — это ...",
+    "correctAnswerTranslation": "почетный судья.",
+    "simpleExplanation": "Судебные заседатели — это граждане, которые добровольно участвуют в судебных процессах в качестве судей.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Gericht",
+        "translation": "суд"
+      }
+    ]
+  },
+  {
+    "questionId": "general-151",
+    "locale": "ru",
+    "translation": "Кто построил Берлинскую стену?",
+    "correctAnswerTranslation": "ГДР",
+    "simpleExplanation": "Берлинская стена была построена правительством Восточной Германии (ГДР) в 1961 году, чтобы остановить массовый отток населения в Западный Берлин.",
+    "vocabulary": [
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-152",
+    "locale": "ru",
+    "translation": "Когда национал-социалисты с Адольфом Гитлером были у власти в Германии?",
+    "correctAnswerTranslation": "с 1933 по 1945 год",
+    "simpleExplanation": "Национал-социалисты под руководством Адольфа Гитлера правили Германией с 1933 по 1945 год, установив диктатуру и развязав Вторую мировую войну.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wann ...?",
+      "meaning": "Когда ...?"
+    }
+  },
+  {
+    "questionId": "general-153",
+    "locale": "ru",
+    "translation": "Что произошло 8 мая 1945 года?",
+    "correctAnswerTranslation": "Окончание Второй мировой войны в Европе",
+    "simpleExplanation": "8 мая 1945 года ознаменовало окончание Второй мировой войны в Европе, когда Германия подписала безоговорочную капитуляцию.",
+    "vocabulary": [
+      {
+        "source": "Zweiten",
+        "translation": "второй"
+      },
+      {
+        "source": "Weltkriegs",
+        "translation": "мировой войны"
+      }
+    ]
+  },
+  {
+    "questionId": "general-154",
+    "locale": "ru",
+    "translation": "Когда закончилась Вторая мировая война?",
+    "correctAnswerTranslation": "1945",
+    "simpleExplanation": "Вторая мировая война закончилась в 1945 году капитуляцией Германии в мае и Японии в сентябре.",
+    "vocabulary": [
+      {
+        "source": "Weltkrieg",
+        "translation": "мировая война"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wann ...?",
+      "meaning": "Когда ...?"
+    }
+  },
+  {
+    "questionId": "general-155",
+    "locale": "ru",
+    "translation": "Когда национал-социалисты были у власти в Германии?",
+    "correctAnswerTranslation": "с 1933 по 1945 год",
+    "simpleExplanation": "Национал-социалисты под руководством Адольфа Гитлера правили Германией с 1933 по 1945 год, установив диктатуру и развязав Вторую мировую войну.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wann ...?",
+      "meaning": "Когда ...?"
+    }
+  },
+  {
+    "questionId": "general-156",
+    "locale": "ru",
+    "translation": "В каком году Гитлер стал рейхсканцлером?",
+    "correctAnswerTranslation": "1933",
+    "simpleExplanation": "Адольф Гитлер был назначен рейхсканцлером Германии в 1933 году, что стало началом нацистской диктатуры.",
+    "vocabulary": [
+      {
+        "source": "welchem",
+        "translation": "каком"
+      },
+      {
+        "source": "Reichskanzler",
+        "translation": "рейхсканцлер"
+      }
+    ]
+  },
+  {
+    "questionId": "general-157",
+    "locale": "ru",
+    "translation": "Национал-социалисты с Адольфом Гитлером установили в Германии в 1933 году …",
+    "correctAnswerTranslation": "диктатуру.",
+    "simpleExplanation": "В 1933 году национал-социалисты под руководством Адольфа Гитлера установили в Германии тоталитарную диктатуру, известную как Третий рейх.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Diktatur",
+        "translation": "диктатура"
+      }
+    ]
+  },
+  {
+    "questionId": "general-158",
+    "locale": "ru",
+    "translation": "«Третий рейх» был …",
+    "correctAnswerTranslation": "диктатурой.",
+    "simpleExplanation": "«Третий рейх» — это название, которое использовалось для обозначения нацистской Германии, которая была тоталитарной диктатурой.",
+    "vocabulary": [
+      {
+        "source": "Diktatur",
+        "translation": "диктатура"
+      }
+    ]
+  },
+  {
+    "questionId": "general-159",
+    "locale": "ru",
+    "translation": "Чего не было в Германии во времена национал-социализма?",
+    "correctAnswerTranslation": "свободных выборов",
+    "simpleExplanation": "Во времена национал-социализма в Германии не было свободных выборов, так как режим был диктатурой, подавлявшей любые формы демократии.",
+    "vocabulary": [
+      {
+        "source": "Nationalsozialismus",
+        "translation": "национал-социализм"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "frei",
+        "translation": "свободный"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-160",
+    "locale": "ru",
+    "translation": "Какая война длилась с 1939 по 1945 год?",
+    "correctAnswerTranslation": "Вторая мировая война",
+    "simpleExplanation": "Вторая мировая война, глобальный конфликт, длилась с 1939 по 1945 год.",
+    "vocabulary": [
+      {
+        "source": "Welcher",
+        "translation": "какой"
+      },
+      {
+        "source": "dauerte",
+        "translation": "длился"
+      },
+      {
+        "source": "Weltkrieg",
+        "translation": "мировая война"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welcher ...?",
+      "meaning": "Какой ...?"
+    }
+  },
+  {
+    "questionId": "general-161",
+    "locale": "ru",
+    "translation": "Что характеризовало нацистское государство? Политика...",
+    "correctAnswerTranslation": "государственного расизма",
+    "simpleExplanation": "Нацистское государство проводило политику государственного расизма, преследуя и уничтожая людей по расовому признаку.",
+    "vocabulary": [
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-162",
+    "locale": "ru",
+    "translation": "Клаус Шенк граф фон Штауффенберг стал известен благодаря...",
+    "correctAnswerTranslation": "покушению на Гитлера 20 июля 1944 года.",
+    "simpleExplanation": "Клаус Шенк граф фон Штауффенберг был ключевой фигурой в заговоре 20 июля 1944 года, целью которого было убийство Адольфа Гитлера.",
+    "vocabulary": [
+      {
+        "source": "Stauffenberg",
+        "translation": "Штауффенберг"
+      },
+      {
+        "source": "bekannt",
+        "translation": "известный"
+      },
+      {
+        "source": "Attentat",
+        "translation": "покушение"
+      }
+    ]
+  },
+  {
+    "questionId": "general-163",
+    "locale": "ru",
+    "translation": "В каком году национал-социалисты разрушили синагоги и еврейские магазины в Германии?",
+    "correctAnswerTranslation": "1938",
+    "simpleExplanation": "В 1938 году произошла «Хрустальная ночь», когда национал-социалисты разрушили синагоги и еврейские магазины по всей Германии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-164",
+    "locale": "ru",
+    "translation": "Что произошло 9 ноября 1938 года в Германии?",
+    "correctAnswerTranslation": "Еврейские магазины и синагоги были разрушены национал-социалистами и их сторонниками.",
+    "simpleExplanation": "9 ноября 1938 года произошла «Хрустальная ночь», когда по всей Германии были разрушены еврейские магазины и синагоги.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-165",
+    "locale": "ru",
+    "translation": "Как звали первого федерального канцлера Федеративной Республики Германия?",
+    "correctAnswerTranslation": "Конрад Аденауэр",
+    "simpleExplanation": "Конрад Аденауэр был первым федеральным канцлером Федеративной Республики Германия с 1949 по 1963 год.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-166",
+    "locale": "ru",
+    "translation": "На каких демонстрациях в Германии люди кричали «Мы — народ»?",
+    "correctAnswerTranslation": "на понедельничных демонстрациях 1989 года в ГДР",
+    "simpleExplanation": "Лозунг «Мы — народ» был популярен на понедельничных демонстрациях в ГДР в 1989 году, которые привели к падению Берлинской стены и объединению Германии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Volk",
+        "translation": "народ"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР"
+      }
+    ]
+  },
+  {
+    "questionId": "general-167",
+    "locale": "ru",
+    "translation": "Какие страны после Второй мировой войны в Германии назывались «союзными оккупационными державами»?",
+    "correctAnswerTranslation": "США, Советский Союз, Великобритания, Франция",
+    "simpleExplanation": "После Второй мировой войны Германия была разделена на четыре оккупационные зоны, контролируемые США, Советским Союзом, Великобританией и Францией.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какие ...?"
+    }
+  },
+  {
+    "questionId": "general-168",
+    "locale": "ru",
+    "translation": "Какая страна не была «союзной оккупационной державой» в Германии?",
+    "correctAnswerTranslation": "Япония",
+    "simpleExplanation": "Япония не была оккупационной державой в Германии после Второй мировой войны. Оккупационными державами были США, Советский Союз, Великобритания и Франция.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какая ...?"
+    }
+  },
+  {
+    "questionId": "general-169",
+    "locale": "ru",
+    "translation": "Когда была основана Федеративная Республика Германия?",
+    "correctAnswerTranslation": "1949",
+    "simpleExplanation": "Федеративная Республика Германия была основана 23 мая 1949 года.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wann ...?",
+      "meaning": "Когда ...?"
+    }
+  },
+  {
+    "questionId": "general-170",
+    "locale": "ru",
+    "translation": "Что существовало во времена национал-социализма в Германии?",
+    "correctAnswerTranslation": "запрет партий",
+    "simpleExplanation": "Во времена национал-социализма в Германии были запрещены все политические партии, кроме НСДАП.",
+    "vocabulary": [
+      {
+        "source": "Nationalsozialismus",
+        "translation": "национал-социализм"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Partei",
+        "translation": "партия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-171",
+    "locale": "ru",
+    "translation": "Социальная рыночная экономика означает, что экономика ...",
+    "correctAnswerTranslation": "ориентируется на спрос и предложение, но государство обеспечивает социальное равновесие.",
+    "simpleExplanation": "Социальная рыночная экономика сочетает рыночную свободу с социальной справедливостью, где государство вмешивается для обеспечения баланса.",
+    "vocabulary": [
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-172",
+    "locale": "ru",
+    "translation": "В какой оккупационной зоне была основана ГДР? В ...",
+    "correctAnswerTranslation": "советской оккупационной зоне",
+    "simpleExplanation": "После Второй мировой войны Германия была разделена на оккупационные зоны. ГДР была основана в советской зоне.",
+    "vocabulary": [
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-173",
+    "locale": "ru",
+    "translation": "Федеративная Республика Германия является одним из основателей ...",
+    "correctAnswerTranslation": "Европейского Союза (ЕС).",
+    "simpleExplanation": "ФРГ была одной из стран, стоявших у истоков создания Европейского Союза, который тогда назывался Европейским экономическим сообществом.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-174",
+    "locale": "ru",
+    "translation": "Когда была основана ГДР?",
+    "correctAnswerTranslation": "1949",
+    "simpleExplanation": "ГДР была основана 7 октября 1949 года в советской оккупационной зоне.",
+    "vocabulary": [
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wann ...?",
+      "meaning": "Когда ...?"
+    }
+  },
+  {
+    "questionId": "general-175",
+    "locale": "ru",
+    "translation": "Сколько оккупационных зон было в Германии после Второй мировой войны?",
+    "correctAnswerTranslation": "4",
+    "simpleExplanation": "После Второй мировой войны Германия была разделена на четыре оккупационные зоны: американскую, британскую, французскую и советскую.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-176",
+    "locale": "ru",
+    "translation": "Как были распределены оккупационные зоны Германии после 1945 года?",
+    "correctAnswerTranslation": "1=Великобритания, 2=Советский Союз, 3=США, 4=Франция",
+    "simpleExplanation": "После войны Германия была разделена на четыре оккупационные зоны между союзниками: Великобританией, Советским Союзом, США и Францией.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-177",
+    "locale": "ru",
+    "translation": "Какой немецкий город был разделён на четыре сектора после Второй мировой войны?",
+    "correctAnswerTranslation": "Берлин",
+    "simpleExplanation": "Берлин, как и вся Германия, был разделён на четыре оккупационные зоны между союзниками.",
+    "vocabulary": [
+      {
+        "source": "deutsche",
+        "translation": "немецкий"
+      },
+      {
+        "source": "Zweiten",
+        "translation": "Второй"
+      },
+      {
+        "source": "Weltkrieg",
+        "translation": "мировая война"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какой/Какая/Какое ...?"
+    }
+  },
+  {
+    "questionId": "general-178",
+    "locale": "ru",
+    "translation": "С июня 1948 по май 1949 года жители Западного Берлина снабжались по воздушному мосту. Какое обстоятельство стало причиной этого?",
+    "correctAnswerTranslation": "Советский Союз прервал всё наземное сообщение.",
+    "simpleExplanation": "Советский Союз блокировал все наземные пути в Западный Берлин, что привело к организации воздушного моста для снабжения города.",
+    "vocabulary": [
+      {
+        "source": "Bürgerinnen",
+        "translation": "гражданки"
+      },
+      {
+        "source": "West-Berlin",
+        "translation": "Западный Берлин"
+      },
+      {
+        "source": "Luftbrücke",
+        "translation": "воздушный мост"
+      }
+    ]
+  },
+  {
+    "questionId": "general-179",
+    "locale": "ru",
+    "translation": "Как официально закончилась Вторая мировая война в Европе?",
+    "correctAnswerTranslation": "безоговорочной капитуляцией Германии",
+    "simpleExplanation": "Вторая мировая война в Европе завершилась 8 мая 1945 года подписанием Акта о безоговорочной капитуляции Германии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-180",
+    "locale": "ru",
+    "translation": "Первым федеральным канцлером Федеративной Республики Германия был ...",
+    "correctAnswerTranslation": "Конрад Аденауэр.",
+    "simpleExplanation": "Конрад Аденауэр был первым федеральным канцлером ФРГ с 1949 по 1963 год.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-181",
+    "locale": "ru",
+    "translation": "Что хотел выразить Вилли Брандт своим преклонением колен в 1970 году в бывшем еврейском гетто в Варшаве? © Федеральное правительство/Энгельберт Райнеке",
+    "correctAnswerTranslation": "Он просил прощения у Польши и польских евреев.",
+    "simpleExplanation": "Вилли Брандт преклонил колени в Варшаве, чтобы выразить смирение и попросить прощения за преступления нацистской Германии.",
+    "vocabulary": [
+      {
+        "source": "Bundesregierung",
+        "translation": "Федеральное правительство"
+      },
+      {
+        "source": "Ehe",
+        "translation": "брак"
+      }
+    ]
+  },
+  {
+    "questionId": "general-182",
+    "locale": "ru",
+    "translation": "Как называется еврейский молитвенный дом?",
+    "correctAnswerTranslation": "Синагога",
+    "simpleExplanation": "Синагога — это место поклонения в иудаизме.",
+    "vocabulary": [
+      {
+        "source": "heißt",
+        "translation": "называется"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wie heißt ...?",
+      "meaning": "Как называется ...?"
+    }
+  },
+  {
+    "questionId": "general-183",
+    "locale": "ru",
+    "translation": "Когда в Федеративной Республике Германия было «экономическое чудо»?",
+    "correctAnswerTranslation": "50-е годы",
+    "simpleExplanation": "«Экономическое чудо» в Западной Германии произошло в 1950-х годах, когда страна пережила быстрый экономический рост после Второй мировой войны.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wann ...?",
+      "meaning": "Когда ...?"
+    }
+  },
+  {
+    "questionId": "general-184",
+    "locale": "ru",
+    "translation": "184. На каком правовом основании было основано государство Израиль?",
+    "correctAnswerTranslation": "резолюция Организации Объединенных Наций",
+    "simpleExplanation": "Государство Израиль было основано на основании резолюции ООН в 1947 году.",
+    "vocabulary": [
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-185",
+    "locale": "ru",
+    "translation": "Что означало выражение «Железный занавес»? Изоляция …",
+    "correctAnswerTranslation": "Варшавского договора от Запада",
+    "simpleExplanation": "«Железный занавес» символизировал политическое и идеологическое разделение Восточной Европы (Варшавский договор) от Западной Европы во время Холодной войны.",
+    "vocabulary": [
+      {
+        "source": "Ausdruck",
+        "translation": "выражение"
+      },
+      {
+        "source": "Eiserner",
+        "translation": "железный"
+      },
+      {
+        "source": "Vorhang",
+        "translation": "занавес"
+      }
+    ]
+  },
+  {
+    "questionId": "general-186",
+    "locale": "ru",
+    "translation": "В 1953 году в ГДР произошло восстание, о котором долгое время напоминал государственный праздник в Федеративной Республике Германия. Когда это было?",
+    "correctAnswerTranslation": "17 июня",
+    "simpleExplanation": "Восстание 17 июня 1953 года в ГДР было подавлено советскими войсками. В Западной Германии этот день отмечался как День германского единства.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР"
+      }
+    ]
+  },
+  {
+    "questionId": "general-187",
+    "locale": "ru",
+    "translation": "Какое немецкое государство имело чёрно-красно-золотой флаг с молотом, циркулем и венком из колосьев?",
+    "correctAnswerTranslation": "ГДР",
+    "simpleExplanation": "Флаг Германской Демократической Республики (ГДР) имел чёрно-красно-золотые полосы с гербом, включающим молот, циркуль и венок из колосьев.",
+    "vocabulary": [
+      {
+        "source": "Flagge",
+        "translation": "флаг"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welcher ...?",
+      "meaning": "Какой ...?"
+    }
+  },
+  {
+    "questionId": "general-188",
+    "locale": "ru",
+    "translation": "В каком году была построена стена в Берлине?",
+    "correctAnswerTranslation": "1961",
+    "simpleExplanation": "Берлинская стена была построена в 1961 году правительством ГДР, чтобы остановить массовый отток населения в Западный Берлин.",
+    "vocabulary": [
+      {
+        "source": "welchem",
+        "translation": "каком"
+      }
+    ]
+  },
+  {
+    "questionId": "general-189",
+    "locale": "ru",
+    "translation": "Когда ГДР построила стену в Берлине?",
+    "correctAnswerTranslation": "1961",
+    "simpleExplanation": "Берлинская стена была построена в 1961 году правительством ГДР, чтобы остановить массовый отток населения в Западный Берлин.",
+    "vocabulary": [
+      {
+        "source": "DDR",
+        "translation": "ГДР"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wann ...?",
+      "meaning": "Когда ...?"
+    }
+  },
+  {
+    "questionId": "general-190",
+    "locale": "ru",
+    "translation": "Что означает аббревиатура ГДР?",
+    "correctAnswerTranslation": "Германская Демократическая Республика",
+    "simpleExplanation": "ГДР — это сокращение от Германской Демократической Республики, социалистического государства, существовавшего в Восточной Германии с 1949 по 1990 год.",
+    "vocabulary": [
+      {
+        "source": "Republik",
+        "translation": "республика"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was bedeutet ...?",
+      "meaning": "Что означает ...?"
+    }
+  },
+  {
+    "questionId": "general-191",
+    "locale": "ru",
+    "translation": "Когда Берлинская стена была открыта для всех?",
+    "correctAnswerTranslation": "1989",
+    "simpleExplanation": "Берлинская стена была открыта 9 ноября 1989 года, что привело к падению коммунистического режима в Восточной Германии и объединению Германии.",
+    "vocabulary": [
+      {
+        "source": "geöffnet",
+        "translation": "открыта"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wann ...?",
+      "meaning": "Когда ...?"
+    }
+  },
+  {
+    "questionId": "general-192",
+    "locale": "ru",
+    "translation": "Какая из нынешних федеральных земель Германии раньше входила в состав ГДР?",
+    "correctAnswerTranslation": "Бранденбург",
+    "simpleExplanation": "Бранденбург был одной из пяти земель, которые были восстановлены на территории бывшей ГДР после объединения Германии.",
+    "vocabulary": [
+      {
+        "source": "Bundesland",
+        "translation": "федеральная земля"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какое ...?"
+    }
+  },
+  {
+    "questionId": "general-193",
+    "locale": "ru",
+    "translation": "С 1961 по 1989 год Берлин был …",
+    "correctAnswerTranslation": "разделён стеной.",
+    "simpleExplanation": "Берлинская стена разделяла Восточный и Западный Берлин с 1961 по 1989 год.",
+    "vocabulary": [
+      {
+        "source": "geteilt",
+        "translation": "разделён"
+      }
+    ]
+  },
+  {
+    "questionId": "general-194",
+    "locale": "ru",
+    "translation": "3 октября в Германии празднуют День немецкого(-ой) …",
+    "correctAnswerTranslation": "Единства.",
+    "simpleExplanation": "3 октября отмечается День немецкого единства, который является национальным праздником в Германии и посвящен воссоединению Германии в 1990 году.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-195",
+    "locale": "ru",
+    "translation": "Какая из нынешних федеральных земель Германии раньше входила в состав ГДР?",
+    "correctAnswerTranslation": "Саксония-Анхальт",
+    "simpleExplanation": "Саксония-Анхальт была одной из пяти земель, которые были восстановлены на территории бывшей ГДР после объединения Германии.",
+    "vocabulary": [
+      {
+        "source": "Bundesland",
+        "translation": "федеральная земля"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какое ...?"
+    }
+  },
+  {
+    "questionId": "general-196",
+    "locale": "ru",
+    "translation": "Почему осень 1989 года в ГДР называют «Die Wende» (Перелом)? В это время ГДР политически изменилась …",
+    "correctAnswerTranslation": "от диктатуры к демократии.",
+    "simpleExplanation": "«Die Wende» (Перелом) относится к мирной революции 1989 года, которая привела к падению коммунистического режима в ГДР и переходу к демократии.",
+    "vocabulary": [
+      {
+        "source": "Demokratie",
+        "translation": "демократия"
+      },
+      {
+        "source": "Diktatur",
+        "translation": "диктатура"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-197",
+    "locale": "ru",
+    "translation": "Какая из нынешних федеральных земель Германии раньше входила в состав ГДР?",
+    "correctAnswerTranslation": "Тюрингия",
+    "simpleExplanation": "Тюрингия была одной из пяти земель, которые были восстановлены на территории бывшей ГДР после объединения Германии.",
+    "vocabulary": [
+      {
+        "source": "Bundesland",
+        "translation": "федеральная земля"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какое ...?"
+    }
+  },
+  {
+    "questionId": "general-198",
+    "locale": "ru",
+    "translation": "Какая из нынешних федеральных земель Германии раньше входила в состав ГДР?",
+    "correctAnswerTranslation": "Саксония",
+    "simpleExplanation": "Саксония была одной из пяти земель, которые были восстановлены на территории бывшей ГДР после объединения Германии.",
+    "vocabulary": [
+      {
+        "source": "Bundesland",
+        "translation": "федеральная земля"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какое ...?"
+    }
+  },
+  {
+    "questionId": "general-199",
+    "locale": "ru",
+    "translation": "Под аббревиатурой «Штази» в ГДР подразумевали …",
+    "correctAnswerTranslation": "Министерство государственной безопасности.",
+    "simpleExplanation": "«Штази» (Stasi) — это сокращение от Министерства государственной безопасности (Ministerium für Staatssicherheit), тайной полиции ГДР.",
+    "vocabulary": [
+      {
+        "source": "Staat",
+        "translation": "государство"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-200",
+    "locale": "ru",
+    "translation": "Какая из нынешних федеральных земель Германии раньше входила в состав ГДР?",
+    "correctAnswerTranslation": "Мекленбург-Передняя Померания",
+    "simpleExplanation": "Мекленбург-Передняя Померания была одной из пяти земель, которые были восстановлены на территории бывшей ГДР после объединения Германии.",
+    "vocabulary": [
+      {
+        "source": "Bundesland",
+        "translation": "федеральная земля"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какое ...?"
+    }
+  },
+  {
+    "questionId": "general-201",
+    "locale": "ru",
+    "translation": "Какой из следующих списков содержит только федеральные земли, которые принадлежали к территории бывшей ГДР?",
+    "correctAnswerTranslation": "Мекленбург-Передняя Померания, Бранденбург, Саксония, Саксония-Анхальт, Тюрингия",
+    "simpleExplanation": "ГДР (Восточная Германия) состояла из пяти федеральных земель: Мекленбург-Передняя Померания, Бранденбург, Саксония, Саксония-Анхальт и Тюрингия.",
+    "vocabulary": [
+      {
+        "source": "Bundesländer",
+        "translation": "федеральные земли"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какие ...?"
+    }
+  },
+  {
+    "questionId": "general-202",
+    "locale": "ru",
+    "translation": "К кому принадлежала ГДР во время «Холодной войны»?",
+    "correctAnswerTranslation": "к Варшавскому договору",
+    "simpleExplanation": "ГДР была частью Восточного блока и членом Варшавского договора, военного союза социалистических стран.",
+    "vocabulary": [
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-203",
+    "locale": "ru",
+    "translation": "Как называлась экономическая система ГДР?",
+    "correctAnswerTranslation": "плановая экономика",
+    "simpleExplanation": "В ГДР была плановая экономика, где государство контролировало производство и распределение товаров.",
+    "vocabulary": [
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-204",
+    "locale": "ru",
+    "translation": "Как Федеративная Республика Германия и ГДР стали одним государством?",
+    "correctAnswerTranslation": "Нынешние пять восточных федеральных земель присоединились к Федеративной Республике Германия.",
+    "simpleExplanation": "После падения Берлинской стены пять восточных федеральных земель бывшей ГДР присоединились к ФРГ, что привело к объединению Германии.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Bundesländer",
+        "translation": "федеральные земли"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-205",
+    "locale": "ru",
+    "translation": "С присоединением ГДР к Федеративной Республике Германия новые федеральные земли теперь также принадлежат к ...",
+    "correctAnswerTranslation": "к Европейскому Союзу.",
+    "simpleExplanation": "После объединения Германии, новые федеральные земли, ранее входившие в состав ГДР, стали частью Федеративной Республики Германия и, следовательно, Европейского Союза.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Bundesländer",
+        "translation": "федеральные земли"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-206",
+    "locale": "ru",
+    "translation": "О чем напоминают так называемые «камни преткновения» (Stolpersteine) в Германии?",
+    "correctAnswerTranslation": "о жертвах национал-социализма",
+    "simpleExplanation": "«Камни преткновения» — это мемориальные таблички, вмонтированные в тротуар, которые напоминают о жертвах национал-социализма, живших или работавших по этому адресу.",
+    "vocabulary": [
+      {
+        "source": "Nationalsozialismus",
+        "translation": "национал-социализм"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-207",
+    "locale": "ru",
+    "translation": "В каком военном союзе состояла ГДР?",
+    "correctAnswerTranslation": "в Варшавском пакте",
+    "simpleExplanation": "ГДР была членом Варшавского пакта, военного союза социалистических стран, созданного в противовес НАТО.",
+    "vocabulary": [
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-208",
+    "locale": "ru",
+    "translation": "Что такое «Штази»?",
+    "correctAnswerTranslation": "секретная служба ГДР",
+    "simpleExplanation": "«Штази» (Министерство государственной безопасности) была секретной службой ГДР, известной своим обширным наблюдением за гражданами.",
+    "vocabulary": [
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      },
+      {
+        "source": "Ehe",
+        "translation": "брак"
+      }
+    ]
+  },
+  {
+    "questionId": "general-209",
+    "locale": "ru",
+    "translation": "Каким был герб Германской Демократической Республики?",
+    "correctAnswerTranslation": "Изображение 4",
+    "simpleExplanation": "Герб ГДР (Изображение 4) включал молот и циркуль, окруженные венком из колосьев, символизирующие рабочих, интеллигенцию и крестьян.",
+    "vocabulary": [
+      {
+        "source": "Republik",
+        "translation": "республика"
+      },
+      {
+        "source": "Wappen",
+        "translation": "герб"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какой ...?"
+    }
+  },
+  {
+    "questionId": "general-210",
+    "locale": "ru",
+    "translation": "Что произошло 17 июня 1953 года в ГДР?",
+    "correctAnswerTranslation": "общенациональные забастовки и народное восстание",
+    "simpleExplanation": "17 июня 1953 года в ГДР произошло народное восстание, вызванное недовольством экономической политикой и условиями труда, которое было подавлено советскими войсками.",
+    "vocabulary": [
+      {
+        "source": "Volk",
+        "translation": "народ"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-211",
+    "locale": "ru",
+    "translation": "Какой политик ассоциируется с «Восточными договорами»?",
+    "correctAnswerTranslation": "Вилли Брандт",
+    "simpleExplanation": "Вилли Брандт, будучи канцлером Западной Германии, инициировал политику «новой восточной политики» (Ostpolitik), которая привела к подписанию «Восточных договоров» с СССР и Польшей, направленных на нормализацию отношений.",
+    "vocabulary": [
+      {
+        "source": "Welcher",
+        "translation": "Какой"
+      },
+      {
+        "source": "Politiker",
+        "translation": "Политик"
+      },
+      {
+        "source": "Ostverträge",
+        "translation": "Восточные договоры"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welcher ...?",
+      "meaning": "Какой ...?"
+    }
+  },
+  {
+    "questionId": "general-212",
+    "locale": "ru",
+    "translation": "Как полностью называется Германия?",
+    "correctAnswerTranslation": "Федеративная Республика Германия",
+    "simpleExplanation": "Полное официальное название Германии — Федеративная Республика Германия (Bundesrepublik Deutschland).",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "heißt",
+        "translation": "называется"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wie heißt ...?",
+      "meaning": "Как называется ...?"
+    }
+  },
+  {
+    "questionId": "general-213",
+    "locale": "ru",
+    "translation": "Сколько жителей в Германии?",
+    "correctAnswerTranslation": "84 миллиона",
+    "simpleExplanation": "По состоянию на 2023 год население Германии составляет около 84 миллионов человек.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-214",
+    "locale": "ru",
+    "translation": "Какие цвета у немецкого флага?",
+    "correctAnswerTranslation": "чёрно-красно-золотой",
+    "simpleExplanation": "Флаг Германии состоит из трёх горизонтальных полос: чёрной, красной и золотой.",
+    "vocabulary": [
+      {
+        "source": "Flagge",
+        "translation": "Флаг"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какие ...?"
+    }
+  },
+  {
+    "questionId": "general-215",
+    "locale": "ru",
+    "translation": "Кого называют «Канцлером немецкого единства»?",
+    "correctAnswerTranslation": "Гельмут Коль",
+    "simpleExplanation": "Гельмут Коль был канцлером Германии во время объединения Восточной и Западной Германии в 1990 году, за что его и прозвали «Канцлером немецкого единства».",
+    "vocabulary": [
+      {
+        "source": "Kanzler",
+        "translation": "Канцлер"
+      },
+      {
+        "source": "Deutschen",
+        "translation": "Немецкого"
+      },
+      {
+        "source": "Einheit",
+        "translation": "Единства"
+      }
+    ]
+  },
+  {
+    "questionId": "general-216",
+    "locale": "ru",
+    "translation": "Какой символ можно увидеть в зале пленарных заседаний Бундестага Германии? © Deutscher Bundestag/Janine Schmitz",
+    "correctAnswerTranslation": "федеральный орёл",
+    "simpleExplanation": "В зале пленарных заседаний Бундестага Германии находится изображение федерального орла (Bundesadler), являющегося гербом Германии.",
+    "vocabulary": [
+      {
+        "source": "Bundestag",
+        "translation": "Бундестаг"
+      },
+      {
+        "source": "Ehe",
+        "translation": "Брак"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какой ...?"
+    }
+  },
+  {
+    "questionId": "general-217",
+    "locale": "ru",
+    "translation": "В какой период существовала Германская Демократическая Республика (ГДР)?",
+    "correctAnswerTranslation": "с 1949 по 1990 год",
+    "simpleExplanation": "ГДР существовала с 7 октября 1949 года до объединения Германии 3 октября 1990 года.",
+    "vocabulary": [
+      {
+        "source": "Republik",
+        "translation": "Республика"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР"
+      }
+    ]
+  },
+  {
+    "questionId": "general-218",
+    "locale": "ru",
+    "translation": "Сколько федеральных земель присоединилось к Федеративной Республике Германия при воссоединении в 1990 году?",
+    "correctAnswerTranslation": "5",
+    "simpleExplanation": "При воссоединении Германии в 1990 году к Федеративной Республике Германия присоединились пять новых федеральных земель: Бранденбург, Мекленбург-Передняя Померания, Саксония, Саксония-Анхальт и Тюрингия.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Wiedervereinigung",
+        "translation": "Воссоединение"
+      },
+      {
+        "source": "Bundesländer",
+        "translation": "Федеральные земли"
+      }
+    ]
+  },
+  {
+    "questionId": "general-219",
+    "locale": "ru",
+    "translation": "Федеративная Республика Германия имеет сегодняшние границы с …",
+    "correctAnswerTranslation": "1990",
+    "simpleExplanation": "Современные границы Федеративной Республики Германия были установлены после воссоединения Германии в 1990 году.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-220",
+    "locale": "ru",
+    "translation": "27 января является официальным днём памяти в Германии. О чём напоминает этот день?",
+    "correctAnswerTranslation": "о жертвах национал-социализма (День освобождения концлагеря Освенцим)",
+    "simpleExplanation": "27 января в Германии отмечается как День памяти жертв национал-социализма, приуроченный к освобождению концлагеря Освенцим в 1945 году.",
+    "vocabulary": [
+      {
+        "source": "Nationalsozialismus",
+        "translation": "Национал-социализм"
+      },
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "frei",
+        "translation": "свободный"
+      }
+    ]
+  },
+  {
+    "questionId": "general-221",
+    "locale": "ru",
+    "translation": "Германия является членом Шенгенского соглашения. Что это означает?",
+    "correctAnswerTranslation": "Немцы могут путешествовать во многие страны Европы без паспортного контроля.",
+    "simpleExplanation": "Шенгенское соглашение позволяет гражданам стран-участниц свободно перемещаться между этими странами без паспортного контроля на внутренних границах.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-222",
+    "locale": "ru",
+    "translation": "Какая страна является соседней для Германии?",
+    "correctAnswerTranslation": "Швейцария",
+    "simpleExplanation": "Швейцария граничит с Германией на юге.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какая ...?"
+    }
+  },
+  {
+    "questionId": "general-223",
+    "locale": "ru",
+    "translation": "Какая страна является соседней для Германии?",
+    "correctAnswerTranslation": "Польша",
+    "simpleExplanation": "Польша граничит с Германией на востоке.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какая ...?"
+    }
+  },
+  {
+    "questionId": "general-224",
+    "locale": "ru",
+    "translation": "Что означает аббревиатура EU?",
+    "correctAnswerTranslation": "Европейский Союз",
+    "simpleExplanation": "EU — это сокращение от Европейского Союза, политического и экономического союза 27 государств-членов.",
+    "vocabulary": [
+      {
+        "source": "Europäische Union",
+        "translation": "Европейский Союз"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was bedeutet ...?",
+      "meaning": "Что означает ...?"
+    }
+  },
+  {
+    "questionId": "general-225",
+    "locale": "ru",
+    "translation": "В какой другой стране проживает большое немецкоязычное население?",
+    "correctAnswerTranslation": "Австрия",
+    "simpleExplanation": "Австрия является соседней страной, где немецкий язык является официальным и широко распространенным.",
+    "vocabulary": [
+      {
+        "source": "Bevölkerung",
+        "translation": "население"
+      }
+    ]
+  },
+  {
+    "questionId": "general-226",
+    "locale": "ru",
+    "translation": "Какой флаг Европейского Союза?",
+    "correctAnswerTranslation": "Изображение 2",
+    "simpleExplanation": "Флаг Европейского Союза представляет собой круг из 12 золотых звезд на синем фоне.",
+    "vocabulary": [
+      {
+        "source": "Flagge",
+        "translation": "флаг"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какой ...?"
+    }
+  },
+  {
+    "questionId": "general-227",
+    "locale": "ru",
+    "translation": "Какая страна является соседней для Германии?",
+    "correctAnswerTranslation": "Дания",
+    "simpleExplanation": "Дания граничит с Германией на севере.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какая ...?"
+    }
+  },
+  {
+    "questionId": "general-228",
+    "locale": "ru",
+    "translation": "Как обычно называют присоединение ГДР к Федеративной Республике Германия в 1990 году?",
+    "correctAnswerTranslation": "Воссоединение Германии",
+    "simpleExplanation": "Воссоединение Германии произошло 3 октября 1990 года, когда Германская Демократическая Республика (ГДР) присоединилась к Федеративной Республике Германия.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Wiedervereinigung",
+        "translation": "воссоединение"
+      },
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-229",
+    "locale": "ru",
+    "translation": "Какая страна является соседней для Германии?",
+    "correctAnswerTranslation": "Люксембург",
+    "simpleExplanation": "Люксембург граничит с Германией на западе.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какая ...?"
+    }
+  },
+  {
+    "questionId": "general-230",
+    "locale": "ru",
+    "translation": "Европейский парламент регулярно избирается, а именно каждые …",
+    "correctAnswerTranslation": "5 лет.",
+    "simpleExplanation": "Выборы в Европейский парламент проводятся каждые пять лет.",
+    "vocabulary": [
+      {
+        "source": "Parlament",
+        "translation": "парламент"
+      }
+    ]
+  },
+  {
+    "questionId": "general-231",
+    "locale": "ru",
+    "translation": "Что означает термин «европейская интеграция»?",
+    "correctAnswerTranslation": "Термин означает объединение европейских государств в ЕС.",
+    "simpleExplanation": "Европейская интеграция — это процесс объединения европейских стран для формирования Европейского Союза (ЕС).",
+    "vocabulary": [
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was bedeutet ...?",
+      "meaning": "Что означает...?"
+    }
+  },
+  {
+    "questionId": "general-232",
+    "locale": "ru",
+    "translation": "Кого избирают на европейских выборах?",
+    "correctAnswerTranslation": "депутатов Европейского парламента",
+    "simpleExplanation": "На европейских выборах граждане стран-членов ЕС избирают депутатов, которые представляют их интересы в Европейском парламенте.",
+    "vocabulary": [
+      {
+        "source": "Abgeordnete",
+        "translation": "депутаты"
+      },
+      {
+        "source": "Parlament",
+        "translation": "парламент"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ]
+  },
+  {
+    "questionId": "general-233",
+    "locale": "ru",
+    "translation": "Какая страна является соседней для Германии?",
+    "correctAnswerTranslation": "Чехия",
+    "simpleExplanation": "Чехия граничит с Германией на востоке.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какое...?"
+    }
+  },
+  {
+    "questionId": "general-234",
+    "locale": "ru",
+    "translation": "Где находится одно из мест заседаний Европейского парламента?",
+    "correctAnswerTranslation": "Страсбург",
+    "simpleExplanation": "Страсбург является одним из официальных мест заседаний Европейского парламента, где проводятся пленарные сессии.",
+    "vocabulary": [
+      {
+        "source": "Parlament",
+        "translation": "парламент"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wo ...?",
+      "meaning": "Где...?"
+    }
+  },
+  {
+    "questionId": "general-235",
+    "locale": "ru",
+    "translation": "Тогдашний президент Франции Франсуа Миттеран и тогдашний канцлер Германии Гельмут Коль вместе почтили память погибших в двух мировых войнах в Вердене. Какая цель Европейского Союза становится очевидной на этой встрече? © Федеральное правительство/Рихард Шульце-Форберг",
+    "correctAnswerTranslation": "Мир и безопасность в странах ЕС",
+    "simpleExplanation": "Совместное почтение памяти погибших символизирует примирение и стремление к миру между странами, что является одной из основных целей ЕС.",
+    "vocabulary": [
+      {
+        "source": "Bundesregierung",
+        "translation": "Федеральное правительство"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-236",
+    "locale": "ru",
+    "translation": "Сколько государств-членов насчитывает ЕС сегодня?",
+    "correctAnswerTranslation": "27",
+    "simpleExplanation": "На данный момент Европейский Союз состоит из 27 государств-членов.",
+    "vocabulary": [
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-237",
+    "locale": "ru",
+    "translation": "В 2007 году отмечалось 50-летие «Римских договоров». Каково было содержание этих договоров?",
+    "correctAnswerTranslation": "Основание Европейского экономического сообщества (ЕЭС)",
+    "simpleExplanation": "Римские договоры 1957 года заложили основу для создания Европейского экономического сообщества (ЕЭС), предшественника современного ЕС.",
+    "vocabulary": [
+      {
+        "source": "50-jährige",
+        "translation": "50-летний"
+      },
+      {
+        "source": "Jubiläum",
+        "translation": "юбилей"
+      },
+      {
+        "source": "Römischen",
+        "translation": "Римские"
+      }
+    ]
+  },
+  {
+    "questionId": "general-238",
+    "locale": "ru",
+    "translation": "В каких местах работает Европейский парламент?",
+    "correctAnswerTranslation": "Страсбург, Люксембург и Брюссель",
+    "simpleExplanation": "Европейский парламент имеет три рабочих места: Страсбург (пленарные заседания), Брюссель (заседания комитетов и фракций) и Люксембург (секретариат).",
+    "vocabulary": [
+      {
+        "source": "Parlament",
+        "translation": "парламент"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      }
+    ]
+  },
+  {
+    "questionId": "general-239",
+    "locale": "ru",
+    "translation": "Через какие договоры Федеративная Республика Германия объединилась с другими государствами в Европейское экономическое сообщество?",
+    "correctAnswerTranslation": "через «Римские договоры»",
+    "simpleExplanation": "Римские договоры 1957 года стали основой для создания Европейского экономического сообщества, к которому присоединилась и Федеративная Республика Германия.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Staat",
+        "translation": "государство"
+      }
+    ]
+  },
+  {
+    "questionId": "general-240",
+    "locale": "ru",
+    "translation": "С какого года в Германии платят наличными в евро?",
+    "correctAnswerTranslation": "2002",
+    "simpleExplanation": "Евро был введен в наличное обращение в Германии и других странах еврозоны 1 января 2002 года.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-241",
+    "locale": "ru",
+    "translation": "Госпожа Зегер ждет ребенка. Что она должна сделать, чтобы получить пособие по уходу за ребенком?",
+    "correctAnswerTranslation": "Она должна подать заявление в отдел по выплате пособий по уходу за ребенком.",
+    "simpleExplanation": "Для получения пособия по уходу за ребенком необходимо подать заявление в соответствующий орган.",
+    "vocabulary": [
+      {
+        "source": "Eltern",
+        "translation": "родители"
+      },
+      {
+        "source": "Kind",
+        "translation": "ребенок"
+      }
+    ]
+  },
+  {
+    "questionId": "general-242",
+    "locale": "ru",
+    "translation": "Кто решает, пойдет ли ребенок в детский сад в Германии?",
+    "correctAnswerTranslation": "родители/опекуны",
+    "simpleExplanation": "В Германии родители или опекуны принимают решение о посещении ребенком детского сада.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Eltern",
+        "translation": "родители"
+      },
+      {
+        "source": "Kind",
+        "translation": "ребенок"
+      }
+    ]
+  },
+  {
+    "questionId": "general-243",
+    "locale": "ru",
+    "translation": "Майк и Сибилла хотят провести демонстрацию на улице со своими друзьями в своем немецком городе. Что они должны сделать заранее?",
+    "correctAnswerTranslation": "Они должны зарегистрировать демонстрацию.",
+    "simpleExplanation": "В Германии демонстрации должны быть зарегистрированы заранее, чтобы власти могли обеспечить безопасность и порядок.",
+    "vocabulary": [
+      {
+        "source": "Sybille",
+        "translation": "Сибилла"
+      },
+      {
+        "source": "Freunden",
+        "translation": "друзья"
+      },
+      {
+        "source": "deutschen",
+        "translation": "немецкий"
+      }
+    ]
+  },
+  {
+    "questionId": "general-244",
+    "locale": "ru",
+    "translation": "Какое школьное образование обычно требуется для начала обучения в университете в Германии?",
+    "correctAnswerTranslation": "аттестат зрелости (Abitur)",
+    "simpleExplanation": "Для поступления в университет в Германии обычно требуется Abitur, что является высшим школьным аттестатом.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-245",
+    "locale": "ru",
+    "translation": "Кто не может жить вместе как пара в Германии?",
+    "correctAnswerTranslation": "Анна (13 лет) и Тим (25 лет)",
+    "simpleExplanation": "В Германии существуют законы о защите несовершеннолетних, которые запрещают совместное проживание с несовершеннолетними в определенных обстоятельствах.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-246",
+    "locale": "ru",
+    "translation": "С какого возраста в Германии наступает совершеннолетие?",
+    "correctAnswerTranslation": "18",
+    "simpleExplanation": "В Германии совершеннолетие наступает в 18 лет.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Alter",
+        "translation": "возраст"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Ab welchem Alter ...?",
+      "meaning": "С какого возраста ...?"
+    }
+  },
+  {
+    "questionId": "general-247",
+    "locale": "ru",
+    "translation": "Женщина беременна. Она особо защищена законом незадолго до и после рождения ребенка. Как называется эта защита?",
+    "correctAnswerTranslation": "Защита материнства",
+    "simpleExplanation": "Mutterschutz (защита материнства) — это закон, который защищает беременных женщин и молодых матерей на работе.",
+    "vocabulary": [
+      {
+        "source": "Gesetz",
+        "translation": "закон"
+      },
+      {
+        "source": "heißt",
+        "translation": "называется"
+      },
+      {
+        "source": "Kind",
+        "translation": "ребенок"
+      }
+    ]
+  },
+  {
+    "questionId": "general-248",
+    "locale": "ru",
+    "translation": "Воспитание детей в Германии — это прежде всего задача …",
+    "correctAnswerTranslation": "родителей.",
+    "simpleExplanation": "В Германии основная ответственность за воспитание детей лежит на родителях.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Aufgabe",
+        "translation": "задача"
+      },
+      {
+        "source": "Eltern",
+        "translation": "родители"
+      },
+      {
+        "source": "Kind",
+        "translation": "ребенок"
+      }
+    ]
+  },
+  {
+    "questionId": "general-249",
+    "locale": "ru",
+    "translation": "Кто в Германии в основном отвечает за воспитание детей?",
+    "correctAnswerTranslation": "родители",
+    "simpleExplanation": "В Германии родители несут основную ответственность за воспитание своих детей.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Eltern",
+        "translation": "родители"
+      },
+      {
+        "source": "Kind",
+        "translation": "ребенок"
+      }
+    ]
+  },
+  {
+    "questionId": "general-250",
+    "locale": "ru",
+    "translation": "В Германии лучшие шансы на хорошо оплачиваемую работу, если вы …",
+    "correctAnswerTranslation": "хорошо образованы.",
+    "simpleExplanation": "Хорошее образование значительно повышает шансы на получение хорошо оплачиваемой работы в Германии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      }
+    ]
+  },
+  {
+    "questionId": "general-251",
+    "locale": "ru",
+    "translation": "Если в Германии бьют ребенка, ...",
+    "correctAnswerTranslation": "за это можно понести наказание.",
+    "simpleExplanation": "В Германии физическое наказание детей запрещено законом и может повлечь за собой юридические последствия.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Kind",
+        "translation": "ребенок"
+      }
+    ]
+  },
+  {
+    "questionId": "general-252",
+    "locale": "ru",
+    "translation": "В Германии ...",
+    "correctAnswerTranslation": "можно быть женатым/замужем только с одним партнером/партнершей одновременно.",
+    "simpleExplanation": "В Германии разрешен только моногамный брак, то есть брак с одним человеком.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-253",
+    "locale": "ru",
+    "translation": "Куда вы должны зарегистрироваться, если переезжаете в Германии?",
+    "correctAnswerTranslation": "в Einwohnermeldeamt (отдел регистрации жителей)",
+    "simpleExplanation": "При переезде в Германии необходимо зарегистрироваться в Einwohnermeldeamt (отдел регистрации жителей) по новому месту жительства.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Ehe",
+        "translation": "брак"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wo ...?",
+      "meaning": "Куда ...?"
+    }
+  },
+  {
+    "questionId": "general-254",
+    "locale": "ru",
+    "translation": "В Германии супружеские пары могут развестись. Обычно они должны соблюдать «год раздельного проживания». Что это значит?",
+    "correctAnswerTranslation": "Супруги живут раздельно своей собственной жизнью не менее одного года. После этого возможен развод.",
+    "simpleExplanation": "Перед разводом в Германии супруги должны прожить раздельно не менее одного года, чтобы подтвердить окончательный распад брака.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "dürfen",
+        "translation": "мочь, иметь разрешение"
+      },
+      {
+        "source": "Ehe",
+        "translation": "брак"
+      }
+    ]
+  },
+  {
+    "questionId": "general-255",
+    "locale": "ru",
+    "translation": "При проблемах с воспитанием родители в Германии могут получить помощь от ...",
+    "correctAnswerTranslation": "Jugendamt (Ведомство по делам молодежи).",
+    "simpleExplanation": "Jugendamt (Ведомство по делам молодежи) оказывает поддержку и консультации родителям по вопросам воспитания и развития детей.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Eltern",
+        "translation": "родители"
+      }
+    ]
+  },
+  {
+    "questionId": "general-256",
+    "locale": "ru",
+    "translation": "Супружеская пара хочет открыть ресторан в Германии. Что для этого абсолютно необходимо?",
+    "correctAnswerTranslation": "разрешение на открытие заведения общественного питания от компетентного органа",
+    "simpleExplanation": "Для открытия ресторана в Германии требуется специальное разрешение (Gaststättenerlaubnis) от соответствующего государственного органа.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Behörde",
+        "translation": "орган власти, ведомство"
+      },
+      {
+        "source": "Ehe",
+        "translation": "брак"
+      }
+    ]
+  },
+  {
+    "questionId": "general-257",
+    "locale": "ru",
+    "translation": "Взрослая женщина хочет получить Abitur (аттестат зрелости) в Германии. Она может сделать это в ...",
+    "correctAnswerTranslation": "вечерней гимназии.",
+    "simpleExplanation": "Вечерние гимназии (Abendgymnasium) предназначены для взрослых, которые хотят получить Abitur (аттестат зрелости) после окончания школы.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-258",
+    "locale": "ru",
+    "translation": "Что разрешено Jugendamt (Ведомству по делам молодежи) в Германии?",
+    "correctAnswerTranslation": "Оно может забрать ребенка из семьи, если его бьют или он голодает.",
+    "simpleExplanation": "Jugendamt (Ведомство по делам молодежи) имеет право вмешиваться в семейные дела и забирать детей из семьи в случаях угрозы их благополучию.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Familie",
+        "translation": "семья"
+      },
+      {
+        "source": "Kind",
+        "translation": "ребенок"
+      }
+    ]
+  },
+  {
+    "questionId": "general-259",
+    "locale": "ru",
+    "translation": "Центр профессиональной информации BIZ при Федеральном агентстве по труду в Германии помогает в ...",
+    "correctAnswerTranslation": "поиске места для обучения.",
+    "simpleExplanation": "BIZ (Berufsinformationszentrum) предоставляет информацию и поддержку в выборе профессии и поиске мест для обучения.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      }
+    ]
+  },
+  {
+    "questionId": "general-260",
+    "locale": "ru",
+    "translation": "В Германии ребенок в школе имеет ...",
+    "correctAnswerTranslation": "обязанность посещать занятия.",
+    "simpleExplanation": "В Германии существует обязательное школьное образование, поэтому дети обязаны посещать школу.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Schule",
+        "translation": "школа"
+      },
+      {
+        "source": "Kind",
+        "translation": "ребенок"
+      }
+    ]
+  },
+  {
+    "questionId": "general-261",
+    "locale": "ru",
+    "translation": "Мужчина в возрасте 30 лет хочет получить аттестат зрелости в Германии. Где он может это сделать? В …",
+    "correctAnswerTranslation": "вечерней гимназии.",
+    "simpleExplanation": "Вечерняя гимназия (Abendgymnasium) позволяет взрослым получить аттестат зрелости (Abitur) после окончания обычной школы.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-262",
+    "locale": "ru",
+    "translation": "Что означает принцип равноправия в Германии?",
+    "correctAnswerTranslation": "Никто не должен подвергаться дискриминации, например, из-за инвалидности.",
+    "simpleExplanation": "Принцип равноправия означает, что все люди равны перед законом и никто не должен подвергаться дискриминации по каким-либо признакам.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was bedeutet ...?",
+      "meaning": "Что означает...?"
+    }
+  },
+  {
+    "questionId": "general-263",
+    "locale": "ru",
+    "translation": "В Германии подростки с 14 лет несут уголовную ответственность. Это означает: подростки в возрасте 14 лет и старше, нарушившие уголовное законодательство, …",
+    "correctAnswerTranslation": "будут наказаны.",
+    "simpleExplanation": "С 14 лет в Германии наступает уголовная ответственность, и подростки могут быть наказаны за совершение преступлений.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Gesetz",
+        "translation": "закон"
+      }
+    ]
+  },
+  {
+    "questionId": "general-264",
+    "locale": "ru",
+    "translation": "На каком празднике люди в Германии носят яркие костюмы и маски?",
+    "correctAnswerTranslation": "в Розовый понедельник",
+    "simpleExplanation": "Розовый понедельник (Rosenmontag) — это кульминация карнавального сезона в Германии, когда люди наряжаются в костюмы и маски.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-265",
+    "locale": "ru",
+    "translation": "Куда нужно сначала обратиться в Германии, если вы хотите пожениться?",
+    "correctAnswerTranslation": "в ЗАГС",
+    "simpleExplanation": "Для регистрации брака в Германии необходимо обратиться в ЗАГС (Standesamt).",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Ehe",
+        "translation": "брак"
+      }
+    ]
+  },
+  {
+    "questionId": "general-266",
+    "locale": "ru",
+    "translation": "Когда начинается установленное законом время ночного покоя в Германии?",
+    "correctAnswerTranslation": "в 22 часа",
+    "simpleExplanation": "В Германии установленное законом время ночного покоя обычно начинается в 22:00, когда следует соблюдать тишину.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Gesetz",
+        "translation": "закон"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wann ...?",
+      "meaning": "Когда...?"
+    }
+  },
+  {
+    "questionId": "general-267",
+    "locale": "ru",
+    "translation": "Молодая женщина в Германии, 22 года, живет со своим парнем. Родителям женщины это не нравится, потому что им не нравится парень. Что могут сделать родители?",
+    "correctAnswerTranslation": "Они должны уважать решение совершеннолетней дочери.",
+    "simpleExplanation": "В Германии совершеннолетние дети имеют право принимать собственные решения, и родители обязаны их уважать.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Eltern",
+        "translation": "родители"
+      }
+    ]
+  },
+  {
+    "questionId": "general-268",
+    "locale": "ru",
+    "translation": "Молодая женщина хочет получить водительские права. Она боится экзамена, потому что ее родной язык не немецкий. Что правильно?",
+    "correctAnswerTranslation": "Она, возможно, сможет сдать теоретический экзамен на своем родном языке. Есть более десяти языков на выбор.",
+    "simpleExplanation": "В Германии теоретический экзамен на водительские права можно сдать на нескольких языках, включая родной язык кандидата, если он входит в список доступных.",
+    "vocabulary": [
+      {
+        "source": "Wahl",
+        "translation": "выбор"
+      }
+    ]
+  },
+  {
+    "questionId": "general-269",
+    "locale": "ru",
+    "translation": "В Германии дети в возрасте от трех лет до поступления в школу имеют право на …",
+    "correctAnswerTranslation": "место в детском саду.",
+    "simpleExplanation": "В Германии дети в возрасте от трех лет до поступления в школу имеют законное право на место в детском саду.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Alter",
+        "translation": "возраст"
+      },
+      {
+        "source": "Kind",
+        "translation": "ребенок"
+      }
+    ]
+  },
+  {
+    "questionId": "general-270",
+    "locale": "ru",
+    "translation": "Народный университет (Volkshochschule) в Германии — это учреждение …",
+    "correctAnswerTranslation": "для повышения квалификации.",
+    "simpleExplanation": "Народные университеты (Volkshochschulen) предлагают широкий спектр курсов для взрослых, направленных на повышение квалификации и образование.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Schule",
+        "translation": "школа"
+      },
+      {
+        "source": "Volk",
+        "translation": "народ"
+      }
+    ]
+  },
+  {
+    "questionId": "general-271",
+    "locale": "ru",
+    "translation": "Что является рождественским обычаем в Германии?",
+    "correctAnswerTranslation": "наряжать елку",
+    "simpleExplanation": "Наряжать елку — это традиционный рождественский обычай в Германии.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-272",
+    "locale": "ru",
+    "translation": "Какая форма совместной жизни не разрешена в Германии?",
+    "correctAnswerTranslation": "Мужчина женат на двух женщинах одновременно.",
+    "simpleExplanation": "В Германии запрещено многоженство.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какая ...?"
+    }
+  },
+  {
+    "questionId": "general-273",
+    "locale": "ru",
+    "translation": "В Германии при проблемах с воспитанием детей вы обращаетесь …",
+    "correctAnswerTranslation": "в ведомство по делам молодежи (Jugendamt).",
+    "simpleExplanation": "Jugendamt (Ведомство по делам молодежи) оказывает поддержку семьям и детям в вопросах воспитания.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Ehe",
+        "translation": "брак"
+      }
+    ]
+  },
+  {
+    "questionId": "general-274",
+    "locale": "ru",
+    "translation": "Вы в Германии намеренно открыли письмо, адресованное другому человеку. Что вы не учли?",
+    "correctAnswerTranslation": "тайну переписки",
+    "simpleExplanation": "В Германии существует закон о тайне переписки, который защищает личную корреспонденцию.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Ehe",
+        "translation": "брак"
+      }
+    ]
+  },
+  {
+    "questionId": "general-275",
+    "locale": "ru",
+    "translation": "Что нужно в Германии для развода?",
+    "correctAnswerTranslation": "поддержка адвоката",
+    "simpleExplanation": "Для развода в Германии требуется юридическое представительство адвоката.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Ehe",
+        "translation": "брак"
+      }
+    ]
+  },
+  {
+    "questionId": "general-276",
+    "locale": "ru",
+    "translation": "Что вам следует делать, если с вами плохо обращается ваш контактный сотрудник в немецком ведомстве?",
+    "correctAnswerTranslation": "Я могу пожаловаться руководителю ведомства.",
+    "simpleExplanation": "Если вы недовольны обращением в государственном учреждении, вы имеете право подать жалобу руководителю.",
+    "vocabulary": [
+      {
+        "source": "Behörde",
+        "translation": "ведомство, орган власти"
+      }
+    ]
+  },
+  {
+    "questionId": "general-277",
+    "locale": "ru",
+    "translation": "Женщина с двухлетним ребенком подает заявление на работу в Германии. Что является примером дискриминации? Она не получает работу только потому, что она …",
+    "correctAnswerTranslation": "мать.",
+    "simpleExplanation": "Отказ в приеме на работу из-за того, что женщина является матерью, является дискриминацией.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Kind",
+        "translation": "ребенок"
+      }
+    ]
+  },
+  {
+    "questionId": "general-278",
+    "locale": "ru",
+    "translation": "Мужчина в инвалидной коляске подал заявление на должность бухгалтера. Что является примером дискриминации? Он не получает работу только потому, что он …",
+    "correctAnswerTranslation": "сидит в инвалидной коляске.",
+    "simpleExplanation": "Отказ в приеме на работу из-за инвалидности является дискриминацией.",
+    "vocabulary": [
+      {
+        "source": "Alter",
+        "translation": "возраст"
+      }
+    ]
+  },
+  {
+    "questionId": "general-279",
+    "locale": "ru",
+    "translation": "В большинстве многоквартирных домов в Германии есть «Hausordnung» (правила дома). Что содержится в такой «Hausordnung»? Она содержит …",
+    "correctAnswerTranslation": "правила, которым должны следовать все жильцы.",
+    "simpleExplanation": "Hausordnung устанавливает правила совместного проживания в многоквартирном доме.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-280",
+    "locale": "ru",
+    "translation": "Если вы хотите оспорить неверное налоговое уведомление в Германии, вы должны …",
+    "correctAnswerTranslation": "подать возражение.",
+    "simpleExplanation": "Чтобы оспорить налоговое уведомление, необходимо подать официальное возражение (Einspruch).",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-281",
+    "locale": "ru",
+    "translation": "Два друга хотят пойти в общественный бассейн в Германии. Оба имеют темный цвет кожи, и поэтому их не пускают. Какое право нарушается в этой ситуации? Право на …",
+    "correctAnswerTranslation": "равное обращение",
+    "simpleExplanation": "В Германии все люди равны перед законом, независимо от их происхождения, цвета кожи или других характеристик. Отказ в доступе из-за цвета кожи является дискриминацией и нарушает право на равное обращение.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-282",
+    "locale": "ru",
+    "translation": "Какую почетную должность должны занимать граждане Германии, если их об этом попросят?",
+    "correctAnswerTranslation": "помощник на выборах",
+    "simpleExplanation": "Граждане Германии обязаны помогать на выборах, если их об этом попросят. Это важная часть демократического процесса.",
+    "vocabulary": [
+      {
+        "source": "Staat",
+        "translation": "государство"
+      },
+      {
+        "source": "Wahl",
+        "translation": "выборы"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какое ...?"
+    }
+  },
+  {
+    "questionId": "general-283",
+    "locale": "ru",
+    "translation": "Что вы делаете, если получаете неверный счет от немецкого ведомства?",
+    "correctAnswerTranslation": "Я подаю возражение в ведомство.",
+    "simpleExplanation": "Если вы получили неверный счет от государственного органа, вы имеете право подать возражение (Widerspruch) в этот орган. Это официальный способ оспорить решение или требование.",
+    "vocabulary": [
+      {
+        "source": "Behörde",
+        "translation": "ведомство, орган власти"
+      }
+    ]
+  },
+  {
+    "questionId": "general-284",
+    "locale": "ru",
+    "translation": "То, что нужно уметь для работы, очень быстро меняется в будущем. Что можно сделать?",
+    "correctAnswerTranslation": "Взрослые должны продолжать учиться и после окончания образования.",
+    "simpleExplanation": "В современном мире требования к работе постоянно меняются, поэтому важно постоянно учиться и развивать свои навыки, чтобы оставаться конкурентоспособным на рынке труда.",
+    "vocabulary": [
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      }
+    ]
+  },
+  {
+    "questionId": "general-285",
+    "locale": "ru",
+    "translation": "Госпожа Фрост работает постоянным сотрудником в офисе. Что она не должна платить из своей зарплаты?",
+    "correctAnswerTranslation": "налог с оборота",
+    "simpleExplanation": "Налог с оборота (Umsatzsteuer) — это налог на товары и услуги, который обычно включен в цену товара и уплачивается потребителем. Работник не платит его из своей зарплаты напрямую.",
+    "vocabulary": [
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      }
+    ]
+  },
+  {
+    "questionId": "general-286",
+    "locale": "ru",
+    "translation": "Какая организация на предприятии помогает работникам в случае проблем с работодателем?",
+    "correctAnswerTranslation": "производственный совет",
+    "simpleExplanation": "Производственный совет (Betriebsrat) — это представительный орган работников на предприятии, который защищает их интересы и права в отношениях с работодателем.",
+    "vocabulary": [
+      {
+        "source": "Arbeitnehmer",
+        "translation": "работник"
+      },
+      {
+        "source": "Betriebsrat",
+        "translation": "производственный совет"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какая ...?"
+    }
+  },
+  {
+    "questionId": "general-287",
+    "locale": "ru",
+    "translation": "Вы хотите расторгнуть трудовой договор с компанией в Германии. Что вы должны учитывать?",
+    "correctAnswerTranslation": "срок уведомления об увольнении",
+    "simpleExplanation": "При расторжении трудового договора важно соблюдать срок уведомления об увольнении (Kündigungsfrist), который указан в вашем договоре или в законодательстве.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      }
+    ]
+  },
+  {
+    "questionId": "general-288",
+    "locale": "ru",
+    "translation": "На чем основывается особая ответственность Германии перед Израилем?",
+    "correctAnswerTranslation": "на национал-социалистических преступлениях против евреев",
+    "simpleExplanation": "Особая ответственность Германии перед Израилем обусловлена историческими событиями Холокоста и преступлениями нацистского режима против еврейского народа.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-289",
+    "locale": "ru",
+    "translation": "Мужчина с темным цветом кожи подает заявление на должность официанта в ресторане в Германии. Что является примером дискриминации? Он не получает эту должность только потому, что …",
+    "correctAnswerTranslation": "у него темная кожа.",
+    "simpleExplanation": "Отказ в приеме на работу из-за цвета кожи является дискриминацией, так как это несправедливое отношение, основанное на внешних признаках, а не на профессиональных качествах.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-290",
+    "locale": "ru",
+    "translation": "Вы купили телевизор в Германии. Дома вы распаковываете телевизор, но он не работает. Телевизор сломан. Что вы можете сделать?",
+    "correctAnswerTranslation": "подать рекламацию на телевизор",
+    "simpleExplanation": "Если товар неисправен, вы имеете право подать рекламацию (reklamieren) продавцу, чтобы получить ремонт, замену или возврат денег.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Ehe",
+        "translation": "брак"
+      }
+    ]
+  },
+  {
+    "questionId": "general-291",
+    "locale": "ru",
+    "translation": "Почему в Германии при подаче налоговой декларации необходимо указывать, принадлежите ли вы к церкви или нет? Потому что...",
+    "correctAnswerTranslation": "существует церковный налог, который привязан к подоходному налогу и налогу на заработную плату.",
+    "simpleExplanation": "В Германии существует церковный налог, который взимается с членов церкви и рассчитывается на основе их дохода.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      },
+      {
+        "source": "Kirchen",
+        "translation": "церкви"
+      }
+    ]
+  },
+  {
+    "questionId": "general-292",
+    "locale": "ru",
+    "translation": "Люди в Германии живут по принципу религиозной терпимости. Что это значит?",
+    "correctAnswerTranslation": "Каждый может верить во что хочет.",
+    "simpleExplanation": "Религиозная терпимость означает, что каждый человек имеет право свободно выбирать и исповедовать свою религию или не исповедовать никакой.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-293",
+    "locale": "ru",
+    "translation": "Какая традиция существует в Германии на Пасху?",
+    "correctAnswerTranslation": "Раскрашивать яйца.",
+    "simpleExplanation": "Раскрашивание яиц — это популярная пасхальная традиция в Германии, особенно для детей.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Was ist ...?",
+      "meaning": "Что такое ...?"
+    }
+  },
+  {
+    "questionId": "general-294",
+    "locale": "ru",
+    "translation": "Пятидесятница — это …",
+    "correctAnswerTranslation": "христианский праздник.",
+    "simpleExplanation": "Пятидесятница (Пфингстен) — это важный христианский праздник, отмечаемый через 50 дней после Пасхи.",
+    "vocabulary": [
+      {
+        "source": "Pfingsten",
+        "translation": "Пятидесятница"
+      },
+      {
+        "source": "christlicher",
+        "translation": "христианский"
+      },
+      {
+        "source": "Feiertag",
+        "translation": "праздник"
+      }
+    ]
+  },
+  {
+    "questionId": "general-295",
+    "locale": "ru",
+    "translation": "Какая религия сформировала европейскую и немецкую культуру?",
+    "correctAnswerTranslation": "Христианство.",
+    "simpleExplanation": "Христианство оказало глубокое влияние на развитие европейской и немецкой культуры, искусства, этики и традиций.",
+    "vocabulary": [
+      {
+        "source": "Religion",
+        "translation": "религия"
+      },
+      {
+        "source": "europäische",
+        "translation": "европейская"
+      },
+      {
+        "source": "deutsche",
+        "translation": "немецкая"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какая ...?"
+    }
+  },
+  {
+    "questionId": "general-296",
+    "locale": "ru",
+    "translation": "В Германии последние четыре недели перед Рождеством называют …",
+    "correctAnswerTranslation": "Адвентом.",
+    "simpleExplanation": "Адвент — это период ожидания и подготовки к Рождеству, который длится четыре недели.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-297",
+    "locale": "ru",
+    "translation": "Из какой страны приехало большинство мигрантов в Германию?",
+    "correctAnswerTranslation": "Турция.",
+    "simpleExplanation": "Турция является страной происхождения наибольшего числа мигрантов в Германию, особенно в период послевоенного восстановления.",
+    "vocabulary": [
+      {
+        "source": "Deutschland",
+        "translation": "Германия"
+      }
+    ]
+  },
+  {
+    "questionId": "general-298",
+    "locale": "ru",
+    "translation": "В ГДР жили в основном мигранты из …",
+    "correctAnswerTranslation": "Вьетнама, Польши, Мозамбика.",
+    "simpleExplanation": "ГДР привлекала рабочих из этих стран в рамках социалистического сотрудничества.",
+    "vocabulary": [
+      {
+        "source": "DDR",
+        "translation": "ГДР (Германская Демократическая Республика)"
+      }
+    ]
+  },
+  {
+    "questionId": "general-299",
+    "locale": "ru",
+    "translation": "Иностранных рабочих, которых Федеративная Республика Германия привлекала в 50-х и 60-х годах, называли …",
+    "correctAnswerTranslation": "гастарбайтерами.",
+    "simpleExplanation": "Гастарбайтеры (гостевые рабочие) были привлечены для восполнения нехватки рабочей силы в послевоенной Германии.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Arbeitnehmer",
+        "translation": "рабочие"
+      }
+    ]
+  },
+  {
+    "questionId": "general-300",
+    "locale": "ru",
+    "translation": "Из какой страны приехали первые гастарбайтеры в Федеративную Республику Германия?",
+    "correctAnswerTranslation": "Италия.",
+    "simpleExplanation": "Италия была первой страной, с которой ФРГ заключила соглашение о привлечении гастарбайтеров в 1955 году.",
+    "vocabulary": [
+      {
+        "source": "Bundesrepublik Deutschland",
+        "translation": "Федеративная Республика Германия"
+      },
+      {
+        "source": "Arbeit",
+        "translation": "работа"
+      }
+    ]
+  },
+  {
+    "questionId": "bavaria-1",
+    "locale": "ru",
+    "translation": "Какой герб принадлежит Свободному государству Бавария?",
+    "correctAnswerTranslation": "Изображение 2",
+    "simpleExplanation": "Герб Баварии имеет четыре поля с различными символами, представляющими части региона, и щит в центре.",
+    "vocabulary": [
+      {
+        "source": "Freistaat Bayern",
+        "translation": "Свободное государство Бавария"
+      },
+      {
+        "source": "Wappen",
+        "translation": "герб"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какой ...?"
+    }
+  },
+  {
+    "questionId": "bavaria-2",
+    "locale": "ru",
+    "translation": "Какой из них является районом в Баварии?",
+    "correctAnswerTranslation": "Альтёттинг",
+    "simpleExplanation": "Альтёттинг — это район в Баварии. Остальные варианты — районы в других федеральных землях Германии.",
+    "vocabulary": [
+      {
+        "source": "der Landkreis",
+        "translation": "район"
+      },
+      {
+        "source": "Bayern",
+        "translation": "Бавария"
+      }
+    ]
+  },
+  {
+    "questionId": "bavaria-3",
+    "locale": "ru",
+    "translation": "На сколько лет избирается ландтаг в Баварии?",
+    "correctAnswerTranslation": "5",
+    "simpleExplanation": "Ландтаг Баварии избирается на пятилетний срок.",
+    "vocabulary": [
+      {
+        "source": "Landtag",
+        "translation": "ландтаг (земельный парламент)"
+      },
+      {
+        "source": "Bayern",
+        "translation": "Бавария"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Für wie viele Jahre ...?",
+      "meaning": "На сколько лет ...?"
+    }
+  },
+  {
+    "questionId": "bavaria-4",
+    "locale": "ru",
+    "translation": "С какого возраста можно голосовать на муниципальных выборах в Баварии?",
+    "correctAnswerTranslation": "18",
+    "simpleExplanation": "В Баварии, как и в большинстве федеральных земель Германии, право голоса на муниципальных выборах предоставляется с 18 лет.",
+    "vocabulary": [
+      {
+        "source": "bei Kommunalwahlen",
+        "translation": "на муниципальных выборах"
+      },
+      {
+        "source": "Bayern",
+        "translation": "Бавария"
+      },
+      {
+        "source": "wählen",
+        "translation": "голосовать, выбирать"
+      },
+      {
+        "source": "Alter",
+        "translation": "возраст"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Ab welchem Alter ...?",
+      "meaning": "С какого возраста ...?"
+    }
+  },
+  {
+    "questionId": "bavaria-5",
+    "locale": "ru",
+    "translation": "Какие цвета у государственного флага Баварии?",
+    "correctAnswerTranslation": "бело-голубой",
+    "simpleExplanation": "Флаг Баварии традиционно бело-голубой, часто с ромбовидным узором.",
+    "vocabulary": [
+      {
+        "source": "Landesflagge",
+        "translation": "государственный флаг"
+      },
+      {
+        "source": "Bayern",
+        "translation": "Бавария"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какие ...?"
+    }
+  },
+  {
+    "questionId": "bavaria-6",
+    "locale": "ru",
+    "translation": "Где в Баварии можно получить информацию по политическим вопросам?",
+    "correctAnswerTranslation": "в Государственном центре политического образования",
+    "simpleExplanation": "Государственные центры политического образования (Landeszentralen für politische Bildung) предоставляют информацию о политике и демократии.",
+    "vocabulary": [
+      {
+        "source": "Landeszentrale für politische Bildung",
+        "translation": "Государственный центр политического образования"
+      },
+      {
+        "source": "Bayern",
+        "translation": "Бавария"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wo ...?",
+      "meaning": "Где ...?"
+    }
+  },
+  {
+    "questionId": "bavaria-7",
+    "locale": "ru",
+    "translation": "Столица Баварии называется …",
+    "correctAnswerTranslation": "Мюнхен.",
+    "simpleExplanation": "Мюнхен — крупнейший город и столица Баварии.",
+    "vocabulary": [
+      {
+        "source": "die Landeshauptstadt",
+        "translation": "столица федеральной земли"
+      },
+      {
+        "source": "heißt",
+        "translation": "называется"
+      },
+      {
+        "source": "München",
+        "translation": "Мюнхен"
+      }
+    ]
+  },
+  {
+    "questionId": "bavaria-8",
+    "locale": "ru",
+    "translation": "Какая федеральная земля — Бавария?",
+    "correctAnswerTranslation": "4",
+    "simpleExplanation": "Бавария расположена на юго-востоке Германии, что соответствует позиции 4 на карте.",
+    "vocabulary": [
+      {
+        "source": "Bundesland",
+        "translation": "федеральная земля"
+      },
+      {
+        "source": "Bayern",
+        "translation": "Бавария"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welches ...?",
+      "meaning": "Какое ...?"
+    }
+  },
+  {
+    "questionId": "bavaria-9",
+    "locale": "ru",
+    "translation": "Как называют главу правительства в Баварии?",
+    "correctAnswerTranslation": "Премьер-министр",
+    "simpleExplanation": "Глава правительства федеральной земли в Германии называется премьер-министром (Ministerpräsident/in).",
+    "vocabulary": [
+      {
+        "source": "Ministerpräsidentin/Ministerpräsident",
+        "translation": "премьер-министр"
+      },
+      {
+        "source": "Regierung",
+        "translation": "правительство"
+      },
+      {
+        "source": "Bayern",
+        "translation": "Бавария"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Wie nennt man ...?",
+      "meaning": "Как называют ...?"
+    }
+  },
+  {
+    "questionId": "bavaria-10",
+    "locale": "ru",
+    "translation": "Какого министра нет в Баварии?",
+    "correctAnswerTranslation": "Министра иностранных дел",
+    "simpleExplanation": "Министерство иностранных дел является федеральным ведомством, а не земельным. Федеральные земли не имеют собственных министров иностранных дел.",
+    "vocabulary": [
+      {
+        "source": "Außenministerin/Außenminister",
+        "translation": "министр иностранных дел"
+      },
+      {
+        "source": "Bayern",
+        "translation": "Бавария"
+      }
+    ],
+    "germanPattern": {
+      "pattern": "Welche ...?",
+      "meaning": "Какого ...?"
+    }
+  }
+]

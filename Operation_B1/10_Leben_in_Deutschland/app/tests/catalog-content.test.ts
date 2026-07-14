@@ -10,6 +10,7 @@ const generalQuestions = readJson<readonly SourceQuestion[]>(path.join(dataRoot,
 const bavariaQuestions = readJson<readonly SourceQuestion[]>(path.join(dataRoot, "regions", "bavaria.de.json"));
 const germanQuestions = [...generalQuestions, ...bavariaQuestions];
 const englishSupport = readJson<readonly LearningSupport[]>(path.join(dataRoot, "support", "en.json"));
+const arabicSupport = readJson<readonly LearningSupport[]>(path.join(dataRoot, "support", "ar.json"));
 const catalog: ExamCatalog = {
   ...manifest,
   questions: germanQuestions
@@ -22,7 +23,7 @@ describe("BAMF Bavaria catalog content", () => {
     expect(catalog.questions.filter((question) => question.region === "bavaria")).toHaveLength(10);
     expect(catalog.defaultRegion).toBe("bavaria");
     expect(catalog.regions.map((region) => region.id)).toEqual(["bavaria"]);
-    expect(catalog.supportLocales.map((locale) => locale.id)).toEqual(["en"]);
+    expect(catalog.supportLocales.map((locale) => locale.id)).toEqual(["en", "ar"]);
   });
 
   it("has stable ids, four answer choices, and one correct choice per question", () => {
@@ -54,19 +55,11 @@ describe("BAMF Bavaria catalog content", () => {
   });
 
   it("has English study support JSON for every catalog question", () => {
-    const ids = new Set(germanQuestions.map((question) => question.id));
-    const supportIds = new Set(englishSupport.map((support) => support.questionId));
+    expectFullSupportCoverage(englishSupport, "en");
+  });
 
-    expect(englishSupport).toHaveLength(310);
-    expect(supportIds.size).toBe(310);
-    for (const support of englishSupport) {
-      expect(ids.has(support.questionId)).toBe(true);
-      expect(support.locale).toBe("en");
-      expect(support.translation.length).toBeGreaterThan(0);
-      expect(support.correctAnswerTranslation.length).toBeGreaterThan(0);
-      expect(support.simpleExplanation.length).toBeGreaterThan(0);
-      expect(support.vocabulary.length).toBeGreaterThan(0);
-    }
+  it("has Arabic study support JSON for every catalog question", () => {
+    expectFullSupportCoverage(arabicSupport, "ar");
   });
 
   it("creates full-catalog language practice drills from support JSON", () => {
@@ -77,6 +70,22 @@ describe("BAMF Bavaria catalog content", () => {
     expect(questionIdsWithDrills.size).toBe(310);
   });
 });
+
+function expectFullSupportCoverage(supportPack: readonly LearningSupport[], locale: string): void {
+  const ids = new Set(germanQuestions.map((question) => question.id));
+  const supportIds = new Set(supportPack.map((support) => support.questionId));
+
+  expect(supportPack).toHaveLength(310);
+  expect(supportIds.size).toBe(310);
+  for (const support of supportPack) {
+    expect(ids.has(support.questionId)).toBe(true);
+    expect(support.locale).toBe(locale);
+    expect(support.translation.length).toBeGreaterThan(0);
+    expect(support.correctAnswerTranslation.length).toBeGreaterThan(0);
+    expect(support.simpleExplanation.length).toBeGreaterThan(0);
+    expect(support.vocabulary.length).toBeGreaterThan(0);
+  }
+}
 
 function readJson<T>(filePath: string): T {
   return JSON.parse(fs.readFileSync(filePath, "utf8")) as T;

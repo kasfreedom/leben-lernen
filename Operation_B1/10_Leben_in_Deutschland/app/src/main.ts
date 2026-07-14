@@ -15,8 +15,10 @@ import {
   recordMockExamAttempt,
   recordSessionAnswer,
   summarizeMockExam,
+  summarizeProgress,
   summarizeWeakTopics,
-  toggleBookmark
+  toggleBookmark,
+  updateVocabularyMastery
 } from "./domain/practice-engine";
 import type { PracticeEngine } from "./domain/practice-engine";
 import type {
@@ -37,12 +39,12 @@ import type {
 } from "./domain/types";
 
 const PROGRESS_STORAGE_KEY = "leben-lernen-progress-v1";
-const VOCABULARY_STEP = 25;
 const MAX_MASTERY = 100;
 const MIN_MASTERY = 0;
 const PUBLIC_BASE_URL = import.meta.env.BASE_URL;
 const MILLISECONDS_PER_MINUTE = 60_000;
 const MILLISECONDS_PER_SECOND = 1_000;
+const MOCK_TIMER_SELECTOR = "[data-mock-timer]";
 const RTL_SUPPORT_LOCALES = new Set(["ar"]);
 
 const root = document.querySelector<HTMLDivElement>("#app");
@@ -81,7 +83,7 @@ function currentQuestion(): SourceQuestion {
 
 function activeSession(): PracticeSession {
   if (mode !== "mock") return practiceSession;
-  mockSession ??= createMockSession();
+  if (!mockSession) throw new Error("Mock exam has not started");
   return mockSession;
 }
 
@@ -93,30 +95,26 @@ function setActiveSession(nextSession: PracticeSession): void {
   }
 }
 
-function render(): void {
+function render(options: { readonly resetView?: boolean } = {}): void {
   updateMockTimer();
 
-  if (mode === "language") {
+  if (mode === "progress") {
+    renderProgress();
+  } else if (mode === "language") {
     renderLanguagePractice();
-    return;
-  }
-
-  if (mode === "practice" && activeSession().questionIds.length === 0) {
+  } else if (mode === "mock" && !mockSession) {
+    renderMockStart();
+  } else if (mode === "practice" && activeSession().questionIds.length === 0) {
     renderEmptyPracticeSet();
-    return;
-  }
-
-  if (mode === "mock" && (activeSession().summary.isComplete || isMockExpired())) {
+  } else if (mode === "mock" && (activeSession().summary.isComplete || isMockExpired())) {
     renderMockResult();
-    return;
-  }
-
-  if (activeSession().summary.isComplete) {
+  } else if (activeSession().summary.isComplete) {
     renderCompletion();
-    return;
+  } else {
+    renderQuestion();
   }
 
-  renderQuestion();
+  if (options.resetView) resetScreenPosition();
 }
 
 function renderQuestion(): void {
@@ -136,14 +134,15 @@ function renderQuestion(): void {
     <section class="question-area">
       ${mode === "practice" ? renderPracticeToolbar(session) : ""}
       ${isMockExam ? renderMockHeader(session) : ""}
-      <div class="score-strip" aria-label="Session score">
+      <div class="score-strip session-score" aria-label="Session score">
         ${metric("Score", `${session.summary.percentCorrect}%`)}
         ${metric("Correct", `${session.summary.correct}/${session.summary.answered}`)}
         ${metric("German only", `${session.summary.germanOnlyCorrect}`)}
         ${metric("Assisted", `${session.summary.assisted}`)}
       </div>
+      <div class="mobile-session-summary" aria-label="Session progress"><strong>${session.summary.percentCorrect}%</strong><span>${session.summary.correct}/${session.summary.answered} correct</span><span>${session.summary.answered}/${session.summary.totalQuestions} answered</span></div>
       <div class="question-meta"><span>Question ${session.currentIndex + 1}</span>${isMockExam ? `<span>No hints or answer feedback during mock exam</span>` : `<div class="question-tools"><button class="bookmark-button ${isCurrentQuestionBookmarked() ? "active" : ""}" id="bookmark" aria-pressed="${isCurrentQuestionBookmarked()}">${isCurrentQuestionBookmarked() ? "★ Bookmarked" : "☆ Bookmark"}</button><label class="toggle"><span>Show translation</span><input type="checkbox" ${showSupport ? "checked" : ""}><i></i></label></div>`}</div>
-      <h1 lang="de">${escapeHtml(question.prompt)}</h1>
+      <h1 lang="de" data-screen-heading tabindex="-1">${escapeHtml(question.prompt)}</h1>
       ${!isMockExam && showSupport && support ? `<p class="inline-translation" ${supportTextAttributes()}>${escapeHtml(support.translation)}</p>` : ""}
       ${question.image ? `<figure class="catalog-figure"><img src="${escapeHtml(publicAssetPath(`catalog-pages/${question.image}.png`))}" alt="Official BAMF catalog visual for ${escapeHtml(question.id)}"></figure>` : ""}
       <fieldset><legend class="sr-only">Choose one answer</legend>${question.choices.map((choice) => {
@@ -167,7 +166,7 @@ function renderEmptyPracticeSet(): void {
     <section class="question-area completion">
       ${renderPracticeToolbar(activeSession())}
       <p class="completion-label">No questions in this set</p>
-      <h1>Nothing to review yet</h1>
+      <h1 data-screen-heading tabindex="-1">Nothing to review yet</h1>
       <p class="inline-translation">Try All questions, answer a few questions, or bookmark questions first.</p>
     </section>
     <aside class="support"><section><h2>Practice sets</h2><p>Review sets are built from your saved progress in this browser.</p></section></aside>
@@ -182,7 +181,7 @@ function renderCompletion(): void {
   app.innerHTML = layout(`
     <section class="question-area completion">
       <p class="completion-label">${completionLabel}</p>
-      <h1>${session.summary.percentCorrect}% score</h1>
+      <h1 data-screen-heading tabindex="-1">${session.summary.percentCorrect}% score</h1>
       <p class="inline-translation">You answered ${session.summary.correct} of ${session.summary.totalQuestions} available questions correctly. ${session.summary.assisted} answers used support.</p>
       <div class="score-strip large">
         ${metric("Correct", String(session.summary.correct))}
@@ -227,6 +226,80 @@ function renderCompletion(): void {
   });
 }
 
+function renderMockStart(): void {
+  const totalQuestions = catalog.mockExam.generalQuestionCount + catalog.mockExam.regionalQuestionCount;
+  app.innerHTML = layout(`
+    <section class="question-area mock-start">
+      <p class="completion-label">Mock exam</p>
+      <h1 data-screen-heading tabindex="-1">Ready for a full practice exam?</h1>
+      <p class="lead-copy">The timer starts only when you press Start exam. Translation and answer feedback stay hidden until the result.</p>
+      <div class="exam-facts" aria-label="Mock exam details">
+        ${metric("Questions", String(totalQuestions))}
+        ${metric("Time", `${catalog.mockExam.durationMinutes} min`)}
+        ${metric("Pass mark", `${catalog.mockExam.passScore}/${totalQuestions}`)}
+      </div>
+      <div class="exam-checklist">
+        <h2>Before you start</h2>
+        <ul>
+          <li>Choose one German answer for every question.</li>
+          <li>You can leave questions unanswered and review them before finishing.</li>
+          <li>Your normal practice score will not change.</li>
+        </ul>
+      </div>
+      <div class="actions single"><button class="primary" id="start-mock">Start exam</button></div>
+    </section>
+    <aside class="support">
+      <section><h2>${escapeHtml(currentRegionLabel())} question mix</h2><p>${catalog.mockExam.generalQuestionCount} general questions and ${catalog.mockExam.regionalQuestionCount} regional questions.</p></section>
+      ${renderMockHistorySection()}
+    </aside>
+  `);
+
+  bindShell();
+  app.querySelector<HTMLButtonElement>("#start-mock")?.addEventListener("click", startMockExam);
+}
+
+function renderProgress(): void {
+  const languageExercises = currentLanguageExercises();
+  const summary = summarizeProgress(progress, { languageExerciseCount: languageExercises.length });
+  const latestMock = progress.mockExamAttempts[0];
+
+  app.innerHTML = layout(`
+    <section class="question-area progress-screen">
+      <div class="progress-heading">
+        <div><p class="completion-label">Your learning</p><h1 data-screen-heading tabindex="-1">Progress</h1></div>
+        <button class="secondary compact-button" data-mode="practice">Continue practice</button>
+      </div>
+      <div class="progress-overview">
+        ${metric("Practice accuracy", `${summary.accuracyPercent}%`)}
+        ${metric("German-only correct", String(summary.germanOnlyCorrect))}
+        ${metric("Language mastered", `${summary.masteredLanguageItems}/${summary.languageExerciseCount}`)}
+        ${metric("Mock attempts", String(summary.mockAttempts))}
+      </div>
+      <section class="progress-section">
+        <div class="section-heading"><div><h2>Next actions</h2><p>Use your saved activity to choose a focused practice session.</p></div></div>
+        <div class="action-list">
+          <button class="progress-action" id="practice-bookmarks" ${summary.bookmarkedQuestions === 0 ? "disabled" : ""}><span><strong>Bookmarked questions</strong><small>${summary.bookmarkedQuestions} saved</small></span><b aria-hidden="true">›</b></button>
+          <button class="progress-action" data-mode="language"><span><strong>Language review</strong><small>${summary.masteredLanguageItems} mastered of ${summary.languageExerciseCount}</small></span><b aria-hidden="true">›</b></button>
+          <button class="progress-action" data-mode="mock"><span><strong>Mock exam</strong><small>${latestMock ? `${latestMock.correct}/${latestMock.totalQuestions} latest score` : "No attempts yet"}</small></span><b aria-hidden="true">›</b></button>
+        </div>
+      </section>
+      <section class="progress-section">
+        <h2>Practice summary</h2>
+        <p>${summary.practicedQuestions} questions practised · ${summary.correctAnswers} correct · ${summary.bookmarkedQuestions} bookmarked</p>
+      </section>
+    </section>
+    <aside class="support progress-support">
+      ${renderWeakAreasSection()}
+      ${renderMockHistorySection()}
+    </aside>
+  `);
+
+  bindShell();
+  app.querySelector<HTMLButtonElement>("#practice-bookmarks")?.addEventListener("click", () => {
+    startCustomPractice("Bookmarked questions", progress.bookmarkedQuestionIds);
+  });
+}
+
 function renderMockResult(): void {
   const session = activeSession();
   const result = summarizeMockExam(session, catalog.mockExam);
@@ -237,7 +310,7 @@ function renderMockResult(): void {
   app.innerHTML = layout(`
     <section class="question-area completion">
       <p class="completion-label">Mock exam result</p>
-      <h1>${result.passed ? "Passed" : "Not passed yet"}</h1>
+      <h1 data-screen-heading tabindex="-1">${result.passed ? "Passed" : "Not passed yet"}</h1>
       <p class="inline-translation">You scored ${result.correct} of ${result.totalQuestions}. Passing score is ${result.passScore} of ${result.totalQuestions}. ${result.unanswered > 0 ? `${result.unanswered} questions were unanswered when time ended.` : ""}</p>
       <div class="score-strip large">
         ${metric("Correct", String(result.correct))}
@@ -311,15 +384,15 @@ function renderLanguagePractice(): void {
   app.innerHTML = layout(`
     <section class="question-area language-practice">
       <div class="question-meta"><span>${exercise.type === "vocabulary" ? "Vocabulary" : "German pattern"} ${languageIndex + 1} of ${languageExercises.length}</span><span>${mastery}% mastered</span></div>
-      <h1 lang="de">${escapeHtml(exercise.prompt)}</h1>
+      <h1 lang="de" data-screen-heading tabindex="-1">${escapeHtml(exercise.prompt)}</h1>
       <p class="inline-translation">${escapeHtml(exercise.hint ?? "Work out the meaning before revealing the answer.")}</p>
       <div class="language-card ${languageRevealed ? "revealed" : ""}">
         <span ${languageRevealed ? supportTextAttributes() : ""}>${languageRevealed ? escapeHtml(exercise.answer) : "Think first, then reveal."}</span>
       </div>
-      <div class="actions language-actions">
+      <div class="actions language-actions ${languageRevealed ? "revealed" : ""}">
         <button class="secondary" id="language-previous" ${languageIndex === 0 ? "disabled" : ""}>Previous</button>
         <button class="secondary" id="reveal">${languageRevealed ? "Hide" : "Reveal"}</button>
-        <button class="primary" id="known">I know this</button>
+        ${languageRevealed ? `<button class="secondary" id="again">Again</button><button class="primary" id="known">Got it</button>` : ""}
       </div>
     </section>
     <aside class="support">
@@ -333,14 +406,16 @@ function renderLanguagePractice(): void {
 }
 
 function layout(content: string): string {
-  const session = activeSession();
+  const session = mode === "mock" ? mockSession ?? practiceSession : practiceSession;
+  const mockIsActive = mode === "mock" && mockSession !== undefined && !mockSession.summary.isComplete;
   return `
-    <header class="topbar">
+    <header class="topbar ${mockIsActive ? "mock-active" : ""}">
       <a class="brand" href="#">Leben lernen</a>
       <nav aria-label="Main navigation">
         ${navButton("practice", "Practice")}
         ${navButton("language", "Language")}
         ${navButton("mock", "Mock exam")}
+        ${navButton("progress", "Progress")}
       </nav>
       <div class="header-tools">
         <label class="region"><span>Region</span><select aria-label="Region">${catalog.regions.map((region) => `<option value="${escapeHtml(region.id)}" ${region.id === selectedRegion ? "selected" : ""}>${escapeHtml(region.label)}</option>`).join("")}</select></label>
@@ -350,11 +425,12 @@ function layout(content: string): string {
     </header>
     <main class="shell">
       <aside class="sidebar">
-        <section><h2>Dashboard</h2><ol class="topic-list">
+        <section><h2>Learning overview</h2><ol class="topic-list">
           <li class="current"><span>1</span><div><strong>Exam knowledge</strong><small>${session.summary.percentCorrect}% current score</small></div></li>
           <li><span>2</span><div><strong>German-only</strong><small>${session.summary.germanOnlyCorrect} correct without support</small></div></li>
           <li><span>3</span><div><strong>Words and patterns</strong><small>${currentLanguageExercises().length} drills</small></div></li>
         </ol></section>
+        <button class="side-link" data-mode="progress"><span><strong>Progress</strong><small>Scores and next actions</small></span><b aria-hidden="true">&rsaquo;</b></button>
         <button class="side-link" data-mode="language"><span><strong>Language practice</strong><small>Vocabulary and structure</small></span><b>&rsaquo;</b></button>
         <button class="side-link" data-mode="mock"><span><strong>${escapeHtml(currentRegionLabel())} mock</strong><small>${catalog.mockExam.generalQuestionCount + catalog.mockExam.regionalQuestionCount} exam questions</small></span><b>&rsaquo;</b></button>
       </aside>
@@ -389,9 +465,9 @@ function renderPracticeToolbar(session: PracticeSession): string {
 function renderMockHeader(session: PracticeSession): string {
   return `
     <div class="mock-header">
-      <span>Mock exam</span>
-      <strong>${formatRemainingTime()}</strong>
+      <span><strong data-mock-timer>${formatRemainingTime()}</strong><small> remaining</small></span>
       <span>${session.summary.answered}/${session.summary.totalQuestions} answered</span>
+      <button class="secondary compact-button" id="exit-mock">Exit exam</button>
     </div>
   `;
 }
@@ -399,7 +475,7 @@ function renderMockHeader(session: PracticeSession): string {
 function renderMockPanel(session: PracticeSession): string {
   return `
     <aside class="support">
-      <section><h2>Timer</h2><p class="answer-translation">${formatRemainingTime()}</p></section>
+      <section><h2>Timer</h2><p class="answer-translation" data-mock-timer>${formatRemainingTime()}</p></section>
       <section><h2>Passing score</h2><p>${catalog.mockExam.passScore} correct answers are needed to pass.</p></section>
       <section><h2>Exam mode</h2><p>No translation, explanation, or answer feedback is shown until the final result.</p></section>
       <section><h2>Question mix</h2><p>${catalog.mockExam.generalQuestionCount} general questions + ${catalog.mockExam.regionalQuestionCount} ${escapeHtml(currentRegionLabel())} questions.</p></section>
@@ -457,10 +533,8 @@ function renderSupportPanel(questionId: QuestionId): string {
   return `
     <aside class="support support-panel ${showSupport ? "" : "hidden"}">
       <details class="support-disclosure" open>
-        <summary>Study support</summary>
+        <summary>Study this question</summary>
         <div class="support-content">
-          <section><h2>Translated answer</h2><p class="answer-translation" ${supportTextAttributes()}>${escapeHtml(support?.correctAnswerTranslation ?? "Answer support is not available yet.")}</p></section>
-          <section><h2>Explanation</h2><p ${supportTextAttributes()}>${escapeHtml(support?.simpleExplanation ?? "Support is not available yet.")}</p></section>
           <section><h2>Key words</h2><dl>${support?.vocabulary.map((item) => `<div><dt lang="de" dir="ltr">${escapeHtml(item.source)}</dt><dd ${supportTextAttributes()}>${escapeHtml(item.translation)}</dd></div>`).join("") ?? ""}</dl></section>
           ${support?.germanPattern ? `<section><h2>German pattern</h2><p><strong lang="de" dir="ltr">${escapeHtml(support.germanPattern.pattern)}</strong><br><span ${supportTextAttributes()}>${escapeHtml(support.germanPattern.meaning)}</span></p></section>` : ""}
         </div>
@@ -471,11 +545,10 @@ function renderSupportPanel(questionId: QuestionId): string {
 function bindShell(): void {
   app.querySelectorAll<HTMLButtonElement>("[data-mode]").forEach((button) => button.addEventListener("click", () => {
     mode = button.dataset.mode as PracticeMode;
-    if (mode === "mock") mockSession ??= createMockSession();
     if (mode !== "practice") customPracticeLabel = undefined;
     selected = undefined;
     checked = false;
-    render();
+    render({ resetView: true });
   }));
   app.querySelector<HTMLSelectElement>('select[aria-label="Region"]')?.addEventListener("change", (event) => {
     selectedRegion = (event.currentTarget as HTMLSelectElement).value;
@@ -517,6 +590,15 @@ function bindShell(): void {
     if (!weakestTopic) return;
     startCustomPractice(`${topicLabel(weakestTopic.topic)} weak area`, weakestTopic.questionIds);
   });
+  app.querySelector<HTMLButtonElement>("#exit-mock")?.addEventListener("click", () => {
+    clearMockTimer();
+    mockSession = undefined;
+    mockDeadlineAt = 0;
+    mode = "practice";
+    selected = undefined;
+    checked = false;
+    render({ resetView: true });
+  });
 }
 
 function bindQuestion(): void {
@@ -542,7 +624,7 @@ function bindQuestion(): void {
     selected = undefined;
     checked = false;
     usedSupportForQuestion = showSupport;
-    render();
+    render({ resetView: true });
   });
   app.querySelector<HTMLButtonElement>("#check")?.addEventListener("click", () => {
     if (!selected) return;
@@ -550,6 +632,7 @@ function bindQuestion(): void {
       answerMockQuestion(selected);
       return;
     }
+    const movesToNextQuestion = checked;
     if (!checked) {
       checked = true;
       const question = currentQuestion();
@@ -572,7 +655,7 @@ function bindQuestion(): void {
       checked = false;
       usedSupportForQuestion = showSupport;
     }
-    render();
+    render({ resetView: movesToNextQuestion });
   });
 }
 
@@ -589,37 +672,40 @@ function answerMockQuestion(selectedChoiceId: ChoiceId): void {
   selected = undefined;
   checked = false;
   usedSupportForQuestion = false;
-  render();
+  render({ resetView: true });
 }
 
 function bindLanguage(exercise: LanguageExercise): void {
   app.querySelector<HTMLButtonElement>("#language-previous")?.addEventListener("click", () => {
     languageIndex = Math.max(languageIndex - 1, 0);
     languageRevealed = false;
-    render();
+    render({ resetView: true });
   });
   app.querySelector<HTMLButtonElement>("#reveal")?.addEventListener("click", () => {
     languageRevealed = !languageRevealed;
     render();
   });
-  app.querySelector<HTMLButtonElement>("#known")?.addEventListener("click", () => {
-    progress = {
-      ...progress,
-      updatedAt: new Date().toISOString(),
-      vocabularyMastery: {
-        ...progress.vocabularyMastery,
-        [exercise.id]: Math.min((progress.vocabularyMastery[exercise.id] ?? MIN_MASTERY) + VOCABULARY_STEP, MAX_MASTERY)
-      }
-    };
-    saveProgress(progress);
-    languageIndex = Math.min(languageIndex + 1, currentLanguageExercises().length - 1);
-    languageRevealed = false;
-    render();
+  app.querySelector<HTMLButtonElement>("#again")?.addEventListener("click", () => rateLanguageExercise(exercise, "again"));
+  app.querySelector<HTMLButtonElement>("#known")?.addEventListener("click", () => rateLanguageExercise(exercise, "got_it"));
+}
+
+function rateLanguageExercise(exercise: LanguageExercise, rating: "again" | "got_it"): void {
+  progress = updateVocabularyMastery(progress, {
+    exerciseId: exercise.id,
+    rating,
+    updatedAt: new Date().toISOString()
   });
+  saveProgress(progress);
+  languageIndex = Math.min(languageIndex + 1, currentLanguageExercises().length - 1);
+  languageRevealed = false;
+  render({ resetView: true });
 }
 
 function navButton(value: PracticeMode, label: string): string {
-  return `<button class="nav-item ${mode === value ? "active" : ""}" data-mode="${value}">${label}</button>`;
+  const isActive = mode === value;
+  const mockIsActive = mode === "mock" && mockSession !== undefined && !mockSession.summary.isComplete;
+  const isDisabled = mockIsActive && value !== "mock";
+  return `<button class="nav-item ${isActive ? "active" : ""}" data-mode="${value}" ${isActive ? 'aria-current="page"' : ""} ${isDisabled ? "disabled" : ""}>${label}</button>`;
 }
 
 function metric(label: string, value: string): string {
@@ -689,7 +775,7 @@ function startCustomPractice(label: string, questionIds: readonly QuestionId[]):
   selected = undefined;
   checked = false;
   usedSupportForQuestion = showSupport;
-  render();
+  render({ resetView: true });
 }
 
 function createMockSession(): PracticeSession {
@@ -710,7 +796,12 @@ function startMockExam(): void {
   selected = undefined;
   checked = false;
   usedSupportForQuestion = false;
-  render();
+  render({ resetView: true });
+}
+
+function resetScreenPosition(): void {
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  app.querySelector<HTMLElement>("[data-screen-heading]")?.focus({ preventScroll: true });
 }
 
 function saveMockAttemptOnce(result: MockExamResult): void {
@@ -737,8 +828,19 @@ function ensureMockTimer(): void {
       clearMockTimer();
       return;
     }
-    render();
+    if (isMockExpired()) {
+      render();
+      return;
+    }
+    updateMockTimerDisplays();
   }, MILLISECONDS_PER_SECOND);
+}
+
+function updateMockTimerDisplays(): void {
+  const remainingTime = formatRemainingTime();
+  app.querySelectorAll<HTMLElement>(MOCK_TIMER_SELECTOR).forEach((element) => {
+    element.textContent = remainingTime;
+  });
 }
 
 function clearMockTimer(): void {

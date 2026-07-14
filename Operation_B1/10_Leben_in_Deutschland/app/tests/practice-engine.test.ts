@@ -14,8 +14,10 @@ import {
   recordMockExamAttempt,
   recordSessionAnswer,
   summarizeMockExam,
+  summarizeProgress,
   summarizeWeakTopics,
-  toggleBookmark
+  toggleBookmark,
+  updateVocabularyMastery
 } from "../src/domain/practice-engine";
 import type { ExamCatalog, LearningSupport, SourceQuestion } from "../src/domain/types";
 
@@ -351,5 +353,77 @@ describe("practice engine", () => {
 
     expect(bookmarked.bookmarkedQuestionIds).toEqual(["general-1"]);
     expect(unbookmarked.bookmarkedQuestionIds).toEqual([]);
+  });
+
+  it("summarizes saved learning progress for the progress screen", () => {
+    const progress = {
+      ...createEmptyProgressSnapshot("2026-07-14T10:00:00.000Z"),
+      answers: [
+        {
+          questionId: "general-1",
+          selectedChoiceId: "d" as const,
+          correctChoiceId: "d" as const,
+          isCorrect: true,
+          usedSupport: false,
+          answeredAt: "2026-07-14T10:00:00.000Z"
+        },
+        {
+          questionId: "berlin-1",
+          selectedChoiceId: "a" as const,
+          correctChoiceId: "d" as const,
+          isCorrect: false,
+          usedSupport: true,
+          answeredAt: "2026-07-14T10:05:00.000Z"
+        }
+      ],
+      bookmarkedQuestionIds: ["berlin-1"],
+      mockExamAttempts: [
+        {
+          id: "mock-1",
+          completedAt: "2026-07-14T10:30:00.000Z",
+          region: "berlin",
+          totalQuestions: 2,
+          correct: 1,
+          passScore: 1,
+          passed: true,
+          wrongQuestionIds: ["berlin-1"]
+        }
+      ],
+      vocabularyMastery: { "general-1:vocabulary:0": 100, "berlin-1:vocabulary:0": 50 }
+    };
+
+    expect(summarizeProgress(progress, { languageExerciseCount: 4 })).toEqual({
+      practicedQuestions: 2,
+      correctAnswers: 1,
+      accuracyPercent: 50,
+      germanOnlyCorrect: 1,
+      bookmarkedQuestions: 1,
+      masteredLanguageItems: 1,
+      languageExerciseCount: 4,
+      mockAttempts: 1,
+      bestMockScore: 1,
+      latestMockPassed: true
+    });
+  });
+
+  it("changes vocabulary mastery from an explicit recall rating", () => {
+    const progress = {
+      ...createEmptyProgressSnapshot("2026-07-14T10:00:00.000Z"),
+      vocabularyMastery: { "general-1:vocabulary:0": 50 }
+    };
+
+    const improved = updateVocabularyMastery(progress, {
+      exerciseId: "general-1:vocabulary:0",
+      rating: "got_it",
+      updatedAt: "2026-07-14T10:01:00.000Z"
+    });
+    const repeated = updateVocabularyMastery(improved, {
+      exerciseId: "general-1:vocabulary:0",
+      rating: "again",
+      updatedAt: "2026-07-14T10:02:00.000Z"
+    });
+
+    expect(improved.vocabularyMastery["general-1:vocabulary:0"]).toBe(75);
+    expect(repeated.vocabularyMastery["general-1:vocabulary:0"]).toBe(50);
   });
 });

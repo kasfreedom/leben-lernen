@@ -2,9 +2,10 @@ export type QuestionId = string;
 export type ChoiceId = "a" | "b" | "c" | "d";
 export type Region = string;
 export type SupportLocale = string;
-export type PracticeMode = "learn" | "practice" | "language" | "mock";
+export type PracticeMode = "practice" | "language" | "mock" | "progress";
 export type PracticeSet = "all" | "unseen" | "wrong" | "bookmarked" | "region";
 export type LanguageExerciseType = "vocabulary" | "pattern";
+export type VocabularyRating = "again" | "got_it";
 export type SourceLocale = "de";
 export type Topic = "democracy" | "history" | "society" | "regional" | string;
 
@@ -152,6 +153,19 @@ export interface ProgressSnapshot {
   readonly bookmarkedQuestionIds: readonly QuestionId[];
   readonly mockExamAttempts: readonly MockExamAttempt[];
   readonly vocabularyMastery: Readonly<Record<string, number>>;
+}
+
+export interface ProgressSummary {
+  readonly practicedQuestions: number;
+  readonly correctAnswers: number;
+  readonly accuracyPercent: number;
+  readonly germanOnlyCorrect: number;
+  readonly bookmarkedQuestions: number;
+  readonly masteredLanguageItems: number;
+  readonly languageExerciseCount: number;
+  readonly mockAttempts: number;
+  readonly bestMockScore: number;
+  readonly latestMockPassed: boolean;
 }
 
 export interface LanguageExercise {

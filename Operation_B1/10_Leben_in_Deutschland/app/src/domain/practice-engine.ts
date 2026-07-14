@@ -9,12 +9,14 @@ import type {
   MockExamRules,
   PracticeSet,
   PracticeSession,
+  ProgressSummary,
   ProgressSnapshot,
   QuestionId,
   SessionAnswer,
   SessionSummary,
   SourceQuestion,
   SupportLocale,
+  VocabularyRating,
   WeakTopicSummary
 } from "./types";
 
@@ -24,6 +26,8 @@ const FIRST_INDEX = 0;
 const SESSION_VERSION = 1;
 const GENERAL_REGION = "general";
 const DEFAULT_MAX_MOCK_ATTEMPTS = 20;
+const LANGUAGE_MASTERY_STEP = 25;
+const FULL_MASTERY = 100;
 
 export interface PracticeEngine {
   getLearningItem(
@@ -223,6 +227,60 @@ export function toggleBookmark(
     ...progress,
     updatedAt,
     bookmarkedQuestionIds: [...existingIds]
+  };
+}
+
+export function summarizeProgress(
+  progress: ProgressSnapshot,
+  options: { readonly languageExerciseCount: number }
+): ProgressSummary {
+  const correctAnswers = progress.answers.filter((answer) => answer.isCorrect).length;
+  const germanOnlyCorrect = progress.answers.filter(
+    (answer) => answer.isCorrect && !answer.usedSupport
+  ).length;
+  const masteredLanguageItems = Object.values(progress.vocabularyMastery).filter(
+    (mastery) => mastery >= FULL_MASTERY
+  ).length;
+  const bestMockScore = progress.mockExamAttempts.reduce(
+    (best, attempt) => Math.max(best, attempt.correct),
+    NO_SCORE
+  );
+
+  return {
+    practicedQuestions: progress.answers.length,
+    correctAnswers,
+    accuracyPercent: progress.answers.length > 0
+      ? Math.round((correctAnswers / progress.answers.length) * PERFECT_SCORE)
+      : NO_SCORE,
+    germanOnlyCorrect,
+    bookmarkedQuestions: progress.bookmarkedQuestionIds.length,
+    masteredLanguageItems,
+    languageExerciseCount: options.languageExerciseCount,
+    mockAttempts: progress.mockExamAttempts.length,
+    bestMockScore,
+    latestMockPassed: progress.mockExamAttempts[0]?.passed ?? false
+  };
+}
+
+export function updateVocabularyMastery(
+  progress: ProgressSnapshot,
+  input: {
+    readonly exerciseId: string;
+    readonly rating: VocabularyRating;
+    readonly updatedAt: string;
+  }
+): ProgressSnapshot {
+  const currentMastery = progress.vocabularyMastery[input.exerciseId] ?? NO_SCORE;
+  const change = input.rating === "got_it" ? LANGUAGE_MASTERY_STEP : -LANGUAGE_MASTERY_STEP;
+  const mastery = Math.min(Math.max(currentMastery + change, NO_SCORE), FULL_MASTERY);
+
+  return {
+    ...progress,
+    updatedAt: input.updatedAt,
+    vocabularyMastery: {
+      ...progress.vocabularyMastery,
+      [input.exerciseId]: mastery
+    }
   };
 }
 

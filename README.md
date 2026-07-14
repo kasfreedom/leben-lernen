@@ -51,6 +51,8 @@ npm run build
 
 - `public/data/exams/leben-in-deutschland/`: question catalog and support-language JSON files
 - `public/data/ui/`: app/interface language JSON files
+- `data/`: source extraction and answer-key working files
+- `source/`: official source PDF archive
 - `src/domain/`: practice, scoring, and language-practice logic
 - `src/data/`: static JSON loading
 - `src/i18n/`: UI translation helpers
@@ -60,4 +62,3 @@ npm run build
 ## Deployment
 
 The app is a static Vite site and can be hosted on GitHub Pages.
-

@@ -157,9 +157,11 @@ function renderQuestion(): void {
         ${metric(t("score.assisted"), `${session.summary.assisted}`)}
       </div>
       <div class="mobile-session-summary" aria-label="${escapeHtml(t("mock.progress"))}"><strong>${session.summary.percentCorrect}%</strong><span>${session.summary.correct}/${session.summary.answered} ${escapeHtml(t("common.correct").toLocaleLowerCase(selectedUiLocale))}</span><span>${session.summary.answered}/${session.summary.totalQuestions} ${escapeHtml(t("score.answered").toLocaleLowerCase(selectedUiLocale))}</span></div>
-      <div class="question-meta"><span>${escapeHtml(t("practice.question", { current: session.currentIndex + 1 }))}</span>${isMockExam ? `<span>${escapeHtml(t("practice.noHints"))}</span>` : `<div class="question-tools"><button class="bookmark-button ${isCurrentQuestionBookmarked() ? "active" : ""}" id="bookmark" aria-pressed="${isCurrentQuestionBookmarked()}">${isCurrentQuestionBookmarked() ? `★ ${escapeHtml(t("practice.bookmarked"))}` : `☆ ${escapeHtml(t("practice.bookmark"))}`}</button><label class="toggle"><span>${escapeHtml(t("practice.showTranslation"))}</span><input type="checkbox" ${showSupport ? "checked" : ""}><i></i></label></div>`}</div>
+      <div class="question-meta"><span>${escapeHtml(t("practice.question", { current: session.currentIndex + 1 }))}</span>${isMockExam ? `<span>${escapeHtml(t("practice.noHints"))}</span>` : `<div class="question-tools"><button class="bookmark-button ${isCurrentQuestionBookmarked() ? "active" : ""}" id="bookmark" aria-pressed="${isCurrentQuestionBookmarked()}">${isCurrentQuestionBookmarked() ? `★ ${escapeHtml(t("practice.bookmarked"))}` : `☆ ${escapeHtml(t("practice.bookmark"))}`}</button></div>`}</div>
       <h1 lang="de" dir="ltr" data-screen-heading tabindex="-1">${escapeHtml(question.prompt)}</h1>
+      ${!isMockExam ? `<label class="toggle translation-toggle"><span>${escapeHtml(t("practice.showTranslation"))}</span><input type="checkbox" ${showSupport ? "checked" : ""}><i></i></label>` : ""}
       ${!isMockExam && showSupport ? renderPromptTranslation(support) : ""}
+      ${!isMockExam && showSupport ? renderMobileStudyPreview(support) : ""}
       ${question.image ? `<figure class="catalog-figure"><img src="${escapeHtml(publicAssetPath(`catalog-pages/${question.image}.png`))}" alt="Official BAMF catalog visual for ${escapeHtml(question.id)}"></figure>` : ""}
       <fieldset><legend class="sr-only">${escapeHtml(t("practice.chooseAnswer"))}</legend>${question.choices.map((choice) => {
         const isSelected = selected === choice.id;
@@ -472,14 +474,13 @@ function layout(content: string): string {
         <label class="language"><span>${escapeHtml(t("settings.interfaceLanguage"))}</span><select data-setting="interface-language" aria-label="${escapeHtml(t("settings.interfaceLanguage"))}">${uiManifest.locales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedUiLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
         <div class="progress-label"><strong>${session.summary.answered}</strong> ${escapeHtml(t("common.of"))} ${session.summary.totalQuestions}</div>
       </div>
-      <div class="mobile-language-controls" aria-label="${escapeHtml(t("settings.languages"))}">
-        <label class="language"><span>${escapeHtml(t("settings.interfaceLanguage"))}</span><select data-setting="interface-language" aria-label="${escapeHtml(t("settings.interfaceLanguage"))}">${uiManifest.locales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedUiLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
-        <label class="language"><span>${escapeHtml(t("settings.supportLanguage"))}</span><select data-setting="support-language" aria-label="${escapeHtml(t("settings.supportLanguage"))}">${catalog.supportLocales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedSupportLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
-      </div>
       <details class="header-settings">
         <summary><span>${escapeHtml(t("settings.title"))}</span><strong>${escapeHtml(currentRegionLabel())}</strong></summary>
         <div class="header-tools">
+          <label class="language"><span>${escapeHtml(t("settings.interfaceLanguage"))}</span><select data-setting="interface-language" aria-label="${escapeHtml(t("settings.interfaceLanguage"))}">${uiManifest.locales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedUiLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
+          <label class="language"><span>${escapeHtml(t("settings.supportLanguage"))}</span><select data-setting="support-language" aria-label="${escapeHtml(t("settings.supportLanguage"))}">${catalog.supportLocales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedSupportLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
           <label class="region"><span>${escapeHtml(t("settings.region"))}</span><select data-setting="region" aria-label="${escapeHtml(t("settings.region"))}">${catalog.regions.map((region) => `<option value="${escapeHtml(region.id)}" ${region.id === selectedRegion ? "selected" : ""}>${escapeHtml(region.label)}</option>`).join("")}</select></label>
+          <label class="practice-set-setting"><span>${escapeHtml(t("practice.set"))}</span><select data-setting="practice-set" aria-label="${escapeHtml(t("practice.set"))}">${practiceSetOptions()}</select></label>
           <div class="progress-label"><strong>${session.summary.answered}</strong> ${escapeHtml(t("common.of"))} ${session.summary.totalQuestions}</div>
         </div>
       </details>
@@ -511,16 +512,20 @@ function renderPracticeToolbar(session: PracticeSession): string {
 
   return `
     <div class="practice-toolbar">
-      <label><span>${escapeHtml(t("practice.set"))}</span><select aria-label="${escapeHtml(t("practice.set"))}">
-        ${practiceSetOption("all", t("practice.all"))}
-        ${practiceSetOption("unseen", t("practice.unseen"))}
-        ${practiceSetOption("wrong", t("practice.wrong"))}
-        ${practiceSetOption("bookmarked", t("practice.bookmarkedSet"))}
-        ${practiceSetOption("region", t("practice.regionOnly", { region: currentRegionLabel() }))}
-      </select></label>
+      <label><span>${escapeHtml(t("practice.set"))}</span><select data-setting="practice-set" aria-label="${escapeHtml(t("practice.set"))}">${practiceSetOptions()}</select></label>
       <span>${session.summary.totalQuestions} ${escapeHtml(t("common.questions"))}</span>
     </div>
   `;
+}
+
+function practiceSetOptions(): string {
+  return [
+    practiceSetOption("all", t("practice.all")),
+    practiceSetOption("unseen", t("practice.unseen")),
+    practiceSetOption("wrong", t("practice.wrong")),
+    practiceSetOption("bookmarked", t("practice.bookmarkedSet")),
+    practiceSetOption("region", t("practice.regionOnly", { region: currentRegionLabel() }))
+  ].join("");
 }
 
 function renderMockHeader(session: PracticeSession): string {
@@ -624,6 +629,17 @@ function renderSupportPanel(questionId: QuestionId): string {
     </aside>`;
 }
 
+function renderMobileStudyPreview(support: LearningSupport | undefined): string {
+  const terms = support?.vocabulary.slice(0, 2) ?? [];
+  if (terms.length === 0) return "";
+  return `
+    <section class="mobile-study-preview" aria-label="${escapeHtml(t("practice.keyWords"))}">
+      <h2>${escapeHtml(t("practice.keyWords"))}</h2>
+      <dl>${terms.map((item) => `<div><dt lang="de" dir="ltr">${escapeHtml(item.source)}</dt><dd ${supportTextAttributes()}>${escapeHtml(item.translation)}</dd></div>`).join("")}</dl>
+    </section>
+  `;
+}
+
 function renderPromptTranslation(
   support: LearningSupport | undefined,
   className = "inline-translation"
@@ -665,7 +681,7 @@ function bindShell(): void {
     applyDocumentLocale();
     render();
   }));
-  app.querySelector<HTMLSelectElement>(".practice-toolbar select")?.addEventListener("change", (event) => {
+  app.querySelectorAll<HTMLSelectElement>('select[data-setting="practice-set"]').forEach((select) => select.addEventListener("change", (event) => {
     selectedPracticeSet = (event.currentTarget as HTMLSelectElement).value as PracticeSet;
     customPracticeLabel = undefined;
     resetPracticeSession();
@@ -673,7 +689,7 @@ function bindShell(): void {
     checked = false;
     usedSupportForQuestion = showSupport;
     render();
-  });
+  }));
   app.querySelector<HTMLButtonElement>("#clear-custom-practice")?.addEventListener("click", () => {
     customPracticeLabel = undefined;
     resetPracticeSession();

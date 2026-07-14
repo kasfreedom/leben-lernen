@@ -53,6 +53,12 @@ const MILLISECONDS_PER_MINUTE = 60_000;
 const MILLISECONDS_PER_SECOND = 1_000;
 const MOCK_TIMER_SELECTOR = "[data-mock-timer]";
 const RTL_SUPPORT_LOCALES = new Set(["ar"]);
+const NAV_ICONS: Readonly<Record<PracticeMode, string>> = {
+  practice: "book-open",
+  language: "globe",
+  mock: "clipboard",
+  progress: "bar-chart"
+};
 
 const root = document.querySelector<HTMLDivElement>("#app");
 if (!root) throw new Error("App root is missing");
@@ -475,7 +481,7 @@ function layout(content: string): string {
         <div class="progress-label"><strong>${session.summary.answered}</strong> ${escapeHtml(t("common.of"))} ${session.summary.totalQuestions}</div>
       </div>
       <details class="header-settings">
-        <summary><span>${escapeHtml(t("settings.title"))}</span><strong>${escapeHtml(currentRegionLabel())}</strong></summary>
+        <summary>${icon("settings")}<span>${escapeHtml(t("settings.title"))}</span><strong>${escapeHtml(currentRegionLabel())}</strong></summary>
         <div class="header-tools">
           <label class="language"><span>${escapeHtml(t("settings.interfaceLanguage"))}</span><select data-setting="interface-language" aria-label="${escapeHtml(t("settings.interfaceLanguage"))}">${uiManifest.locales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedUiLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
           <label class="language"><span>${escapeHtml(t("settings.supportLanguage"))}</span><select data-setting="support-language" aria-label="${escapeHtml(t("settings.supportLanguage"))}">${catalog.supportLocales.map((locale) => `<option value="${escapeHtml(locale.id)}" ${locale.id === selectedSupportLocale ? "selected" : ""}>${escapeHtml(locale.label)}</option>`).join("")}</select></label>
@@ -863,7 +869,7 @@ function navButton(value: PracticeMode, label: string): string {
   const isActive = mode === value;
   const mockIsActive = mode === "mock" && mockSession !== undefined && !mockSubmitted && !mockSession.summary.isComplete;
   const isDisabled = mockIsActive && value !== "mock";
-  return `<button class="nav-item ${isActive ? "active" : ""}" data-mode="${value}" ${isActive ? 'aria-current="page"' : ""} ${isDisabled ? "disabled" : ""}>${label}</button>`;
+  return `<button class="nav-item ${isActive ? "active" : ""}" data-mode="${value}" ${isActive ? 'aria-current="page"' : ""} ${isDisabled ? "disabled" : ""}>${icon(NAV_ICONS[value])}<span>${escapeHtml(label)}</span></button>`;
 }
 
 function metric(label: string, value: string): string {
@@ -1119,6 +1125,18 @@ function applyDocumentLocale(): void {
   const option = uiManifest.locales.find((locale) => locale.id === selectedUiLocale);
   document.documentElement.lang = selectedUiLocale;
   document.documentElement.dir = option?.direction ?? "ltr";
+}
+
+function icon(name: string): string {
+  const common = 'class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"';
+  const paths: Readonly<Record<string, string>> = {
+    "book-open": '<path d="M4 5.5c2.5 0 4.6.6 6.2 1.8v11.2C8.6 17.3 6.5 16.7 4 16.7V5.5Z"/><path d="M20 5.5c-2.5 0-4.6.6-6.2 1.8v11.2c1.6-1.2 3.7-1.8 6.2-1.8V5.5Z"/><path d="M12 7.3v11.2"/>',
+    globe: '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.2 2.4 3.2 5.2 3.2 8.5s-1 6.1-3.2 8.5"/><path d="M12 3.5C9.8 5.9 8.8 8.7 8.8 12s1 6.1 3.2 8.5"/>',
+    clipboard: '<path d="M9 5.5h6"/><path d="M9.5 4h5a1.5 1.5 0 0 1 1.5 1.5V7H8V5.5A1.5 1.5 0 0 1 9.5 4Z"/><path d="M7 6.5H5.8A1.8 1.8 0 0 0 4 8.3v10.4a1.8 1.8 0 0 0 1.8 1.8h12.4a1.8 1.8 0 0 0 1.8-1.8V8.3a1.8 1.8 0 0 0-1.8-1.8H17"/><path d="M8 12h8"/><path d="M8 16h5"/>',
+    "bar-chart": '<path d="M5 19V11"/><path d="M10 19V7"/><path d="M15 19v-5"/><path d="M20 19V4"/><path d="M3 19h19"/>',
+    settings: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.2a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 0 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 4.6 15a1.6 1.6 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 0 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3h.1a1.6 1.6 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.2a1.6 1.6 0 0 0 1 1.5h.1a1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 0 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8v.1a1.6 1.6 0 0 0 1.5 1h.1a2 2 0 0 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z"/>'
+  };
+  return `<svg ${common}>${paths[name] ?? ""}</svg>`;
 }
 
 function escapeHtml(value: string): string {

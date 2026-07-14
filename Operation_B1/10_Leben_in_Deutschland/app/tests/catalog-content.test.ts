@@ -62,6 +62,17 @@ describe("BAMF Bavaria catalog content", () => {
     expectFullSupportCoverage(arabicSupport, "ar");
   });
 
+  it("preserves the answer blank and participation meaning in general-2", () => {
+    const question = germanQuestions.find((item) => item.id === "general-2");
+    const english = englishSupport.find((item) => item.questionId === "general-2");
+    const arabic = arabicSupport.find((item) => item.questionId === "general-2");
+
+    if (!question || !english || !arabic) throw new Error("Missing general-2 content");
+    expect(countBlanks(english.translation)).toBe(countBlanks(question.prompt));
+    expect(countBlanks(arabic.translation)).toBe(countBlanks(question.prompt));
+    expect(arabic.translation).toContain("سيشارك");
+  });
+
   it("creates full-catalog language practice drills from support JSON", () => {
     const exercises = createLanguageExercises(englishSupport);
     const questionIdsWithDrills = new Set(exercises.map((exercise) => exercise.questionId));
@@ -85,6 +96,10 @@ function expectFullSupportCoverage(supportPack: readonly LearningSupport[], loca
     expect(support.simpleExplanation.length).toBeGreaterThan(0);
     expect(support.vocabulary.length).toBeGreaterThan(0);
   }
+}
+
+function countBlanks(value: string): number {
+  return value.match(/…|\.\.\./gu)?.length ?? 0;
 }
 
 function readJson<T>(filePath: string): T {

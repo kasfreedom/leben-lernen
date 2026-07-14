@@ -62,6 +62,7 @@ const NAV_ICONS: Readonly<Record<PracticeMode, string>> = {
 
 const root = document.querySelector<HTMLDivElement>("#app");
 if (!root) throw new Error("App root is missing");
+ensureVisualSystemStylesheet();
 const app: HTMLDivElement = root;
 app.innerHTML = `<main class="loading-state"><p>Loading practice data…</p></main>`;
 
@@ -154,6 +155,7 @@ function renderQuestion(): void {
   app.innerHTML = layout(`
     <section class="question-area">
       ${mode === "practice" ? renderPracticeToolbar(session) : ""}
+      ${!isMockExam ? renderPocketTutor(session) : ""}
       ${isMockExam ? renderMockHeader(session) : ""}
       ${isMockExam ? renderMockQuestionNavigator(session) : ""}
       <div class="score-strip session-score" aria-label="${escapeHtml(t("score.score"))}">
@@ -163,16 +165,16 @@ function renderQuestion(): void {
         ${metric(t("score.assisted"), `${session.summary.assisted}`)}
       </div>
       <div class="mobile-session-summary" aria-label="${escapeHtml(t("mock.progress"))}"><strong>${session.summary.percentCorrect}%</strong><span>${session.summary.correct}/${session.summary.answered} ${escapeHtml(t("common.correct").toLocaleLowerCase(selectedUiLocale))}</span><span>${session.summary.answered}/${session.summary.totalQuestions} ${escapeHtml(t("score.answered").toLocaleLowerCase(selectedUiLocale))}</span></div>
-      <div class="question-meta"><span>${escapeHtml(t("practice.question", { current: session.currentIndex + 1 }))}</span>${isMockExam ? `<span>${escapeHtml(t("practice.noHints"))}</span>` : `<div class="question-tools"><button class="bookmark-button ${isCurrentQuestionBookmarked() ? "active" : ""}" id="bookmark" aria-pressed="${isCurrentQuestionBookmarked()}">${isCurrentQuestionBookmarked() ? `★ ${escapeHtml(t("practice.bookmarked"))}` : `☆ ${escapeHtml(t("practice.bookmark"))}`}</button></div>`}</div>
+      <div class="question-meta"><span class="question-index-badge">${session.currentIndex + 1}</span><span>${escapeHtml(t("practice.question", { current: session.currentIndex + 1 }))}</span>${isMockExam ? `<span>${escapeHtml(t("practice.noHints"))}</span>` : `<div class="question-tools">${renderTranslationToggle("desktop-translation-toggle")}<button class="bookmark-button ${isCurrentQuestionBookmarked() ? "active" : ""}" id="bookmark" aria-pressed="${isCurrentQuestionBookmarked()}">${icon("bookmark")}${isCurrentQuestionBookmarked() ? `<span>${escapeHtml(t("practice.bookmarked"))}</span>` : `<span>${escapeHtml(t("practice.bookmark"))}</span>`}</button></div>`}</div>
       <h1 lang="de" dir="ltr" data-screen-heading tabindex="-1">${escapeHtml(question.prompt)}</h1>
-      ${!isMockExam ? `<label class="toggle translation-toggle"><span>${escapeHtml(t("practice.showTranslation"))}</span><input type="checkbox" ${showSupport ? "checked" : ""}><i></i></label>` : ""}
+      ${!isMockExam ? renderTranslationToggle("mobile-translation-toggle") : ""}
       ${!isMockExam && showSupport ? renderPromptTranslation(support) : ""}
       ${!isMockExam && showSupport ? renderMobileStudyPreview(support) : ""}
       ${question.image ? `<figure class="catalog-figure"><img src="${escapeHtml(publicAssetPath(`catalog-pages/${question.image}.png`))}" alt="Official BAMF catalog visual for ${escapeHtml(question.id)}"></figure>` : ""}
       <fieldset><legend class="sr-only">${escapeHtml(t("practice.chooseAnswer"))}</legend>${question.choices.map((choice) => {
         const isSelected = selected === choice.id;
         const state = checked ? choice.id === question.correctChoiceId ? " correct" : isSelected ? " wrong" : "" : "";
-        return `<label class="answer${isSelected ? " selected" : ""}${state}"><input type="radio" name="answer" value="${choice.id}" ${isSelected ? "checked" : ""}><span class="radio"></span><span lang="de" dir="ltr">${escapeHtml(choice.text)}</span></label>`;
+        return `<label class="answer${isSelected ? " selected" : ""}${state}"><input type="radio" name="answer" value="${choice.id}" ${isSelected ? "checked" : ""}><span class="radio"></span><span class="choice-letter" aria-hidden="true">${escapeHtml(choice.id.toUpperCase())}</span><span lang="de" dir="ltr">${escapeHtml(choice.text)}</span></label>`;
       }).join("")}</fieldset>
       ${result ? `<div class="feedback ${result.isCorrect ? "success" : "error"}" role="status"><strong>${escapeHtml(result.isCorrect ? t("common.correct") : t("practice.notQuite"))}</strong>${support ? `<span ${supportTextAttributes()}>${escapeHtml(t("practice.translatedAnswer", { answer: support.correctAnswerTranslation }))}</span>` : ""}<span ${supportTextAttributes()}>${escapeHtml(support?.simpleExplanation ?? t("practice.reviewCorrect"))}</span></div>` : ""}
       <div class="actions"><button class="secondary" id="previous" ${session.currentIndex === 0 ? "disabled" : ""}>${escapeHtml(t("common.previous"))}</button><button class="primary" id="check" ${selected ? "" : "disabled"}>${escapeHtml(primaryLabel)}</button></div>
@@ -438,12 +440,25 @@ function renderLanguagePractice(): void {
   }
 
   const mastery = progress.vocabularyMastery[exercise.id] ?? MIN_MASTERY;
+  const exerciseLabel = exercise.type === "vocabulary" ? t("language.vocabulary") : t("language.pattern");
+  const progressPercent = Math.round((languageIndex + 1) / languageExercises.length * MAX_MASTERY);
   app.innerHTML = layout(`
     <section class="question-area language-practice">
-      <div class="question-meta"><span>${escapeHtml(exercise.type === "vocabulary" ? t("language.vocabulary") : t("language.pattern"))} ${languageIndex + 1} ${escapeHtml(t("common.of"))} ${languageExercises.length}</span><span>${escapeHtml(t("language.mastered", { count: mastery }))}</span></div>
-      <h1 lang="de" dir="ltr" data-screen-heading tabindex="-1">${escapeHtml(exercise.prompt)}</h1>
-      <p class="inline-translation">${escapeHtml(exercise.hint ?? "Work out the meaning before revealing the answer.")}</p>
+      <section class="lesson-hero" aria-label="${escapeHtml(t("sidebar.languagePractice"))}">
+        <div class="lesson-icon">${icon(exercise.type === "vocabulary" ? "language-card" : "lightbulb")}</div>
+        <div>
+          <p class="completion-label">${escapeHtml(t("sidebar.languagePractice"))}</p>
+          <h1 lang="de" dir="ltr" data-screen-heading tabindex="-1">${escapeHtml(exercise.prompt)}</h1>
+        </div>
+      </section>
+      <div class="lesson-progress" aria-label="${escapeHtml(t("mock.progress"))}">
+        <span>${escapeHtml(exerciseLabel)} ${languageIndex + 1} ${escapeHtml(t("common.of"))} ${languageExercises.length}</span>
+        <span class="progress-track"><i style="width:${progressPercent}%"></i></span>
+        <strong>${escapeHtml(t("language.mastered", { count: mastery }))}</strong>
+      </div>
+      <p class="inline-translation lesson-hint">${escapeHtml(exercise.hint ?? t("language.think"))}</p>
       <div class="language-card ${languageRevealed ? "revealed" : ""}">
+        <span class="language-card-icon" aria-hidden="true">${icon(languageRevealed ? "speech" : "lightbulb")}</span>
         <span ${languageRevealed ? supportTextAttributes() : ""}>${languageRevealed ? escapeHtml(exercise.answer) : escapeHtml(t("language.think"))}</span>
       </div>
       <div class="actions language-actions ${languageRevealed ? "revealed" : ""}">
@@ -452,9 +467,9 @@ function renderLanguagePractice(): void {
         ${languageRevealed ? `<button class="secondary" id="again">${escapeHtml(t("language.again"))}</button><button class="primary" id="known">${escapeHtml(t("language.gotIt"))}</button>` : ""}
       </div>
     </section>
-    <aside class="support">
-      <section><h2>${escapeHtml(t("language.linkedQuestion"))}</h2><p lang="de" dir="ltr">${escapeHtml(getPrompt(exercise.questionId))}</p></section>
-      <section><h2>${escapeHtml(t("language.why"))}</h2><p>${escapeHtml(t("language.whyCopy"))}</p></section>
+    <aside class="support language-support">
+      <section><h2>${icon("book-open")}${escapeHtml(t("language.linkedQuestion"))}</h2><p lang="de" dir="ltr">${escapeHtml(getPrompt(exercise.questionId))}</p></section>
+      <section><h2>${icon("lightbulb")}${escapeHtml(t("language.why"))}</h2><p>${escapeHtml(t("language.whyCopy"))}</p></section>
     </aside>
   `);
 
@@ -488,6 +503,7 @@ function layout(content: string): string {
           <label class="region"><span>${escapeHtml(t("settings.region"))}</span><select data-setting="region" aria-label="${escapeHtml(t("settings.region"))}">${catalog.regions.map((region) => `<option value="${escapeHtml(region.id)}" ${region.id === selectedRegion ? "selected" : ""}>${escapeHtml(region.label)}</option>`).join("")}</select></label>
           <label class="practice-set-setting"><span>${escapeHtml(t("practice.set"))}</span><select data-setting="practice-set" aria-label="${escapeHtml(t("practice.set"))}">${practiceSetOptions()}</select></label>
           <div class="progress-label"><strong>${session.summary.answered}</strong> ${escapeHtml(t("common.of"))} ${session.summary.totalQuestions}</div>
+          <p class="asset-credit">${escapeHtml(t("settings.iconCredit"))}</p>
         </div>
       </details>
     </header>
@@ -501,6 +517,7 @@ function layout(content: string): string {
         <button class="side-link" data-mode="progress"><span><strong>${escapeHtml(t("nav.progress"))}</strong><small>${escapeHtml(t("sidebar.progressSubtitle"))}</small></span><b aria-hidden="true">&rsaquo;</b></button>
         <button class="side-link" data-mode="language"><span><strong>${escapeHtml(t("sidebar.languagePractice"))}</strong><small>${escapeHtml(t("sidebar.vocabularyStructure"))}</small></span><b>&rsaquo;</b></button>
         <button class="side-link" data-mode="mock"><span><strong>${escapeHtml(t("sidebar.regionMock", { region: currentRegionLabel() }))}</strong><small>${escapeHtml(t("sidebar.examQuestions", { count: catalog.mockExam.generalQuestionCount + catalog.mockExam.regionalQuestionCount }))}</small></span><b>&rsaquo;</b></button>
+        <p class="asset-credit sidebar-credit">${escapeHtml(t("settings.iconCredit"))}</p>
       </aside>
       ${content}
     </main>`;
@@ -522,6 +539,21 @@ function renderPracticeToolbar(session: PracticeSession): string {
       <span>${session.summary.totalQuestions} ${escapeHtml(t("common.questions"))}</span>
     </div>
   `;
+}
+
+function renderPocketTutor(session: PracticeSession): string {
+  const progressPercent = Math.round((session.currentIndex + 1) / session.summary.totalQuestions * MAX_MASTERY);
+  return `
+    <div class="pocket-progress" aria-label="${escapeHtml(t("mock.progress"))}">
+      <span>${escapeHtml(t("practice.question", { current: session.currentIndex + 1 }))}</span>
+      <span class="progress-track"><i style="width:${progressPercent}%"></i></span>
+      <strong>${session.summary.answered}/${session.summary.totalQuestions}</strong>
+    </div>
+  `;
+}
+
+function renderTranslationToggle(variantClass: string): string {
+  return `<label class="toggle translation-toggle ${variantClass}">${icon("translation")}<span>${escapeHtml(t("practice.translation"))}</span><input type="checkbox" ${showSupport ? "checked" : ""} aria-label="${escapeHtml(t("practice.showTranslation"))}"><i></i></label>`;
 }
 
 function practiceSetOptions(): string {
@@ -727,11 +759,11 @@ function bindQuestion(): void {
     checked = false;
     render();
   }));
-  app.querySelector<HTMLInputElement>(".toggle input")?.addEventListener("change", (event) => {
+  app.querySelectorAll<HTMLInputElement>(".translation-toggle input").forEach((input) => input.addEventListener("change", (event) => {
     showSupport = (event.currentTarget as HTMLInputElement).checked;
     usedSupportForQuestion = usedSupportForQuestion || showSupport;
     render();
-  });
+  }));
   app.querySelector<HTMLButtonElement>("#bookmark")?.addEventListener("click", () => {
     progress = toggleBookmark(progress, currentQuestion().id, new Date().toISOString());
     saveProgress(progress);
@@ -1070,6 +1102,15 @@ function publicAssetPath(path: string): string {
   return `${PUBLIC_BASE_URL}${path.replace(/^\/+/u, "")}`;
 }
 
+function ensureVisualSystemStylesheet(): void {
+  const href = `${PUBLIC_BASE_URL}assets/visual-system/visual-system.css`;
+  if (document.querySelector<HTMLLinkElement>(`link[href="${href}"]`)) return;
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = href;
+  document.head.append(link);
+}
+
 function loadProgress(): ProgressSnapshot {
   const fallback: ProgressSnapshot = {
     version: 1,
@@ -1128,15 +1169,21 @@ function applyDocumentLocale(): void {
 }
 
 function icon(name: string): string {
-  const common = 'class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"';
-  const paths: Readonly<Record<string, string>> = {
-    "book-open": '<path d="M4 5.5c2.5 0 4.6.6 6.2 1.8v11.2C8.6 17.3 6.5 16.7 4 16.7V5.5Z"/><path d="M20 5.5c-2.5 0-4.6.6-6.2 1.8v11.2c1.6-1.2 3.7-1.8 6.2-1.8V5.5Z"/><path d="M12 7.3v11.2"/>',
-    globe: '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.2 2.4 3.2 5.2 3.2 8.5s-1 6.1-3.2 8.5"/><path d="M12 3.5C9.8 5.9 8.8 8.7 8.8 12s1 6.1 3.2 8.5"/>',
-    clipboard: '<path d="M9 5.5h6"/><path d="M9.5 4h5a1.5 1.5 0 0 1 1.5 1.5V7H8V5.5A1.5 1.5 0 0 1 9.5 4Z"/><path d="M7 6.5H5.8A1.8 1.8 0 0 0 4 8.3v10.4a1.8 1.8 0 0 0 1.8 1.8h12.4a1.8 1.8 0 0 0 1.8-1.8V8.3a1.8 1.8 0 0 0-1.8-1.8H17"/><path d="M8 12h8"/><path d="M8 16h5"/>',
-    "bar-chart": '<path d="M5 19V11"/><path d="M10 19V7"/><path d="M15 19v-5"/><path d="M20 19V4"/><path d="M3 19h19"/>',
-    settings: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.2a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 0 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 4.6 15a1.6 1.6 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 0 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3h.1a1.6 1.6 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.2a1.6 1.6 0 0 0 1 1.5h.1a1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 0 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8v.1a1.6 1.6 0 0 0 1.5 1h.1a2 2 0 0 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z"/>'
+  const files: Readonly<Record<string, string>> = {
+    "book-open": "practice-book.svg",
+    globe: "language-word-globe.svg",
+    clipboard: "mock-clipboard.svg",
+    "bar-chart": "progress-chart.svg",
+    settings: "settings-gear.svg",
+    translation: "translation-speech-globe.svg",
+    bookmark: "bookmark.svg",
+    lightbulb: "support-tip.svg",
+    "language-card": "language-word-globe.svg",
+    speech: "translation-speech-globe.svg"
   };
-  return `<svg ${common}>${paths[name] ?? ""}</svg>`;
+  const file = files[name];
+  if (!file) return "";
+  return `<img class="icon" aria-hidden="true" src="${escapeHtml(publicAssetPath(`assets/visual-system/icons/streamline/${file}`))}" alt="">`;
 }
 
 function escapeHtml(value: string): string {

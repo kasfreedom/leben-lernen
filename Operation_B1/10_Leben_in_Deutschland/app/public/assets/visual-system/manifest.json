@@ -1,0 +1,176 @@
+{
+  "version": 1,
+  "style": "streamline-soft-learning",
+  "generatedAt": "2026-07-14",
+  "assets": {
+    "stylesheet": {
+      "file": "visual-system.css",
+      "purpose": "Loads bundled fonts and shared design tokens."
+    },
+    "fonts.ui": {
+      "files": [
+        "fonts/nunito-400.ttf",
+        "fonts/nunito-600.ttf",
+        "fonts/nunito-700.ttf",
+        "fonts/nunito-800.ttf"
+      ],
+      "family": "Leben Nunito",
+      "purpose": "Readable UI text, labels, controls, and translations."
+    },
+    "fonts.display": {
+      "files": [
+        "fonts/patrick-hand-400.ttf"
+      ],
+      "family": "Leben Hand",
+      "purpose": "Friendly display headings and learning prompts."
+    },
+    "icons.streamline": {
+      "family": "Ultimate Colors - Free",
+      "familySlug": "ultimate-colos-free",
+      "license": "Free Streamline icons via Streamline API; attribution required by Streamline free license.",
+      "attribution": "Free icons from Streamline",
+      "source": "https://www.streamlinehq.com/icons/ultimate-colos-free/interface-essential",
+      "directory": "icons/streamline",
+      "importedAt": "2026-07-14T14:17:12.946Z"
+    }
+  },
+  "icons": {
+    "practice.book": "icons/streamline/practice-book.svg",
+    "language.wordGlobe": "icons/streamline/language-word-globe.svg",
+    "mock.clipboard": "icons/streamline/mock-clipboard.svg",
+    "progress.chart": "icons/streamline/progress-chart.svg",
+    "translation.speechGlobe": "icons/streamline/translation-speech-globe.svg",
+    "mock.timer": "icons/streamline/mock-timer.svg",
+    "support.tip": "icons/streamline/support-tip.svg",
+    "result.passTrophy": "icons/streamline/result-pass-trophy.svg",
+    "review.warning": "icons/streamline/review-warning.svg",
+    "empty.notebook": "icons/streamline/empty-notebook.svg",
+    "settings.gear": "icons/streamline/settings-gear.svg",
+    "bookmark": "icons/streamline/bookmark.svg"
+  },
+  "tokens": {
+    "paper": "#fffaf0",
+    "paperDeep": "#fff2d4",
+    "blue": "#1f6fe5",
+    "blueSoft": "#eaf3ff",
+    "mint": "#e8f7ef",
+    "mintLine": "#9ed8c2",
+    "yellow": "#fff0bd",
+    "peach": "#ffe0cd",
+    "ink": "#132a46",
+    "softLine": "#d9e5ef"
+  },
+  "iconMetadata": {
+    "streamline": {
+      "practice.book": {
+        "file": "icons/streamline/practice-book.svg",
+        "hash": "ico_4PUm1ZqAKpJIDlOU",
+        "name": "Book Book Pages",
+        "webUrl": "https://www.streamlinehq.com/icons/download/book-book-pages--31075",
+        "familySlug": "ultimate-colos-free",
+        "familyName": "Ultimate Colors - Free",
+        "isFree": true
+      },
+      "language.wordGlobe": {
+        "file": "icons/streamline/language-word-globe.svg",
+        "hash": "ico_1sMSaalJFC4Rz7yL",
+        "name": "Shield Globe",
+        "webUrl": "https://www.streamlinehq.com/icons/download/shield-globe--31081",
+        "familySlug": "ultimate-colos-free",
+        "familyName": "Ultimate Colors - Free",
+        "isFree": true
+      },
+      "mock.clipboard": {
+        "file": "icons/streamline/mock-clipboard.svg",
+        "hash": "ico_znEJac9A0M55X3fa",
+        "name": "Checklist",
+        "webUrl": "https://www.streamlinehq.com/icons/download/checklist--31084",
+        "familySlug": "ultimate-colos-free",
+        "familyName": "Ultimate Colors - Free",
+        "isFree": true
+      },
+      "progress.chart": {
+        "file": "icons/streamline/progress-chart.svg",
+        "hash": "ico_IRHjUYwL88oIKPED",
+        "name": "Analytics Graph Lines",
+        "webUrl": "https://www.streamlinehq.com/icons/download/analytics-graph-lines--31080",
+        "familySlug": "ultimate-colos-free",
+        "familyName": "Ultimate Colors - Free",
+        "isFree": true
+      },
+      "translation.speechGlobe": {
+        "file": "icons/streamline/translation-speech-globe.svg",
+        "hash": "ico_JINC2fp2GmBoKukc",
+        "name": "Question Help Message",
+        "webUrl": "https://www.streamlinehq.com/icons/download/question-help-message--31080",
+        "familySlug": "ultimate-colos-free",
+        "familyName": "Ultimate Colors - Free",
+        "isFree": true
+      },
+      "mock.timer": {
+        "file": "icons/streamline/mock-timer.svg",
+        "hash": "ico_OcuOSWBSSl13Duge",
+        "name": "Timer 10",
+        "webUrl": "https://www.streamlinehq.com/icons/download/timer-10--31073",
+        "familySlug": "ultimate-colos-free",
+        "familyName": "Ultimate Colors - Free",
+        "isFree": true
+      },
+      "support.tip": {
+        "file": "icons/streamline/support-tip.svg",
+        "hash": "ico_jMgcyy9O1CzEEhya",
+        "name": "Idea Strategy",
+        "webUrl": "https://www.streamlinehq.com/icons/download/idea-strategy--31079",
+        "familySlug": "ultimate-colos-free",
+        "familyName": "Ultimate Colors - Free",
+        "isFree": true
+      },
+      "result.passTrophy": {
+        "file": "icons/streamline/result-pass-trophy.svg",
+        "hash": "ico_kBrz0wK0F6mYq1GO",
+        "name": "Award Trophy 1",
+        "webUrl": "https://www.streamlinehq.com/icons/download/award-trophy-1--31066",
+        "familySlug": "ultimate-colos-free",
+        "familyName": "Ultimate Colors - Free",
+        "isFree": true
+      },
+      "review.warning": {
+        "file": "icons/streamline/review-warning.svg",
+        "hash": "ico_j3p6UmWTAo6PVDdP",
+        "name": "Network Warning",
+        "webUrl": "https://www.streamlinehq.com/icons/download/network-warning--31081",
+        "familySlug": "ultimate-colos-free",
+        "familyName": "Ultimate Colors - Free",
+        "isFree": true
+      },
+      "empty.notebook": {
+        "file": "icons/streamline/empty-notebook.svg",
+        "hash": "ico_Bb0BQImx4oqbUAib",
+        "name": "Notes Book",
+        "webUrl": "https://www.streamlinehq.com/icons/download/notes-book--31075",
+        "familySlug": "ultimate-colos-free",
+        "familyName": "Ultimate Colors - Free",
+        "isFree": true
+      },
+      "settings.gear": {
+        "file": "icons/streamline/settings-gear.svg",
+        "hash": "local-cog-download",
+        "name": "Cog",
+        "webUrl": "https://streamlinehq.com",
+        "familySlug": "ultimate-colos-free",
+        "familyName": "Ultimate Colors - Free",
+        "isFree": true,
+        "manual": true
+      },
+      "bookmark": {
+        "file": "icons/streamline/bookmark.svg",
+        "hash": "ico_nLCyg8QsweLqpmHq",
+        "name": "Rating Star",
+        "webUrl": "https://www.streamlinehq.com/icons/download/rating-star--31066",
+        "familySlug": "ultimate-colos-free",
+        "familyName": "Ultimate Colors - Free",
+        "isFree": true
+      }
+    }
+  }
+}

@@ -15,6 +15,7 @@ const catalog: ExamCatalog = {
   ...manifest,
   questions: germanQuestions
 };
+const reviewedTranslationBatch = Array.from({ length: 16 }, (_, index) => `general-${index + 5}`);
 
 describe("BAMF Bavaria catalog content", () => {
   it("contains the full Bavaria-relevant static JSON catalog", () => {
@@ -73,6 +74,18 @@ describe("BAMF Bavaria catalog content", () => {
     expect(arabic.translation).toContain("سيشارك");
   });
 
+  it("keeps reviewed support entries as sentence translations, not generated study guides", () => {
+    for (const supportPack of [englishSupport, arabicSupport]) {
+      for (const questionId of reviewedTranslationBatch) {
+        const support = supportPack.find((item) => item.questionId === questionId);
+        if (!support) throw new Error(`Missing reviewed support: ${questionId}`);
+        expect(support.translation).not.toMatch(generatedStudyGuidePattern);
+        expect(support.correctAnswerTranslation).not.toMatch(generatedStudyGuidePattern);
+        expect(support.simpleExplanation).not.toMatch(generatedStudyGuidePattern);
+      }
+    }
+  });
+
   it("creates full-catalog language practice drills from support JSON", () => {
     const exercises = createLanguageExercises(englishSupport);
     const questionIdsWithDrills = new Set(exercises.map((exercise) => exercise.questionId));
@@ -101,6 +114,8 @@ function expectFullSupportCoverage(supportPack: readonly LearningSupport[], loca
 function countBlanks(value: string): number {
   return value.match(/…|\.\.\./gu)?.length ?? 0;
 }
+
+const generatedStudyGuidePattern = /English study guide|English guide|دليل دراسة|دليل الدراسة|دليل اللغة الإنجليزية/u;
 
 function readJson<T>(filePath: string): T {
   return JSON.parse(fs.readFileSync(filePath, "utf8")) as T;

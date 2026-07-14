@@ -82,9 +82,9 @@
   {
     "questionId": "general-5",
     "locale": "en",
-    "translation": "English study guide: Deutschland = Germany; frei = free; Wahl = election.",
-    "correctAnswerTranslation": "Die Wählerin/der Wähler darf bei der election weder beeinflusst noch zu einer bestimmten Stimmabgabe gezwungen werden und keine Nachteile durch die election haben",
-    "simpleExplanation": "Correct answer: Die Wählerin/der Wähler darf bei der Wahl weder beeinflusst noch zu einer bestimmten Stimmabgabe gezwungen werden und keine Nachteile durch die Wahl haben. Use the key words to understand why this option fits the German question.",
+    "translation": "Elections in Germany are free. What does that mean?",
+    "correctAnswerTranslation": "The voter may not be influenced, forced to vote in a certain way, or disadvantaged because of the election.",
+    "simpleExplanation": "Free elections mean voters can decide without pressure, threats, or disadvantages.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -105,7 +105,7 @@
     "locale": "en",
     "translation": "What is the German constitution called?",
     "correctAnswerTranslation": "Basic Law",
-    "simpleExplanation": "Germany's constitution is called the Grundgesetz, the Basic Law.",
+    "simpleExplanation": "Germany's constitution is called the Basic Law, or Grundgesetz in German.",
     "vocabulary": [
       {
         "source": "die Verfassung",
@@ -124,9 +124,9 @@
   {
     "questionId": "general-7",
     "locale": "en",
-    "translation": "English study guide: Grundrecht = fundamental right; Verfassung = constitution; Freiheit = freedom.",
+    "translation": "Which right is one of the fundamental rights guaranteed by the German constitution? The right to ...",
     "correctAnswerTranslation": "freedom of belief and conscience",
-    "simpleExplanation": "Correct answer: Glaubens- und Gewissensfreiheit. Use the key words to understand why this option fits the German question.",
+    "simpleExplanation": "Freedom of belief and conscience is protected as a fundamental right.",
     "vocabulary": [
       {
         "source": "Grundrecht",
@@ -149,9 +149,9 @@
   {
     "questionId": "general-8",
     "locale": "en",
-    "translation": "English study guide: Deutschland = Germany; Grundgesetz = Basic Law.",
-    "correctAnswerTranslation": "English guide: Alle sollen gleich viel Geld haben",
-    "simpleExplanation": "Correct answer: Alle sollen gleich viel Geld haben. Use the key words to understand why this option fits the German question.",
+    "translation": "What is not written in Germany's Basic Law?",
+    "correctAnswerTranslation": "Everyone should have the same amount of money.",
+    "simpleExplanation": "The Basic Law protects rights and state principles; it does not say everyone must have the same amount of money.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -166,9 +166,9 @@
   {
     "questionId": "general-9",
     "locale": "en",
-    "translation": "English study guide: Deutschland = Germany; Grundrecht = fundamental right; Asyl = asylum.",
+    "translation": "Which fundamental right applies in Germany only to foreigners? The fundamental right to ...",
     "correctAnswerTranslation": "asylum",
-    "simpleExplanation": "Correct answer: Asyl. Use the key words to understand why this option fits the German question.",
+    "simpleExplanation": "The right to asylum is specifically for people from other countries seeking protection.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -191,9 +191,9 @@
   {
     "questionId": "general-10",
     "locale": "en",
-    "translation": "English study guide: Grundgesetz = Basic Law.",
+    "translation": "What is compatible with the German Basic Law?",
     "correctAnswerTranslation": "a fine",
-    "simpleExplanation": "Correct answer: die Geldstrafe. Use the key words to understand why this option fits the German question.",
+    "simpleExplanation": "A fine is a lawful punishment and is compatible with the Basic Law.",
     "vocabulary": [
       {
         "source": "Grundgesetz",
@@ -208,9 +208,9 @@
   {
     "questionId": "general-11",
     "locale": "en",
-    "translation": "English study guide: Bundesrepublik Deutschland = Federal Republic of Germany; Grundgesetz = Basic Law; Verfassung = constitution.",
+    "translation": "What is the constitution of the Federal Republic of Germany called?",
     "correctAnswerTranslation": "Basic Law",
-    "simpleExplanation": "Correct answer: Grundgesetz. Use the key words to understand why this option fits the German question.",
+    "simpleExplanation": "The constitution of the Federal Republic of Germany is called the Basic Law.",
     "vocabulary": [
       {
         "source": "Bundesrepublik Deutschland",
@@ -229,9 +229,9 @@
   {
     "questionId": "general-12",
     "locale": "en",
-    "translation": "English study guide: Pressefreiheit = freedom of the press; abschaffen = to abolish; Grundrecht = fundamental right; Bundestag = German federal parliament; Partei = political party.",
-    "correctAnswerTranslation": "Nein, denn die freedom of the press ist ein fundamental right. Sie kann nicht abgeschafft werden",
-    "simpleExplanation": "Correct answer: Nein, denn die Pressefreiheit ist ein Grundrecht. Sie kann nicht abgeschafft werden. Use the key words to understand why this option fits the German question.",
+    "translation": "A party in the German Bundestag wants to abolish freedom of the press. Is that possible?",
+    "correctAnswerTranslation": "No, because freedom of the press is a fundamental right. It cannot be abolished.",
+    "simpleExplanation": "Freedom of the press is protected by the Basic Law and cannot simply be abolished by a party.",
     "vocabulary": [
       {
         "source": "Pressefreiheit",
@@ -258,9 +258,9 @@
   {
     "questionId": "general-13",
     "locale": "en",
-    "translation": "English study guide: Abgeordnete = members of parliament / representatives; Opposition = opposition; Parlament = parliament; Regierung = government; Partei = political party.",
-    "correctAnswerTranslation": "alle members of parliament / representativesn, die nicht zu der governmentspolitical party/den governmentspolitical partyen gehören",
-    "simpleExplanation": "Correct answer: alle Abgeordneten, die nicht zu der Regierungspartei/den Regierungsparteien gehören. Use the key words to understand why this option fits the German question.",
+    "translation": "In parliament, the term \"opposition\" means ...",
+    "correctAnswerTranslation": "all members of parliament who do not belong to the governing party or parties",
+    "simpleExplanation": "The opposition consists of representatives who are not part of the governing parties.",
     "vocabulary": [
       {
         "source": "Abgeordnete",
@@ -287,9 +287,9 @@
   {
     "questionId": "general-14",
     "locale": "en",
-    "translation": "English study guide: Meinungsfreiheit = freedom of expression; Deutschland = Germany; heißt = is called.",
-    "correctAnswerTranslation": "English guide: meine Meinung im Internet äußern kann",
-    "simpleExplanation": "Correct answer: meine Meinung im Internet äußern kann. Use the key words to understand why this option fits the German question.",
+    "translation": "Freedom of expression in Germany means that I ...",
+    "correctAnswerTranslation": "can express my opinion on the internet",
+    "simpleExplanation": "Freedom of expression protects the right to state opinions, including online.",
     "vocabulary": [
       {
         "source": "Meinungsfreiheit",
@@ -308,9 +308,9 @@
   {
     "questionId": "general-15",
     "locale": "en",
-    "translation": "English study guide: Grundgesetz = Basic Law; Arbeit = work.",
-    "correctAnswerTranslation": "Zwangswork",
-    "simpleExplanation": "Correct answer: Zwangsarbeit. Use the key words to understand why this option fits the German question.",
+    "translation": "What does the German Basic Law prohibit?",
+    "correctAnswerTranslation": "forced labor",
+    "simpleExplanation": "Forced labor is prohibited by the Basic Law.",
     "vocabulary": [
       {
         "source": "Grundgesetz",
@@ -325,9 +325,9 @@
   {
     "questionId": "general-16",
     "locale": "en",
-    "translation": "English study guide: Meinungsfreiheit = freedom of expression; Deutschland = Germany.",
-    "correctAnswerTranslation": "English guide: bei der öffentlichen Verbreitung falscher Behauptungen über einzelne Personen",
-    "simpleExplanation": "Correct answer: bei der öffentlichen Verbreitung falscher Behauptungen über einzelne Personen. Use the key words to understand why this option fits the German question.",
+    "translation": "When is freedom of expression restricted in Germany?",
+    "correctAnswerTranslation": "when false claims about individual people are spread publicly",
+    "simpleExplanation": "Freedom of expression does not protect public false statements that harm specific people.",
     "vocabulary": [
       {
         "source": "Meinungsfreiheit",
@@ -346,9 +346,9 @@
   {
     "questionId": "general-17",
     "locale": "en",
-    "translation": "English study guide: Gesetz = law; Staat = state.",
-    "correctAnswerTranslation": "Ungleichbehandlung der Bürgerinnen und Bürger durch den state",
-    "simpleExplanation": "Correct answer: Ungleichbehandlung der Bürgerinnen und Bürger durch den Staat. Use the key words to understand why this option fits the German question.",
+    "translation": "German laws prohibit ...",
+    "correctAnswerTranslation": "unequal treatment of citizens by the state",
+    "simpleExplanation": "The state must treat citizens equally under the law.",
     "vocabulary": [
       {
         "source": "Gesetz",
@@ -363,9 +363,9 @@
   {
     "questionId": "general-18",
     "locale": "en",
-    "translation": "English study guide: Bundesrepublik Deutschland = Federal Republic of Germany; Menschenwürde = human dignity; Grundgesetz = Basic Law; Grundrecht = fundamental right.",
-    "correctAnswerTranslation": "die Unantastbarkeit der human dignity",
-    "simpleExplanation": "Correct answer: die Unantastbarkeit der Menschenwürde. Use the key words to understand why this option fits the German question.",
+    "translation": "Which fundamental right is guaranteed in Article 1 of the Basic Law of the Federal Republic of Germany?",
+    "correctAnswerTranslation": "the inviolability of human dignity",
+    "simpleExplanation": "Article 1 begins with the protection of human dignity.",
     "vocabulary": [
       {
         "source": "Bundesrepublik Deutschland",
@@ -392,9 +392,9 @@
   {
     "questionId": "general-19",
     "locale": "en",
-    "translation": "English study guide: Deutschland = Germany; frei = free.",
-    "correctAnswerTranslation": "English guide: Man darf sich seinen Wohnort selbst aussuchen",
-    "simpleExplanation": "Correct answer: Man darf sich seinen Wohnort selbst aussuchen. Use the key words to understand why this option fits the German question.",
+    "translation": "What is meant by the right of \"freedom of movement\" in Germany?",
+    "correctAnswerTranslation": "You may choose your place of residence yourself.",
+    "simpleExplanation": "Freedom of movement means people may decide where they want to live within Germany.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -413,9 +413,9 @@
   {
     "questionId": "general-20",
     "locale": "en",
-    "translation": "English study guide: verfassungswidrig = unconstitutional; Deutschland = Germany; Diktatur = dictatorship; Partei = political party.",
+    "translation": "A party in Germany pursues the goal of establishing a dictatorship. It is then ...",
     "correctAnswerTranslation": "unconstitutional",
-    "simpleExplanation": "Correct answer: verfassungswidrig. Use the key words to understand why this option fits the German question.",
+    "simpleExplanation": "A party that wants to establish a dictatorship acts against the constitution.",
     "vocabulary": [
       {
         "source": "verfassungswidrig",

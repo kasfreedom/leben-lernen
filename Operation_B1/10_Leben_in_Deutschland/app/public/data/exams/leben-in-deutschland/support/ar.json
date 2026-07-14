@@ -82,9 +82,9 @@
   {
     "questionId": "general-5",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Deutschland = ألمانيا؛ فري = مجاني؛ وال = الانتخابات.",
-    "correctAnswerTranslation": "تم إجراء الانتخابات من قبل Wählerin / der Wähler في وقت ما من اليوم إلى أفضل ما في الأمر، مما أدى إلى تزايد عدد الأشخاص الذين تم إجراؤهم وعدم ممارسة أي نشاط خلال الانتخابات.",
-    "simpleExplanation": "الإجابة الصحيحة: Die Wählerin/der Wähler darf bei der Wahl weder beeinflusst noch zu einer bestimmten Stimmabgabe gezwungen werden und keine Nachteile durch die Wahl haben. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "الانتخابات في ألمانيا حرة. ماذا يعني ذلك؟",
+    "correctAnswerTranslation": "لا يجوز التأثير على الناخبة أو الناخب، ولا إجباره على التصويت بطريقة معينة، ولا إلحاق ضرر به بسبب الانتخابات.",
+    "simpleExplanation": "الانتخابات الحرة تعني أن الناخبين يقررون دون ضغط أو إجبار أو ضرر.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -105,7 +105,7 @@
     "locale": "ar",
     "translation": "ماذا يسمى الدستور الألماني؟",
     "correctAnswerTranslation": "القانون الأساسي",
-    "simpleExplanation": "يُطلق على دستور ألمانيا اسم Grundgesetz، أي القانون الأساسي.",
+    "simpleExplanation": "يسمى دستور ألمانيا القانون الأساسي، وبالألمانية Grundgesetz.",
     "vocabulary": [
       {
         "source": "die Verfassung",
@@ -124,9 +124,9 @@
   {
     "questionId": "general-7",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Grundrecht = الحق الأساسي؛ Verfassung = الدستور؛ فريهايت = الحرية.",
+    "translation": "أي حق ينتمي إلى الحقوق الأساسية التي يضمنها الدستور الألماني؟ الحق في ...",
     "correctAnswerTranslation": "حرية المعتقد والضمير",
-    "simpleExplanation": "الإجابة الصحيحة: Glaubens- und Gewissensfreiheit. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "simpleExplanation": "حرية المعتقد والضمير محمية كحق أساسي.",
     "vocabulary": [
       {
         "source": "Grundrecht",
@@ -149,9 +149,9 @@
   {
     "questionId": "general-8",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Deutschland = ألمانيا؛ Grundgesetz = القانون الأساسي.",
-    "correctAnswerTranslation": "دليل اللغة الإنجليزية: Alle sollen gleich viel Geld haben",
-    "simpleExplanation": "الإجابة الصحيحة: Alle sollen gleich viel Geld haben. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "ما الذي لا يرد في القانون الأساسي لألمانيا؟",
+    "correctAnswerTranslation": "يجب أن يكون لدى الجميع نفس القدر من المال.",
+    "simpleExplanation": "القانون الأساسي يحمي الحقوق ومبادئ الدولة، لكنه لا ينص على أن يكون لدى الجميع نفس القدر من المال.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -166,9 +166,9 @@
   {
     "questionId": "general-9",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Deutschland = ألمانيا؛ غروندريخت = الحق الأساسي؛ اللجوء = اللجوء.",
+    "translation": "أي حق أساسي ينطبق في ألمانيا فقط على الأجنبيات والأجانب؟ الحق الأساسي في ...",
     "correctAnswerTranslation": "اللجوء",
-    "simpleExplanation": "الإجابة الصحيحة: أسيل. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "simpleExplanation": "حق اللجوء مخصص للأشخاص القادمين من دول أخرى والذين يطلبون الحماية.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -191,9 +191,9 @@
   {
     "questionId": "general-10",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Grundgesetz = القانون الأساسي.",
-    "correctAnswerTranslation": "غرامة",
-    "simpleExplanation": "الإجابة الصحيحة: يموت جيلدسترافي. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "ما الذي يتوافق مع القانون الأساسي الألماني؟",
+    "correctAnswerTranslation": "الغرامة المالية",
+    "simpleExplanation": "الغرامة المالية عقوبة قانونية وتتوافق مع القانون الأساسي.",
     "vocabulary": [
       {
         "source": "Grundgesetz",
@@ -208,9 +208,9 @@
   {
     "questionId": "general-11",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Bundesrepublik Deutschland = جمهورية ألمانيا الاتحادية؛ Grundgesetz = القانون الأساسي؛ Verfassung = الدستور.",
+    "translation": "ماذا يسمى دستور جمهورية ألمانيا الاتحادية؟",
     "correctAnswerTranslation": "القانون الأساسي",
-    "simpleExplanation": "الإجابة الصحيحة: جروندجيسيتز. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "simpleExplanation": "يسمى دستور جمهورية ألمانيا الاتحادية القانون الأساسي.",
     "vocabulary": [
       {
         "source": "Bundesrepublik Deutschland",
@@ -229,9 +229,9 @@
   {
     "questionId": "general-12",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Pressefreiheit = حرية الصحافة؛ أبشافن = للإلغاء؛ غروندريخت = الحق الأساسي؛ البوندستاغ = البرلمان الاتحادي الألماني. Partei = حزب سياسي",
-    "correctAnswerTranslation": "لا، لا، حرية الصحافة هي حق أساسي. لا يمكنك فعل أي شيء",
-    "simpleExplanation": "الإجابة الصحيحة: Nein, denn die Pressefreiheit ist ein Grundrecht. لا يمكنك فعل أي شيء. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "يريد حزب في البوندستاغ الألماني إلغاء حرية الصحافة. هل هذا ممكن؟",
+    "correctAnswerTranslation": "لا، لأن حرية الصحافة حق أساسي. لا يمكن إلغاؤها.",
+    "simpleExplanation": "حرية الصحافة محمية في القانون الأساسي ولا يمكن لحزب أن يلغيها ببساطة.",
     "vocabulary": [
       {
         "source": "Pressefreiheit",
@@ -258,9 +258,9 @@
   {
     "questionId": "general-13",
     "locale": "ar",
-    "translation": "دليل الدراسة باللغة الإنجليزية: Abgeordnete = أعضاء البرلمان / النواب؛ المعارضة = المعارضة؛ برلمان = برلمان؛ Regierung = الحكومة؛ Partei = حزب سياسي",
-    "correctAnswerTranslation": "جميع أعضاء البرلمان/الممثلين، لا ينتمون إلى الحكومات حزب سياسي/حكومات سياسية حزب سياسي",
-    "simpleExplanation": "الإجابة الصحيحة: alle Abgeordneten, die nicht zu der Regierungspartei/den Regierungsparteien gehören. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "في البرلمان، يشير مصطلح \"المعارضة\" إلى ...",
+    "correctAnswerTranslation": "جميع النواب الذين لا ينتمون إلى الحزب الحاكم أو الأحزاب الحاكمة",
+    "simpleExplanation": "المعارضة تتكون من النواب الذين لا ينتمون إلى الأحزاب الحاكمة.",
     "vocabulary": [
       {
         "source": "Abgeordnete",
@@ -287,9 +287,9 @@
   {
     "questionId": "general-14",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Meinungsfreiheit = حرية التعبير؛ دويتشلاند = ألمانيا؛ heißt = يسمى.",
-    "correctAnswerTranslation": "دليل اللغة الإنجليزية: meine Meinung im Internet äußern kann",
-    "simpleExplanation": "الإجابة الصحيحة: meine Meinung im Internet äußern kann. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "حرية التعبير في ألمانيا تعني أنني ...",
+    "correctAnswerTranslation": "أستطيع التعبير عن رأيي على الإنترنت",
+    "simpleExplanation": "حرية التعبير تحمي حق الشخص في إبداء رأيه، بما في ذلك على الإنترنت.",
     "vocabulary": [
       {
         "source": "Meinungsfreiheit",
@@ -308,9 +308,9 @@
   {
     "questionId": "general-15",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Grundgesetz = القانون الأساسي؛ أربيت = العمل.",
-    "correctAnswerTranslation": "زوانجسوورك",
-    "simpleExplanation": "الإجابة الصحيحة: زوانجساربيت. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "ما الذي يحظره القانون الأساسي الألماني؟",
+    "correctAnswerTranslation": "العمل القسري",
+    "simpleExplanation": "العمل القسري محظور بموجب القانون الأساسي.",
     "vocabulary": [
       {
         "source": "Grundgesetz",
@@ -325,9 +325,9 @@
   {
     "questionId": "general-16",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Meinungsfreiheit = حرية التعبير؛ دويتشلاند = ألمانيا.",
-    "correctAnswerTranslation": "دليل اللغة الإنجليزية: bei der öffentlichen Verbreitung falscher Behauptungen über einzelne Personen",
-    "simpleExplanation": "الإجابة الصحيحة: bei der öffentlichen Verbreitung falscher Behauptungen über einzelne Personen. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "متى تكون حرية التعبير مقيدة في ألمانيا؟",
+    "correctAnswerTranslation": "عند نشر ادعاءات كاذبة علناً عن أشخاص محددين",
+    "simpleExplanation": "حرية التعبير لا تحمي نشر ادعاءات كاذبة تضر بأشخاص محددين.",
     "vocabulary": [
       {
         "source": "Meinungsfreiheit",
@@ -346,9 +346,9 @@
   {
     "questionId": "general-17",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Gesetz = القانون؛ ستات = الحالة.",
-    "correctAnswerTranslation": "Ungleichbehandlung der Bürgerinnen und Bürger durch den State",
-    "simpleExplanation": "الإجابة الصحيحة: Ungleichbehandlung der Bürgerinnen und Bürger durch den Staat. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "تحظر القوانين الألمانية ...",
+    "correctAnswerTranslation": "المعاملة غير المتساوية للمواطنات والمواطنين من قبل الدولة",
+    "simpleExplanation": "يجب على الدولة أن تعامل المواطنات والمواطنين بالمساواة أمام القانون.",
     "vocabulary": [
       {
         "source": "Gesetz",
@@ -363,9 +363,9 @@
   {
     "questionId": "general-18",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Bundesrepublik Deutschland = جمهورية ألمانيا الاتحادية؛ Menschenwürde = كرامة الإنسان؛ Grundgesetz = القانون الأساسي؛ غروندريخت = حق أساسي.",
-    "correctAnswerTranslation": "يموت Unantastbarkeit دير الكرامة الإنسانية",
-    "simpleExplanation": "الإجابة الصحيحة: die Unantastbarkeit der Menschenwürde. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "أي حق أساسي مضمون في المادة 1 من القانون الأساسي لجمهورية ألمانيا الاتحادية؟",
+    "correctAnswerTranslation": "عدم المساس بكرامة الإنسان",
+    "simpleExplanation": "تبدأ المادة 1 بحماية كرامة الإنسان.",
     "vocabulary": [
       {
         "source": "Bundesrepublik Deutschland",
@@ -392,9 +392,9 @@
   {
     "questionId": "general-19",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: Deutschland = ألمانيا؛ فري = مجاني.",
-    "correctAnswerTranslation": "دليل اللغة الإنجليزية: Man darf sich seinen Wohnort selbst ausuchen",
-    "simpleExplanation": "الإجابة الصحيحة: Man darf sich seinen Wohnort selbst ausuchen. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "translation": "ما المقصود بحق \"حرية التنقل\" في ألمانيا؟",
+    "correctAnswerTranslation": "يجوز للشخص أن يختار مكان سكنه بنفسه.",
+    "simpleExplanation": "حرية التنقل تعني أن الناس يستطيعون اختيار المكان الذي يريدون العيش فيه داخل ألمانيا.",
     "vocabulary": [
       {
         "source": "Deutschland",
@@ -413,9 +413,9 @@
   {
     "questionId": "general-20",
     "locale": "ar",
-    "translation": "دليل دراسة اللغة الإنجليزية: verfassungswidrig = غير دستوري؛ دويتشلاند = ألمانيا؛ ديكتاتور = دكتاتورية Partei = حزب سياسي",
+    "translation": "حزب في ألمانيا يسعى إلى إقامة دكتاتورية. عندئذ يكون ...",
     "correctAnswerTranslation": "غير دستوري",
-    "simpleExplanation": "الإجابة الصحيحة: verfassungswidrig. استخدم الكلمات الرئيسية لفهم سبب ملاءمة هذا الخيار للسؤال الألماني.",
+    "simpleExplanation": "الحزب الذي يريد إقامة دكتاتورية يعمل ضد الدستور.",
     "vocabulary": [
       {
         "source": "verfassungswidrig",

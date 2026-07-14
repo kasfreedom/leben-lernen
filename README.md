@@ -2,21 +2,25 @@
 
 Mobile-first practice app for the German `Leben in Deutschland` citizenship-test question catalog.
 
-Open the app:
+## About
 
-[https://kasfreedom.github.io/leben-lernen/](https://kasfreedom.github.io/leben-lernen/)
+Leben lernen helps learners prepare for the German citizenship-test question catalog with focused practice, translated support, vocabulary review, and mock exams.
 
-## What it does
+Live app: [kasfreedom.github.io/leben-lernen](https://kasfreedom.github.io/leben-lernen/)
+
+The app is a static browser application. It stores progress locally in the browser and keeps question/support content as JSON data files.
+
+## Features
 
 - Practice all 310 Bavaria-relevant questions.
-- Train with translated question support.
+- Show translated question support while studying.
 - Review vocabulary and German sentence patterns.
-- Take mock exams with the official-style 30 general + 3 regional question mix.
-- Track progress, wrong answers, bookmarks, and language drills in the browser.
+- Take mock exams with an official-style 30 general + 3 regional question mix.
+- Track progress, wrong answers, bookmarks, and language drills locally.
 
 ## Languages
 
-App/interface languages:
+Interface languages:
 
 - German
 - English
@@ -29,18 +33,25 @@ Question/support translations:
 - Russian
 - Arabic
 
-Language data is file-based. Adding another support language should only require a new JSON file plus a manifest entry.
+Language support is data-driven. Adding a new support language should only require a JSON file and a manifest entry.
 
 See [docs/language-packs.md](docs/language-packs.md) for the language-pack contract.
 
-## Run locally
+## Development
+
+Install dependencies:
 
 ```sh
 npm install
+```
+
+Run the local dev server:
+
+```sh
 npm run dev
 ```
 
-Quality checks:
+Run checks:
 
 ```sh
 npm test
@@ -61,4 +72,4 @@ npm run build
 
 ## Deployment
 
-The app is a static Vite site and can be hosted on GitHub Pages.
+The app is deployed as a static Vite site on GitHub Pages. The deployment workflow builds the root project and publishes the generated `dist/` directory.

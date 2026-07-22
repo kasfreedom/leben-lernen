@@ -38,11 +38,12 @@ describe("UI localization", () => {
       ["/data/ui/ru.json", { settings: "Настройки" }],
       ["/data/ui/ar.json", { settings: "الإعدادات" }]
     ]);
-    vi.stubGlobal("fetch", vi.fn(async (url: string) => ({
+    const fetchMock = vi.fn(async (url: string) => ({
       ok: responses.has(url),
       status: responses.has(url) ? 200 : 404,
       json: async () => responses.get(url)
-    })));
+    }));
+    vi.stubGlobal("fetch", fetchMock);
 
     const bundle = await createFetchUiLoader().loadBundle();
 
@@ -51,6 +52,7 @@ describe("UI localization", () => {
     expect(bundle.messages.en.settings).toBe("Settings");
     expect(bundle.messages.ru.settings).toBe("Настройки");
     expect(bundle.messages.ar.settings).toBe("الإعدادات");
+    expect(fetchMock).toHaveBeenCalledWith("/data/ui/manifest.json", { cache: "no-cache" });
   });
 
   it("ships complete German, English, Russian, and Arabic packs with matching keys", () => {

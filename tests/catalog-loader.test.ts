@@ -40,15 +40,20 @@ describe("catalog loader", () => {
         [{ questionId: "general-1", locale: "en", translation: "T", correctAnswerTranslation: "A", simpleExplanation: "E", vocabulary: [] }]
       ]
     ]);
-    vi.stubGlobal("fetch", vi.fn(async (url: string) => ({
+    const fetchMock = vi.fn(async (url: string) => ({
       ok: responses.has(url),
       status: responses.has(url) ? 200 : 404,
       json: async () => responses.get(url)
-    })));
+    }));
+    vi.stubGlobal("fetch", fetchMock);
 
     const bundle = await createFetchCatalogLoader().loadBundle();
 
     expect(bundle.catalog.questions.map((question) => question.id)).toEqual(["general-1", "bavaria-1"]);
     expect(bundle.supportPacks.en).toHaveLength(1);
+    expect(fetchMock).toHaveBeenCalledWith(
+      "/data/exams/leben-in-deutschland/manifest.json",
+      { cache: "no-cache" }
+    );
   });
 });

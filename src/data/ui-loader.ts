@@ -1,4 +1,5 @@
 import type { UiBundle, UiManifest, UiMessages } from "../i18n/types";
+import { fetchJson } from "./fetch-json";
 
 const DEFAULT_UI_BASE_PATH = `${import.meta.env.BASE_URL}data/ui`;
 
@@ -21,10 +22,4 @@ export function createFetchUiLoader(basePath = DEFAULT_UI_BASE_PATH): UiLoader {
 
 function joinPath(basePath: string, path: string): string {
   return `${basePath.replace(/\/+$/u, "")}/${path.replace(/^\/+/u, "")}`;
-}
-
-async function fetchJson<T>(url: string): Promise<T> {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`Could not load ${url}: ${response.status}`);
-  return response.json() as Promise<T>;
 }

@@ -5,6 +5,7 @@ import type {
   SourceQuestion,
   SupportLocale
 } from "../domain/types";
+import { fetchJson } from "./fetch-json";
 
 const DEFAULT_EXAM_BASE_PATH = `${import.meta.env.BASE_URL}data/exams/leben-in-deutschland`;
 const GENERAL_REGION = "general";
@@ -68,12 +69,4 @@ export function getAllSupportPacks(
 
 function joinPath(basePath: string, path: string): string {
   return `${basePath.replace(/\/+$/u, "")}/${path.replace(/^\/+/u, "")}`;
-}
-
-async function fetchJson<T>(url: string): Promise<T> {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Could not load ${url}: ${response.status}`);
-  }
-  return response.json() as Promise<T>;
 }

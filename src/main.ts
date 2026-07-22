@@ -53,6 +53,7 @@ const MILLISECONDS_PER_MINUTE = 60_000;
 const MILLISECONDS_PER_SECOND = 1_000;
 const MOCK_TIMER_SELECTOR = "[data-mock-timer]";
 const RTL_SUPPORT_LOCALES = new Set(["ar"]);
+const SUPPORT_PROJECT_URL = "https://paypal.me/kasfreedom";
 const NAV_ICONS: Readonly<Record<PracticeMode, string>> = {
   practice: "book-open",
   language: "globe",
@@ -346,6 +347,7 @@ function renderProgress(): void {
         <h2>${escapeHtml(t("progress.practiceSummary"))}</h2>
         <p>${escapeHtml(t("progress.practiceSummaryCopy", { practiced: summary.practicedQuestions, correct: summary.correctAnswers, bookmarked: summary.bookmarkedQuestions }))}</p>
       </section>
+      ${renderSupportProjectCard("progress")}
     </section>
     <aside class="support progress-support">
       ${renderWeakAreasSection()}
@@ -503,6 +505,7 @@ function layout(content: string): string {
           <label class="region"><span>${escapeHtml(t("settings.region"))}</span><select data-setting="region" aria-label="${escapeHtml(t("settings.region"))}">${catalog.regions.map((region) => `<option value="${escapeHtml(region.id)}" ${region.id === selectedRegion ? "selected" : ""}>${escapeHtml(region.label)}</option>`).join("")}</select></label>
           <label class="practice-set-setting"><span>${escapeHtml(t("practice.set"))}</span><select data-setting="practice-set" aria-label="${escapeHtml(t("practice.set"))}">${practiceSetOptions()}</select></label>
           <div class="progress-label"><strong>${session.summary.answered}</strong> ${escapeHtml(t("common.of"))} ${session.summary.totalQuestions}</div>
+          ${renderSupportProjectRow()}
           <p class="asset-credit">${escapeHtml(t("settings.iconCredit"))}</p>
         </div>
       </details>
@@ -521,6 +524,29 @@ function layout(content: string): string {
       </aside>
       ${content}
     </main>`;
+}
+
+function renderSupportProjectRow(): string {
+  return `
+    <a class="project-support-row" href="${escapeHtml(SUPPORT_PROJECT_URL)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(t("supportProject.action"))}">
+      <span class="project-support-row-icon">${icon("support")}</span>
+      <span><strong>${escapeHtml(t("supportProject.title"))}</strong><small>${escapeHtml(t("supportProject.shortCopy"))}</small></span>
+      <b>${escapeHtml(t("supportProject.shortAction"))} ›</b>
+    </a>
+  `;
+}
+
+function renderSupportProjectCard(variant = ""): string {
+  return `
+    <section class="project-support-card ${variant}" aria-label="${escapeHtml(t("supportProject.title"))}">
+      <div class="project-support-icon">${icon("support")}</div>
+      <div>
+        <h2>${escapeHtml(t("supportProject.title"))}</h2>
+        <p>${escapeHtml(t("supportProject.copy"))}</p>
+        <a href="${escapeHtml(SUPPORT_PROJECT_URL)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t("supportProject.action"))}</a>
+      </div>
+    </section>
+  `;
 }
 
 function renderPracticeToolbar(session: PracticeSession): string {
@@ -1178,6 +1204,7 @@ function icon(name: string): string {
     translation: "translation-speech-globe.svg",
     bookmark: "bookmark.svg",
     lightbulb: "support-tip.svg",
+    support: "support-gift.svg",
     "language-card": "language-word-globe.svg",
     speech: "translation-speech-globe.svg"
   };

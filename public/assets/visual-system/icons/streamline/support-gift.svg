@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Support gift">
+  <path fill="#b9e7ff" d="M12 28h40v27H12z"/>
+  <path fill="#ffe0cd" d="M9 20h46v12H9z"/>
+  <path fill="#fff0bd" d="M27 20h10v35H27z"/>
+  <path fill="#ff7f6e" d="M25 20c-6-1-10-5-9-9 1-5 8-5 16 9h-7z"/>
+  <path fill="#ff7f6e" d="M39 20c6-1 10-5 9-9-1-5-8-5-16 9h7z"/>
+  <path fill="#36d1a8" d="M28 32c-4-4-11-1-11 5 0 8 11 13 15 17 4-4 15-9 15-17 0-6-7-9-11-5l-4 4-4-4z"/>
+  <path fill="none" stroke="#3d3d3d" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 32v23h40V32M9 20h46v12H9zM27 20v35M37 20v35M25 20c-6-1-10-5-9-9 1-5 8-5 16 9M39 20c6-1 10-5 9-9-1-5-8-5-16 9M28 32c-4-4-11-1-11 5 0 8 11 13 15 17 4-4 15-9 15-17 0-6-7-9-11-5l-4 4-4-4z"/>
+</svg>
